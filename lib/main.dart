@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
+      // TODO: Add Splash screen in the main on below
+      // replace HomePage() with SplashPage()
+      // in lib directory, create a splash directory and then create
+      // splash_page.dart in its own directory
       home: const HomePage(),
     );
   }
