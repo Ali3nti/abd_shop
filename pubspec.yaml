@@ -31,13 +31,14 @@ flutter:
   # Work in this area with "base" branch
 
   assets:
-     - assets/image/logo.png
+     - assets/
+     - assets/images/
   #   - images/a_dot_ham.jpeg
 
   fonts:
      - family: Yekan
        fonts:
-         - asset: assets/Yekan.ttf
+         - asset: assets/fonts/Yekan.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
