@@ -180,6 +180,20 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: Container(
+          color: Colors.green.shade500,
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Circle(iconData: Icons.home_filled, text: "صفحه اصلی"),
+              Circle(
+                  iconData: Icons.shopping_basket_outlined, text: "سبد خرید"),
+              Circle(iconData: Icons.person_outline, text: "حساب"),
+              Circle(iconData: Icons.menu, text: "منو"),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -225,6 +239,21 @@ class Avatar extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class Circle extends StatelessWidget {
+  const Circle({super.key, required this.iconData, required this.text});
+  final IconData iconData;
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Icon(iconData),
+        Text(text),
+      ],
     );
   }
 }
