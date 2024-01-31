@@ -4,9 +4,14 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'location_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
 
@@ -27,6 +32,27 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  int index = 0;
+
+  List<BottomNavigationBarItem> items = const [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home_filled),
+      label: "صفحه اصلی",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.shopping_basket_outlined),
+      label: "سبد خرید",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person_outline),
+      label: "حساب",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.menu),
+      label: "منو",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +86,7 @@ class HomePage extends StatelessWidget {
                         const SizedBox(
                           width: 4,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Image.asset(
@@ -80,7 +106,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: Row(
                   children: [
                     Icon(
@@ -88,7 +114,7 @@ class HomePage extends StatelessWidget {
                       color: Colors.green.shade500,
                       size: 35,
                     ),
-                    Column(
+                    const Column(
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 80),
@@ -106,12 +132,12 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(width: 60),
+                    const SizedBox(width: 60),
                     TextButton(
                       onPressed: () {
                         location(context);
                       },
-                      child: Text(
+                      child: const Text(
                         "تغییر آدرس",
                         style: TextStyle(color: Colors.blue, fontSize: 15),
                       ),
@@ -127,10 +153,10 @@ class HomePage extends StatelessWidget {
                     child: PageView(
                       controller: pageController,
                       children: [
-                        SliderImage(
+                        const SliderImage(
                             ImageUrl:
                                 "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
-                        SliderImage(
+                        const SliderImage(
                             ImageUrl:
                                 "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       ],
@@ -180,20 +206,34 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: Container(
-          color: Colors.green.shade500,
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Circle(iconData: Icons.home_filled, text: "صفحه اصلی"),
-              Circle(
-                  iconData: Icons.shopping_basket_outlined, text: "سبد خرید"),
-              Circle(iconData: Icons.person_outline, text: "حساب"),
-              Circle(iconData: Icons.menu, text: "منو"),
-            ],
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.green,
+            primaryColor: Colors.red,
+          ),
+          child: BottomNavigationBar(
+            items: items,
+            currentIndex: index,
+            onTap: (indexTap) {
+              index = indexTap;
+              setState(() {});
+            },
           ),
         ),
+        // bottomNavigationBar: Container(
+        //   color: Colors.green.shade500,
+        //   height: 50,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //     children: [
+        //       Circle(iconData: Icons.home_filled, text: "صفحه اصلی"),
+        //       Circle(
+        //           iconData: Icons.shopping_basket_outlined, text: "سبد خرید"),
+        //       Circle(iconData: Icons.person_outline, text: "حساب"),
+        //       Circle(iconData: Icons.menu, text: "منو"),
+        //     ],
+        //   ),
+        // ),
       ),
     );
   }
@@ -208,7 +248,7 @@ class SliderImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       child: ClipRRect(
         borderRadius: BorderRadiusDirectional.circular(10),
         child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
