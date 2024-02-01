@@ -15,6 +15,9 @@ class _HomePageState extends State<HomePage> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
 
+  PageController controller =
+      PageController(initialPage: 0, viewportFraction: 0.9);
+
   search(BuildContext context) {
     Navigator.push(
       context,
@@ -37,12 +40,12 @@ class _HomePageState extends State<HomePage> {
 
   List<BottomNavigationBarItem> items = const [
     BottomNavigationBarItem(
-      icon: Icon(Icons.home_filled),
-      label: "صفحه اصلی",
-    ),
-    BottomNavigationBarItem(
       icon: Icon(Icons.shopping_basket_outlined),
       label: "سبد خرید",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home_filled),
+      label: "صفحه اصلی",
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person_outline),
@@ -74,10 +77,16 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 Icon(Icons.search, size: 30, color: Colors.grey.shade600),
+                SizedBox(
+                  width: 5,
+                ),
                 Expanded(
                   child: Row(
                     children: [
-                      const Text("جستجو در"),
+                      const Text(
+                        "جستجو در",
+                        style: TextStyle(fontSize: 16),
+                      ),
                       const SizedBox(
                         width: 4,
                       ),
@@ -86,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Image.asset(
                         'assets/images/logo.png',
-                        color: Colors.green.shade500,
+                        color: Colors.deepOrange,
                         width: 90,
                       ),
                     ],
@@ -100,13 +109,16 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 50,
+            ),
             Padding(
               padding: const EdgeInsets.all(15),
               child: Row(
                 children: [
                   Icon(
                     Icons.location_on_outlined,
-                    color: Colors.green.shade500,
+                    color: Colors.deepOrange,
                     size: 35,
                   ),
                   const Column(
@@ -170,6 +182,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 30,
+            ),
             Wrap(
               children: [
                 Avatar(
@@ -196,38 +211,58 @@ class _HomePageState extends State<HomePage> {
                 Avatar(
                     image: Image.asset("assets/images/p1.png"),
                     text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
               ],
-            )
+            ),
+            SizedBox(
+              height: 200,
+              child: PageView(
+                controller: pageController,
+                children: [
+                  Container(
+                    height: 180,
+                    width: 10,
+                    color: Colors.black,
+                  ),
+                  Container(
+                    height: 180,
+                    width: 10,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    height: 180,
+                    width: 10,
+                    color: Colors.black,
+                  ),
+                  Container(
+                    height: 10,
+                    width: 10,
+                    color: Colors.white,
+                    child: InkWell(
+                      hoverColor: Colors.transparent,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("نمایش همه"),
+                            Icon(Icons.arrow_circle_down)
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          canvasColor: Colors.green,
+          canvasColor: Colors.deepOrange,
           primaryColor: Colors.red,
         ),
         child: BottomNavigationBar(
@@ -297,21 +332,6 @@ class Avatar extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class Circle extends StatelessWidget {
-  const Circle({super.key, required this.iconData, required this.text});
-  final IconData iconData;
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(iconData),
-        Text(text),
-      ],
     );
   }
 }
