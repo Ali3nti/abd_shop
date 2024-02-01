@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             SizedBox(
-              height: 50,
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(15),
@@ -191,25 +191,25 @@ class _HomePageState extends State<HomePage> {
                     image: Image.asset("assets/images/p1.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p2.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p3.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p4.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p5.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p6.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p6.png"),
                     text: "سوپرمارکت"),
                 Avatar(
-                    image: Image.asset("assets/images/p1.png"),
+                    image: Image.asset("assets/images/p6.png"),
                     text: "سوپرمارکت"),
               ],
             ),
