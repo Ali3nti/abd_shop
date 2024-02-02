@@ -44,11 +44,17 @@ class SplashPage extends StatelessWidget {
               ),
             ],
           ),
-          SpinKitFadingCircle(
+          // SpinKitThreeBounce(
+          //   color: Colors.white,
+          //   size: 14,
+          // ),
+          SpinKitThreeBounce(
+            size: 14,
             itemBuilder: (BuildContext context, int index) {
               return DecoratedBox(
                 decoration: BoxDecoration(
-                  color: index.isEven ? Colors.white : Colors.grey,
+                  borderRadius: BorderRadius.circular(40),
+                  color: index.isEven ? Colors.white : Colors.green.shade300,
                 ),
               );
             },
