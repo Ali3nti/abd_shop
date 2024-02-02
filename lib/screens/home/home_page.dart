@@ -219,7 +219,6 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 300,
               child: ListView(
-                controller: pageController,
                 scrollDirection: Axis.horizontal,
                 children: [
                   SizedBox(
