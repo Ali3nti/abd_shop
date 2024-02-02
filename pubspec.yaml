@@ -17,6 +17,7 @@ dependencies:
   flutter_spinkit: ^5.2.0
 
   cupertino_icons: ^1.0.2
+  bottom_navy_bar: ^6.0.0
 
 dev_dependencies:
   flutter_test:
