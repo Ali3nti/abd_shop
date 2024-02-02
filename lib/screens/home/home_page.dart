@@ -214,7 +214,60 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(
-              height: 250,
+              height: 50,
+            ),
+            Container(
+              height: 300,
+              child: ListView(
+                controller: pageController,
+                scrollDirection: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    color: Colors.black,
+                    height: 300,
+                    width: 200,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    color: Colors.red,
+                    height: 300,
+                    width: 200,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    color: Colors.blue,
+                    height: 300,
+                    width: 200,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    color: Colors.grey,
+                    height: 300,
+                    width: 200,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Text("نمایش همه موارد"),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.arrow_circle_down))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -228,25 +281,21 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavyBarItem(
-            icon: Icon(Icons.home_filled),
-            title: Text("خانه"),
-            activeColor: Colors.deepOrangeAccent
-          ),
+              icon: Icon(Icons.home_filled),
+              title: Text("خانه"),
+              activeColor: Colors.deepOrangeAccent),
           BottomNavyBarItem(
-            icon: Icon(Icons.add_card),
-            title: Text("سفارشات"),
-            activeColor: Colors.blue
-          ),
+              icon: Icon(Icons.add_card),
+              title: Text("سفارشات"),
+              activeColor: Colors.blue),
           BottomNavyBarItem(
-            icon: Icon(Icons.shopping_basket_outlined),
-            title: Text("سبد خرید"),
-            activeColor: Colors.purple
-          ),
+              icon: Icon(Icons.shopping_basket_outlined),
+              title: Text("سبد خرید"),
+              activeColor: Colors.purple),
           BottomNavyBarItem(
-            icon: Icon(Icons.person),
-            title: Text("پروفایل"),
-            activeColor: Colors.green
-          ),
+              icon: Icon(Icons.person),
+              title: Text("پروفایل"),
+              activeColor: Colors.green),
         ],
       ),
       // bottomNavigationBar: Container(
