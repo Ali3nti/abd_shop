@@ -22,23 +22,23 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     goNextPage(context);
     return Scaffold(
-      backgroundColor: Colors.green.shade500,
+      backgroundColor: Colors.orange,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 36),
-                child: Image.asset("assets/images/logo.png"),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 36),
-                child: Text(
-                  "خریدی سریع و آسان در شهر",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
+              Image.asset("assets/images/logo.png",height: 200,width: 300,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 36),
+                  child: Text(
+                    "پرتاب از فروشگاه نزدیک شما",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
                   ),
                 ),
               ),
@@ -49,12 +49,12 @@ class SplashPage extends StatelessWidget {
           //   size: 14,
           // ),
           SpinKitThreeBounce(
-            size: 14,
+            size: 20,
             itemBuilder: (BuildContext context, int index) {
               return DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
-                  color: index.isEven ? Colors.white : Colors.green.shade300,
+                  color: index.isEven ? Colors.white : Colors.yellow,
                 ),
               );
             },
