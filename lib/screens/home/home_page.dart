@@ -1,4 +1,5 @@
 import 'package:abd_shop/screens/home/search_page.dart';
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -18,6 +19,8 @@ class _HomePageState extends State<HomePage> {
   PageController controller =
       PageController(initialPage: 0, viewportFraction: 0.9);
 
+  int currentIndex = 0;
+
   search(BuildContext context) {
     Navigator.push(
       context,
@@ -36,26 +39,26 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  int index = 0;
-
-  List<BottomNavigationBarItem> items = const [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.shopping_basket_outlined),
-      label: "سبد خرید",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home_filled),
-      label: "صفحه اصلی",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person_outline),
-      label: "حساب",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.menu),
-      label: "منو",
-    ),
-  ];
+  // int index = 0;     // old navigationbar
+  //
+  // List<BottomNavigationBarItem> items = const [
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.shopping_basket_outlined),
+  //     label: "سبد خرید",
+  //   ),
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.home_filled),
+  //     label: "صفحه اصلی",
+  //   ),
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.person_outline),
+  //     label: "حساب",
+  //   ),
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.menu),
+  //     label: "منو",
+  //   ),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -192,87 +195,59 @@ class _HomePageState extends State<HomePage> {
                     text: "سوپرمارکت"),
                 Avatar(
                     image: Image.asset("assets/images/p2.png"),
-                    text: "سوپرمارکت"),
+                    text: "میوه و سبزیجات"),
                 Avatar(
                     image: Image.asset("assets/images/p3.png"),
-                    text: "سوپرمارکت"),
+                    text: "پروتئینی"),
                 Avatar(
                     image: Image.asset("assets/images/p4.png"),
-                    text: "سوپرمارکت"),
+                    text: "نانوایی"),
                 Avatar(
                     image: Image.asset("assets/images/p5.png"),
-                    text: "سوپرمارکت"),
+                    text: "شیرینی و آجیل"),
                 Avatar(
                     image: Image.asset("assets/images/p6.png"),
-                    text: "سوپرمارکت"),
+                    text: "آب میوه و بستنی"),
                 Avatar(
                     image: Image.asset("assets/images/p6.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p6.png"),
-                    text: "سوپرمارکت"),
+                    text: "گل و گیاه"),
               ],
             ),
             SizedBox(
-              height: 200,
-              child: PageView(
-                controller: pageController,
-                children: [
-                  Container(
-                    height: 180,
-                    width: 10,
-                    color: Colors.black,
-                  ),
-                  Container(
-                    height: 180,
-                    width: 10,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    height: 180,
-                    width: 10,
-                    color: Colors.black,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    color: Colors.white,
-                    child: InkWell(
-                      hoverColor: Colors.transparent,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("نمایش همه"),
-                            Icon(Icons.arrow_circle_down)
-
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 50,
+              height: 250,
             ),
           ],
         ),
       ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Colors.deepOrange,
-          primaryColor: Colors.red,
-        ),
-        child: BottomNavigationBar(
-          items: items,
-          currentIndex: index,
-          onTap: (indexTap) {
-            index = indexTap;
-            setState(() {});
-          },
-        ),
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: currentIndex,
+        onItemSelected: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavyBarItem(
+            icon: Icon(Icons.home_filled),
+            title: Text("خانه"),
+            activeColor: Colors.deepOrangeAccent
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.add_card),
+            title: Text("سفارشات"),
+            activeColor: Colors.blue
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.shopping_basket_outlined),
+            title: Text("سبد خرید"),
+            activeColor: Colors.purple
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.person),
+            title: Text("پروفایل"),
+            activeColor: Colors.green
+          ),
+        ],
       ),
       // bottomNavigationBar: Container(
       //   color: Colors.green.shade500,
