@@ -23,36 +23,38 @@ class SplashPage extends StatelessWidget {
     goNextPage(context);
     return Scaffold(
       //backgroundColor: Colors.orange,
+
       body: Container(
-          height: MediaQuery.of(context).size.height * 10.0,
-          width: MediaQuery.of(context).size.width * 10.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: const LinearGradient(
-              colors: [Colors.yellowAccent, Colors.orange],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              stops: [0.4, 0.7],
-              tileMode: TileMode.repeated,
-            ),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.yellowAccent, Colors.orange],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            stops: [0.05, 0.7],
+            tileMode: TileMode.repeated,
           ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-                Image.asset("assets/images/logo.png",height: 200,width: 300,),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 36),
-                    child: Text(
-                      "پرتاب از فروشگاه نزدیک شما",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
-                    ),
+            Image.asset(
+              "assets/images/logo.png",
+              height: 200,
+              width: 300,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 36),
+                child: Text(
+                  "پرتاب از فروشگاه نزدیک شما",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
+              ),
+            ),
             // SpinKitThreeBounce(
             //   color: Colors.white,
             //   size: 14,
