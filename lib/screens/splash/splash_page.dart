@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -25,13 +27,30 @@ class SplashPage extends StatelessWidget {
             isConnect = false;
           }
           if (isConnect) {
-            //Go to the next page (HomePage)
-            return Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomePage(),
-              ),
-            );
+            try {
+              // Lookup URL for check connectivity
+              final result = await InternetAddress.lookup('www.iran.ir');
+              if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                //Go to the next page (HomePage)
+                return Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              } else {
+                //TODO: Define way to show refresh button
+                MySnackBar(
+                    label: "تلاش مجدد",
+                    onPress: () {},
+                    context: context,
+                    message: 'ارتباط با سرور برقرار نشد!',
+                    isWarning: true);
+              }
+            } on SocketException catch (e) {
+              throw Exception(
+                  'SocketException - splash_page.dart - checkConnectivity(): $e');
+            }
           } else {
             //Show Snackbar and show refresh button
             print("no internet");
@@ -45,7 +64,7 @@ class SplashPage extends StatelessWidget {
           }
         } catch (e) {
           throw Exception(
-              'Exception - baseRule.dart - checkConnectivity(): $e');
+              'Exception - splash_page.dart - checkConnectivity(): $e');
         }
       },
     );
