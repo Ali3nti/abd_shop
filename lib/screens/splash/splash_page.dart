@@ -22,44 +22,56 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     goNextPage(context);
     return Scaffold(
-      backgroundColor: Colors.green.shade500,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 36),
-                child: Image.asset("assets/images/logo.png"),
-              ),
-              Container(
+      //backgroundColor: Colors.orange,
+
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.yellowAccent, Colors.orange],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            stops: [0.05, 0.7],
+            tileMode: TileMode.repeated,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset(
+              "assets/images/logo.png",
+              height: 200,
+              width: 300,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 36),
                 child: Text(
-                  "خریدی سریع و آسان در شهر",
+                  "پرتاب از فروشگاه نزدیک شما",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 25,
                   ),
                 ),
               ),
-            ],
-          ),
-          // SpinKitThreeBounce(
-          //   color: Colors.white,
-          //   size: 14,
-          // ),
-          SpinKitThreeBounce(
-            size: 14,
-            itemBuilder: (BuildContext context, int index) {
-              return DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: index.isEven ? Colors.white : Colors.green.shade300,
-                ),
-              );
-            },
-          ),
-        ],
+            ),
+            // SpinKitThreeBounce(
+            //   color: Colors.white,
+            //   size: 14,
+            // ),
+            SpinKitThreeBounce(
+              size: 20,
+              itemBuilder: (BuildContext context, int index) {
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: index.isEven ? Colors.white : Colors.yellow,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
