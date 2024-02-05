@@ -18,6 +18,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   bottom_navy_bar: ^6.0.0
+  permission_handler: ^11.2.0 # Add this package for the permission handler
 
 dev_dependencies:
   flutter_test:
