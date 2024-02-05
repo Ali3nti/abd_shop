@@ -1,19 +1,52 @@
 import 'package:abd_shop/screens/home/home_page.dart';
+import 'package:abd_shop/widget/my_snack_bar.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
-  goNextPage(BuildContext context) async {
-    await Future.delayed(const Duration(seconds: 3)).then(
-      (value) {
-        return Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ),
-        );
+  goNextPage(BuildContext context) {
+    Future.delayed(const Duration(seconds: 0)).then(
+      (value) async {
+        try {
+          bool isConnect = false;
+          // async function for checking connectivity
+          var connectivity = await (Connectivity().checkConnectivity());
+          if (connectivity == ConnectivityResult.mobile) {
+            //check mobile data for connectivity
+            isConnect = true;
+          } else if (connectivity == ConnectivityResult.wifi) {
+            //check wifi for connectivity
+            isConnect = true;
+          } else {
+            //No connectivity
+            isConnect = false;
+          }
+          if (isConnect) {
+            //Go to the next page (HomePage)
+            return Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          } else {
+            //Show Snackbar and show refresh button
+            print("no internet");
+            //TODO: Define way to show refresh button
+            MySnackBar(
+                label: "تلاش مجدد",
+                onPress: () {},
+                context: context,
+                message: 'اتصال به اینترنت را بررسی کنید',
+                isWarning: true);
+          }
+        } catch (e) {
+          throw Exception(
+              'Exception - baseRule.dart - checkConnectivity(): $e');
+        }
       },
     );
   }
