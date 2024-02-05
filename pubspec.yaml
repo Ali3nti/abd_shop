@@ -17,6 +17,7 @@ dependencies:
   flutter_spinkit: ^5.2.0
 
   cupertino_icons: ^1.0.2
+  bottom_navy_bar: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -31,13 +32,14 @@ flutter:
   # Work in this area with "base" branch
 
   assets:
-     - assets/image/logo.png
+     - assets/
+     - assets/images/
   #   - images/a_dot_ham.jpeg
 
   fonts:
      - family: Yekan
        fonts:
-         - asset: assets/Yekan.ttf
+         - asset: assets/fonts/Yekan.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

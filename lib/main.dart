@@ -1,4 +1,4 @@
-import 'package:abd_shop/splash_page.dart';
+import 'package:abd_shop/screens/splash/splash_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -22,10 +22,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale("fa", "IR"),
       ],
-      theme: ThemeData(
-          fontFamily: "Yekan",
-          useMaterial3: true
-      ),
+      theme: ThemeData(fontFamily: "Yekan", useMaterial3: true),
       home: SplashPage(),
     );
   }
