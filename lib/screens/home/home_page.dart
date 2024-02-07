@@ -1,13 +1,11 @@
-import 'package:abd_shop/screens/home/search_page.dart';
-import 'package:abd_shop/screens/test.dart';
+import 'package:abd_shop/screens/location/location_page.dart';
+import 'package:abd_shop/screens/search_page.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'location_page.dart';
-
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -166,12 +164,12 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => TestPage(),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => MarketListWidget(),
+                          //   ),
+                          // );
                         },
                         child: const SliderImage(
                             ImageUrl:
