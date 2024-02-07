@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  This code for define access permission in android  -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="abd_shop"
         android:name="${applicationName}"
