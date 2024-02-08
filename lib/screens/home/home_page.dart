@@ -298,10 +298,6 @@ class _HomePageState extends State<HomePage> {
                   text: "نوشیدنی",
                 ),
                 ItemWrap(
-                  image: Image.asset("assets/images/p7.png"),
-                  text: "نوشیدنی",
-                ),
-                ItemWrap(
                   image: Image.asset("assets/images/p11.png"),
                   text: "خوار و بار",
                 ),
