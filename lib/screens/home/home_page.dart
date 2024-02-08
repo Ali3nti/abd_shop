@@ -199,30 +199,32 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 30,
             ),
-            Wrap(
-              children: [
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p2.png"),
-                    text: "میوه و سبزیجات"),
-                Avatar(
-                    image: Image.asset("assets/images/p3.png"),
-                    text: "پروتئینی"),
-                Avatar(
-                    image: Image.asset("assets/images/p4.png"),
-                    text: "نانوایی"),
-                Avatar(
-                    image: Image.asset("assets/images/p5.png"),
-                    text: "شیرینی و آجیل"),
-                Avatar(
-                    image: Image.asset("assets/images/p6.png"),
-                    text: "آب میوه و بستنی"),
-                Avatar(
-                    image: Image.asset("assets/images/p6.png"),
-                    text: "گل و گیاه"),
-              ],
+            Padding(padding: EdgeInsets.all(20),
+              child: Wrap(spacing: 15,runSpacing:15,direction: Axis.horizontal,
+                children: [
+                  Avatar(
+                      image: Image.asset("assets/images/p1.png"),
+                      text: "سوپرمارکت"),
+                  Avatar(
+                      image: Image.asset("assets/images/p2.png"),
+                      text: "میوه و سبزیجات"),
+                  Avatar(
+                      image: Image.asset("assets/images/p3.png"),
+                      text: "پروتئینی"),
+                  Avatar(
+                      image: Image.asset("assets/images/p4.png"),
+                      text: "نانوایی"),
+                  Avatar(
+                      image: Image.asset("assets/images/p5.png"),
+                      text: "شیرینی و آجیل"),
+                  Avatar(
+                      image: Image.asset("assets/images/p6.png"),
+                      text: "آب میوه و بستنی"),
+                  Avatar(
+                      image: Image.asset("assets/images/p6.png"),
+                      text: "گل و گیاه"),
+                ],
+              ),
             ),
             SizedBox(
               height: 50,
@@ -289,7 +291,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 50,
             ),
-            Wrap(spacing: 50,alignment: WrapAlignment.spaceEvenly,
+            Wrap(spacing: 15,runSpacing:15,
               children: [
                 ItemWrap(
                   image: Image.asset("assets/images/p7.png"),
@@ -403,18 +405,16 @@ class Avatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 85,
-      child: Column(
-        children: [
-          InkWell(
-            hoverColor: Colors.transparent,
-            child: TextButton(onPressed: () {}, child: image),
+      width: 65,
+      child: Material(
+        child: InkWell(onTap: () {} ,
+          child: Column(
+            children: [
+              image,
+              Text(text),
+            ],
           ),
-          TextButton(
-            onPressed: () {},
-            child: Text(text),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -429,7 +429,7 @@ class ItemWrap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 85,
+      width: 110,
       child: Material(
         child: InkWell(onTap: () {} ,
           child: Column(
