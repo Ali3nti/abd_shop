@@ -1,8 +1,8 @@
 import 'package:abd_shop/screens/location/location_page.dart';
-import 'package:abd_shop/screens/search_page.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +17,8 @@ class _HomePageState extends State<HomePage> {
 
   PageController controller =
       PageController(initialPage: 0, viewportFraction: 0.9);
+
+  List<Widget> ItemsWrap = [];
 
   int currentIndex = 0;
 
@@ -277,6 +279,56 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 100,
+            ),
+            Text(
+              "قفسه های سوپرمارکت",
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Wrap(spacing: 50,alignment: WrapAlignment.spaceEvenly,
+              children: [
+                ItemWrap(
+                  image: Image.asset("assets/images/p7.png"),
+                  text: "نوشیدنی",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p7.png"),
+                  text: "نوشیدنی",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p11.png"),
+                  text: "خوار و بار",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p10.png"),
+                  text: "پروتئینی",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p15.png"),
+                  text: "بازی و سرگرمی",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p12.png"),
+                  text: "نان",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p16.png"),
+                  text: "دسر و شیرینی",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p13.png"),
+                  text: "میوه و سبزیجات",
+                ),
+                ItemWrap(
+                  image: Image.asset("assets/images/p17.png"),
+                  text: "نوشت افزار",
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -363,6 +415,30 @@ class Avatar extends StatelessWidget {
             child: Text(text),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ItemWrap extends StatelessWidget {
+  const ItemWrap({super.key, required this.image, required this.text});
+
+  final String text;
+  final Image image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 85,
+      child: Material(
+        child: InkWell(onTap: () {} ,
+          child: Column(
+            children: [
+              image,
+             Text(text),
+            ],
+          ),
+        ),
       ),
     );
   }
