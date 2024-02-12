@@ -199,12 +199,8 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Wrap(
-                spacing: 15,
-                runSpacing: 15,
-                direction: Axis.horizontal,
+            Padding(padding: EdgeInsets.all(20),
+              child: Wrap(spacing: 15,runSpacing:15,direction: Axis.horizontal,
                 children: [
                   Avatar(
                       image: Image.asset("assets/images/p1.png"),
@@ -295,9 +291,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 50,
             ),
-            Wrap(
-              spacing: 15,
-              runSpacing: 15,
+            Wrap(spacing: 15,runSpacing:15,
               children: [
                 ItemWrap(
                   image: Image.asset("assets/images/p7.png"),
@@ -409,8 +403,7 @@ class Avatar extends StatelessWidget {
     return Container(
       width: 65,
       child: Material(
-        child: InkWell(
-          onTap: () {},
+        child: InkWell(onTap: () {} ,
           child: Column(
             children: [
               image,
@@ -434,13 +427,11 @@ class ItemWrap extends StatelessWidget {
     return Container(
       width: 110,
       child: Material(
-        child: InkWell(
-          hoverColor: Colors.transparent,
-          onTap: () {},
+        child: InkWell(onTap: () {} ,
           child: Column(
             children: [
               image,
-              Text(text),
+             Text(text),
             ],
           ),
         ),
