@@ -1,3 +1,4 @@
+import 'package:abd_shop/container_item.dart';
 import 'package:abd_shop/screens/home/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LocationPage(),
+        builder: (context) => const ContainerItem(),
       ),
     );
   }
