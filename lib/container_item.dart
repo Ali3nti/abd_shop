@@ -136,7 +136,7 @@ class _ContainerItemState extends State<ContainerItem> {
                         "50,000",
                         style: TextStyle(
                           decoration: TextDecoration.lineThrough,
-                          fontSize: 12,
+                          fontSize: 15,
                           color: Colors.grey,
                         ),
                       ),
