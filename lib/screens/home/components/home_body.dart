@@ -1,4 +1,5 @@
 
+import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -214,7 +215,10 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
           ),
-
+          SizedBox(
+            height: 100,
+          ),
+          MarketListWidget(),
           SizedBox(
             height: 100,
           ),
