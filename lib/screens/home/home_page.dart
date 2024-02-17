@@ -1,6 +1,4 @@
-import 'package:abd_shop/screens/location/location_page.dart';
 import 'package:abd_shop/screens/search_page.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -33,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LocationPage(),
+        builder: (context) => const ContainerItem(),
       ),
     );
   }
