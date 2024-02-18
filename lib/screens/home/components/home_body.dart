@@ -217,7 +217,7 @@ class _HomeBodyState extends State<HomeBody> {
           ),
           Text(
             "قفسه های سوپرمارکت",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
           SizedBox(
             height: 50,
