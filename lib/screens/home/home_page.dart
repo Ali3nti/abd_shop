@@ -1,6 +1,9 @@
 import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import '../cart/cart_page.dart';
+import '../orders/orders_page.dart';
+import '../profile/profile_page.dart';
 import '../search/search_page.dart';
 import 'components/my_app_bar.dart';
 
@@ -18,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> ItemsWrap = [];
 
   int currentIndex = 0;
+ final List<Widget> screens = [HomeBody(), OrdersBody(),CartBody(),ProfileBody()];
 
   search(BuildContext context) {
     Navigator.push(
@@ -53,7 +57,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
-      body: HomeBody(),
+      body:screens[currentIndex],
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
         onItemSelected: (index) {
