@@ -4,6 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../location/location_page.dart';
 import '../../search/search_page.dart';
+import 'amazing_item_widget.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -15,6 +16,8 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
+
+  List<Widget> AmazingItem=[AmazingItemWidget()];
 
   search(BuildContext context) {
     Navigator.push(
@@ -161,51 +164,7 @@ class _HomeBodyState extends State<HomeBody> {
             height: 300,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.black,
-                  height: 300,
-                  width: 200,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.red,
-                  height: 300,
-                  width: 200,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.blue,
-                  height: 300,
-                  width: 200,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.grey,
-                  height: 300,
-                  width: 200,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("نمایش همه موارد"),
-                      ),
-                      IconButton(
-                          onPressed: () {}, icon: Icon(Icons.arrow_circle_down))
-                    ],
-                  ),
-                ),
-              ],
+              children: AmazingItem
             ),
           ),
           SizedBox(
