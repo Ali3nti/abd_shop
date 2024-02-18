@@ -57,14 +57,8 @@ class _MarketListWidgetState extends State<MarketListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: marketsWidgetList,
-          ),
-        ),
-      ),
-    );
+    return Column(
+        children: marketsWidgetList,
+      );
   }
 }
