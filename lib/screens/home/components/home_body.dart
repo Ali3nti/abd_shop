@@ -1,10 +1,9 @@
-
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../location/location_page.dart';
-import '../../search_page.dart';
+import '../../search/search_page.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -14,10 +13,8 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-
-
   PageController pageController =
-  PageController(initialPage: 0, viewportFraction: 0.9);
+      PageController(initialPage: 0, viewportFraction: 0.9);
 
   search(BuildContext context) {
     Navigator.push(
@@ -36,7 +33,6 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -105,11 +101,11 @@ class _HomeBodyState extends State<HomeBody> {
                       },
                       child: const SliderImage(
                           ImageUrl:
-                          "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                              "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ),
                     const SliderImage(
                         ImageUrl:
-                        "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                            "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                   ],
                 ),
               ),
@@ -119,9 +115,7 @@ class _HomeBodyState extends State<HomeBody> {
                   controller: pageController,
                   count: 2,
                   effect: const WormEffect(
-                      activeDotColor: Colors.black,
-                      dotHeight: 7,
-                      dotWidth: 7),
+                      activeDotColor: Colors.black, dotHeight: 7, dotWidth: 7),
                 ),
               ),
             ],
@@ -207,8 +201,7 @@ class _HomeBodyState extends State<HomeBody> {
                         child: Text("نمایش همه موارد"),
                       ),
                       IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.arrow_circle_down))
+                          onPressed: () {}, icon: Icon(Icons.arrow_circle_down))
                     ],
                   ),
                 ),
@@ -272,7 +265,6 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 }
-
 
 class SliderImage extends StatelessWidget {
   const SliderImage({

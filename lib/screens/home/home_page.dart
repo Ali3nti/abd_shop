@@ -1,8 +1,7 @@
-
 import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import '../search_page.dart';
+import '../search/search_page.dart';
 import 'components/my_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +28,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   // int index = 0;     // old navigationbar
   //
   // List<BottomNavigationBarItem> items = const [
@@ -55,7 +53,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
-      body:HomeBody(),
+      body: HomeBody(),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
         onItemSelected: (index) {
@@ -99,5 +97,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
