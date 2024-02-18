@@ -1,5 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/market_model.dart';
+import 'package:abd_shop/widget/price_widget.dart';
 import 'package:flutter/material.dart';
 
 class MarketItemWidget extends StatefulWidget {
@@ -13,22 +14,21 @@ class MarketItemWidget extends StatefulWidget {
 class _MarketItemWidgetState extends State<MarketItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 20),
-      width: double.infinity,
-      height: 150,
-      //color: Colors.grey,
+    return Padding(
+      padding: const EdgeInsets.all(8),
       child: Row(
         children: [
-          CircleAvatar(
-            //backgroundColor: Colors.green.shade300,
-            radius: 40,
-            child: Image.network(baseUrl + widget.market.img),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 30,
+              child: Image.network(baseUrl + widget.market.img),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
-                const SizedBox(width: 6),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,18 +36,16 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                       Row(
                         children: [
                           Text(
-                            widget.market.name + " | " + widget.market.address,
+                            "${widget.market.name} | ${widget.market.address}",
                             style: const TextStyle(
-                              fontSize: 25,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(width: 5),
                           Container(
-                            //margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.only(right: 5),
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
                             alignment: Alignment.center,
-                            width: 60,
-                            height: 40,
                             decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(50),
@@ -55,7 +53,7 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                             child: const Text(
                               "50%",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 12,
                                 color: Colors.white,
                               ),
                             ),
@@ -65,44 +63,36 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                       Text(
                         widget.market.category,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 14,
                           color: Colors.grey.shade500,
                         ),
                       ),
                       Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.star,
-                            color: Colors.yellow,
+                            color: Colors.yellow.shade700,
+                            size: 18,
                           ),
                           const SizedBox(width: 7),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 3),
-                            child: Text(
-                              widget.market.rate.toString(),
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 7),
-                          const Icon(Icons.directions_bike_rounded),
-                          const SizedBox(width: 7),
-                          const Text(
-                            "8.500  تومان",
-                            style: TextStyle(
-                              fontSize: 20,
+                          Text(
+                            widget.market.rate.toString(),
+                            style: const TextStyle(
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          const SizedBox(width: 7),
+                          const Icon(Icons.delivery_dining),
+                          const SizedBox(width: 7),
+                          const PriceWidget(price: 8500)
                         ],
                       ),
                       const Text(
                         "ارسال رایگان برای خرید بالای 20 تومان",
                         style: TextStyle(
                           color: Colors.orangeAccent,
-                          fontSize: 15,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -111,8 +101,8 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                 ),
                 Container(
                   // margin: EdgeInsets.only(left: 50),
-                  width: 50,
-                  height: 50,
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(20),
@@ -123,14 +113,14 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                       Text(
                         "45",
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         "دقیقه",
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       )

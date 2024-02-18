@@ -7,7 +7,7 @@ class PriceWidget extends StatelessWidget {
   const PriceWidget({
     super.key,
     required this.price,
-    this.size = Size.large,
+    this.size = Size.medium,
   });
 
   final int price;
@@ -15,7 +15,7 @@ class PriceWidget extends StatelessWidget {
 
   currencyConvertor(int number) {
     var persianCurrencyFormat =
-    NumberFormat.currency(symbol: '', decimalDigits: 0);
+        NumberFormat.currency(symbol: '', decimalDigits: 0);
     return persianCurrencyFormat.format(number);
   }
 
@@ -29,11 +29,11 @@ class PriceWidget extends StatelessWidget {
             fontSize: (size == Size.small)
                 ? 10
                 : (size == Size.medium)
-                ? 15
-                : (size == Size.large)
-                ? 20
-                : 0,
-            // fontWeight: FontWeight.bold,
+                    ? 12
+                    : (size == Size.large)
+                        ? 14
+                        : 0,
+            fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(width: 6),

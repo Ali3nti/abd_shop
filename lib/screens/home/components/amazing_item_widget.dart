@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-//TODO: Rename this class to for example: "SpecialProductWidget"
-class ContainerItem extends StatefulWidget {
-  const ContainerItem({super.key});
+class AmazingItemWidget extends StatefulWidget {
+  const AmazingItemWidget({super.key});
 
   @override
-  State<ContainerItem> createState() => _ContainerItemState();
+  State<AmazingItemWidget> createState() => _AmazingItemWidgetState();
 }
 
-class _ContainerItemState extends State<ContainerItem> {
+class _AmazingItemWidgetState extends State<AmazingItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

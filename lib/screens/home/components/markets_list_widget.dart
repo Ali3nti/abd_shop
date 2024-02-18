@@ -58,7 +58,7 @@ class _MarketListWidgetState extends State<MarketListWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: marketsWidgetList,
-      );
+      children: marketsWidgetList,
+    );
   }
 }
