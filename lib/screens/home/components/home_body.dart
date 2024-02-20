@@ -1,7 +1,6 @@
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../location/location_page.dart';
 import '../../search/search_page.dart';
 import 'amazing_item_widget.dart';
@@ -17,7 +16,7 @@ class _HomeBodyState extends State<HomeBody> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
 
-  List<Widget> AmazingItem=[AmazingItemWidget()];
+  List<Widget> AmazingItem = [AmazingItemWidget()];
 
   search(BuildContext context) {
     Navigator.push(
@@ -157,15 +156,13 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
           ),
-          SizedBox(
-            height: 50,
-          ),
-          Container(
-            height: 300,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: AmazingItem
-            ),
+          Stack(
+            children: [
+              Container(
+                color: Colors.deepOrange,
+              ),
+              ListView(scrollDirection: Axis.horizontal, children: AmazingItem),
+            ],
           ),
           SizedBox(
             height: 100,
