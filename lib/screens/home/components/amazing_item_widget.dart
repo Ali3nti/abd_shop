@@ -13,7 +13,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
     return  Container(
         padding: const EdgeInsets.all(8),
         height: 350,
-        width: 200,
+        width: 180,
         color: Colors.white,
         child: Column(
           children: [
@@ -22,7 +22,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  height: 184,
+                  height: 150,
                   child: Image.asset(
                     "assets/images/p1.png",
                     fit: BoxFit.contain,
@@ -59,7 +59,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                 // ),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -93,7 +93,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           const Text(
                             "37,500",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               // fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -104,7 +104,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           ),
                         ],
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 12),
                       Container(
                         padding: const EdgeInsets.symmetric(
                           vertical: 2,
@@ -118,7 +118,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         child: const Text(
                           "25 %",
                           style:
-                              TextStyle(fontSize: 20, color: Colors.white),
+                              TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ],

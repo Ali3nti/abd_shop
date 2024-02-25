@@ -156,13 +156,18 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
           ),
-          Stack(
-            children: [
-              Container(
-                color: Colors.deepOrange,
-              ),
-              ListView(scrollDirection: Axis.horizontal, children: AmazingItem),
-            ],
+          SizedBox(
+            width: double.infinity,
+            height: 350,
+            child: Stack(
+              children: [
+                Container(
+                  color: Colors.deepOrange,
+                ),
+                ListView(
+                    scrollDirection: Axis.horizontal, children: AmazingItem),
+              ],
+            ),
           ),
           SizedBox(
             height: 100,
