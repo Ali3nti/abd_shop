@@ -37,7 +37,7 @@ class _ProductWidjetState extends State<ProductWidjet> {
             width: 200,
             height: 235,
             //color: Colors.yellow,
-            child: Image.asset("assets/images/p1.png", fit: BoxFit.contain),
+            child: Image.asset("assets/images/egg.webp", fit: BoxFit.contain),
           ),
           SizedBox(height: 20),
           Row(
@@ -127,7 +127,21 @@ class _ProductWidjetState extends State<ProductWidjet> {
               ],
             ),
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 10),
+          Container(
+            alignment: Alignment.topRight,
+            padding: EdgeInsets.only(right: 20),
+            //color: Colors.green,
+            child:Column(
+              children: [
+                Text("توضیحات",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                Text("190 گرم"),
+              ],
+            ),
+          ),
+          SizedBox(height: 30),
           Container(
             color: Colors.grey.shade100,
             height: 75,
