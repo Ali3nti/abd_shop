@@ -1,4 +1,3 @@
-import 'package:abd_shop/screens/profile/component/list_tile_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatefulWidget {
@@ -96,6 +95,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ],
               ),
             ),
+            SizedBox(height: 25,),
             ListTile(
               title: Text("دعوت از دوستان"),
               subtitle: Text("با دعوت از دوستاتون کد تخفیف رایگان بگیرید"),
