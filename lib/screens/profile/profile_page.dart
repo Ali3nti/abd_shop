@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatefulWidget {
@@ -5,6 +6,15 @@ class ProfileBody extends StatefulWidget {
 
   @override
   State<ProfileBody> createState() => _ProfileBodyState();
+}
+
+invite(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const InvitePage(),
+    ),
+  );
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
@@ -100,7 +110,7 @@ class _ProfileBodyState extends State<ProfileBody> {
               title: Text("دعوت از دوستان"),
               subtitle: Text("با دعوت از دوستاتون کد تخفیف رایگان بگیرید"),
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () {invite(context);},
                 icon: Icon(Icons.people_outline),
               ),
             ),
