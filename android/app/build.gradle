@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "ir.alinematollahi.abd_shop"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -45,8 +45,7 @@ android {
         applicationId "ir.alinematollahi.abd_shop"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-//        minSdkVersion flutter.minSdkVersion
-        minSdkVersion 21
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

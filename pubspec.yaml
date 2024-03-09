@@ -1,11 +1,11 @@
 name: abd_shop
 description: "A new project for online shop in abadeh city!"
-publish_to: 'none'
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 0.0.1+1
+version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -25,22 +25,21 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-
+  flutter_lints: ^3.0.0
 flutter:
   uses-material-design: true
 
   # Work in this area with "base" branch
 
   assets:
-     - assets/
-     - assets/images/
+    - assets/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   fonts:
-     - family: Yekan
-       fonts:
-         - asset: assets/fonts/Yekan.ttf
+    - family: Yekan
+      fonts:
+        - asset: assets/fonts/Yekan.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
