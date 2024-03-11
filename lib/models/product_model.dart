@@ -16,7 +16,6 @@ class Product {
   String keep = "";
   String transportation = "";
 
-
   Product();
 
   Product.fromJSON(Map<String, dynamic> json) {
@@ -37,3 +36,4 @@ class Product {
     keep = json["keep"];
     transportation = json["transportation"];
   }
+}
