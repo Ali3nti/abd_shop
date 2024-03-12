@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ContainerWidget extends StatelessWidget {
-  const ContainerWidget({super.key, required this.iconData, required this.text});
+class BoxWidget extends StatelessWidget {
+  const BoxWidget({super.key, required this.iconData, required this.text});
    final IconData iconData;
    final Text text;
   @override
