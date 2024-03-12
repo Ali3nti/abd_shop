@@ -11,7 +11,8 @@ class AddressWidget extends StatelessWidget {
   final Text text1;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return InkWell(onTap: () {
+    },
       child: Container(
         height: 70,
         width: double.infinity,
