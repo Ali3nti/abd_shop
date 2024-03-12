@@ -19,15 +19,8 @@ class BoxWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconButton(color: Colors.deepOrange,
-              onPressed: () {},
-              icon:Icon(iconData)
-
-          ),
-          TextButton(
-              onPressed: () {},
-              child:text
-          ),
+          Icon(iconData,color: Colors.deepOrange,),
+          text,
         ],
       ),
       ),
