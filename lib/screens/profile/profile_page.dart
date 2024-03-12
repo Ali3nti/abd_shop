@@ -1,6 +1,8 @@
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:flutter/material.dart';
 
+import 'address_page.dart';
+
 class ProfileBody extends StatefulWidget {
   const ProfileBody({super.key});
 
@@ -13,6 +15,14 @@ invite(BuildContext context) {
     context,
     MaterialPageRoute(
       builder: (context) => const InvitePage(),
+    ),
+  );
+}
+address(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const AddressPage(),
     ),
   );
 }
@@ -122,7 +132,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("آدرس ها"),
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () {address(context);},
                 icon: Icon(Icons.map_outlined),
               ),
             ),
