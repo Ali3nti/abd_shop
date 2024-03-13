@@ -1,4 +1,5 @@
 import 'package:abd_shop/screens/profile/invite_page.dart';
+import 'package:abd_shop/screens/profile/sellers_page.dart';
 import 'package:flutter/material.dart';
 
 import 'address_page.dart';
@@ -23,6 +24,15 @@ address(BuildContext context) {
     context,
     MaterialPageRoute(
       builder: (context) => const AddressPage(),
+    ),
+  );
+}
+
+sellers(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const SellersPage(),
     ),
   );
 }
@@ -168,7 +178,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("پیوستن به فروشگاه"),
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () {sellers(context);},
                 icon: Icon(Icons.shop_2_sharp),
               ),
             ),
