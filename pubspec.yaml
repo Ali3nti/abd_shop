@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 0.0.1+1
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
+  sdk: '>=3.3.1 <4.0.0'
 
 dependencies:
   flutter:
@@ -16,7 +16,7 @@ dependencies:
   intl: ^0.18.1
   smooth_page_indicator: ^1.1.0
   flutter_spinkit: ^5.2.0
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
   bottom_navy_bar: ^6.0.0
   permission_handler: ^11.2.0 # Add this package for the permission handler
   connectivity_plus: ^5.0.2   # Add this package for checking wifi and mobile data connectivity
@@ -25,7 +25,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
@@ -33,14 +33,14 @@ flutter:
   # Work in this area with "base" branch
 
   assets:
-     - assets/
-     - assets/images/
+    - assets/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   fonts:
-     - family: Yekan
-       fonts:
-         - asset: assets/fonts/Yekan.ttf
+    - family: Yekan
+      fonts:
+        - asset: assets/fonts/Yekan.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
