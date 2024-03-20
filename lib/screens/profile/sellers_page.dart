@@ -44,7 +44,8 @@ class _SellersPageState extends State<SellersPage> {
           SizedBox(
             height: 10,
           ),
-          Padding(
+          Padding
+            (
             padding: EdgeInsets.only(left: 290),
             child: Text(
               "شماره تماس",
