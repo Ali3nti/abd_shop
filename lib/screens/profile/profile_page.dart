@@ -19,6 +19,7 @@ invite(BuildContext context) {
     ),
   );
 }
+
 address(BuildContext context) {
   Navigator.push(
     context,
@@ -96,7 +97,56 @@ class _ProfileBodyState extends State<ProfileBody> {
                 style: TextStyle(color: Colors.grey),
               ),
             ),
-            SizedBox(height: 100,),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/wallet.png",
+                      width: 50,
+                      height: 50,
+                    ),
+                    Column(
+                      children: [
+                        Text("کیف پول"),
+                        Row(
+                          children: [
+                            Text("10000"),
+                            Image.asset(
+                              "assets/images/toman.png",
+                              height: 15,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/comment.png",
+                      width: 50,
+                      height: 50,
+                    ),
+                    Column(
+                      children: [
+                        Text("امتیاز و دیدگاه"),
+                        Row(
+                          children: [
+                            Text("50"),
+                            Text("دیدگاه"),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 100,
+            ),
             Container(
               width: 380,
               height: 60,
@@ -125,12 +175,16 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ],
               ),
             ),
-            SizedBox(height: 25,),
+            SizedBox(
+              height: 25,
+            ),
             ListTile(
               title: Text("دعوت از دوستان"),
               subtitle: Text("با دعوت از دوستاتون کد تخفیف رایگان بگیرید"),
               leading: IconButton(
-                onPressed: () {invite(context);},
+                onPressed: () {
+                  invite(context);
+                },
                 icon: Icon(Icons.people_outline),
               ),
             ),
@@ -142,7 +196,9 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("آدرس ها"),
               leading: IconButton(
-                onPressed: () {address(context);},
+                onPressed: () {
+                  address(context);
+                },
                 icon: Icon(Icons.map_outlined),
               ),
             ),
@@ -178,7 +234,9 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("پیوستن به فروشگاه"),
               leading: IconButton(
-                onPressed: () {sellers(context);},
+                onPressed: () {
+                  sellers(context);
+                },
                 icon: Icon(Icons.shop_2_sharp),
               ),
             ),
