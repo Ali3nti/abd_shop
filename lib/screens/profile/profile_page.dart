@@ -97,82 +97,86 @@ class _ProfileBodyState extends State<ProfileBody> {
                 style: TextStyle(color: Colors.grey),
               ),
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/wallet.png",
-                      width: 50,
-                      height: 50,
-                    ),
-                    Column(
-                      children: [
-                        Text("کیف پول"),
-                        Row(
-                          children: [
-                            Text("10000"),
-                            Image.asset(
-                              "assets/images/toman.png",
-                              height: 15,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/wallet.png",
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: [
+                          Text("کیف پول"),
+                          Row(
+                            children: [
+                              Text("10000"),
+                              Image.asset(
+                                "assets/images/toman.png",
+                                height: 15,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/comment.png",
-                      width: 50,
-                      height: 50,
-                    ),
-                    Column(
-                      children: [
-                        Text("امتیاز و دیدگاه"),
-                        Row(
-                          children: [
-                            Text("50"),
-                            Text("دیدگاه"),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/comment.png",
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: [
+                          Text("امتیاز و دیدگاه"),
+                          Row(
+                            children: [
+                              Text("50"),
+                              Text("دیدگاه"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
             SizedBox(
-              height: 100,
+              height: 30,
             ),
-            Container(
-              width: 380,
-              height: 60,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.deepOrange, width: 3),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
+            InkWell(onTap: () {
+            },
+              child: Container(
+                width: 380,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.deepOrange, width: 3),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
                       Icons.headset_mic_rounded,
                       color: Colors.deepOrange,
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
+                    Text(
                       "نیاز به پشتیبانی دارم",
                       style: TextStyle(color: Colors.deepOrange, fontSize: 20),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             SizedBox(
