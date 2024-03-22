@@ -10,7 +10,7 @@ class CategoryBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: (){}, // There is a problem here and It does not work properly  //
       child: Column(
         children: [
           Image.asset(
