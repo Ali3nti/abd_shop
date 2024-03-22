@@ -1,3 +1,5 @@
+import 'package:abd_shop/screens/category/super_market.dart';
+import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,15 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => const LocationPage(),
+      ),
+    );
+  }
+
+  supermarket(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SuperMarket(),
       ),
     );
   }
@@ -120,7 +131,9 @@ class _HomeBodyState extends State<HomeBody> {
                     controller: pageController,
                     count: 2,
                     effect: const WormEffect(
-                        activeDotColor: Colors.black, dotHeight: 7, dotWidth: 7),
+                        activeDotColor: Colors.black,
+                        dotHeight: 7,
+                        dotWidth: 7),
                   ),
                 ),
               ],
@@ -129,33 +142,43 @@ class _HomeBodyState extends State<HomeBody> {
               height: 30,
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(15),
               child: Wrap(
                 spacing: 15,
                 runSpacing: 15,
                 direction: Axis.horizontal,
                 children: [
-                  Avatar(
-                      image: Image.asset("assets/images/p1.png"),
-                      text: "سوپرمارکت"),
-                  Avatar(
-                      image: Image.asset("assets/images/p2.png"),
-                      text: "میوه و سبزیجات"),
-                  Avatar(
-                      image: Image.asset("assets/images/p3.png"),
-                      text: "پروتئینی"),
-                  Avatar(
-                      image: Image.asset("assets/images/p4.png"),
-                      text: "نانوایی"),
-                  Avatar(
-                      image: Image.asset("assets/images/p5.png"),
-                      text: "شیرینی و آجیل"),
-                  Avatar(
-                      image: Image.asset("assets/images/p6.png"),
-                      text: "آب میوه و بستنی"),
-                  Avatar(
-                      image: Image.asset("assets/images/p6.png"),
-                      text: "گل و گیاه"),
+                  CategoryBox(
+                    categorytext: Text("سوپرمارکت"),
+                    img: "assets/images/Market.png",
+                    ontap: () {
+                      supermarket(context);
+                    },
+                  ),
+                  CategoryBox(
+                    categorytext: Text("پروتئینی"),
+                    img: "assets/images/Protein.png",
+                    ontap: () {
+                    },
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
+                    ontap: () {
+                    },
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
+                    ontap: () {
+                    },
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
+                    ontap: () {
+                    },
+                  ),
                 ],
               ),
             ),
@@ -236,7 +259,9 @@ class SliderImage extends StatelessWidget {
     super.key,
     required this.ImageUrl,
   });
+
   final String ImageUrl;
+
   @override
   Widget build(BuildContext context) {
     return Container(
