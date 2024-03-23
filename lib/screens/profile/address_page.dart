@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'component/address_widget.dart';
-import 'component/container_widget.dart';
+import 'component/box_widget.dart';
 
 class AddressPage extends StatefulWidget {
   const AddressPage({super.key});
