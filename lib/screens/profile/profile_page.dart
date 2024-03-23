@@ -127,7 +127,43 @@ class _ProfileBodyState extends State<ProfileBody> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Image.asset(
+                                "assets/images/comments_man.png",
+                                width: double.infinity,
+                                height: 200,
+                              ),
+                              SizedBox(
+                                height: 70,
+                              ),
+                              Text(
+                                "هنوز امتیاز و دیدگاهی ثبت نکرده اید!",
+                                style: TextStyle(fontSize: 19),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Text(
+                                  "با ثبت امتیاز و دیدگاه می توانید رضایت یا ناراضایتی خود را به فروشگاه اعلام،و خریداران را راهنمایی کنید",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey.shade600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
                   child: Row(
                     children: [
                       Image.asset(
@@ -154,8 +190,8 @@ class _ProfileBodyState extends State<ProfileBody> {
             SizedBox(
               height: 30,
             ),
-            InkWell(onTap: () {
-            },
+            InkWell(
+              onTap: () {},
               child: Container(
                 width: 380,
                 height: 60,
