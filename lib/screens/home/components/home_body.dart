@@ -4,6 +4,7 @@ import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../widget/product_widget.dart';
 import '../../location/location_page.dart';
 import '../../search/search_page.dart';
 import 'amazing_item_widget.dart';
@@ -158,26 +159,22 @@ class _HomeBodyState extends State<HomeBody> {
                   CategoryBox(
                     categorytext: Text("پروتئینی"),
                     img: "assets/images/Protein.png",
-                    ontap: () {
-                    },
+                    ontap: () {},
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
                     img: "assets/images/Fruite.png",
-                    ontap: () {
-                    },
+                    ontap: () {},
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
                     img: "assets/images/Fruite.png",
-                    ontap: () {
-                    },
+                    ontap: () {},
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
                     img: "assets/images/Fruite.png",
-                    ontap: () {
-                    },
+                    ontap: () {},
                   ),
                 ],
               ),
