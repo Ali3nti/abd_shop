@@ -10,6 +10,7 @@ class CartBody extends StatefulWidget {
 class _CartBodyState extends State<CartBody> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.red,);
+    return Scaffold(
+      backgroundColor: Colors.red,);
   }
 }
