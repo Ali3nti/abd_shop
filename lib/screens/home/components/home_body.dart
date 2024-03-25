@@ -2,7 +2,9 @@ import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../widget/product_widget.dart';
 import '../../location/location_page.dart';
@@ -175,6 +177,59 @@ class _HomeBodyState extends State<HomeBody> {
                     categorytext: Text("میوه و سبزیجات"),
                     img: "assets/images/Fruite.png",
                     ontap: () {},
+                  ),
+                ],
+              ),
+            ),
+            InkWell(         /*It should be converted to a widget and change its size */
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container();
+                  },
+                );
+              },
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Image.asset(
+                        "assets/images/mahsool.png",
+                        height: 100,width: 100,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 60, right: 60),
+                        child: FloatingActionButton.extended(
+                          onPressed: () {},
+                          backgroundColor: Colors.orange.shade900,
+                          foregroundColor: Colors.white,
+                          isExtended: true,
+                          shape: const CircleBorder(
+                            eccentricity: 0,
+                          ),
+                          label: Icon(
+                            Icons.add,
+                            size: 10,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("70000"),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Image.asset(
+                          "assets/images/toman.png",
+                          width: 10,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
