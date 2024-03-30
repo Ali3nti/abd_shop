@@ -2,6 +2,7 @@ import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -181,12 +182,17 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
-            InkWell(         /*It should be converted to a widget and change its size */
+            InkWell(
+              /*It should be converted to a widget and change its size */
               onTap: () {
                 showModalBottomSheet(
                   context: context,
                   builder: (context) {
-                    return Container();
+                    return ProductSheet(
+                      imgproduct: "assets/images/mahsool.png",
+                      detailtext: Text("کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                      pricetext: Text("500000"),
+                    );
                   },
                 );
               },
@@ -196,7 +202,8 @@ class _HomeBodyState extends State<HomeBody> {
                     children: [
                       Image.asset(
                         "assets/images/mahsool.png",
-                        height: 100,width: 100,
+                        height: 100,
+                        width: 100,
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 60, right: 60),
