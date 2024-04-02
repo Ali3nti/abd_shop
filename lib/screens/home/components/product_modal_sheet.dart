@@ -32,7 +32,7 @@ class ProductSheet extends StatelessWidget {
               children: [
                 pricetext,
                 SizedBox(width: 8,),
-                Image.asset("assets/images/toman.png",width: 30,),
+                Image.asset("assets/images/toman.png",width: 20,),
               ],
             ),
           ),
