@@ -244,7 +244,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
             Container(
               width: double.infinity,
-              height: 0.2,
+              height:0.2,
               color: Colors.grey,
             ),
             ListTile(
@@ -270,15 +270,6 @@ class _ProfileBodyState extends State<ProfileBody> {
               width: double.infinity,
               height: 0.2,
               color: Colors.grey,
-            ),
-            ListTile(
-              title: Text("پیوستن به فروشگاه"),
-              leading: IconButton(
-                onPressed: () {
-                  sellers(context);
-                },
-                icon: Icon(Icons.shop_2_sharp),
-              ),
             ),
             Container(
               width: double.infinity,
