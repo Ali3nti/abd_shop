@@ -19,6 +19,7 @@ invite(BuildContext context) {
     ),
   );
 }
+
 address(BuildContext context) {
   Navigator.push(
     context,
@@ -96,41 +97,134 @@ class _ProfileBodyState extends State<ProfileBody> {
                 style: TextStyle(color: Colors.grey),
               ),
             ),
-            SizedBox(height: 100,),
-            Container(
-              width: 380,
-              height: 60,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.deepOrange, width: 3),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/wallet.png",
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: [
+                          Text("کیف پول"),
+                          Row(
+                            children: [
+                              Text("10000"),
+                              Image.asset(
+                                "assets/images/toman.png",
+                                height: 15,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Image.asset(
+                                "assets/images/comments_man.png",
+                                width: double.infinity,
+                                height: 200,
+                              ),
+                              SizedBox(
+                                height: 70,
+                              ),
+                              Text(
+                                "هنوز امتیاز و دیدگاهی ثبت نکرده اید!",
+                                style: TextStyle(fontSize: 19),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Text(
+                                  "با ثبت امتیاز و دیدگاه می توانید رضایت یا ناراضایتی خود را به فروشگاه اعلام،و خریداران را راهنمایی کنید",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey.shade600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/comment.png",
+                        width: 50,
+                        height: 50,
+                      ),
+                      Column(
+                        children: [
+                          Text("امتیاز و دیدگاه"),
+                          Row(
+                            children: [
+                              Text("50"),
+                              Text("دیدگاه"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                width: 380,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.deepOrange, width: 3),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
                       Icons.headset_mic_rounded,
                       color: Colors.deepOrange,
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
+                    Text(
                       "نیاز به پشتیبانی دارم",
                       style: TextStyle(color: Colors.deepOrange, fontSize: 20),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 25,),
+            SizedBox(
+              height: 25,
+            ),
             ListTile(
               title: Text("دعوت از دوستان"),
               subtitle: Text("با دعوت از دوستاتون کد تخفیف رایگان بگیرید"),
               leading: IconButton(
-                onPressed: () {invite(context);},
+                onPressed: () {
+                  invite(context);
+                },
                 icon: Icon(Icons.people_outline),
               ),
             ),
@@ -142,13 +236,15 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("آدرس ها"),
               leading: IconButton(
-                onPressed: () {address(context);},
+                onPressed: () {
+                  address(context);
+                },
                 icon: Icon(Icons.map_outlined),
               ),
             ),
             Container(
               width: double.infinity,
-              height: 0.2,
+              height:0.2,
               color: Colors.grey,
             ),
             ListTile(
@@ -174,13 +270,6 @@ class _ProfileBodyState extends State<ProfileBody> {
               width: double.infinity,
               height: 0.2,
               color: Colors.grey,
-            ),
-            ListTile(
-              title: Text("پیوستن به فروشگاه"),
-              leading: IconButton(
-                onPressed: () {sellers(context);},
-                icon: Icon(Icons.shop_2_sharp),
-              ),
             ),
             Container(
               width: double.infinity,
