@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CategoryBox extends StatelessWidget {
   CategoryBox(
-      {super.key, required this.img, required this.categorytext,ontap});
+      {super.key, required this.img, required this.categorytext,});
 
   String img;
   Text categorytext;
@@ -10,7 +10,7 @@ class CategoryBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){}, // There is a problem here and It does not work properly  //
+      // There is a problem here and It does not work properly  //
       child: Column(
         children: [
           Image.asset(
@@ -21,7 +21,5 @@ class CategoryBox extends StatelessWidget {
         ],
       ),
     );
-  }
-  void ontap() {
   }
 }
