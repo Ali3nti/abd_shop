@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../widget/product_widget.dart';
+import '../../category/fruits_category.dart';
 import '../../location/location_page.dart';
 import '../../search/search_page.dart';
 import 'amazing_item_widget.dart';
@@ -48,6 +49,14 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => const SuperMarket(),
+      ),
+    );
+  }
+  fruitscategory(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const FruitsCategory(),
       ),
     );
   }
@@ -152,32 +161,30 @@ class _HomeBodyState extends State<HomeBody> {
                 runSpacing: 15,
                 direction: Axis.horizontal,
                 children: [
-                  CategoryBox(
-                    categorytext: Text("سوپرمارکت"),
-                    img: "assets/images/Market.png",
-                    ontap: () {
-                      supermarket(context);
-                    },
+                  InkWell(onTap: (){supermarket(context);},
+                    child: CategoryBox(
+                      categorytext: Text("سوپرمارکت"),
+                      img: "assets/images/Market.png",
+                    ),
                   ),
-                  CategoryBox(
-                    categorytext: Text("پروتئینی"),
-                    img: "assets/images/Protein.png",
-                    ontap: () {},
-                  ),
-                  CategoryBox(
-                    categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
-                    ontap: () {},
+                  InkWell(onTap: (){fruitscategory(context);},
+                    child: CategoryBox(
+                      categorytext: Text("پروتئینی"),
+                      img: "assets/images/Protein.png",
+
+                    ),
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
                     img: "assets/images/Fruite.png",
-                    ontap: () {},
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
                     img: "assets/images/Fruite.png",
-                    ontap: () {},
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
                   ),
                 ],
               ),
