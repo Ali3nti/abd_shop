@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
 import 'package:abd_shop/widget/price_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,51 +29,7 @@ class _SuperMarketState extends State<FruitsCategory> {
     var market;
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        backgroundColor: Colors.white10,
-        scrolledUnderElevation: 0,
-        title: GestureDetector(
-          onTap: () {
-          },
-          child: Container(
-            height: 50,
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.search, size: 30, color: Colors.grey.shade600),
-                SizedBox(
-                  width: 5,
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      const Text(
-                        "جستجو در",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Image.asset(
-                        'assets/images/logo.png',
-                        color: Colors.deepOrange,
-                        width: 90,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
