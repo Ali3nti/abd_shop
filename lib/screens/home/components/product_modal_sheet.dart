@@ -17,12 +17,12 @@ class ProductSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: ListView(scrollDirection: Axis.vertical,
         children: [
           Image.asset(imgproduct,width: 200,height: 150,),
           SizedBox(height:20),
           Padding(
-            padding: const EdgeInsets.only(left: 100),
+            padding: const EdgeInsets.only(left: 100,top: 20),
             child: detailtext,
           ),
           SizedBox(height:20),
