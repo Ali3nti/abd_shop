@@ -221,12 +221,10 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("دعوت از دوستان"),
               subtitle: Text("با دعوت از دوستاتون کد تخفیف رایگان بگیرید"),
-              leading: IconButton(
-                onPressed: () {
-                  invite(context);
-                },
-                icon: Icon(Icons.people_outline),
-              ),
+              leading: Icon(Icons.people_outline),
+              onTap: () {
+                invite(context);
+              },
             ),
             Container(
               width: double.infinity,
@@ -235,24 +233,20 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
             ListTile(
               title: Text("آدرس ها"),
-              leading: IconButton(
-                onPressed: () {
-                  address(context);
-                },
-                icon: Icon(Icons.map_outlined),
-              ),
+              leading: Icon(Icons.map_outlined),
+              onTap: () {
+                address(context);
+              },
             ),
             Container(
               width: double.infinity,
-              height:0.2,
+              height: 0.2,
               color: Colors.grey,
             ),
             ListTile(
               title: Text("کارت های هدیه"),
-              leading: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.card_giftcard),
-              ),
+              leading: Icon(Icons.card_giftcard),
+              onTap: () {},
             ),
             Container(
               width: double.infinity,
@@ -261,10 +255,8 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
             ListTile(
               title: Text("کدهای تخفیف"),
-              leading: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.discount_outlined),
-              ),
+              leading:Icon(Icons.discount_outlined),
+              onTap: (){},
             ),
             Container(
               width: double.infinity,
@@ -278,10 +270,8 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
             ListTile(
               title: Text("پرسش های متداول"),
-              leading: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.question_answer_outlined),
-              ),
+              leading: Icon(Icons.question_answer_outlined),
+              onTap: (){},
             ),
             Container(
               width: double.infinity,
