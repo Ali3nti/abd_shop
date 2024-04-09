@@ -10,11 +10,10 @@ class AmazingItemWidget extends StatefulWidget {
 class _AmazingItemWidgetState extends State<AmazingItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
         padding: const EdgeInsets.all(8),
-        height: 350,
+        height: 300,
         width: 180,
-        color: Colors.white,
         child: Column(
           children: [
             Stack(
@@ -22,7 +21,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  height: 150,
+                  height: 130,
                   child: Image.asset(
                     "assets/images/p1.png",
                     fit: BoxFit.contain,
@@ -59,7 +58,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                 // ),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
