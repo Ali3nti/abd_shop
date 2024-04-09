@@ -24,7 +24,11 @@ class _HomeBodyState extends State<HomeBody> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
 
-  List<Widget> AmazingItem = [AmazingItemWidget()];
+  List<Widget> AmazingItem = [
+    AmazingItemWidget(),
+    AmazingItemWidget(),
+    AmazingItemWidget(),
+  ];
 
   search(BuildContext context) {
     Navigator.push(
@@ -52,6 +56,7 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
+
   fruitscategory(BuildContext context) {
     Navigator.push(
       context,
@@ -119,20 +124,12 @@ class _HomeBodyState extends State<HomeBody> {
                   child: PageView(
                     controller: pageController,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => MarketListWidget(),
-                          //   ),
-                          // );
-                        },
-                        child: const SliderImage(
-                            ImageUrl:
-                                "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
-                      ),
-                      const SliderImage(
+                      SliderImage(
+                          onTap: () {}, // ontap not work!!!!!!!!!//
+                          ImageUrl:
+                              "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                      SliderImage(
+                          onTap: () {}, // ontap not work!!!!!!!!!//
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
@@ -161,17 +158,22 @@ class _HomeBodyState extends State<HomeBody> {
                 runSpacing: 15,
                 direction: Axis.horizontal,
                 children: [
-                  InkWell(onTap: (){supermarket(context);},
+                  InkWell(
+                    onTap: () {
+                      supermarket(context);
+                    },
                     child: CategoryBox(
                       categorytext: Text("سوپرمارکت"),
                       img: "assets/images/Market.png",
                     ),
                   ),
-                  InkWell(onTap: (){fruitscategory(context);},
+                  InkWell(
+                    onTap: () {
+                      fruitscategory(context);
+                    },
                     child: CategoryBox(
                       categorytext: Text("پروتئینی"),
                       img: "assets/images/Protein.png",
-
                     ),
                   ),
                   CategoryBox(
@@ -212,49 +214,53 @@ class _HomeBodyState extends State<HomeBody> {
                             },
                           );
                         },
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  "assets/images/mahsool.png",
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 60, right: 60),
-                                  child: FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.orange.shade900,
-                                    foregroundColor: Colors.white,
-                                    isExtended: true,
-                                    shape: const CircleBorder(
-                                      eccentricity: 0,
-                                    ),
-                                    label: Icon(
-                                      Icons.add,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
                                 children: [
-                                  Text("70000"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
                                   Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       InkWell(
@@ -267,54 +273,58 @@ class _HomeBodyState extends State<HomeBody> {
                                 imgproduct: "assets/images/mahsool.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("500000"),
+                                pricetext: Text("50,000"),
                               );
                             },
                           );
                         },
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  "assets/images/mahsool.png",
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 60, right: 60),
-                                  child: FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.orange.shade900,
-                                    foregroundColor: Colors.white,
-                                    isExtended: true,
-                                    shape: const CircleBorder(
-                                      eccentricity: 0,
-                                    ),
-                                    label: Icon(
-                                      Icons.add,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
                                 children: [
-                                  Text("70000"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
                                   Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       InkWell(
@@ -327,54 +337,58 @@ class _HomeBodyState extends State<HomeBody> {
                                 imgproduct: "assets/images/mahsool.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("500000"),
+                                pricetext: Text("50,000"),
                               );
                             },
                           );
                         },
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  "assets/images/mahsool.png",
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 60, right: 60),
-                                  child: FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.orange.shade900,
-                                    foregroundColor: Colors.white,
-                                    isExtended: true,
-                                    shape: const CircleBorder(
-                                      eccentricity: 0,
-                                    ),
-                                    label: Icon(
-                                      Icons.add,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
                                 children: [
-                                  Text("70000"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
                                   Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       InkWell(
@@ -387,54 +401,58 @@ class _HomeBodyState extends State<HomeBody> {
                                 imgproduct: "assets/images/mahsool.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("500000"),
+                                pricetext: Text("50,000"),
                               );
                             },
                           );
                         },
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  "assets/images/mahsool.png",
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 60, right: 60),
-                                  child: FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.orange.shade900,
-                                    foregroundColor: Colors.white,
-                                    isExtended: true,
-                                    shape: const CircleBorder(
-                                      eccentricity: 0,
-                                    ),
-                                    label: Icon(
-                                      Icons.add,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
                                 children: [
-                                  Text("70000"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
                                   Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       InkWell(
@@ -447,54 +465,58 @@ class _HomeBodyState extends State<HomeBody> {
                                 imgproduct: "assets/images/mahsool.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("500000"),
+                                pricetext: Text("50,000"),
                               );
                             },
                           );
                         },
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  "assets/images/mahsool.png",
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 60, right: 60),
-                                  child: FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.orange.shade900,
-                                    foregroundColor: Colors.white,
-                                    isExtended: true,
-                                    shape: const CircleBorder(
-                                      eccentricity: 0,
-                                    ),
-                                    label: Icon(
-                                      Icons.add,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
                                 children: [
-                                  Text("70000"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
                                   Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       InkWell(
@@ -507,54 +529,58 @@ class _HomeBodyState extends State<HomeBody> {
                                 imgproduct: "assets/images/mahsool.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("500000"),
+                                pricetext: Text("50,000"),
                               );
                             },
                           );
                         },
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  "assets/images/mahsool.png",
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 60, right: 60),
-                                  child: FloatingActionButton.extended(
-                                    onPressed: () {},
-                                    backgroundColor: Colors.orange.shade900,
-                                    foregroundColor: Colors.white,
-                                    isExtended: true,
-                                    shape: const CircleBorder(
-                                      eccentricity: 0,
-                                    ),
-                                    label: Icon(
-                                      Icons.add,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
                                 children: [
-                                  Text("70000"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
                                   Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -562,16 +588,33 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
+            SizedBox(height: 70,),
             SizedBox(
               width: double.infinity,
-              height: 350,
+              height: 320,
               child: Stack(
                 children: [
                   Container(
                     color: Colors.deepOrange,
                   ),
-                  ListView(
-                      scrollDirection: Axis.horizontal, children: AmazingItem),
+                  ListView(scrollDirection: Axis.horizontal, children: [
+                    InkWell(
+                      child: Image.asset("assets/images/amazing_daily.png"),
+                    ),
+                    AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    AmazingItemWidget(),
+                  ]),
                 ],
               ),
             ),
@@ -579,54 +622,6 @@ class _HomeBodyState extends State<HomeBody> {
               height: 100,
             ),
             MarketListWidget(),
-            SizedBox(
-              height: 100,
-            ),
-            Text(
-              "قفسه های سوپرمارکت",
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Wrap(
-              spacing: 15,
-              runSpacing: 15,
-              children: [
-                ItemWrap(
-                  image: Image.asset("assets/images/p7.png"),
-                  text: "نوشیدنی",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p11.png"),
-                  text: "خوار و بار",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p10.png"),
-                  text: "پروتئینی",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p15.png"),
-                  text: "بازی و سرگرمی",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p12.png"),
-                  text: "نان",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p16.png"),
-                  text: "دسر و شیرینی",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p13.png"),
-                  text: "میوه و سبزیجات",
-                ),
-                ItemWrap(
-                  image: Image.asset("assets/images/p17.png"),
-                  text: "نوشت افزار",
-                ),
-              ],
-            ),
           ],
         ),
       ),
@@ -635,20 +630,24 @@ class _HomeBodyState extends State<HomeBody> {
 }
 
 class SliderImage extends StatelessWidget {
-  const SliderImage({
+  SliderImage({
     super.key,
     required this.ImageUrl,
+    this.onTap,
   });
 
+  void Function()? onTap;
   final String ImageUrl;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(5),
-      child: ClipRRect(
-        borderRadius: BorderRadiusDirectional.circular(10),
-        child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+    return InkWell(
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        child: ClipRRect(
+          borderRadius: BorderRadiusDirectional.circular(10),
+          child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+        ),
       ),
     );
   }
