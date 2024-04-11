@@ -26,8 +26,6 @@ class _HomeBodyState extends State<HomeBody> {
 
   List<Widget> AmazingItem = [
     AmazingItemWidget(),
-    AmazingItemWidget(),
-    AmazingItemWidget(),
   ];
 
   search(BuildContext context) {
