@@ -21,7 +21,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  height: 130,
+                  height: 110,
                   child: Image.asset(
                     "assets/images/p1.png",
                     fit: BoxFit.contain,

@@ -585,11 +585,11 @@ class _HomeBodyState extends State<HomeBody> {
               ),
             ),
             SizedBox(
-              height: 70,
+              height: 50,
             ),
             SizedBox(
               width: double.infinity,
-              height: 320,
+              height: 310,
               child: Stack(
                 children: [
                   Container(
@@ -612,6 +612,9 @@ class _HomeBodyState extends State<HomeBody> {
                       width: 10,
                     ),
                     AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
+                    ),
                   ]),
                 ],
               ),
