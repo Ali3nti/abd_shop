@@ -147,14 +147,11 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
-            Padding(
-              padding: EdgeInsets.all(15),
-              child: Wrap(
-                spacing: 15,
-                runSpacing: 15,
-                direction: Axis.horizontal,
+            SizedBox(
+              height: 150,
+              child: ListView(
                 children: [
                   InkWell(
                     onTap: () {
@@ -187,6 +184,7 @@ class _HomeBodyState extends State<HomeBody> {
                     img: "assets/images/Fruite.png",
                   ),
                 ],
+                scrollDirection: Axis.horizontal,
               ),
             ),
             SizedBox(
@@ -586,7 +584,9 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
-            SizedBox(height: 70,),
+            SizedBox(
+              height: 70,
+            ),
             SizedBox(
               width: double.infinity,
               height: 320,
