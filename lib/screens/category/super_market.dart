@@ -347,7 +347,7 @@ class _SuperMarketState extends State<SuperMarket> {
                       Text("همه", style: TextStyle(fontSize: 18, color: Colors.blue),),
                       Icon(Icons.navigate_next, color: Colors.blue),
                     ],),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 10),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -452,10 +452,8 @@ class _SuperMarketState extends State<SuperMarket> {
                   ),
                 ],),
             ),
-                ],
-              ),
+                ],),
             ),
-
     );
   }
 }
