@@ -3,6 +3,7 @@ import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
+import 'package:abd_shop/screens/slider_page/slider_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -60,6 +61,14 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => const FruitsCategory(),
+      ),
+    );
+  }
+  sliderPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SliderPage(),
       ),
     );
   }
@@ -123,11 +132,11 @@ class _HomeBodyState extends State<HomeBody> {
                     controller: pageController,
                     children: [
                       SliderImage(
-                          onTap: () {}, // ontap not work!!!!!!!!!//
+                          onTap: () {sliderPage(context);},
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
-                          onTap: () {}, // ontap not work!!!!!!!!!//
+                          onTap: () {},
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
@@ -671,7 +680,7 @@ class SliderImage extends StatelessWidget {
   SliderImage({
     super.key,
     required this.ImageUrl,
-    this.onTap,
+    required this.onTap,
   });
 
   void Function()? onTap;
@@ -679,12 +688,14 @@ class SliderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        margin: const EdgeInsets.all(5),
-        child: ClipRRect(
-          borderRadius: BorderRadiusDirectional.circular(10),
-          child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+    return InkWell(onTap: onTap,
+      child: Material(
+        child: Container(
+          margin: const EdgeInsets.all(5),
+          child: ClipRRect(
+            borderRadius: BorderRadiusDirectional.circular(10),
+            child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+          ),
         ),
       ),
     );
