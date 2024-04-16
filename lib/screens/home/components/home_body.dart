@@ -3,6 +3,7 @@ import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
+import 'package:abd_shop/screens/slider_page/slider_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -25,8 +26,6 @@ class _HomeBodyState extends State<HomeBody> {
       PageController(initialPage: 0, viewportFraction: 0.9);
 
   List<Widget> AmazingItem = [
-    AmazingItemWidget(),
-    AmazingItemWidget(),
     AmazingItemWidget(),
   ];
 
@@ -62,6 +61,14 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => const FruitsCategory(),
+      ),
+    );
+  }
+  sliderPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SliderPage(),
       ),
     );
   }
@@ -125,11 +132,11 @@ class _HomeBodyState extends State<HomeBody> {
                     controller: pageController,
                     children: [
                       SliderImage(
-                          onTap: () {}, // ontap not work!!!!!!!!!//
+                          onTap: () {sliderPage(context);},
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
-                          onTap: () {}, // ontap not work!!!!!!!!!//
+                          onTap: () {},
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
@@ -149,23 +156,18 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
-            Padding(
-              padding: EdgeInsets.all(15),
-              child: Wrap(
-                spacing: 15,
-                runSpacing: 15,
-                direction: Axis.horizontal,
+            SizedBox(
+              height: 150,
+              child: ListView(
                 children: [
-                  InkWell(
+                  CategoryBox(
+                    categorytext: Text("سوپرمارکت"),
+                    img: "assets/images/Market.png",
                     onTap: () {
                       supermarket(context);
                     },
-                    child: CategoryBox(
-                      categorytext: Text("سوپرمارکت"),
-                      img: "assets/images/Market.png",
-                    ),
                   ),
                   InkWell(
                     onTap: () {
@@ -174,6 +176,9 @@ class _HomeBodyState extends State<HomeBody> {
                     child: CategoryBox(
                       categorytext: Text("پروتئینی"),
                       img: "assets/images/Protein.png",
+                      onTap: () {
+                        fruitscategory(context);
+                      },
                     ),
                   ),
                   CategoryBox(
@@ -189,6 +194,7 @@ class _HomeBodyState extends State<HomeBody> {
                     img: "assets/images/Fruite.png",
                   ),
                 ],
+                scrollDirection: Axis.horizontal,
               ),
             ),
             SizedBox(
@@ -588,33 +594,74 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
-            SizedBox(height: 70,),
+            SizedBox(
+              height: 50,
+            ),
             SizedBox(
               width: double.infinity,
-              height: 320,
+              height: 350,
               child: Stack(
                 children: [
                   Container(
-                    color: Colors.deepOrange,
+                    color: Color.fromARGB(500, 255, 98, 0),
                   ),
-                  ListView(scrollDirection: Axis.horizontal, children: [
-                    InkWell(
-                      child: Image.asset("assets/images/amazing_daily.png"),
-                    ),
-                    AmazingItemWidget(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    AmazingItemWidget(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    AmazingItemWidget(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    AmazingItemWidget(),
-                  ]),
+                  ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      InkWell(
+                        child: Image.asset("assets/images/amazing_daily.png"),
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: CupertinoColors.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            height: 300,
+                            width: 180,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  size: 60,
+                                  CupertinoIcons.arrow_left_circle_fill,
+                                  color: Color.fromARGB(500, 255, 98, 0),
+                                ),
+                                Text(
+                                  "مشاهده همه",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Color.fromARGB(500, 255, 98, 0)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -633,7 +680,7 @@ class SliderImage extends StatelessWidget {
   SliderImage({
     super.key,
     required this.ImageUrl,
-    this.onTap,
+    required this.onTap,
   });
 
   void Function()? onTap;
@@ -641,12 +688,14 @@ class SliderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        margin: const EdgeInsets.all(5),
-        child: ClipRRect(
-          borderRadius: BorderRadiusDirectional.circular(10),
-          child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+    return InkWell(onTap: onTap,
+      child: Material(
+        child: Container(
+          margin: const EdgeInsets.all(5),
+          child: ClipRRect(
+            borderRadius: BorderRadiusDirectional.circular(10),
+            child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+          ),
         ),
       ),
     );
