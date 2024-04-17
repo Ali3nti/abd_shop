@@ -11,6 +11,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../widget/product_widget.dart';
 import '../../category/fruits_category.dart';
 import '../../location/location_page.dart';
+import '../../profile/invite_page.dart';
 import '../../search/search_page.dart';
 import 'amazing_item_widget.dart';
 
@@ -69,6 +70,14 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => const SliderPage(),
+      ),
+    );
+  }
+  sliderPage2(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const InvitePage(),
       ),
     );
   }
@@ -137,6 +146,10 @@ class _HomeBodyState extends State<HomeBody> {
                               "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
                           onTap: () {},
+                          ImageUrl:
+                              "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                      SliderImage(
+                          onTap: () {sliderPage2(context);},
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
