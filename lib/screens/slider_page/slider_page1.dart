@@ -25,41 +25,45 @@ class _SliderPageState extends State<SliderPage> {
         ),
         SizedBox(height: 5,),
         Padding(padding: EdgeInsets.only(right: 15,left: 15),
-          child: Container(
-            height: 50,
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.search, size: 30, color: Colors.grey.shade600),
-                SizedBox(
-                  width: 5,
+          child: InkWell(onTap: (){},
+            child: Material(
+              child: Container(
+                height: 50,
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      const Text(
-                        "جستجو در",
-                        style: TextStyle(fontSize: 16),
+                child: Row(
+                  children: [
+                    Icon(Icons.search, size: 30, color: Colors.grey.shade600),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const Text(
+                            "جستجو در",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Image.asset(
+                            'assets/images/logo.png',
+                            color: Colors.deepOrange,
+                            width: 90,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Image.asset(
-                        'assets/images/logo.png',
-                        color: Colors.deepOrange,
-                        width: 90,
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         ),
