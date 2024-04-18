@@ -1,5 +1,6 @@
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
+import 'package:abd_shop/screens/profile/user_info.dart';
 import 'package:flutter/material.dart';
 
 import 'address_page.dart';
@@ -37,6 +38,15 @@ sellers(BuildContext context) {
     ),
   );
 }
+userinfo(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => UserInfo(),
+    ),
+  );
+}
+
 
 class _ProfileBodyState extends State<ProfileBody> {
   @override
@@ -67,7 +77,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     style: TextStyle(fontSize: 28),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {userinfo(context);},
                     icon: Icon(Icons.edit, color: Colors.blue, size: 30),
                   ),
                   SizedBox(
@@ -255,8 +265,8 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
             ListTile(
               title: Text("کدهای تخفیف"),
-              leading:Icon(Icons.discount_outlined),
-              onTap: (){},
+              leading: Icon(Icons.discount_outlined),
+              onTap: () {},
             ),
             Container(
               width: double.infinity,
@@ -271,7 +281,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("پرسش های متداول"),
               leading: Icon(Icons.question_answer_outlined),
-              onTap: (){},
+              onTap: () {},
             ),
             Container(
               width: double.infinity,
