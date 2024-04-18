@@ -1,6 +1,10 @@
 import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../cart/cart_page.dart';
+import '../orders/orders_page.dart';
+import '../profile/profile_page.dart';
 import '../search/search_page.dart';
 import 'components/my_app_bar.dart';
 
@@ -18,6 +22,12 @@ class _HomePageState extends State<HomePage> {
   List<Widget> ItemsWrap = [];
 
   int currentIndex = 0;
+  final List<Widget> screens = [
+    HomeBody(),
+    OrdersBody(),
+    CartBody(),
+    ProfileBody()
+  ];
 
   search(BuildContext context) {
     Navigator.push(
@@ -51,49 +61,71 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBar(),
-      body: HomeBody(),
-      bottomNavigationBar: BottomNavyBar(
-        selectedIndex: currentIndex,
-        onItemSelected: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavyBarItem(
-              icon: Icon(Icons.home_filled),
-              title: Text("خانه"),
-              activeColor: Colors.deepOrangeAccent),
-          BottomNavyBarItem(
-              icon: Icon(Icons.add_card),
-              title: Text("سفارشات"),
-              activeColor: Colors.blue),
-          BottomNavyBarItem(
-              icon: Icon(Icons.shopping_basket_outlined),
-              title: Text("سبد خرید"),
-              activeColor: Colors.purple),
-          BottomNavyBarItem(
-              icon: Icon(Icons.person),
-              title: Text("پروفایل"),
-              activeColor: Colors.green),
-        ],
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: Text("آیا میخواهید از برنامه خارج شوید؟"),
+            actions: [
+              ElevatedButton(
+                  onPressed: () {
+                    SystemNavigator.pop();
+                  },
+                  child: Text("بله")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("خیر")),
+            ],
+          ),
+        );
+      },
+      child: Scaffold(
+        body: screens[currentIndex],
+        bottomNavigationBar: BottomNavyBar(
+          selectedIndex: currentIndex,
+          onItemSelected: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          items: [
+            BottomNavyBarItem(
+                icon: Icon(Icons.home_filled),
+                title: Text("خانه"),
+                activeColor: Colors.deepOrangeAccent),
+            BottomNavyBarItem(
+                icon: Icon(Icons.add_card),
+                title: Text("سفارشات"),
+                activeColor: Colors.blue),
+            BottomNavyBarItem(
+                icon: Icon(Icons.shopping_basket_outlined),
+                title: Text("سبد خرید"),
+                activeColor: Colors.purple),
+            BottomNavyBarItem(
+                icon: Icon(Icons.person),
+                title: Text("پروفایل"),
+                activeColor: Colors.green),
+          ],
+        ),
+        // bottomNavigationBar: Container(
+        //   color: Colors.green.shade500,
+        //   height: 50,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //     children: [
+        //       Circle(iconData: Icons.home_filled, text: "صفحه اصلی"),
+        //       Circle(
+        //           iconData: Icons.shopping_basket_outlined, text: "سبد خرید"),
+        //       Circle(iconData: Icons.person_outline, text: "حساب"),
+        //       Circle(iconData: Icons.menu, text: "منو"),
+        //     ],
+        //   ),
+        // ),
       ),
-      // bottomNavigationBar: Container(
-      //   color: Colors.green.shade500,
-      //   height: 50,
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //     children: [
-      //       Circle(iconData: Icons.home_filled, text: "صفحه اصلی"),
-      //       Circle(
-      //           iconData: Icons.shopping_basket_outlined, text: "سبد خرید"),
-      //       Circle(iconData: Icons.person_outline, text: "حساب"),
-      //       Circle(iconData: Icons.menu, text: "منو"),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

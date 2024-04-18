@@ -1,9 +1,19 @@
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/screens/category/super_market.dart';
+import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
+import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
+import 'package:abd_shop/screens/slider_page/slider_page1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import '../../../widget/product_widget.dart';
+import '../../category/fruits_category.dart';
 import '../../location/location_page.dart';
 import '../../search/search_page.dart';
+import 'amazing_item_widget.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -15,6 +25,10 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
+
+  List<Widget> AmazingItem = [
+    AmazingItemWidget(),
+  ];
 
   search(BuildContext context) {
     Navigator.push(
@@ -34,251 +48,663 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 
+  supermarket(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SuperMarket(),
+      ),
+    );
+  }
+
+  fruitscategory(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const FruitsCategory(),
+      ),
+    );
+  }
+
+  sliderPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SliderPage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.location_on_outlined,
-                  color: Colors.deepOrange,
-                  size: 35,
-                ),
-                const Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 80),
-                      child: Text(
-                        "آدرس انتخابی",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      "آباده،میدان آزادی،کوچه هفتم",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 60),
-                TextButton(
-                  onPressed: () {
-                    location(context);
-                  },
-                  child: const Text(
-                    "تغییر آدرس",
-                    style: TextStyle(color: Colors.blue, fontSize: 15),
-                  ),
-                )
-              ],
+    return Scaffold(
+      appBar: MyAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
             ),
-          ),
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              SizedBox(
-                height: 150,
-                child: PageView(
-                  controller: pageController,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => MarketListWidget(),
-                        //   ),
-                        // );
-                      },
-                      child: const SliderImage(
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    color: Colors.deepOrange,
+                    size: 35,
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 80),
+                        child: Text(
+                          "آدرس انتخابی",
+                          style: kHeaderTextStyle,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "آباده،میدان آزادی،کوچه هفتم",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 60),
+                  TextButton(
+                    onPressed: () {
+                      location(context);
+                    },
+                    child: const Text(
+                      "تغییر آدرس",
+                      style: TextStyle(color: Colors.blue, fontSize: 15),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Stack(
+              alignment: Alignment.bottomLeft,
+              children: [
+                SizedBox(
+                  height: 150,
+                  child: PageView(
+                    controller: pageController,
+                    children: [
+                      SliderImage(
+                          onTap: () {
+                            sliderPage(context);
+                          },
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
-                    ),
-                    const SliderImage(
-                        ImageUrl:
-                            "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 60, bottom: 20),
-                child: SmoothPageIndicator(
-                  controller: pageController,
-                  count: 2,
-                  effect: const WormEffect(
-                      activeDotColor: Colors.black, dotHeight: 7, dotWidth: 7),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Wrap(
-              spacing: 15,
-              runSpacing: 15,
-              direction: Axis.horizontal,
-              children: [
-                Avatar(
-                    image: Image.asset("assets/images/p1.png"),
-                    text: "سوپرمارکت"),
-                Avatar(
-                    image: Image.asset("assets/images/p2.png"),
-                    text: "میوه و سبزیجات"),
-                Avatar(
-                    image: Image.asset("assets/images/p3.png"),
-                    text: "پروتئینی"),
-                Avatar(
-                    image: Image.asset("assets/images/p4.png"),
-                    text: "نانوایی"),
-                Avatar(
-                    image: Image.asset("assets/images/p5.png"),
-                    text: "شیرینی و آجیل"),
-                Avatar(
-                    image: Image.asset("assets/images/p6.png"),
-                    text: "آب میوه و بستنی"),
-                Avatar(
-                    image: Image.asset("assets/images/p6.png"),
-                    text: "گل و گیاه"),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          Container(
-            height: 300,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.black,
-                  height: 300,
-                  width: 200,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.red,
-                  height: 300,
-                  width: 200,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.blue,
-                  height: 300,
-                  width: 200,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  color: Colors.grey,
-                  height: 300,
-                  width: 200,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("نمایش همه موارد"),
-                      ),
-                      IconButton(
-                          onPressed: () {}, icon: Icon(Icons.arrow_circle_down))
+                      SliderImage(
+                          onTap: () {},
+                          ImageUrl:
+                              "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 60, bottom: 20),
+                  child: SmoothPageIndicator(
+                    controller: pageController,
+                    count: 2,
+                    effect: const WormEffect(
+                        activeDotColor: Colors.black,
+                        dotHeight: 7,
+                        dotWidth: 7),
+                  ),
+                ),
               ],
             ),
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          MarketListWidget(),
-          SizedBox(
-            height: 100,
-          ),
-          Text(
-            "قفسه های سوپرمارکت",
-            style: TextStyle(fontSize: 20),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          Wrap(
-            spacing: 15,
-            runSpacing: 15,
-            children: [
-              ItemWrap(
-                image: Image.asset("assets/images/p7.png"),
-                text: "نوشیدنی",
+            SizedBox(
+              height: 50,
+            ),
+            SizedBox(
+              height: 150,
+              child: ListView(
+                children: [
+                  CategoryBox(
+                    categorytext: Text("سوپرمارکت"),
+                    img: "assets/images/Market.png",
+                    onTap: () {
+                      supermarket(context);
+                    },
+                  ),
+                  InkWell(
+                    onTap: () {
+                      fruitscategory(context);
+                    },
+                    child: CategoryBox(
+                      categorytext: Text(
+                        "پروتئینی",
+                        style: kTextStyle,
+                      ),
+                      img: "assets/images/Protein.png",
+                      onTap: () {
+                        fruitscategory(context);
+                      },
+                    ),
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
+                  ),
+                  CategoryBox(
+                    categorytext: Text("میوه و سبزیجات"),
+                    img: "assets/images/Fruite.png",
+                  ),
+                ],
+                scrollDirection: Axis.horizontal,
               ),
-              ItemWrap(
-                image: Image.asset("assets/images/p11.png"),
-                text: "خوار و بار",
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 150,
+              child: Stack(
+                children: [
+                  ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool.png",
+                                detailtext: Text(
+                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool.png",
+                                detailtext: Text(
+                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool.png",
+                                detailtext: Text(
+                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool.png",
+                                detailtext: Text(
+                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool.png",
+                                detailtext: Text(
+                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool.png",
+                                detailtext: Text(
+                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60),
+                                    child: FloatingActionButton.extended(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              ItemWrap(
-                image: Image.asset("assets/images/p10.png"),
-                text: "پروتئینی",
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 350,
+              child: Stack(
+                children: [
+                  Container(
+                    color: Color(0xffff6200),
+                  ),
+                  ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      InkWell(
+                        child: Image.asset("assets/images/amazing_daily.png"),
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AmazingItemWidget(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: CupertinoColors.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            height: 300,
+                            width: 180,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  size: 60,
+                                  CupertinoIcons.arrow_left_circle_fill,
+                                  color: Color.fromARGB(500, 255, 98, 0),
+                                ),
+                                Text(
+                                  "مشاهده همه",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Color.fromARGB(500, 255, 98, 0)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              ItemWrap(
-                image: Image.asset("assets/images/p15.png"),
-                text: "بازی و سرگرمی",
-              ),
-              ItemWrap(
-                image: Image.asset("assets/images/p12.png"),
-                text: "نان",
-              ),
-              ItemWrap(
-                image: Image.asset("assets/images/p16.png"),
-                text: "دسر و شیرینی",
-              ),
-              ItemWrap(
-                image: Image.asset("assets/images/p13.png"),
-                text: "میوه و سبزیجات",
-              ),
-              ItemWrap(
-                image: Image.asset("assets/images/p17.png"),
-                text: "نوشت افزار",
-              ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            MarketListWidget(),
+          ],
+        ),
       ),
     );
   }
 }
 
 class SliderImage extends StatelessWidget {
-  const SliderImage({
+  SliderImage({
     super.key,
     required this.ImageUrl,
+    required this.onTap,
   });
+
+  void Function()? onTap;
   final String ImageUrl;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(5),
-      child: ClipRRect(
-        borderRadius: BorderRadiusDirectional.circular(10),
-        child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+    return InkWell(
+      onTap: onTap,
+      child: Material(
+        child: Container(
+          margin: const EdgeInsets.all(5),
+          child: ClipRRect(
+            borderRadius: BorderRadiusDirectional.circular(10),
+            child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
+          ),
+        ),
       ),
     );
   }
