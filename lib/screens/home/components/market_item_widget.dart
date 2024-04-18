@@ -62,10 +62,7 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                       ),
                       Text(
                         widget.market.category,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey.shade500,
-                        ),
+                        style: kHintTextStyle,
                       ),
                       Row(
                         children: [

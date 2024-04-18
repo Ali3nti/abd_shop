@@ -1,10 +1,7 @@
 import 'package:abd_shop/screens/home/components/amazing_item_widget.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 class SuperMarket extends StatefulWidget {
   const SuperMarket({super.key});
@@ -19,10 +16,11 @@ class _SuperMarketState extends State<SuperMarket> {
     var large;
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: MyAppBar(),
+      // appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            MyAppBar(),
             Container(
               padding: EdgeInsets.only(right: 20),
               color: Colors.white,
@@ -38,15 +36,21 @@ class _SuperMarketState extends State<SuperMarket> {
                       color: Colors.grey.shade50,
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    child: Image.asset("assets/images/logo.png",
-                      color: Colors.deepOrange,),
+                    child: Image.asset(
+                      "assets/images/logo.png",
+                      color: Colors.deepOrange,
+                    ),
                   ),
                   SizedBox(height: 15),
                   Row(
                     children: [
-                      Text(" جت مارت | ونک ", style: TextStyle(
+                      Text(
+                        " جت مارت | ونک ",
+                        style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,),),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       Icon(Icons.navigate_next),
                       Container(
                         margin: EdgeInsets.only(right: 5),
@@ -56,42 +60,78 @@ class _SuperMarketState extends State<SuperMarket> {
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        child: Text(" تا50% ", style: TextStyle(
+                        child: Text(
+                          " تا50% ",
+                          style: TextStyle(
                             fontSize: 14,
-                            color: Colors.white,),),
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    ],),
+                    ],
+                  ),
                   SizedBox(height: 5),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.yellow.shade700, size: 18,),
-                      Text("4.6   . ", style: TextStyle(
-                        fontSize: 16,
-                          fontWeight: FontWeight.bold,),),
-                      Text(" + 1000 رای", style: TextStyle(
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow.shade700,
+                        size: 18,
+                      ),
+                      Text(
+                        "4.6   . ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        " + 1000 رای",
+                        style: TextStyle(
                           color: Colors.blue,
                           fontSize: 14,
-                          fontWeight: FontWeight.bold,),),
-                    ],),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 5),
                   Row(
                     children: [
-                      Text("ارسال در ", style: TextStyle(
+                      Text(
+                        "ارسال در ",
+                        style: TextStyle(
                           color: Colors.grey.shade700,
-                          fontSize: 14,),),
-                      Text("45  دقیقه  .  ", style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        "45  دقیقه  .  ",
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 14,
-                          fontWeight: FontWeight.bold,),),
-                      Text("هزینه ارسال ", style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "هزینه ارسال ",
+                        style: TextStyle(
                           color: Colors.grey.shade700,
-                          fontSize: 14,),),
-                      Text("6,000 تومان", style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        "6,000 تومان",
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 14,
-                          fontWeight: FontWeight.bold,),),
-                    ],),
-                ],),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Container(
               width: double.infinity,
@@ -103,6 +143,8 @@ class _SuperMarketState extends State<SuperMarket> {
                   children: [
                     SizedBox(width: 10),
                     OutlinedButton(
+                        style:
+                            OutlinedButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () {},
                         child: Text(
                           "میوه",
@@ -297,42 +339,58 @@ class _SuperMarketState extends State<SuperMarket> {
               height: 460,
               color: Colors.amber.shade100,
               child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            SizedBox(width: 30,),
-                            Text(
-                              "حراج روز", style: TextStyle(fontWeight: FontWeight.bold),),
-                            SizedBox(width: 250,),
-                            Text("همه", style: TextStyle(fontSize: 18, color: Colors.blue),),
-                            Icon(Icons.navigate_next, color: Colors.blue),
-                          ],),
-                        SizedBox(height: 10,),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 20),
-                                height: 400,
-                                color: Colors.amber,
-                                child: AmazingItemWidget(),
-                              ),
-                              Container(
-                                height: 400,
-                                color: Colors.amber,
-                                child: AmazingItemWidget(),
-                              ),
-                              Container(
-                                height: 400,
-                                color: Colors.amber,
-                                child: AmazingItemWidget(),
-                              ),
-                            ],),
-                        ),
-                      ],),
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Text(
+                        "حراج روز",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 250,
+                      ),
+                      Text(
+                        "همه",
+                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      ),
+                      Icon(Icons.navigate_next, color: Colors.blue),
+                    ],
                   ),
-            SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(right: 20),
+                          height: 400,
+                          color: Colors.amber,
+                          child: AmazingItemWidget(),
+                        ),
+                        Container(
+                          height: 400,
+                          color: Colors.amber,
+                          child: AmazingItemWidget(),
+                        ),
+                        Container(
+                          height: 400,
+                          color: Colors.amber,
+                          child: AmazingItemWidget(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 460,
               color: Colors.white,
@@ -340,13 +398,23 @@ class _SuperMarketState extends State<SuperMarket> {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       Text(
-                        "لبنیات و بستنی", style: TextStyle(fontWeight: FontWeight.bold),),
-                      SizedBox(width: 250,),
-                      Text("همه", style: TextStyle(fontSize: 18, color: Colors.blue),),
+                        "لبنیات و بستنی",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 250,
+                      ),
+                      Text(
+                        "همه",
+                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      ),
                       Icon(Icons.navigate_next, color: Colors.blue),
-                    ],),
+                    ],
+                  ),
                   SizedBox(height: 10),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -368,11 +436,15 @@ class _SuperMarketState extends State<SuperMarket> {
                           color: Colors.amber,
                           child: AmazingItemWidget(),
                         ),
-                      ],),
+                      ],
+                    ),
                   ),
-                ],),
+                ],
+              ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 460,
               color: Colors.white,
@@ -380,14 +452,27 @@ class _SuperMarketState extends State<SuperMarket> {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       Text(
-                        "تنقلات", style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                      SizedBox(width: 290,),
-                      Text("همه", style: TextStyle(fontSize: 18, color: Colors.blue),),
+                        "تنقلات",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 290,
+                      ),
+                      Text(
+                        "همه",
+                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      ),
                       Icon(Icons.navigate_next, color: Colors.blue),
-                    ],),
-                  SizedBox(height: 10,),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -408,11 +493,15 @@ class _SuperMarketState extends State<SuperMarket> {
                           color: Colors.amber,
                           child: AmazingItemWidget(),
                         ),
-                      ],),
+                      ],
+                    ),
                   ),
-                ],),
+                ],
+              ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 460,
               color: Colors.white,
@@ -420,14 +509,27 @@ class _SuperMarketState extends State<SuperMarket> {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       Text(
-                        "نوشیدنی", style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                      SizedBox(width: 270,),
-                      Text("همه", style: TextStyle(fontSize: 18, color: Colors.blue),),
+                        "نوشیدنی",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 270,
+                      ),
+                      Text(
+                        "همه",
+                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      ),
                       Icon(Icons.navigate_next, color: Colors.blue),
-                    ],),
-                  SizedBox(height: 10,),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -448,12 +550,15 @@ class _SuperMarketState extends State<SuperMarket> {
                           color: Colors.amber,
                           child: AmazingItemWidget(),
                         ),
-                      ],),
+                      ],
+                    ),
                   ),
-                ],),
+                ],
+              ),
             ),
-                ],),
-            ),
+          ],
+        ),
+      ),
     );
   }
 }

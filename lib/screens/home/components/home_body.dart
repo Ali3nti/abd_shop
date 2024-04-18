@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
@@ -64,6 +65,7 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
+
   sliderPage(BuildContext context) {
     Navigator.push(
       context,
@@ -92,13 +94,13 @@ class _HomeBodyState extends State<HomeBody> {
                     color: Colors.deepOrange,
                     size: 35,
                   ),
-                  const Column(
+                  Column(
                     children: [
                       Padding(
                         padding: EdgeInsets.only(left: 80),
                         child: Text(
                           "آدرس انتخابی",
-                          style: TextStyle(fontSize: 20),
+                          style: kHeaderTextStyle,
                         ),
                       ),
                       SizedBox(
@@ -132,7 +134,9 @@ class _HomeBodyState extends State<HomeBody> {
                     controller: pageController,
                     children: [
                       SliderImage(
-                          onTap: () {sliderPage(context);},
+                          onTap: () {
+                            sliderPage(context);
+                          },
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
@@ -174,7 +178,10 @@ class _HomeBodyState extends State<HomeBody> {
                       fruitscategory(context);
                     },
                     child: CategoryBox(
-                      categorytext: Text("پروتئینی"),
+                      categorytext: Text(
+                        "پروتئینی",
+                        style: kTextStyle,
+                      ),
                       img: "assets/images/Protein.png",
                       onTap: () {
                         fruitscategory(context);
@@ -603,7 +610,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: Stack(
                 children: [
                   Container(
-                    color: Color.fromARGB(500, 255, 98, 0),
+                    color: Color(0xffff6200),
                   ),
                   ListView(
                     scrollDirection: Axis.horizontal,
@@ -688,7 +695,8 @@ class SliderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(onTap: onTap,
+    return InkWell(
+      onTap: onTap,
       child: Material(
         child: Container(
           margin: const EdgeInsets.all(5),
