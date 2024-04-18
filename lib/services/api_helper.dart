@@ -5,7 +5,7 @@ import 'package:abd_shop/models/response_model.dart';
 import 'package:http/http.dart' as http;
 
 Future<DataResponse> getMarkets() async {
-  Uri url = Uri.parse("${baseUrl}getmarket.php");
+  Uri url = Uri.parse("${baseUrl}api/getmarket.php");
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -22,8 +22,9 @@ Future<DataResponse> getMarkets() async {
         'Exception error: api_helper.dart - getMarkets(): Failed to load markets');
   }
 }
+
 Future<DataResponse> getProducts() async {
-  Uri url = Uri.parse("${baseUrl}getproducts.php");
+  Uri url = Uri.parse("${baseUrl}api/getproducts.php");
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
