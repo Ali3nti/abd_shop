@@ -70,22 +70,27 @@ class _HomePageState extends State<HomePage> {
             content: Text("آیا میخواهید از برنامه خارج شوید؟"),
             actions: [
               ElevatedButton(
-                  onPressed: () {
-                    SystemNavigator.pop();
-                  },
-                  child: Text("بله")),
+                onPressed: () {
+                  SystemNavigator.pop();
+                },
+                child: Text("بله"),
+              ),
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("خیر")),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("خیر"),
+              ),
             ],
           ),
         );
       },
       child: Scaffold(
         body: screens[currentIndex],
-        bottomNavigationBar: BottomNavigationBar(type: BottomNavigationBarType.fixed,
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.deepOrange,
+          unselectedItemColor: Colors.grey.shade800,
+          type: BottomNavigationBarType.shifting,
           currentIndex: currentIndex,
           onTap: (index) {
             setState(
@@ -96,21 +101,12 @@ class _HomePageState extends State<HomePage> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: "خانه"
-            ),
+                icon: Icon(Icons.home_filled), label: "خانه"),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add_card_outlined),
-              label: "سفارشات"
-            ),
+                icon: Icon(Icons.add_card_outlined), label: "سفارشات"),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_basket_outlined),
-              label: "سبد خرید"
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "پروفایل"
-            ),
+                icon: Icon(Icons.shopping_basket_outlined), label: "سبد خرید"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "پروفایل"),
           ],
         ),
       ),
