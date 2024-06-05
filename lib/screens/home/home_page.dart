@@ -1,5 +1,5 @@
 import 'package:abd_shop/screens/home/components/home_body.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:abd_shop/widget/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../cart/cart_page.dart';
@@ -85,46 +85,34 @@ class _HomePageState extends State<HomePage> {
       },
       child: Scaffold(
         body: screens[currentIndex],
-        bottomNavigationBar: BottomNavyBar(
-          selectedIndex: currentIndex,
-          onItemSelected: (index) {
-            setState(() {
-              currentIndex = index;
-            });
+        bottomNavigationBar: BottomNavigationBar(type: BottomNavigationBarType.fixed,
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(
+              () {
+                currentIndex = index;
+              },
+            );
           },
           items: [
-            BottomNavyBarItem(
-                icon: Icon(Icons.home_filled),
-                title: Text("خانه"),
-                activeColor: Colors.deepOrangeAccent),
-            BottomNavyBarItem(
-                icon: Icon(Icons.add_card),
-                title: Text("سفارشات"),
-                activeColor: Colors.blue),
-            BottomNavyBarItem(
-                icon: Icon(Icons.shopping_basket_outlined),
-                title: Text("سبد خرید"),
-                activeColor: Colors.purple),
-            BottomNavyBarItem(
-                icon: Icon(Icons.person),
-                title: Text("پروفایل"),
-                activeColor: Colors.green),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled),
+              label: "خانه"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_card_outlined),
+              label: "سفارشات"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_basket_outlined),
+              label: "سبد خرید"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "پروفایل"
+            ),
           ],
         ),
-        // bottomNavigationBar: Container(
-        //   color: Colors.green.shade500,
-        //   height: 50,
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //     children: [
-        //       Circle(iconData: Icons.home_filled, text: "صفحه اصلی"),
-        //       Circle(
-        //           iconData: Icons.shopping_basket_outlined, text: "سبد خرید"),
-        //       Circle(iconData: Icons.person_outline, text: "حساب"),
-        //       Circle(iconData: Icons.menu, text: "منو"),
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }
