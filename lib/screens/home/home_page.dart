@@ -1,5 +1,6 @@
 import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:abd_shop/widget/bottom_navy_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../cart/cart_page.dart';
@@ -88,6 +89,8 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
+          enableFeedback: false,
+          showUnselectedLabels: true,
           selectedItemColor: Colors.deepOrange,
           unselectedItemColor: Colors.grey.shade800,
           type: BottomNavigationBarType.shifting,
