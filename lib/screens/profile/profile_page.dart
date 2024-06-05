@@ -1,5 +1,6 @@
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
+import 'package:abd_shop/screens/profile/takhfif.dart';
 import 'package:abd_shop/screens/profile/user_info.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,7 @@ sellers(BuildContext context) {
     ),
   );
 }
+
 userinfo(BuildContext context) {
   Navigator.push(
     context,
@@ -47,6 +49,14 @@ userinfo(BuildContext context) {
   );
 }
 
+takhfifpage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => TakhfifPage(),
+    ),
+  );
+}
 
 class _ProfileBodyState extends State<ProfileBody> {
   @override
@@ -77,7 +87,9 @@ class _ProfileBodyState extends State<ProfileBody> {
                     style: TextStyle(fontSize: 28),
                   ),
                   IconButton(
-                    onPressed: () {userinfo(context);},
+                    onPressed: () {
+                      userinfo(context);
+                    },
                     icon: Icon(Icons.edit, color: Colors.blue, size: 30),
                   ),
                   SizedBox(
@@ -266,7 +278,9 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("کدهای تخفیف"),
               leading: Icon(Icons.discount_outlined),
-              onTap: () {},
+              onTap: () {
+                takhfifpage(context);
+              },
             ),
             Container(
               width: double.infinity,

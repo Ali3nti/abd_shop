@@ -255,6 +255,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     padding:
                                         EdgeInsets.only(top: 60, right: 60),
                                     child: FloatingActionButton.extended(
+                                      heroTag: "mahsool",
                                       onPressed: () {},
                                       backgroundColor: Colors.orange.shade900,
                                       foregroundColor: Colors.white,
