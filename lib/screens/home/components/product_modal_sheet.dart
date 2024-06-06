@@ -16,18 +16,19 @@ class ProductSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(color:Colors.white,
       child: ListView(scrollDirection: Axis.vertical,
         children: [
+          SizedBox(height:15 ,),
           Image.asset(imgproduct,width: 200,height: 150,),
           SizedBox(height:20),
           Padding(
-            padding: const EdgeInsets.only(left: 100,top: 20),
+            padding: const EdgeInsets.only(right: 70,top: 20),
             child: detailtext,
           ),
           SizedBox(height:20),
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right:170),
             child: Row(
               children: [
                 pricetext,
@@ -36,11 +37,14 @@ class ProductSheet extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 50),
+          SizedBox(height: 30),
           InkWell(onTap: (){},
-            child: BoxWidget(
-              iconData: CupertinoIcons.cart_badge_plus,
-              text: Text("افزودن به سبد خرید"),
+            child: Padding(
+              padding: const EdgeInsets.all(30),
+              child: BoxWidget(
+                iconData: CupertinoIcons.cart_badge_plus,
+                text: Text("افزودن به سبد خرید"),
+              ),
             ),
           ),
         ],
