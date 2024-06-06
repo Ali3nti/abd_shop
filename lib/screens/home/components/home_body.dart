@@ -75,6 +75,7 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
+
   sliderPage2(BuildContext context) {
     Navigator.push(
       context,
@@ -153,7 +154,9 @@ class _HomeBodyState extends State<HomeBody> {
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
-                          onTap: () {sliderPage2(context);},
+                          onTap: () {
+                            sliderPage2(context);
+                          },
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
@@ -181,7 +184,7 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   CategoryBox(
                     categorytext: Text("سوپرمارکت"),
-                    img: "assets/images/Market.png",
+                    img: "assets/images/supermarket.png",
                     onTap: () {
                       supermarket(context);
                     },
@@ -195,23 +198,33 @@ class _HomeBodyState extends State<HomeBody> {
                         "پروتئینی",
                         style: kTextStyle,
                       ),
-                      img: "assets/images/Protein.png",
+                      img: "assets/images/protein-desktop.png",
                       onTap: () {
                         fruitscategory(context);
                       },
                     ),
                   ),
                   CategoryBox(
-                    categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
+                    categorytext: Text("لبنیات"),
+                    img: "assets/images/dairy-desktop.png",
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
+                    img: "assets/images/fruit-desktop.png",
+                  ),
+                  SizedBox(
+                    width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
+                    categorytext: Text("آبمیوه و بستنی"),
+                    img: "assets/images/icecream-desktop.png",
+                  ),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  CategoryBox(
+                    categorytext: Text("نانوایی"),
+                    img: "assets/images/bread-desktop.png",
                   ),
                 ],
                 scrollDirection: Axis.horizontal,
