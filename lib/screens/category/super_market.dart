@@ -1,3 +1,5 @@
+import 'package:abd_shop/screens/category/all_page.dart';
+import 'package:abd_shop/screens/category/item_category_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_item_widget.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
@@ -20,20 +22,20 @@ class _SuperMarketState extends State<SuperMarket> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            MyAppBar(),
+            const MyAppBar(),
             Container(
-              padding: EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.only(right: 20),
               color: Colors.white,
               height: 200,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     width: 70,
                     height: 70,
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade50,
+                      color: Colors.grey.shade100,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Image.asset(
@@ -41,26 +43,26 @@ class _SuperMarketState extends State<SuperMarket> {
                       color: Colors.deepOrange,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         " جت مارت | ونک ",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Icon(Icons.navigate_next),
+                      const Icon(Icons.navigate_next),
                       Container(
-                        margin: EdgeInsets.only(right: 5),
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        margin: const EdgeInsets.only(right: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        child: Text(
+                        child: const Text(
                           " تا50% ",
                           style: TextStyle(
                             fontSize: 14,
@@ -70,7 +72,7 @@ class _SuperMarketState extends State<SuperMarket> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       Icon(
@@ -78,14 +80,14 @@ class _SuperMarketState extends State<SuperMarket> {
                         color: Colors.yellow.shade700,
                         size: 18,
                       ),
-                      Text(
+                      const Text(
                         "4.6   . ",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
+                      const Text(
                         " + 1000 رای",
                         style: TextStyle(
                           color: Colors.blue,
@@ -95,7 +97,7 @@ class _SuperMarketState extends State<SuperMarket> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       Text(
@@ -105,7 +107,7 @@ class _SuperMarketState extends State<SuperMarket> {
                           fontSize: 14,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "45  دقیقه  .  ",
                         style: TextStyle(
                           color: Colors.black,
@@ -120,7 +122,7 @@ class _SuperMarketState extends State<SuperMarket> {
                           fontSize: 14,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "6,000 تومان",
                         style: TextStyle(
                           color: Colors.black,
@@ -141,69 +143,69 @@ class _SuperMarketState extends State<SuperMarket> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     OutlinedButton(
                         style:
                             OutlinedButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "میوه",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "صیفی جات",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "سبزیجات",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "میوه خاص",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "میوه و صیفی جات اقتصادی",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "ادویه و چاشنی ها",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "ترشیجات و شوریجات",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "آبمیوه طبیعی",
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     OutlinedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "کمپوت و کنسویجات",
                         )),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                   ],
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: const EdgeInsets.only(top: 10),
               width: double.infinity,
               height: 400,
               color: Colors.orange,
@@ -216,31 +218,31 @@ class _SuperMarketState extends State<SuperMarket> {
                       height: 400,
                       color: Colors.orange,
                       child: Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         child: Column(
                           children: [
-                            Text(
+                            const Text(
                               "شگفت",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            Text(
+                            const Text(
                               "انگیزهای",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            Text(
+                            const Text(
                               "امروز",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Container(
@@ -252,88 +254,248 @@ class _SuperMarketState extends State<SuperMarket> {
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Container(
-                              padding: EdgeInsets.only(right: 60),
-                              //height: 30,
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "همه",
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const AllPage(),
                                   ),
-                                  Icon(Icons.navigate_next,
-                                      color: Colors.white),
-                                ],
+                                );
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.only(right: 60),
+                                //height: 30,
+                                child: const Row(
+                                  children: [
+                                    Text(
+                                      "همه",
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.white),
+                                    ),
+                                    Icon(Icons.navigate_next,
+                                        color: Colors.white),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Container(
                       height: 350,
-                      child: AmazingItemWidget(),
+                      child: const AmazingItemWidget(),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Container(
                       height: 350,
-                      child: AmazingItemWidget(),
+                      child: const AmazingItemWidget(),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Container(
                       height: 350,
-                      child: AmazingItemWidget(),
+                      child: const AmazingItemWidget(),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                   ],
                 ),
               ),
             ),
             Container(
-              height: 200,
+              height: 110,
               color: Colors.white,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Padding(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Wrap(
                     spacing: 15,
                     runSpacing: 15,
                     direction: Axis.horizontal,
                     children: [
-                      CategoryBox(
-                        categorytext: Text("لبنیات و بستنی"),
-                        img: "assets/images/Market.png",
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ItemCategoryPage(),
+                            ),
+                          );
+                        },
+                        child: CategoryBox(
+                          categorytext: const Text("لبنیات و بستنی"),
+                          img: "assets/images/Market.png",
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ItemCategoryPage(),
+                            ),
+                          );
+                        },
+                        child: CategoryBox(
+                          categorytext: const Text("تنقلات"),
+                          img: "assets/images/p8.png",
+                        ),
                       ),
                       CategoryBox(
-                        categorytext: Text("تنقلات"),
-                        img: "assets/images/p8.png",
-                      ),
-                      CategoryBox(
-                        categorytext: Text("نوشیدنی"),
+                        categorytext: const Text("نوشیدنی"),
                         img: "assets/images/p7.png",
                       ),
                       CategoryBox(
-                        categorytext: Text("نان"),
+                        categorytext: const Text("نان"),
                         img: "assets/images/p12.png",
                       ),
                       CategoryBox(
-                        categorytext: Text("خواربار"),
+                        categorytext: const Text("خواربار"),
                         img: "assets/images/p11.png",
                       ),
                       CategoryBox(
-                        categorytext: Text("میوه و سبزیجات"),
+                        categorytext: const Text("میوه و سبزیجات"),
                         img: "assets/images/Fruite.png",
                       ),
                     ],
                   ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 5),
+              height: 460,
+              color: Colors.amber.shade100,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      const Text(
+                        "حراج روز",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        width: 250,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AllPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "همه",
+                          style: TextStyle(fontSize: 18, color: Colors.blue),
+                        ),
+                      ),
+                      const Icon(Icons.navigate_next, color: Colors.blue),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          height: 400,
+                          child: const AmazingItemWidget(),
+                        ),
+                        Container(
+                          height: 400,
+                          child: const AmazingItemWidget(),
+                        ),
+                        Container(
+                          height: 400,
+                          child: const AmazingItemWidget(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              color: Colors.amber.shade100,
+              height: 460,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Text(
+                        "لبنیات و بستنی",
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        width: 250,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AllPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "همه",
+                          style: TextStyle(fontSize: 18, color: Colors.blue),
+                        ),
+                      ),
+                      const Icon(Icons.navigate_next, color: Colors.blue),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          height: 400,
+                          child: const AmazingItemWidget(),
+                        ),
+                        Container(
+                          height: 400,
+                          child: const AmazingItemWidget(),
+                        ),
+                        Container(
+                          height: 400,
+                          child: const AmazingItemWidget(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Container(
               height: 460,
@@ -342,135 +504,35 @@ class _SuperMarketState extends State<SuperMarket> {
                 children: [
                   Row(
                     children: [
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "حراج روز",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 250,
-                      ),
-                      Text(
-                        "همه",
-                        style: TextStyle(fontSize: 18, color: Colors.blue),
-                      ),
-                      Icon(Icons.navigate_next, color: Colors.blue),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 20),
-                          height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
-                        ),
-                        Container(
-                          height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
-                        ),
-                        Container(
-                          height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 460,
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        "لبنیات و بستنی",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 250,
-                      ),
-                      Text(
-                        "همه",
-                        style: TextStyle(fontSize: 18, color: Colors.blue),
-                      ),
-                      Icon(Icons.navigate_next, color: Colors.blue),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 20),
-                          height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
-                        ),
-                        Container(
-                          height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
-                        ),
-                        Container(
-                          height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 460,
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
+                      const Text(
                         "تنقلات",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 290,
                       ),
-                      Text(
-                        "همه",
-                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AllPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "همه",
+                          style: TextStyle(fontSize: 18, color: Colors.blue),
+                        ),
                       ),
-                      Icon(Icons.navigate_next, color: Colors.blue),
+                      const Icon(Icons.navigate_next, color: Colors.blue),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SingleChildScrollView(
@@ -478,20 +540,17 @@ class _SuperMarketState extends State<SuperMarket> {
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 20),
+                          margin: const EdgeInsets.only(right: 20),
                           height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
+                          child: const AmazingItemWidget(),
                         ),
                         Container(
                           height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
+                          child: const AmazingItemWidget(),
                         ),
                         Container(
                           height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
+                          child: const AmazingItemWidget(),
                         ),
                       ],
                     ),
@@ -499,35 +558,45 @@ class _SuperMarketState extends State<SuperMarket> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
+            const SizedBox(
+              height: 20,
             ),
             Container(
               height: 460,
-              color: Colors.white,
+              color: Colors.amber.shade100,
               child: Column(
                 children: [
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
-                      Text(
+                      const Text(
                         "نوشیدنی",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 270,
                       ),
-                      Text(
-                        "همه",
-                        style: TextStyle(fontSize: 18, color: Colors.blue),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AllPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "همه",
+                          style: TextStyle(fontSize: 18, color: Colors.blue),
+                        ),
                       ),
-                      Icon(Icons.navigate_next, color: Colors.blue),
+                      const Icon(Icons.navigate_next, color: Colors.blue),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SingleChildScrollView(
@@ -535,20 +604,17 @@ class _SuperMarketState extends State<SuperMarket> {
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 20),
+                          margin: const EdgeInsets.only(right: 20),
                           height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
+                          child: const AmazingItemWidget(),
                         ),
                         Container(
                           height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
+                          child: const AmazingItemWidget(),
                         ),
                         Container(
                           height: 400,
-                          color: Colors.amber,
-                          child: AmazingItemWidget(),
+                          child: const AmazingItemWidget(),
                         ),
                       ],
                     ),
