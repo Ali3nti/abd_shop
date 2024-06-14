@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/orders/store_page.dart';
 import 'package:flutter/material.dart';
 
 class OrdersBody extends StatefulWidget {
@@ -13,7 +14,7 @@ class _OrdersBodyState extends State<OrdersBody> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "سفارش ها",
           style: TextStyle(
             fontSize: 28,
@@ -24,50 +25,57 @@ class _OrdersBodyState extends State<OrdersBody> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(left: 70, top: 50),
+            //color: Colors.red,
+            margin: const EdgeInsets.only(left: 60,top: 30),
             height: 300,
-            child: Image.asset("assets/images/order.png"),
+            width: 300,
+            child: Image.asset("assets/images/P31.png"),
           ),
           Container(
-              margin: EdgeInsets.only(left: 70, top: 30),
-              child: Text(
+              margin: const EdgeInsets.only(left: 70, top: 2),
+              child: const Text(
                 "اینجا سفارش ندارید!",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               )),
           Container(
-              margin: EdgeInsets.only(left: 70, top: 10),
-              child: Text(
+              margin: const EdgeInsets.only(left: 70, top: 10),
+              child: const Text(
                 "چندین فروشگاه دیگر نزدیک شما هستند.",
                 style: TextStyle(
                   fontSize: 14,
                 ),
               )),
-          Container(
-              margin: EdgeInsets.only(left: 70, top: 30),
-              width: 210,
-              height: 40,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange.shade900,
-                  shape: ContinuousRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+          InkWell(
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => const StorePage(),
                   ),
+              );
+            },
+            child: Container(
+                margin: const EdgeInsets.only(left: 70, top: 30),
+                width: 210,
+                height: 50,
+              decoration: BoxDecoration(
+                color: Colors.orange.shade900,
+                borderRadius: BorderRadius.circular(10),),
+              child:  const Center(
+                  child: Text("مشاهده فروشگاه های نزدیک",style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                 ),
-                onPressed: () {},
-                child: const Text(
-                  "مشاهده فروشگاه های نزدیک",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
-              )),
+          ),
         ],
       ),
     );
   }
 }
+
+
