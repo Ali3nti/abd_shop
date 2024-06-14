@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/cart/continue_cart_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -17,7 +18,7 @@ class _CartBodyState extends State<CartBody> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "سبد خرید",
           style: TextStyle(
             fontSize: 28,
@@ -29,7 +30,7 @@ class _CartBodyState extends State<CartBody> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 5),
               height: 200,
               color: Colors.white,
               child: Column(
@@ -37,36 +38,29 @@ class _CartBodyState extends State<CartBody> {
                   Row(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10, right: 10),
+                        margin: const EdgeInsets.only(top: 10, right: 10),
                         width: 60,
                         height: 60,
-                        child: Image.asset("assets/images/p8.png"),
+                        child: Image.asset("assets/images/jet mart.webp"),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Column(
                         children: [
-                          Row(
-                            children: [
-                              Text("جت مارت", style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
-                              ),
-                              Text("|ونک", style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(right: 190),
-                                width: 35,
-                                height: 35,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade100,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Icon(Icons.navigate_next),
-                              ),
-                            ],),
                           Container(
-                            margin: EdgeInsets.only(left: 160),
-                            child: Row(
+                            margin: const EdgeInsets.only(left: 220),
+                            child: const Row(
+                              children: [
+                                Text("جت مارت", style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                                Text("|ونک", style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                              ],),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 160),
+                            child: const Row(
                               children: [
                                 Icon(Icons.bike_scooter_sharp, size: 15,),
                                 SizedBox(width: 5),
@@ -84,25 +78,25 @@ class _CartBodyState extends State<CartBody> {
                         ],),
                     ],),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 10),
+                          margin: const EdgeInsets.only(right: 10),
                           width: 50,
                           height: 50,
                           color: Colors.grey.shade50,
                           child: Image.asset("assets/images/p16.png"),
                         ),
                         Container(
-                          margin: EdgeInsets.only(right: 1),
+                          margin: const EdgeInsets.only(right: 1),
                           width: 50,
                           height: 50,
                           color: Colors.grey.shade50,
                           child: Image.asset("assets/images/p12.png"),
                         ),
                         Container(
-                          margin: EdgeInsets.only(right: 1, left: 10),
+                          margin: const EdgeInsets.only(right: 1, left: 10),
                           width: 50,
                           height: 50,
                           color: Colors.grey.shade50,
@@ -110,7 +104,7 @@ class _CartBodyState extends State<CartBody> {
                         ),
                         Column(
                           children: [
-                            Icon(Icons.delete),
+                            const Icon(Icons.delete),
                             Text("حذف سبد خرید", style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -119,39 +113,46 @@ class _CartBodyState extends State<CartBody> {
                           ],),
                       ],),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Row(
                     children: [
-                      Container(
-                          margin: EdgeInsets.only(right: 20),
-                          width: 170,
-                          height: 40,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange.shade900,
-                              shape: ContinuousRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>  const ContinueCartPage(),
                             ),
-                            onPressed: () {},
-                            child: Text("ادامه خرید", style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.orange.shade900,
+                            borderRadius: BorderRadius.circular(5),),
+                            margin: const EdgeInsets.only(right: 20),
+                            width: 160,
+                            height: 40,
+                            child: const Center(
+                              child: Text("ادامه خرید", style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,),
+                                ),
                             ),
-                          )),
-                      SizedBox(width: 70,),
+                           ),
+                      ),
+                      const SizedBox(width: 100,),
                       Column(
                         children: [
                           Text("جمع سبد خرید (3 مورد)", style: TextStyle(
                               fontSize: 12,
-                              color: Colors.grey.shade500,
+                              color: Colors.grey.shade600,
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 20),
-                            child: Text("155.300 تومان", style: TextStyle(
-                                fontSize: 14,
+                            margin: const EdgeInsets.only(right: 20),
+                            child: const Text("155.300 تومان", style: TextStyle(
+                                fontSize: 13,
                                 fontWeight: FontWeight.bold),
                             ),
                           ),
