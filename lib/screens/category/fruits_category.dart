@@ -20,8 +20,7 @@ class FruitsCategory extends StatefulWidget {
       ),
     );
   }
-
-  }
+}
 
 class _SuperMarketState extends State<FruitsCategory> {
   @override
@@ -29,27 +28,27 @@ class _SuperMarketState extends State<FruitsCategory> {
     var market;
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: MyAppBar(),
+      appBar: const MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
               color: Colors.white,
               height: 110,
               child: Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 10,right: 15),
+                    padding: const EdgeInsets.only(left: 10, right: 15),
                     child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 30,
-                      child: Image.asset("assets/images/p7.png"),
+                      backgroundColor: Colors.grey.shade50,
+                      radius: 40,
+                      child: Image.asset("assets/images/hyper fruit.webp"),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                     margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       child: Row(
                         children: [
                           Expanded(
@@ -58,17 +57,17 @@ class _SuperMarketState extends State<FruitsCategory> {
                               children: [
                                 Row(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "هایپر میوه سایه | ولیعصر",
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     Container(
                                       margin: const EdgeInsets.only(right: 5),
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 5),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5),
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                         color: Colors.red,
@@ -77,7 +76,7 @@ class _SuperMarketState extends State<FruitsCategory> {
                                       child: const Text(
                                         "18%",
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 13,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -99,9 +98,9 @@ class _SuperMarketState extends State<FruitsCategory> {
                                       size: 18,
                                     ),
                                     const SizedBox(width: 7),
-                                    Text(
+                                    const Text(
                                       "4.3",
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -109,7 +108,10 @@ class _SuperMarketState extends State<FruitsCategory> {
                                     const SizedBox(width: 7),
                                     const Icon(Icons.delivery_dining),
                                     const SizedBox(width: 7),
-                                    const PriceWidget(price: 7500,size: Size.large,)
+                                    const PriceWidget(
+                                      price: 7500,
+                                      size: Size.large,
+                                    )
                                   ],
                                 ),
                                 const Text(
@@ -124,7 +126,135 @@ class _SuperMarketState extends State<FruitsCategory> {
                             ),
                           ),
                           Container(
-                             margin: EdgeInsets.only(left: 10),
+                            margin: const EdgeInsets.only(left: 10),
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade50,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "45",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "دقیقه",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 3),
+            Container(
+              color: Colors.white,
+              height: 110,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 15),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey.shade50,
+                      radius: 40,
+                      child: Image.asset("assets/images/hyper fruit.webp"),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Text(
+                                      "سوپر میوه گلچین | افریقا",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(right: 5),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: const Text(
+                                        "30%",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  "میوه و سبزیجات",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey.shade500,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.yellow.shade700,
+                                      size: 18,
+                                    ),
+                                    const SizedBox(width: 7),
+                                    const Text(
+                                      "3.8",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 7),
+                                    const Icon(Icons.delivery_dining),
+                                    const SizedBox(width: 7),
+                                    const PriceWidget(
+                                      price: 8500,
+                                      size: Size.large,
+                                    )
+                                  ],
+                                ),
+                                const Text(
+                                  "ارسال رایگان برای خرید بالای 280,000 تومان",
+                                  style: TextStyle(
+                                    color: Colors.orangeAccent,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 10),
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
