@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/screens/orders/store_page.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +54,7 @@ class _OrdersBodyState extends State<OrdersBody> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                  builder: (context) => const StorePage(),
+                  builder: (context) => const HomePage(),
                   ),
               );
             },
