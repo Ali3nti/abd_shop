@@ -376,7 +376,7 @@ class _HomeBodyState extends State<HomeBody> {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool3.png",
                                 detailtext: Text(
-                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                    "تخم مرغ مروارید - 6 عدد"),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -440,7 +440,7 @@ class _HomeBodyState extends State<HomeBody> {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool4.png",
                                 detailtext: Text(
-                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                    "ماءالشعیر کلاسیک بهنوش - یک لیتر"),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -504,7 +504,7 @@ class _HomeBodyState extends State<HomeBody> {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool5.png",
                                 detailtext: Text(
-                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                    "نوشابه اسپرایت "),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -568,7 +568,7 @@ class _HomeBodyState extends State<HomeBody> {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool6.png",
                                 detailtext: Text(
-                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                    "روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
                                 pricetext: Text("50,000"),
                               );
                             },
