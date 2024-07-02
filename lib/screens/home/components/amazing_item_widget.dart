@@ -37,6 +37,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: FloatingActionButton.extended(
+                      heroTag: "button",
                       onPressed: () {
                         //TODO: Create "Add to cart" function
                       },

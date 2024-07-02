@@ -57,16 +57,18 @@ class _MyTextFiledState extends State<MyTextFiled> {
   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        label: Text(widget.title),
-        hintText: "عبارت مورد نظر را جست و جو",
-        border: OutlineInputBorder(),
+    return Padding(padding: EdgeInsets.all(10),
+      child: TextField(
+        controller: controller,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          label: Text(widget.title),
+          hintText: "عبارت مورد نظر را جست و جو",
+          border: OutlineInputBorder(),
+        ),
+        showCursor: false,
+        onChanged: widget.onChanged,
       ),
-      showCursor: false,
-      onChanged: widget.onChanged,
     );
   }
 }

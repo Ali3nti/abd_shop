@@ -1,5 +1,7 @@
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
+import 'package:abd_shop/screens/profile/takhfif.dart';
+import 'package:abd_shop/screens/profile/user_info.dart';
 import 'package:flutter/material.dart';
 
 import 'address_page.dart';
@@ -38,6 +40,24 @@ sellers(BuildContext context) {
   );
 }
 
+userinfo(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => UserInfo(),
+    ),
+  );
+}
+
+takhfifpage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => TakhfifPage(),
+    ),
+  );
+}
+
 class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
@@ -67,7 +87,9 @@ class _ProfileBodyState extends State<ProfileBody> {
                     style: TextStyle(fontSize: 28),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      userinfo(context);
+                    },
                     icon: Icon(Icons.edit, color: Colors.blue, size: 30),
                   ),
                   SizedBox(
@@ -255,8 +277,10 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
             ListTile(
               title: Text("کدهای تخفیف"),
-              leading:Icon(Icons.discount_outlined),
-              onTap: (){},
+              leading: Icon(Icons.discount_outlined),
+              onTap: () {
+                takhfifpage(context);
+              },
             ),
             Container(
               width: double.infinity,
@@ -271,7 +295,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             ListTile(
               title: Text("پرسش های متداول"),
               leading: Icon(Icons.question_answer_outlined),
-              onTap: (){},
+              onTap: () {},
             ),
             Container(
               width: double.infinity,

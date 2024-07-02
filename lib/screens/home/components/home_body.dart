@@ -75,6 +75,7 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
+
   sliderPage2(BuildContext context) {
     Navigator.push(
       context,
@@ -153,7 +154,9 @@ class _HomeBodyState extends State<HomeBody> {
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
-                          onTap: () {sliderPage2(context);},
+                          onTap: () {
+                            sliderPage2(context);
+                          },
                           ImageUrl:
                               "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
@@ -181,7 +184,7 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   CategoryBox(
                     categorytext: Text("سوپرمارکت"),
-                    img: "assets/images/Market.png",
+                    img: "assets/images/supermarket.png",
                     onTap: () {
                       supermarket(context);
                     },
@@ -195,23 +198,33 @@ class _HomeBodyState extends State<HomeBody> {
                         "پروتئینی",
                         style: kTextStyle,
                       ),
-                      img: "assets/images/Protein.png",
+                      img: "assets/images/protein-desktop.png",
                       onTap: () {
                         fruitscategory(context);
                       },
                     ),
                   ),
                   CategoryBox(
-                    categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
+                    categorytext: Text("لبنیات"),
+                    img: "assets/images/dairy-desktop.png",
                   ),
                   CategoryBox(
                     categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
+                    img: "assets/images/fruit-desktop.png",
+                  ),
+                  SizedBox(
+                    width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text("میوه و سبزیجات"),
-                    img: "assets/images/Fruite.png",
+                    categorytext: Text("آبمیوه و بستنی"),
+                    img: "assets/images/icecream-desktop.png",
+                  ),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  CategoryBox(
+                    categorytext: Text("نانوایی"),
+                    img: "assets/images/bread-desktop.png",
                   ),
                 ],
                 scrollDirection: Axis.horizontal,
@@ -232,7 +245,72 @@ class _HomeBodyState extends State<HomeBody> {
                             context: context,
                             builder: (context) {
                               return ProductSheet(
-                                imgproduct: "assets/images/mahsool.png",
+                                imgproduct: "assets/images/mahsool1.png",
+                                detailtext: Text(
+                                    "مغز ران مرغ - یک کیلوگرم"),
+                                pricetext: Text("50,000"),
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 11,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mahsool1.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 60, right: 60, bottom: 10),
+                                    child: FloatingActionButton.extended(
+                                      heroTag: "mahsool",
+                                      onPressed: () {},
+                                      backgroundColor: Colors.orange.shade900,
+                                      foregroundColor: Colors.white,
+                                      isExtended: true,
+                                      shape: const CircleBorder(
+                                        eccentricity: 0,
+                                      ),
+                                      label: Icon(
+                                        Icons.add,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("70000"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        /*It should be converted to a widget and change its size */
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/mahsool2.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
                                 pricetext: Text("50,000"),
@@ -247,13 +325,13 @@ class _HomeBodyState extends State<HomeBody> {
                               Stack(
                                 children: [
                                   Image.asset(
-                                    "assets/images/mahsool.png",
+                                    "assets/images/mahsool2.png",
                                     height: 100,
                                     width: 100,
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(top: 60, right: 60),
+                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
                                       backgroundColor: Colors.orange.shade900,
@@ -296,7 +374,7 @@ class _HomeBodyState extends State<HomeBody> {
                             context: context,
                             builder: (context) {
                               return ProductSheet(
-                                imgproduct: "assets/images/mahsool.png",
+                                imgproduct: "assets/images/mahsool3.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
                                 pricetext: Text("50,000"),
@@ -311,13 +389,13 @@ class _HomeBodyState extends State<HomeBody> {
                               Stack(
                                 children: [
                                   Image.asset(
-                                    "assets/images/mahsool.png",
+                                    "assets/images/mahsool3.png",
                                     height: 100,
                                     width: 100,
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(top: 60, right: 60),
+                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
                                       backgroundColor: Colors.orange.shade900,
@@ -360,7 +438,7 @@ class _HomeBodyState extends State<HomeBody> {
                             context: context,
                             builder: (context) {
                               return ProductSheet(
-                                imgproduct: "assets/images/mahsool.png",
+                                imgproduct: "assets/images/mahsool4.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
                                 pricetext: Text("50,000"),
@@ -375,13 +453,13 @@ class _HomeBodyState extends State<HomeBody> {
                               Stack(
                                 children: [
                                   Image.asset(
-                                    "assets/images/mahsool.png",
+                                    "assets/images/mahsool4.png",
                                     height: 100,
                                     width: 100,
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(top: 60, right: 60),
+                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
                                       backgroundColor: Colors.orange.shade900,
@@ -424,7 +502,7 @@ class _HomeBodyState extends State<HomeBody> {
                             context: context,
                             builder: (context) {
                               return ProductSheet(
-                                imgproduct: "assets/images/mahsool.png",
+                                imgproduct: "assets/images/mahsool5.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
                                 pricetext: Text("50,000"),
@@ -439,13 +517,13 @@ class _HomeBodyState extends State<HomeBody> {
                               Stack(
                                 children: [
                                   Image.asset(
-                                    "assets/images/mahsool.png",
+                                    "assets/images/mahsool5.png",
                                     height: 100,
                                     width: 100,
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(top: 60, right: 60),
+                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
                                       backgroundColor: Colors.orange.shade900,
@@ -488,7 +566,7 @@ class _HomeBodyState extends State<HomeBody> {
                             context: context,
                             builder: (context) {
                               return ProductSheet(
-                                imgproduct: "assets/images/mahsool.png",
+                                imgproduct: "assets/images/mahsool6.png",
                                 detailtext: Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
                                 pricetext: Text("50,000"),
@@ -503,77 +581,13 @@ class _HomeBodyState extends State<HomeBody> {
                               Stack(
                                 children: [
                                   Image.asset(
-                                    "assets/images/mahsool.png",
+                                    "assets/images/mahsool6.png",
                                     height: 100,
                                     width: 100,
                                   ),
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(top: 60, right: 60),
-                                    child: FloatingActionButton.extended(
-                                      onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("70000"),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Image.asset(
-                                      "assets/images/toman.png",
-                                      width: 20,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return ProductSheet(
-                                imgproduct: "assets/images/mahsool.png",
-                                detailtext: Text(
-                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60),
+                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
                                       backgroundColor: Colors.orange.shade900,
