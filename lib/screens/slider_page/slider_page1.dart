@@ -1,73 +1,154 @@
-import 'package:flutter/cupertino.dart';
+import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:abd_shop/widget/product_widget_two.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import '../home/components/home_body.dart';
 
 class SliderPage extends StatefulWidget {
   const SliderPage({super.key});
 
   @override
   State<SliderPage> createState() => _SliderPageState();
-
-
 }
 
 class _SliderPageState extends State<SliderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        Padding(padding: EdgeInsets.only(left: 350,top: 30),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_back_outlined,size: 32,),
-          ),
-        ),
-        SizedBox(height: 5,),
-        Padding(padding: EdgeInsets.only(right: 15,left: 15),
-          child: InkWell(onTap: (){},
-            child: Material(
-              child: Container(
-                height: 50,
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(10),
+      backgroundColor: Colors.white,
+      appBar: MyAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p32.png",
+                  priceproduct: "35,000",
+                  productdetail: "نوشابه انرژی زا گازدار ادج",
                 ),
-                child: Row(
-                  children: [
-                    Icon(Icons.search, size: 30, color: Colors.grey.shade600),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          const Text(
-                            "جستجو در",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            'assets/images/logo.png',
-                            color: Colors.deepOrange,
-                            width: 90,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                SizedBox(
+                  width: 11,
                 ),
-              ),
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p33.png",
+                  priceproduct: "20,000",
+                  productdetail: "نوشیدنی آّب آلبالو",
+                ),
+              ],
             ),
-          ),
+            Container(
+              height: 2,
+              width:double.infinity,
+              color: Colors.grey.shade300,
+            ),
+            Row(
+              children: [
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p34.png",
+                  priceproduct: "32,310",
+                  productdetail: "اسنک سرکه نمکی یامی",
+                ),
+                SizedBox(
+                  width: 11,
+                ),
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p35.png",
+                  priceproduct: "35,000",
+                  productdetail: "نوشابه انرژی‌زا گاز دار هایپ",
+                ),
+              ],
+            ),
+            Container(
+              height: 2,
+              width:double.infinity,
+              color: Colors.grey.shade300,
+            ),
+            Row(
+              children: [
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p36.png",
+                  priceproduct: "85,000",
+                  productdetail: "انرژی زا بلک ولف یک لیتری",
+                ),
+                SizedBox(
+                  width: 11,
+                ),
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p37.png",
+                  priceproduct: "14,000",
+                  productdetail: "ماست موسیر چکیده میهن",
+                ),
+              ],
+            ),
+            Container(
+              height: 2,
+              width:double.infinity,
+              color: Colors.grey.shade300,
+            ),
+            Row(
+              children: [
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p38.png",
+                  priceproduct: "20,000",
+                  productdetail: "استیک سیب زمینی کچاپ چی‌توز",
+                ),
+                SizedBox(
+                  width: 11,
+                ),
+                ProductWidgetTwo(
+                  percent: Text(
+                    "10%",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {},
+                  picture: "assets/images/p39.png",
+                  priceproduct: "78,000",
+                  productdetail: "آب انار و بلوبری سان‌استار",
+                ),
+              ],
+            ),
+            Container(
+              height: 2,
+              width:double.infinity,
+              color: Colors.grey.shade300,
+            ),
+          ],
         ),
-      ]),
+      ),
     );
   }
 }
