@@ -87,7 +87,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: CupertinoColors.white,
       appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -148,17 +148,23 @@ class _HomeBodyState extends State<HomeBody> {
                             sliderPage(context);
                           },
                           ImageUrl:
-                              "https://dkstatics-public.digikala.com/jet-public/5803dca9a4f7e81d5db0d90a82ab98d34af5dc8b_1695207312.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                              "https://dkstatics-public.digikala.com/jet-public/5cfe6551e1e7aed448bc2fe2878816c02fcd4c0a_1719394303.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
                           onTap: () {},
                           ImageUrl:
-                              "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                              "https://dkstatics-public.digikala.com/jet-public/ff7c6541fd471b0de113e2bb955e8bfc88d262b6_1719908556.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       SliderImage(
                           onTap: () {
                             sliderPage2(context);
                           },
                           ImageUrl:
-                              "https://dkstatics-public.digikala.com/jet-public/216954b9069c9c07b50e24f2f6fbd1c4628a46b6_1695206052.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                              "https://dkstatics-public.digikala.com/jet-public/d73eff9db87cd3fd72be30f49e67a1640dde615e_1717333163.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                      SliderImage(
+                          onTap: () {
+                            sliderPage2(context);
+                          },
+                          ImageUrl:
+                              "https://dkstatics-public.digikala.com/jet-public/287f806c0a801981f5e085734e9d4273bd1d3299_1718721407.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                     ],
                   ),
                 ),
@@ -166,7 +172,7 @@ class _HomeBodyState extends State<HomeBody> {
                   padding: const EdgeInsets.only(left: 60, bottom: 20),
                   child: SmoothPageIndicator(
                     controller: pageController,
-                    count: 2,
+                    count: 4,
                     effect: const WormEffect(
                         activeDotColor: Colors.black,
                         dotHeight: 7,
@@ -288,7 +294,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70000"),
+                                    Text("70,000"),
                                     SizedBox(
                                       width: 5,
                                     ),
@@ -352,7 +358,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70000"),
+                                    Text("70,000"),
                                     SizedBox(
                                       width: 5,
                                     ),
@@ -416,7 +422,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70000"),
+                                    Text("80,000"),
                                     SizedBox(
                                       width: 5,
                                     ),
@@ -480,7 +486,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70000"),
+                                    Text("44,000"),
                                     SizedBox(
                                       width: 5,
                                     ),
@@ -544,7 +550,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70000"),
+                                    Text("70,000"),
                                     SizedBox(
                                       width: 5,
                                     ),
@@ -608,7 +614,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70000"),
+                                    Text("87,000"),
                                     SizedBox(
                                       width: 5,
                                     ),
