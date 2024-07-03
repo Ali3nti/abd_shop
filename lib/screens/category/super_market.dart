@@ -3,6 +3,7 @@ import 'package:abd_shop/screens/category/item_category_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_item_widget.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SuperMarket extends StatefulWidget {
@@ -208,7 +209,7 @@ class _SuperMarketState extends State<SuperMarket> {
               margin: const EdgeInsets.only(top: 10),
               width: double.infinity,
               height: 400,
-              color: Colors.orange,
+              color: Color(0xffff6200),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -216,7 +217,7 @@ class _SuperMarketState extends State<SuperMarket> {
                     Container(
                       width: 200,
                       height: 400,
-                      color: Colors.orange,
+                      color: Color(0xffff6200),
                       child: Container(
                         margin: const EdgeInsets.only(top: 20),
                         child: Column(
@@ -286,22 +287,54 @@ class _SuperMarketState extends State<SuperMarket> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 5),
-                    Container(
-                      height: 350,
-                      child: const AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
                     ),
-                    const SizedBox(width: 5),
-                    Container(
-                      height: 350,
-                      child: const AmazingItemWidget(),
+                    AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
                     ),
-                    const SizedBox(width: 5),
-                    Container(
-                      height: 350,
-                      child: const AmazingItemWidget(),
+                    AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
                     ),
-                    const SizedBox(width: 5),
+                    AmazingItemWidget(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20, bottom: 20),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: CupertinoColors.white,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          height: 300,
+                          width: 180,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                size: 60,
+                                CupertinoIcons.arrow_left_circle_fill,
+                                color: Color.fromARGB(500, 255, 98, 0),
+                              ),
+                              Text(
+                                "مشاهده همه",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color.fromARGB(500, 255, 98, 0)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                   ],
                 ),
               ),
@@ -372,8 +405,8 @@ class _SuperMarketState extends State<SuperMarket> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 5),
-              height: 460,
-              color: Colors.amber.shade100,
+              height: 390,
+              color: Color(0xffff6200),
               child: Column(
                 children: [
                   Row(
@@ -413,18 +446,20 @@ class _SuperMarketState extends State<SuperMarket> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
                       ],
                     ),
@@ -436,8 +471,8 @@ class _SuperMarketState extends State<SuperMarket> {
               height: 20,
             ),
             Container(
-              color: Colors.amber.shade100,
-              height: 460,
+              color: Color(0xffff6200),
+              height: 390,
               child: Column(
                 children: [
                   Row(
@@ -475,18 +510,20 @@ class _SuperMarketState extends State<SuperMarket> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
                       ],
                     ),
@@ -498,8 +535,8 @@ class _SuperMarketState extends State<SuperMarket> {
               height: 20,
             ),
             Container(
-              height: 460,
-              color: Colors.amber.shade100,
+              height: 390,
+              color: Color(0xffff6200),
               child: Column(
                 children: [
                   Row(
@@ -539,18 +576,20 @@ class _SuperMarketState extends State<SuperMarket> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
                       ],
                     ),
@@ -562,8 +601,8 @@ class _SuperMarketState extends State<SuperMarket> {
               height: 20,
             ),
             Container(
-              height: 460,
-              color: Colors.amber.shade100,
+              height: 390,
+              color: Color(0xffff6200),
               child: Column(
                 children: [
                   Row(
@@ -603,18 +642,53 @@ class _SuperMarketState extends State<SuperMarket> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
                         ),
-                        Container(
-                          height: 400,
-                          child: const AmazingItemWidget(),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        AmazingItemWidget(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 20, bottom: 20),
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: CupertinoColors.white,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              height: 300,
+                              width: 180,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    size: 60,
+                                    CupertinoIcons.arrow_left_circle_fill,
+                                    color: Color.fromARGB(500, 255, 98, 0),
+                                  ),
+                                  Text(
+                                    "مشاهده همه",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Color.fromARGB(500, 255, 98, 0)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
                         ),
                       ],
                     ),
