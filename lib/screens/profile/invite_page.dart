@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class InvitePage extends StatefulWidget {
   const InvitePage({super.key});
 
@@ -69,7 +71,7 @@ class _InvitePageState extends State<InvitePage> {
                   height: 60,
                   width: 300,
                   decoration: BoxDecoration(
-                      color: Colors.deepOrange,
+                      color: kPrimaryColor,
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

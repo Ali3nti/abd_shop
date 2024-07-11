@@ -5,6 +5,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../constants.dart';
+
 class CartBody extends StatefulWidget {
   const CartBody({super.key});
 
@@ -127,7 +129,7 @@ class _CartBodyState extends State<CartBody> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.orange.shade900,
+                            color: kPrimaryColor,
                             borderRadius: BorderRadius.circular(5),),
                             margin: const EdgeInsets.only(right: 20),
                             width: 160,

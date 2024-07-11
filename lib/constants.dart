@@ -19,8 +19,29 @@ const TextStyle kHeaderTextStyle = TextStyle(
   color: kPrimaryTextColor,
   fontWeight: FontWeight.bold,
 );
+const TextStyle kHeaderTextStyle2 = TextStyle(
+  fontSize: 16,
+  color: kPrimaryTextColor,
+  fontWeight: FontWeight.normal,
+);
+const TextStyle kHeaderTextStyle3 = TextStyle(
+  fontSize: 18,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+
 const TextStyle kHintTextStyle = TextStyle(
   fontSize: 12,
   color: kHintTextColor,
   fontWeight: FontWeight.bold,
+);
+const TextStyle kPrimaryTextStyle = TextStyle(
+  fontSize: 12,
+  color: kPrimaryTextColor,
+  fontWeight: FontWeight.bold,
+);
+const TextStyle kPrimaryTextStyle2 = TextStyle(
+  fontSize: 12,
+  color: kPrimaryTextColor,
+  fontWeight: FontWeight.normal,
 );

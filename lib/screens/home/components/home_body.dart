@@ -101,7 +101,7 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   Icon(
                     Icons.location_on_outlined,
-                    color: Colors.deepOrange,
+                    color: kPrimaryColor,
                     size: 35,
                   ),
                   Column(
@@ -118,7 +118,7 @@ class _HomeBodyState extends State<HomeBody> {
                       ),
                       Text(
                         "آباده،میدان آزادی،کوچه هفتم",
-                        style: TextStyle(fontSize: 16),
+                        style: kHeaderTextStyle2,
                       ),
                     ],
                   ),
@@ -174,7 +174,7 @@ class _HomeBodyState extends State<HomeBody> {
                     controller: pageController,
                     count: 4,
                     effect: const WormEffect(
-                        activeDotColor: Colors.black,
+                        activeDotColor:kPrimaryTextColor,
                         dotHeight: 7,
                         dotWidth: 7),
                   ),
@@ -189,7 +189,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: ListView(
                 children: [
                   CategoryBox(
-                    categorytext: Text("سوپرمارکت"),
+                    categorytext: Text("سوپرمارکت",style: kPrimaryTextStyle,),
                     img: "assets/images/supermarket.png",
                     onTap: () {
                       supermarket(context);
@@ -202,7 +202,7 @@ class _HomeBodyState extends State<HomeBody> {
                     child: CategoryBox(
                       categorytext: Text(
                         "پروتئینی",
-                        style: kTextStyle,
+                          style: kPrimaryTextStyle,
                       ),
                       img: "assets/images/protein-desktop.png",
                       onTap: () {
@@ -211,25 +211,25 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                   ),
                   CategoryBox(
-                    categorytext: Text("لبنیات"),
+                    categorytext: Text("لبنیات",style: kPrimaryTextStyle,),
                     img: "assets/images/dairy-desktop.png",
                   ),
                   CategoryBox(
-                    categorytext: Text("میوه و سبزیجات"),
+                    categorytext: Text("میوه و سبزیجات",style: kPrimaryTextStyle,),
                     img: "assets/images/fruit-desktop.png",
                   ),
                   SizedBox(
                     width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text("آبمیوه و بستنی"),
+                    categorytext: Text("آبمیوه و بستنی",style: kPrimaryTextStyle,),
                     img: "assets/images/icecream-desktop.png",
                   ),
                   SizedBox(
                     width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text("نانوایی"),
+                    categorytext: Text("نانوایی",style: kPrimaryTextStyle,),
                     img: "assets/images/bread-desktop.png",
                   ),
                 ],
@@ -276,7 +276,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool",
                                       onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
+                                      backgroundColor:kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -340,7 +340,7 @@ class _HomeBodyState extends State<HomeBody> {
                                         EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
+                                      backgroundColor:kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -404,7 +404,7 @@ class _HomeBodyState extends State<HomeBody> {
                                         EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
+                                      backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -468,7 +468,7 @@ class _HomeBodyState extends State<HomeBody> {
                                         EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
+                                      backgroundColor:kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -532,7 +532,7 @@ class _HomeBodyState extends State<HomeBody> {
                                         EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
+                                      backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -596,7 +596,7 @@ class _HomeBodyState extends State<HomeBody> {
                                         EdgeInsets.only(top: 60, right: 60,bottom: 10),
                                     child: FloatingActionButton.extended(
                                       onPressed: () {},
-                                      backgroundColor: Colors.orange.shade900,
+                                      backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -643,7 +643,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: Stack(
                 children: [
                   Container(
-                    color: Color(0xffff6200),
+                    color: kPrimaryColor,
                   ),
                   ListView(
                     scrollDirection: Axis.horizontal,

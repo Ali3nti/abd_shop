@@ -30,7 +30,7 @@ class SplashPage extends StatelessWidget {
             try {
               // Lookup URL for check connectivity
               final result =
-                  await InternetAddress.lookup('www.alinematollahi.ir');
+                  await InternetAddress.lookup('www.varzesh3.ir');
               if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
                 //Go to the next page (HomePage)
                 return Navigator.pushReplacement(

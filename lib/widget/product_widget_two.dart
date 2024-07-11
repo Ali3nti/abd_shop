@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../constants.dart';
+
 class ProductWidgetTwo extends StatelessWidget {
   ProductWidgetTwo(
       {super.key,
@@ -52,7 +54,7 @@ class ProductWidgetTwo extends StatelessWidget {
                 children: [
                   Text(
                     priceproduct,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     width: 6,
@@ -71,7 +73,7 @@ class ProductWidgetTwo extends StatelessWidget {
                       ),
                       // alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: percent),

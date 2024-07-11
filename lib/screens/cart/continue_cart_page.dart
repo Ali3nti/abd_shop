@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../constants.dart';
+
 class ContinueCartPage extends StatefulWidget {
   const ContinueCartPage({super.key});
 
@@ -217,7 +219,7 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     height: 40,
                     width: 110,
                     decoration: BoxDecoration(
-                      color: Colors.orange.shade900,
+                      color:kPrimaryColor,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: const Row(
