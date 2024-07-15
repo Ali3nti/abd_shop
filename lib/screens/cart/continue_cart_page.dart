@@ -1,4 +1,5 @@
 import 'package:abd_shop/screens/cart/internet_payment.dart';
+import 'package:abd_shop/widget/checkbox_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -102,7 +103,9 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     width: 110,
                     height: 130,
                     //color: Colors.red,
-                    child: Image.asset("assets/images/jet mart.webp",),
+                    child: Image.asset(
+                      "assets/images/jet mart.webp",
+                    ),
                   ),
                 ],
               ),
@@ -125,14 +128,14 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     ),
                   ),
                   Container(
-                    // color: Colors.green,
+                    //color: Colors.lightGreen,
                     height: 80,
                     width: double.infinity,
                     child: Row(
                       children: [
                         Container(
                           margin: const EdgeInsets.only(right: 20),
-                          child: const Icon(Icons.circle_outlined),
+                          child: CheckBoxWidget(),
                         ),
                         Column(
                           children: [
@@ -146,9 +149,10 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                             // SizedBox(height: 10,),
                             Container(
                               margin: const EdgeInsets.only(right: 30),
-                              child:  Text(
-                                  "پرداخت آنلاین با تمامی کارت های بانکی",
-                              style: TextStyle(color: Colors.grey.shade700 ),),
+                              child: Text(
+                                "پرداخت آنلاین با تمامی کارت های بانکی",
+                                style: TextStyle(color: Colors.grey.shade700),
+                              ),
                             ),
                           ],
                         ),
@@ -162,14 +166,15 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     color: Colors.grey.shade300,
                   ),
                   Container(
-                    // color: Colors.orange,
+                    //color: Colors.orange,
                     height: 60,
                     width: double.infinity,
                     child: Row(
                       children: [
                         Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            child: const Icon(Icons.circle_outlined)),
+                          margin: const EdgeInsets.only(right: 20),
+                          child: const CheckBoxWidget(),
+                        ),
                         Column(
                           children: [
                             Container(
@@ -182,51 +187,18 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                             // SizedBox(height: 10,),
                             Container(
                               margin: const EdgeInsets.only(right: 30),
-                              child:  Row(
+                              child: Row(
                                 children: [
-                                  Text("اعتبار باقی مانده : ", style: TextStyle(
-                                  color: Colors.grey.shade700),),
+                                  Text(
+                                    "اعتبار باقی مانده : ",
+                                    style:
+                                        TextStyle(color: Colors.grey.shade700),
+                                  ),
                                   Text("0 تومان "),
-                             ], ),
+                                ],
+                              ),
                             ),
                           ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 5),
-              color: Colors.white,
-              height: 80,
-              child: Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 5, right: 20),
-                    //color: Colors.purpleAccent,
-                    child: const Text(
-                      "کد تخفیف دارید ؟",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 5, right: 150),
-                    height: 40,
-                    width: 110,
-                    decoration: BoxDecoration(
-                      color: Colors.orange.shade900,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add),
-                        Text(
-                          "افزودن کد",
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -384,7 +356,9 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const InternetPayment(),
-                        ),);},
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 40,
                       width: 380,
@@ -409,7 +383,8 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                 ],
               ),
             ),
-          ],),
+          ],
+        ),
       ),
     );
   }
