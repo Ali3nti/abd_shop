@@ -11,21 +11,15 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
   bool Value = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [Checkbox(
-              activeColor: Colors.indigoAccent,
-              shape: CircleBorder(),
-              value: Value,
-              onChanged: (val){
-                setState(() {
-                  Value = val!;
-                });
-              }
-          ),
-      ],  ),
-      );
-
+    return Checkbox(
+      activeColor: Colors.indigoAccent,
+      shape: const CircleBorder(),
+      value: Value,
+      onChanged: (val) {
+        setState(() {
+          Value = val!;
+        });
+      },
+    );
   }
 }
