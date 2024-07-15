@@ -103,7 +103,9 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     width: 110,
                     height: 130,
                     //color: Colors.red,
-                    child: Image.asset("assets/images/jet mart.webp",),
+                    child: Image.asset(
+                      "assets/images/jet mart.webp",
+                    ),
                   ),
                 ],
               ),
@@ -132,8 +134,8 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     child: Row(
                       children: [
                         Container(
-                         margin: const EdgeInsets.only(right: 20),
-                          child: Icon(Icons.circle_outlined),
+                          margin: const EdgeInsets.only(right: 20),
+                          child: CheckBoxWidget(),
                         ),
                         Column(
                           children: [
@@ -146,10 +148,11 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                             ),
                             // SizedBox(height: 10,),
                             Container(
-                             margin: const EdgeInsets.only(right: 30),
-                              child:  Text(
-                                  "پرداخت آنلاین با تمامی کارت های بانکی",
-                              style: TextStyle(color: Colors.grey.shade700 ),),
+                              margin: const EdgeInsets.only(right: 30),
+                              child: Text(
+                                "پرداخت آنلاین با تمامی کارت های بانکی",
+                                style: TextStyle(color: Colors.grey.shade700),
+                              ),
                             ),
                           ],
                         ),
@@ -163,14 +166,15 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                     color: Colors.grey.shade300,
                   ),
                   Container(
-                     //color: Colors.orange,
+                    //color: Colors.orange,
                     height: 60,
                     width: double.infinity,
                     child: Row(
                       children: [
                         Container(
                           margin: const EdgeInsets.only(right: 20),
-                          child: Icon(Icons.circle_outlined),),
+                          child: const CheckBoxWidget(),
+                        ),
                         Column(
                           children: [
                             Container(
@@ -183,12 +187,16 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                             // SizedBox(height: 10,),
                             Container(
                               margin: const EdgeInsets.only(right: 30),
-                              child:  Row(
+                              child: Row(
                                 children: [
-                                  Text("اعتبار باقی مانده : ", style: TextStyle(
-                                  color: Colors.grey.shade700),),
+                                  Text(
+                                    "اعتبار باقی مانده : ",
+                                    style:
+                                        TextStyle(color: Colors.grey.shade700),
+                                  ),
                                   Text("0 تومان "),
-                             ], ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -348,7 +356,9 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const InternetPayment(),
-                        ),);},
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 40,
                       width: 380,
@@ -373,7 +383,8 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
                 ],
               ),
             ),
-          ],),
+          ],
+        ),
       ),
     );
   }
