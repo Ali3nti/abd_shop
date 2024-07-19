@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
+
 class AmazingItemWidget extends StatefulWidget {
   const AmazingItemWidget({super.key});
 
@@ -74,10 +76,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     margin: const EdgeInsets.only(right: 10),
                     child: const Text(
                       "پنیر لبنه می ماس",
-                      style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                      ),
+                        style: kHeaderTextStyle
                     ),
                   ),
                   Container(
@@ -99,10 +98,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           children: [
                             const Text(
                               "37,500",
-                              style: TextStyle(
-                                fontSize: 18,
-                                // fontWeight: FontWeight.bold,
-                              ),
+                                style: kHeaderTextStyle2
                             ),
                             const SizedBox(width: 6),
                             Image.asset(
@@ -124,7 +120,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           ),
                           child: const Text(
                             "25 %",
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+                            style: kHeaderTextStyle3,
                           ),
                         ),
                       ],

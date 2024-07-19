@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
 import '../../search/search_page.dart';
 
 class MyAppBar extends StatelessWidget  implements PreferredSizeWidget {
@@ -56,7 +57,7 @@ class MyAppBar extends StatelessWidget  implements PreferredSizeWidget {
                     ),
                     Image.asset(
                       'assets/images/logo.png',
-                      color: Colors.deepOrange,
+                      color:kPrimaryColor,
                       width: 90,
                     ),
                   ],

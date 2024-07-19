@@ -6,6 +6,8 @@ import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class SuperMarket extends StatefulWidget {
   const SuperMarket({super.key});
 
@@ -41,7 +43,7 @@ class _SuperMarketState extends State<SuperMarket> {
                     ),
                     child: Image.asset(
                       "assets/images/logo.png",
-                      color: Colors.deepOrange,
+                      color:kPrimaryColor,
                     ),
                   ),
                   const SizedBox(height: 15),
@@ -60,7 +62,7 @@ class _SuperMarketState extends State<SuperMarket> {
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: const Text(
@@ -111,7 +113,7 @@ class _SuperMarketState extends State<SuperMarket> {
                       const Text(
                         "45  دقیقه  .  ",
                         style: TextStyle(
-                          color: Colors.black,
+                          color:kPrimaryTextColor ,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
@@ -126,7 +128,7 @@ class _SuperMarketState extends State<SuperMarket> {
                       const Text(
                         "6,000 تومان",
                         style: TextStyle(
-                          color: Colors.black,
+                          color:kPrimaryTextColor ,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
@@ -209,7 +211,7 @@ class _SuperMarketState extends State<SuperMarket> {
               margin: const EdgeInsets.only(top: 10),
               width: double.infinity,
               height: 400,
-              color: Color(0xffff6200),
+              color: kPrimaryColor,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -217,7 +219,7 @@ class _SuperMarketState extends State<SuperMarket> {
                     Container(
                       width: 200,
                       height: 400,
-                      color: Color(0xffff6200),
+                      color: kPrimaryColor,
                       child: Container(
                         margin: const EdgeInsets.only(top: 20),
                         child: Column(
@@ -406,7 +408,7 @@ class _SuperMarketState extends State<SuperMarket> {
             Container(
               margin: const EdgeInsets.only(top: 5),
               height: 390,
-              color: Color(0xffff6200),
+              color: kPrimaryColor,
               child: Column(
                 children: [
                   Row(
@@ -471,7 +473,7 @@ class _SuperMarketState extends State<SuperMarket> {
               height: 20,
             ),
             Container(
-              color: Color(0xffff6200),
+              color: kPrimaryColor,
               height: 390,
               child: Column(
                 children: [
@@ -536,7 +538,7 @@ class _SuperMarketState extends State<SuperMarket> {
             ),
             Container(
               height: 390,
-              color: Color(0xffff6200),
+              color:kPrimaryColor,
               child: Column(
                 children: [
                   Row(
@@ -602,7 +604,7 @@ class _SuperMarketState extends State<SuperMarket> {
             ),
             Container(
               height: 390,
-              color: Color(0xffff6200),
+              color:kPrimaryColor,
               child: Column(
                 children: [
                   Row(

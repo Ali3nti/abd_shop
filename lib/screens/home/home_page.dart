@@ -3,6 +3,7 @@ import 'package:abd_shop/widget/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../constants.dart';
 import '../cart/cart_page.dart';
 import '../orders/orders_page.dart';
 import '../profile/profile_page.dart';
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           enableFeedback: false,
           showUnselectedLabels: true,
-          selectedItemColor: Colors.deepOrange,
+          selectedItemColor: kPrimaryColor,
           unselectedItemColor: Colors.grey.shade800,
           type: BottomNavigationBarType.shifting,
           currentIndex: currentIndex,

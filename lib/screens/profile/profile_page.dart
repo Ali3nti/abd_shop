@@ -4,6 +4,7 @@ import 'package:abd_shop/screens/profile/takhfif.dart';
 import 'package:abd_shop/screens/profile/user_info.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
 import 'address_page.dart';
 
 class ProfileBody extends StatefulWidget {
@@ -220,18 +221,18 @@ class _ProfileBodyState extends State<ProfileBody> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.deepOrange, width: 3),
+                  border: Border.all(color: kPrimaryColor, width: 3),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.headset_mic_rounded,
-                      color: Colors.deepOrange,
+                      color:kPrimaryColor,
                     ),
                     Text(
                       "نیاز به پشتیبانی دارم",
-                      style: TextStyle(color: Colors.deepOrange, fontSize: 20),
+                      style: TextStyle(color:kPrimaryColor, fontSize: 20),
                     ),
                   ],
                 ),
