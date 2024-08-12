@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -49,10 +50,28 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       shape: const CircleBorder(
                         eccentricity: 0,
                       ),
-                      label: const Row(
-                        children: [
-                          Icon(Icons.add),
-                        ],
+                      label: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/p1.png",
+                                detailtext: Text(
+                                  "پنیر لبنه می ماس  _ مقدار 300 گرم",
+                                  style: TextStyle(fontSize: 18,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                pricetext: Text("37.500"),
+                              );
+                            },
+                          );
+                        },
+                        child: const Row(
+                          children: [
+                            Icon(Icons.add),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -75,7 +94,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   Container(
                     margin: const EdgeInsets.only(right: 10),
                     child: const Text(
-                      "پنیر لبنه می ماس",
+                        "پنیر لبنه می ماس",
                         style: kHeaderTextStyle
                     ),
                   ),
@@ -97,7 +116,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         Row(
                           children: [
                             const Text(
-                              "37,500",
+                                "37,500",
                                 style: kHeaderTextStyle2
                             ),
                             const SizedBox(width: 6),
