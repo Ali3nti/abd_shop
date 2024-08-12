@@ -1,5 +1,6 @@
 import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/screens/orders/store_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OrdersBody extends StatefulWidget {
@@ -14,15 +15,13 @@ class _OrdersBodyState extends State<OrdersBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-        title: const Text(
+      appBar:AppBar(
+        backgroundColor: Colors.white,
+        scrolledUnderElevation: 0,
+        title:  Text(
           "سفارش ها",
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+          style: TextStyle(fontSize: 28,
+            fontWeight: FontWeight.bold,),),),
       body: Column(
         children: [
           Container(
