@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/cart/continue_cart_page.dart';
 import 'package:flutter/material.dart';
 
 class CartWidget extends StatefulWidget {
@@ -10,7 +11,7 @@ class CartWidget extends StatefulWidget {
 class _CartWidgetState extends State<CartWidget> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       margin: EdgeInsets.only(top: 5),
       height: 200,
       color: Colors.white,
@@ -104,24 +105,31 @@ class _CartWidgetState extends State<CartWidget> {
           SizedBox(height: 20,),
           Row(
             children: [
-              Container(
+              InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContinueCartPage(),
+                    ),
+                  );
+                },
+                child: Container(
                   margin: EdgeInsets.only(right: 20),
                   width: 170,
                   height: 40,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange.shade900,
-                      shape: ContinuousRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    onPressed: () {},
+                  decoration: BoxDecoration(
+                    color: Colors.orange.shade900,
+                    borderRadius: BorderRadius.circular(10),),
+                  child: Center(
                     child: Text("ادامه خرید", style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,),
                     ),
-                  )),
+                  ),
+                ),
+              ),
               SizedBox(width: 70,),
               Column(
                 children: [
@@ -143,3 +151,18 @@ class _CartWidgetState extends State<CartWidget> {
     );
   }
 }
+
+
+
+ // ElevatedButton(
+  //style: ElevatedButton.styleFrom(
+  //backgroundColor: Colors.orange.shade900,
+  //shape: ContinuousRectangleBorder(
+  //borderRadius: BorderRadius.circular(20),
+  //),),
+  //onPressed: () {},
+  //child: Text("ادامه خرید", style: TextStyle(
+  //color: Colors.white,
+  //fontSize: 16,
+  //fontWeight: FontWeight.bold,),
+  //),)
