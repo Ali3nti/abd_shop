@@ -14,7 +14,7 @@ import '../../category/fruits_category.dart';
 import '../../location/location_page.dart';
 import '../../profile/invite_page.dart';
 import '../../search/search_page.dart';
-import 'amazing_item_widget.dart';
+import '../../../widget/amazing_item_widget.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
