@@ -1,7 +1,7 @@
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../constants.dart';
 
 class AmazingItemWidget extends StatefulWidget {
   const AmazingItemWidget({super.key});
