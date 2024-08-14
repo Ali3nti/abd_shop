@@ -1,20 +1,20 @@
 import 'package:abd_shop/screens/cart/internet_payment.dart';
-import 'package:abd_shop/widget/checkbox_widget.dart';
+import 'package:abd_shop/widget/continue_cart_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../constants.dart';
 
 class ContinueCartPage extends StatefulWidget {
   const ContinueCartPage({super.key});
 
   @override
-  State<ContinueCartPage> createState() => _ContinueCartPageState();
+  State<ContinueCartPage> createState() => _AllPageState();
 }
 
-class _ContinueCartPageState extends State<ContinueCartPage> {
+class _AllPageState extends State<ContinueCartPage> {
+  int _value = 1;
+  int get val => val;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,179 +31,49 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const ContinueCartWidget(),
             Container(
               margin: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.only(top: 20, right: 20),
               color: Colors.white,
-              child: Row(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 5),
-                        height: 130,
-                        color: Colors.white,
-                        child: Row(
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.only(top: 20, right: 10),
-                                  // color: Colors.orange,
-                                  child: const Row(
-                                    children: [
-                                      Icon(Icons.location_on_outlined),
-                                      Text(
-                                        "ارسال به",
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "م . ونک...",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin:
-                                      const EdgeInsets.only(top: 5, left: 40),
-                                  //color: Colors.orange,
-                                  child: Text(
-                                    "م. ونک",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey.shade600),
-                                  ),
-                                ),
-                                // SizedBox(height: 10,),
-                                Container(
-                                  margin:
-                                      const EdgeInsets.only(top: 10, right: 20),
-                                  child: const Text(
-                                    "تغییر آدرس تحویل",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.lightBlue),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(right: 150),
-                    width: 110,
-                    height: 130,
-                    //color: Colors.red,
-                    child: Image.asset(
-                      "assets/images/jet mart.webp",
-                    ),
-                  ),
-                ],
+              height: 50,
+              width: double.infinity,
+              child: const Text(
+                "روش پرداخت",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 5),
               color: Colors.white,
-              height: 200,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.only(top: 20, right: 20),
-                    //color: Colors.yellowAccent,
-                    height: 50,
-                    width: double.infinity,
-                    child: const Text(
-                      "روش پرداخت",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                  RadioListTile(
+                    value: 1,
+                    groupValue: _value,
+                    onChanged: (Val) {
+                      setState(() {
+                        _value = val;
+                      });
+                    },
+                    activeColor: Colors.blue,
+                    title: const Text("پرداخت اینترنتی"),
+                    subtitle: const Text("پرداخت آنلاین با تمامی کارت های بانکی"),
                   ),
-                  Container(
-                    //color: Colors.lightGreen,
-                    height: 80,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          child: CheckBoxWidget(),
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 30, left: 80),
-                              child: const Text(
-                                "پرداخت اینترنتی",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            // SizedBox(height: 10,),
-                            Container(
-                              margin: const EdgeInsets.only(right: 30),
-                              child: Text(
-                                "پرداخت آنلاین با تمامی کارت های بانکی",
-                                style: TextStyle(color: Colors.grey.shade700),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 5,
                   ),
-                  Container(
-                    //margin: EdgeInsets.only(top: 5),
-                    height: 2,
-                    width: 380,
-                    color: Colors.grey.shade300,
-                  ),
-                  Container(
-                    //color: Colors.orange,
-                    height: 60,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          child: const CheckBoxWidget(),
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 10, left: 60),
-                              child: const Text(
-                                "کیف پول",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            // SizedBox(height: 10,),
-                            Container(
-                              margin: const EdgeInsets.only(right: 30),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "اعتبار باقی مانده : ",
-                                    style:
-                                        TextStyle(color: Colors.grey.shade700),
-                                  ),
-                                  Text("0 تومان "),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  RadioListTile(
+                    value: 2,
+                    groupValue: _value,
+                    onChanged: (Val) {
+                      setState(() {
+                        _value = val;
+                      });
+                    },
+                    activeColor: Colors.blue,
+                    title: const Text(" کیف پول "),
+                    subtitle: const Text(" اعتبار باقی مانده : 0 تومان"),
                   ),
                 ],
               ),
@@ -211,9 +81,9 @@ class _ContinueCartPageState extends State<ContinueCartPage> {
             Container(
               margin: const EdgeInsets.only(top: 5),
               padding: const EdgeInsets.only(top: 20, right: 20),
-              color: Colors.white,
               height: 50,
               width: double.infinity,
+              color: Colors.white,
               child: const Text(
                 "جزییات قیمت",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
