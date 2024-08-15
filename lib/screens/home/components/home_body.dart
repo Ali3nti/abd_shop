@@ -28,7 +28,9 @@ class _HomeBodyState extends State<HomeBody> {
       PageController(initialPage: 0, viewportFraction: 0.9);
 
   List<Widget> AmazingItem = [
-    AmazingItemWidget(),
+    AmazingItemWidget(
+      onPressed: () {},
+    ),
   ];
 
   search(BuildContext context) {
@@ -87,7 +89,8 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: CupertinoColors.white,
+    return Scaffold(
+      backgroundColor: CupertinoColors.white,
       appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -174,7 +177,7 @@ class _HomeBodyState extends State<HomeBody> {
                     controller: pageController,
                     count: 4,
                     effect: const WormEffect(
-                        activeDotColor:kPrimaryTextColor,
+                        activeDotColor: kPrimaryTextColor,
                         dotHeight: 7,
                         dotWidth: 7),
                   ),
@@ -189,7 +192,10 @@ class _HomeBodyState extends State<HomeBody> {
               child: ListView(
                 children: [
                   CategoryBox(
-                    categorytext: Text("سوپرمارکت",style: kPrimaryTextStyle,),
+                    categorytext: Text(
+                      "سوپرمارکت",
+                      style: kPrimaryTextStyle,
+                    ),
                     img: "assets/images/supermarket.png",
                     onTap: () {
                       supermarket(context);
@@ -202,7 +208,7 @@ class _HomeBodyState extends State<HomeBody> {
                     child: CategoryBox(
                       categorytext: Text(
                         "پروتئینی",
-                          style: kPrimaryTextStyle,
+                        style: kPrimaryTextStyle,
                       ),
                       img: "assets/images/protein-desktop.png",
                       onTap: () {
@@ -211,25 +217,37 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                   ),
                   CategoryBox(
-                    categorytext: Text("لبنیات",style: kPrimaryTextStyle,),
+                    categorytext: Text(
+                      "لبنیات",
+                      style: kPrimaryTextStyle,
+                    ),
                     img: "assets/images/dairy-desktop.png",
                   ),
                   CategoryBox(
-                    categorytext: Text("میوه و سبزیجات",style: kPrimaryTextStyle,),
+                    categorytext: Text(
+                      "میوه و سبزیجات",
+                      style: kPrimaryTextStyle,
+                    ),
                     img: "assets/images/fruit-desktop.png",
                   ),
                   SizedBox(
                     width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text("آبمیوه و بستنی",style: kPrimaryTextStyle,),
+                    categorytext: Text(
+                      "آبمیوه و بستنی",
+                      style: kPrimaryTextStyle,
+                    ),
                     img: "assets/images/icecream-desktop.png",
                   ),
                   SizedBox(
                     width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text("نانوایی",style: kPrimaryTextStyle,),
+                    categorytext: Text(
+                      "نانوایی",
+                      style: kPrimaryTextStyle,
+                    ),
                     img: "assets/images/bread-desktop.png",
                   ),
                 ],
@@ -252,8 +270,7 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool1.png",
-                                detailtext: Text(
-                                    "مغز ران مرغ - یک کیلوگرم"),
+                                detailtext: Text("مغز ران مرغ - یک کیلوگرم"),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -271,12 +288,12 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60, bottom: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool",
                                       onPressed: () {},
-                                      backgroundColor:kPrimaryColor,
+                                      backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -336,11 +353,12 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
+                                      heroTag: "mahsool1",
                                       onPressed: () {},
-                                      backgroundColor:kPrimaryColor,
+                                      backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -381,8 +399,7 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool3.png",
-                                detailtext: Text(
-                                    "تخم مرغ مروارید - 6 عدد"),
+                                detailtext: Text("تخم مرغ مروارید - 6 عدد"),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -400,9 +417,10 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
+                                      heroTag: "mahsool3",
                                       onPressed: () {},
                                       backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
@@ -445,8 +463,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool4.png",
-                                detailtext: Text(
-                                    "ماءالشعیر کلاسیک بهنوش - یک لیتر"),
+                                detailtext:
+                                    Text("ماءالشعیر کلاسیک بهنوش - یک لیتر"),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -464,11 +482,12 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
+                                      heroTag: "mahsool4",
                                       onPressed: () {},
-                                      backgroundColor:kPrimaryColor,
+                                      backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
                                       isExtended: true,
                                       shape: const CircleBorder(
@@ -509,8 +528,7 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool5.png",
-                                detailtext: Text(
-                                    "نوشابه اسپرایت "),
+                                detailtext: Text("نوشابه اسپرایت "),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -528,9 +546,10 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
+                                      heroTag: "mahsool5",
                                       onPressed: () {},
                                       backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
@@ -573,8 +592,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool6.png",
-                                detailtext: Text(
-                                    "روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
+                                detailtext:
+                                    Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
                                 pricetext: Text("50,000"),
                               );
                             },
@@ -592,9 +611,10 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(top: 60, right: 60,bottom: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
+                                      heroTag: "mahsool6",
                                       onPressed: () {},
                                       backgroundColor: kPrimaryColor,
                                       foregroundColor: Colors.white,
@@ -648,29 +668,21 @@ class _HomeBodyState extends State<HomeBody> {
                   ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      InkWell(
-                        child: Image.asset("assets/images/amazing_daily.png"),
+                      Image.asset("assets/images/amazing_daily.png"),
+                      AmazingItemWidget(
+                        onPressed: () {
+                          supermarket(context);
+                        },
                       ),
-                      AmazingItemWidget(),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      AmazingItemWidget(),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      AmazingItemWidget(),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      AmazingItemWidget(),
                       SizedBox(
                         width: 10,
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 20, bottom: 20),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            supermarket(context);
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                               color: CupertinoColors.white,
