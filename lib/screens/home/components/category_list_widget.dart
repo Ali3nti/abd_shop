@@ -1,30 +1,31 @@
+import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/home/components/market_item_widget.dart';
-import 'package:abd_shop/models/market_model.dart';
+import 'package:abd_shop/screens/home/components/category_itemt_widget.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
 
-class MarketListWidget extends StatefulWidget {
-  const MarketListWidget({super.key});
+class CategoryListWidget extends StatefulWidget {
+  const CategoryListWidget({super.key});
 
   @override
-  State<MarketListWidget> createState() => _MarketListWidgetState();
+  State<CategoryListWidget> createState() => _CategoryListWidgetState();
 }
 
-class _MarketListWidgetState extends State<MarketListWidget> {
-  List<MarketItemWidget> marketsWidgetList = [];
+class _CategoryListWidgetState extends State<CategoryListWidget> {
+  List<CategoryItemWidget> categoryWidgetList = [];
+
   // List<Market> marketList = [];
   initMarkets() async {
-    await getDataFromServer(apiName: "getmarkets").then((value) {
+    await getDataFromServer(apiName: "getcategory").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
-          Market market = Market.fromJSON(item);
+          CategoryModel categoryitem = CategoryModel.fromJSON(item);
           // marketList.add(market);
-          marketsWidgetList.add(
-            MarketItemWidget(
-              market: market,
+          categoryWidgetList.add(
+            CategoryItemWidget(
+              categoryModel: categoryitem,
             ),
           );
         }
@@ -46,8 +47,8 @@ class _MarketListWidgetState extends State<MarketListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: marketsWidgetList,
+    return Row(
+      children: categoryWidgetList,
     );
   }
 }
