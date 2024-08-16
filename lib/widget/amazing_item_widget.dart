@@ -1,6 +1,7 @@
+import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../constants.dart';
 
 class AmazingItemWidget extends StatefulWidget {
    AmazingItemWidget({super.key, this.onPressed,});
@@ -58,6 +59,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           ],
                         ),
                       ),
+<<<<<<<
                     ),
                     // Container(
                     //   //margin: EdgeInsets.only(top: 50),
@@ -80,8 +82,33 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       child: const Text(
                         "پنیر لبنه می ماس",
                           style: kHeaderTextStyle
+=======
+                      label: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return ProductSheet(
+                                imgproduct: "assets/images/p1.png",
+                                detailtext: Text(
+                                  "پنیر لبنه می ماس  _ مقدار 300 گرم",
+                                  style: TextStyle(fontSize: 18,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                pricetext: Text("37.500"),
+                              );
+                            },
+                          );
+                        },
+                        child: const Row(
+                          children: [
+                            Icon(Icons.add),
+                          ],
+                        ),
+>>>>>>>
                       ),
                     ),
+<<<<<<<
                     Container(
                       margin: const EdgeInsets.only(right: 10),
                       child: const Text(
@@ -90,8 +117,42 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           fontSize: 20,
                           // fontWeight: FontWeight.bold,
                         ),
+=======
+                  ),
+                  // Container(
+                  //   //margin: EdgeInsets.only(top: 50),
+                  //   width: 50,
+                  //   height: 50,
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.orange.shade900,
+                  //     borderRadius: BorderRadius.circular(100),
+                  //   ),
+                  //   child: Icon(Icons.add, color: Colors.white, size: 30),
+                  // ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: const Text(
+                        "پنیر لبنه می ماس",
+                        style: kHeaderTextStyle
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: const Text(
+                      "300 گرم",
+                      style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+>>>>>>>
                       ),
                     ),
+<<<<<<<
                     const SizedBox(height: 10),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
@@ -115,6 +176,19 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                             padding: const EdgeInsets.symmetric(
                               vertical: 2,
                               horizontal: 8,
+=======
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: Row(
+                      children: [
+                        Row(
+                          children: [
+                            const Text(
+                                "37,500",
+                                style: kHeaderTextStyle2
+>>>>>>>
                             ),
                             // alignment: Alignment.center,
                             decoration: BoxDecoration(
