@@ -4,8 +4,9 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/response_model.dart';
 import 'package:http/http.dart' as http;
 
-Future<DataResponse> getMarkets() async {
-  Uri url = Uri.parse("${baseUrl}api/getmarket.php");
+Future<DataResponse> getDataFromServer({required String apiName}) async {
+  // Uri url = Uri.parse("${baseUrl}api/getmarket.php");
+  Uri url = Uri.parse("${baseUrl}api/$apiName.php");
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -19,9 +20,10 @@ Future<DataResponse> getMarkets() async {
     // If the server did not return a 200 OK response,
     // then throw an exception.
     throw Exception(
-        'Exception error: api_helper.dart - getMarkets(): Failed to load markets');
+        'Exception error: api_helper.dart - $apiName: Failed to load $apiName');
   }
 }
+
 
 Future<DataResponse> getProducts() async {
   Uri url = Uri.parse("${baseUrl}api/getproducts.php");
@@ -41,3 +43,4 @@ Future<DataResponse> getProducts() async {
         'Exception error: api_helper.dart - getProducts(): Failed to load markets');
   }
 }
+
