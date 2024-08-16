@@ -54,18 +54,15 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  SizedBox(width: 20,),
+                  SizedBox(
+                    width: 20,
+                  ),
                   AmazingListWidget(),
-                  SizedBox(width: 20,),
-                  AmazingListWidget(),
-                  SizedBox(width: 20,),
-                  AmazingListWidget(),
-                  SizedBox(width: 20,),
-                  AmazingListWidget(),
-                  SizedBox(width: 20,),
-                  AmazingListWidget(),
-                  SizedBox(width: 20,),
-                ],),
+                  SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -73,4 +70,3 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
     );
   }
 }
-
