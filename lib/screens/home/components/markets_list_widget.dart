@@ -13,13 +13,15 @@ class MarketListWidget extends StatefulWidget {
 
 class _MarketListWidgetState extends State<MarketListWidget> {
   List<MarketItemWidget> marketsWidgetList = [];
+  // List<Market> marketList = [];
   initMarkets() async {
-    await getMarkets().then((value) {
+    await getDataFromServer(apiName: "getmarkets").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
           Market market = Market.fromJSON(item);
+          // marketList.add(market);
           marketsWidgetList.add(
             MarketItemWidget(
               market: market,
@@ -30,7 +32,8 @@ class _MarketListWidgetState extends State<MarketListWidget> {
         print('run another status');
       }
     }).catchError((onError) {
-      print(onError);
+      throw Exception(
+          'Exception error: markets_list_widget.dart in getDataFromServer: $onError');
     });
     setState(() {});
   }
