@@ -1,6 +1,8 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
+import 'package:abd_shop/screens/home/components/category_list_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
@@ -26,12 +28,13 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
-
-  List<Widget> AmazingItem = [
-    AmazingItemWidget(
-      onPressed: () {},
-    ),
-  ];
+  //
+  // List<Widget> AmazingItem = [
+  //   AmazingItemWidget(
+  //     onPressed: () {},
+  //
+  //   ),
+  // ];
 
   search(BuildContext context) {
     Navigator.push(
@@ -669,11 +672,12 @@ class _HomeBodyState extends State<HomeBody> {
                     scrollDirection: Axis.horizontal,
                     children: [
                       Image.asset("assets/images/amazing_daily.png"),
-                      AmazingItemWidget(
-                        onPressed: () {
-                          supermarket(context);
-                        },
-                      ),
+                      AmazingListWidget(),
+                      // AmazingItemWidget(
+                      //   onPressed: () {
+                      //     supermarket(context);
+                      //   },
+                      // ),
                       SizedBox(
                         width: 10,
                       ),
@@ -721,6 +725,10 @@ class _HomeBodyState extends State<HomeBody> {
               height: 100,
             ),
             MarketListWidget(),
+            SizedBox(
+              height: 50,
+            ),
+            CategoryListWidget(),
           ],
         ),
       ),

@@ -1,13 +1,13 @@
+import 'package:abd_shop/models/amazing_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
 class AmazingItemWidget extends StatefulWidget {
-  AmazingItemWidget({
-    super.key,
-    this.onPressed,
-  });
+  AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
 
+  AmazingModel amazingModel;
   void Function()? onPressed;
 
   @override
@@ -28,7 +28,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
           ),
           // padding: const EdgeInsets.all(8),
           height: 300,
-          width: 180,
+          width: 200,
           child: Padding(
             padding: const EdgeInsets.only(top: 15),
             child: Column(
@@ -39,8 +39,8 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     SizedBox(
                       width: double.infinity,
                       height: 110,
-                      child: Image.asset(
-                        "assets/images/p1.png",
+                      child: Image.network(
+                        baseUrl + widget.amazingModel.img,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -81,16 +81,18 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child: const Text("پنیر لبنه می ماس",
+                      child:  Text(widget.amazingModel.name,
                           style: kHeaderTextStyle),
                     ),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child: const Text(
-                        "300 گرم",
-                        style: TextStyle(
-                          fontSize: 20,
-                          // fontWeight: FontWeight.bold,
+                      child:  Padding(padding:EdgeInsets.only(right: 10) ,
+                        child: Text(
+                          widget.amazingModel.info,
+                          style: TextStyle(
+                            fontSize: 20,
+                            // fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -101,7 +103,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         children: [
                           Row(
                             children: [
-                              const Text("37,500", style: kHeaderTextStyle2),
+                               Text( "widget.amazingModel.price", style: kHeaderTextStyle2),
                               const SizedBox(width: 6),
                               Image.asset(
                                 'assets/images/toman.png',
@@ -131,12 +133,15 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     const SizedBox(height: 5),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child: const Text(
-                        "50,000",
-                        style: TextStyle(
-                          decoration: TextDecoration.lineThrough,
-                          fontSize: 15,
-                          color: Colors.grey,
+                      child:  Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text(
+                          "widget.amazingModel.discount",
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            fontSize: 15,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
                     ),
