@@ -7,6 +7,7 @@ class Market {
   String name = "";
   String address = "";
   String img = "";
+  String info = "";
 
   // Constructor
   Market();
@@ -15,6 +16,7 @@ class Market {
   //This methods for give json object and create class and set value
   Market.fromJSON(Map<String, dynamic> json) {
     id = json["id"];
+    info = json["info"];
     name = json["name"];
     address = json["address"];
     img = (json["logo"] != null) ? json["logo"] : "images/market/0.png";

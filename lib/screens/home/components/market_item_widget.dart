@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class MarketItemWidget extends StatefulWidget {
   const MarketItemWidget({super.key, required this.market});
+
   final Market market;
 
   @override
@@ -85,14 +86,18 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
                           const PriceWidget(price: 8500)
                         ],
                       ),
-                      const Text(
-                        "ارسال رایگان برای خرید بالای 20 تومان",
-                        style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                      Row(children: [
+                        Text(
+                          widget.market.info,
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
+                        SizedBox(width: 5,),
+                        Image.asset('assets/images/toman.png',scale: 5,color: Colors.deepOrange,),
+                      ]),
                     ],
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:abd_shop/screens/category/all_page.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/amazing_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -54,11 +55,15 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
               child: Row(
                 children: [
                   SizedBox(width: 20,),
-                  AmazingItemWidget(),
-                  AmazingItemWidget(),
-                  AmazingItemWidget(),
-                  AmazingItemWidget(),
-                  AmazingItemWidget(),
+                  AmazingListWidget(),
+                  SizedBox(width: 20,),
+                  AmazingListWidget(),
+                  SizedBox(width: 20,),
+                  AmazingListWidget(),
+                  SizedBox(width: 20,),
+                  AmazingListWidget(),
+                  SizedBox(width: 20,),
+                  AmazingListWidget(),
                   SizedBox(width: 20,),
                 ],),
             ),
