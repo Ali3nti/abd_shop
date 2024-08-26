@@ -21,14 +21,14 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
       padding: EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
         onTap: widget.onPressed,
-        child: Container(
+        child: Container(margin: EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
           ),
           // padding: const EdgeInsets.all(8),
-          height: 300,
-          width: 200,
+          height: 350,
+          width: 250,
           child: Padding(
             padding: const EdgeInsets.only(top: 15),
             child: Column(
@@ -99,35 +99,37 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     const SizedBox(height: 10),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                               Text( "widget.amazingModel.price", style: kHeaderTextStyle2),
-                              const SizedBox(width: 6),
-                              Image.asset(
-                                'assets/images/toman.png',
-                                scale: 5.0,
+                      child: SizedBox(
+                        child: Wrap(
+                          children: [
+                            Row(
+                              children: [
+                                 Text( "widget.amazingModel.price", style: kHeaderTextStyle2),
+                                const SizedBox(width: 6),
+                                Image.asset(
+                                  'assets/images/toman.png',
+                                  scale: 5.0,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(width: 12),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 2,
+                                horizontal: 8,
                               ),
-                            ],
-                          ),
-                          const SizedBox(width: 12),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 2,
-                              horizontal: 8,
+                              // alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Text(
+                                "25 %",
+                                style: kHeaderTextStyle3,
+                              ),
                             ),
-                            // alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: const Text(
-                              "25 %",
-                              style: kHeaderTextStyle3,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 5),
