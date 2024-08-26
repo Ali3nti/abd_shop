@@ -97,24 +97,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 10,
-            ),
-            // AmazingItemWidget(),
             AmazingListWidget(),
-            SizedBox(
-              width: 10,
-            ),
-            // AmazingItemWidget(),
-            AmazingListWidget(),
-            SizedBox(
-              width: 10,
-            ),
-            // AmazingItemWidget(),
-            AmazingListWidget(),
-            SizedBox(
-              width: 10,
-            ),
             Padding(
               padding: EdgeInsets.only(top: 20, bottom: 20),
               child: InkWell(

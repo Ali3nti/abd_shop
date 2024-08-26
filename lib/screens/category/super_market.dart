@@ -61,61 +61,13 @@ class _SuperMarketState extends State<SuperMarket> {
             ),
             SizedBox(
               width: double.infinity,
-              height: 350,
+              height: 400,
               child: Stack(
                 children: [
                   Container(
                     color: kPrimaryColor,
                   ),
-                  ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Image.asset("assets/images/amazing_daily.png"),
-                      AmazingListWidget(),
-                      // AmazingItemWidget(
-                      //   onPressed: () {
-                      //     supermarket(context);
-                      //   },
-                      // ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 20, bottom: 20),
-                        child: InkWell(
-                          onTap: () {
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: CupertinoColors.white,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            height: 300,
-                            width: 180,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  size: 60,
-                                  CupertinoIcons.arrow_left_circle_fill,
-                                  color: Color.fromARGB(500, 255, 98, 0),
-                                ),
-                                Text(
-                                  "مشاهده همه",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Color.fromARGB(500, 255, 98, 0)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
+                  AmazingWidget(),
                 ],
               ),
             ),

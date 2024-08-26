@@ -7,6 +7,7 @@ import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:abd_shop/screens/slider_page/slider_page1.dart';
+import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -660,67 +661,7 @@ class _HomeBodyState extends State<HomeBody> {
             SizedBox(
               height: 50,
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 350,
-              child: Stack(
-                children: [
-                  Container(
-                    color: kPrimaryColor,
-                  ),
-                  ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Image.asset("assets/images/amazing_daily.png"),
-                      AmazingListWidget(),
-                      // AmazingItemWidget(
-                      //   onPressed: () {
-                      //     supermarket(context);
-                      //   },
-                      // ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 20, bottom: 20),
-                        child: InkWell(
-                          onTap: () {
-                            supermarket(context);
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: CupertinoColors.white,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            height: 300,
-                            width: 180,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  size: 60,
-                                  CupertinoIcons.arrow_left_circle_fill,
-                                  color: Color.fromARGB(500, 255, 98, 0),
-                                ),
-                                Text(
-                                  "مشاهده همه",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Color.fromARGB(500, 255, 98, 0)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            AmazingWidget(),
             SizedBox(
               height: 100,
             ),
