@@ -14,7 +14,7 @@ class CategoryItemWidget extends StatefulWidget {
 class _CategoryListState extends State<CategoryItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
         Image.network(baseUrl + widget.categoryModel.img),
         Text(
