@@ -28,7 +28,7 @@ class _DiscountItemWidgetState extends State<DiscountItemWidget> {
             borderRadius: BorderRadius.circular(8),
           ),
           // padding: const EdgeInsets.all(8),
-          height: 300,
+          height: 350,
           width: 250,
           child: Padding(
             padding: const EdgeInsets.only(top: 15),
@@ -105,7 +105,7 @@ class _DiscountItemWidgetState extends State<DiscountItemWidget> {
                           children: [
                             Row(
                               children: [
-                                 Text( widget.discountModel.price, style: kHeaderTextStyle2),
+                                 Text( widget.discountModel.price, style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
                                 Image.asset(
                                   'assets/images/toman.png',
@@ -142,7 +142,7 @@ class _DiscountItemWidgetState extends State<DiscountItemWidget> {
                           widget.discountModel.discount,
                           style: TextStyle(
                             decoration: TextDecoration.lineThrough,
-                            fontSize: 15,
+                            fontSize: 18,
                             color: Colors.grey,
                           ),
                         ),

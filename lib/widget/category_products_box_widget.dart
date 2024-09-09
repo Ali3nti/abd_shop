@@ -18,7 +18,7 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
       child: Container(
         margin: const EdgeInsets.only(top: 5),
         padding: const EdgeInsets.only(top: 30),
-        height: 400,
+        height: 450,
         color: Colors.orange.shade100,
         child: Column(
           children: [

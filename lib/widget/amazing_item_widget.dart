@@ -27,7 +27,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
             borderRadius: BorderRadius.circular(8),
           ),
           // padding: const EdgeInsets.all(8),
-          height: 300,
+          height: 350,
           width: 250,
           child: Padding(
             padding: const EdgeInsets.only(top: 15),
@@ -104,7 +104,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           children: [
                             Row(
                               children: [
-                                 Text( widget.amazingModel.cast, style: kHeaderTextStyle2),
+                                 Text( widget.amazingModel.cast, style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
                                 Image.asset(
                                   'assets/images/toman.png',
@@ -141,7 +141,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           widget.amazingModel.discount,
                           style: TextStyle(
                             decoration: TextDecoration.lineThrough,
-                            fontSize: 10,
+                            fontSize: 18,
                             color: Colors.grey,
                           ),
                         ),
