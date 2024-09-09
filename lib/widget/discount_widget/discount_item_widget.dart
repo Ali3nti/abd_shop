@@ -28,7 +28,7 @@ class _DiscountItemWidgetState extends State<DiscountItemWidget> {
             borderRadius: BorderRadius.circular(8),
           ),
           // padding: const EdgeInsets.all(8),
-          height: 350,
+          height: 300,
           width: 250,
           child: Padding(
             padding: const EdgeInsets.only(top: 15),
