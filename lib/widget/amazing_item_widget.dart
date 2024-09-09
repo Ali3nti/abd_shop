@@ -104,7 +104,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           children: [
                             Row(
                               children: [
-                                 Text( "widget.amazingModel.price", style: kHeaderTextStyle2),
+                                 Text( widget.amazingModel.cast, style: kHeaderTextStyle2),
                                 const SizedBox(width: 6),
                                 Image.asset(
                                   'assets/images/toman.png',
@@ -138,10 +138,10 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       child:  Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          "widget.amazingModel.discount",
+                          widget.amazingModel.discount,
                           style: TextStyle(
                             decoration: TextDecoration.lineThrough,
-                            fontSize: 15,
+                            fontSize: 10,
                             color: Colors.grey,
                           ),
                         ),

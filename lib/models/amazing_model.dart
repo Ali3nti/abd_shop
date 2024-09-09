@@ -4,8 +4,8 @@ class AmazingModel{
   String name = "" ;
   String img = "" ;
   String info = "" ;
-  int price = 0 ;
-  int discount = 0 ;
+  String cast = "" ;
+  String discount = "" ;
 
 
   AmazingModel();
@@ -14,7 +14,7 @@ class AmazingModel{
     id = json["id"];
     name = json["name"];
     info = json["info"];
-    price = json["price"];
+    cast = json["cast"];
     discount = json["discount"];
     img = (json["logo"] != null) ? json["logo"] : "images/market/0.png";
   }

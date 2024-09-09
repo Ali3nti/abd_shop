@@ -12,10 +12,10 @@ class DiscountItemWidget extends StatefulWidget {
   void Function()? onPressed;
 
   @override
-  State<DiscountItemWidget> createState() => _AmazingItemWidgetState();
+  State<DiscountItemWidget> createState() => _DiscountItemWidgetState();
 }
 
-class _AmazingItemWidgetState extends State<DiscountItemWidget> {
+class _DiscountItemWidgetState extends State<DiscountItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -105,7 +105,7 @@ class _AmazingItemWidgetState extends State<DiscountItemWidget> {
                           children: [
                             Row(
                               children: [
-                                 Text( "widget.amazingModel.price", style: kHeaderTextStyle2),
+                                 Text( widget.discountModel.price, style: kHeaderTextStyle2),
                                 const SizedBox(width: 6),
                                 Image.asset(
                                   'assets/images/toman.png',
@@ -139,7 +139,7 @@ class _AmazingItemWidgetState extends State<DiscountItemWidget> {
                       child:  Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          "widget.amazingModel.discount",
+                          widget.discountModel.discount,
                           style: TextStyle(
                             decoration: TextDecoration.lineThrough,
                             fontSize: 15,

@@ -4,9 +4,8 @@ class DiscountModel{
   String name = "" ;
   String img = "" ;
   String info = "" ;
-  int price = 0 ;
-  int discount
-  = 0 ;
+  String price = "" ;
+  String discount = "" ;
 
 
   DiscountModel();
