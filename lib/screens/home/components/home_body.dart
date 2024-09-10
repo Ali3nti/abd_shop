@@ -669,7 +669,7 @@ class _HomeBodyState extends State<HomeBody> {
             SizedBox(
               height: 50,
             ),
-            CategoryListWidget(),
+            // CategoryListWidget(),
           ],
         ),
       ),
