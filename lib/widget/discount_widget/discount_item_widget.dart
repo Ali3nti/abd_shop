@@ -108,8 +108,7 @@ class _DiscountItemWidgetState extends State<DiscountItemWidget> {
                                  Text( widget.discountModel.price, style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
                                 Image.asset(
-                                  'assets/images/toman.png',
-                                  scale: 5.0,
+                                  'assets/images/toman.png',width: 20,
                                 ),
                               ],
                             ),

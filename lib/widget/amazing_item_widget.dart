@@ -106,9 +106,8 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                               children: [
                                  Text( widget.amazingModel.cast, style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
-                                Image.asset(
+                                Image.asset(width: 20,
                                   'assets/images/toman.png',
-                                  scale: 5.0,
                                 ),
                               ],
                             ),

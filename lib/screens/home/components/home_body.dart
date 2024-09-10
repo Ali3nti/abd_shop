@@ -659,11 +659,11 @@ class _HomeBodyState extends State<HomeBody> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 20,
             ),
             AmazingWidget(),
             SizedBox(
-              height: 100,
+              height: 20,
             ),
             MarketListWidget(),
             SizedBox(
