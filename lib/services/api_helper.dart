@@ -24,7 +24,6 @@ Future<DataResponse> getDataFromServer({required String apiName}) async {
   }
 }
 
-
 Future<DataResponse> getProducts() async {
   Uri url = Uri.parse("${baseUrl}api/getproducts.php");
   Map<String, String> headers = {
