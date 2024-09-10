@@ -1,20 +1,21 @@
 import 'package:abd_shop/models/amazing_model.dart';
+import 'package:abd_shop/models/discount_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-class AmazingItemWidget extends StatefulWidget {
-  AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
+class DiscountItemWidget extends StatefulWidget {
+  DiscountItemWidget({super.key, this.onPressed, required this.discountModel});
 
-  AmazingModel amazingModel;
+  DiscountModel discountModel;
   void Function()? onPressed;
 
   @override
-  State<AmazingItemWidget> createState() => _AmazingItemWidgetState();
+  State<DiscountItemWidget> createState() => _DiscountItemWidgetState();
 }
 
-class _AmazingItemWidgetState extends State<AmazingItemWidget> {
+class _DiscountItemWidgetState extends State<DiscountItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,7 +41,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       width: double.infinity,
                       height: 110,
                       child: Image.network(
-                        baseUrl + widget.amazingModel.img,
+                        baseUrl + widget.discountModel.img,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -81,14 +82,14 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child:  Text(widget.amazingModel.name,
+                      child:  Text(widget.discountModel.name,
                           style: kHeaderTextStyle),
                     ),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
                       child:  Padding(padding:EdgeInsets.only(right: 10) ,
                         child: Text(
-                          widget.amazingModel.info,
+                          widget.discountModel.info,
                           style: TextStyle(
                             fontSize: 20,
                             // fontWeight: FontWeight.bold,
@@ -104,10 +105,10 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           children: [
                             Row(
                               children: [
-                                 Text( widget.amazingModel.cast, style: kHeaderTextStyle),
+                                 Text( widget.discountModel.price, style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
-                                Image.asset(width: 20,
-                                  'assets/images/toman.png',
+                                Image.asset(
+                                  'assets/images/toman.png',width: 20,
                                 ),
                               ],
                             ),
@@ -137,7 +138,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       child:  Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          widget.amazingModel.discount,
+                          widget.discountModel.discount,
                           style: TextStyle(
                             decoration: TextDecoration.lineThrough,
                             fontSize: 18,

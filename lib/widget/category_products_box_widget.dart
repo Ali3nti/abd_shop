@@ -1,6 +1,7 @@
 import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/amazing_item_widget.dart';
+import 'package:abd_shop/widget/discount_widget/discount_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategorProductyBox extends StatefulWidget {
@@ -17,7 +18,7 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
       child: Container(
         margin: const EdgeInsets.only(top: 5),
         padding: const EdgeInsets.only(top: 30),
-        height: 400,
+        height: 450,
         color: Colors.orange.shade100,
         child: Column(
           children: [
@@ -57,7 +58,7 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
                   SizedBox(
                     width: 20,
                   ),
-                  AmazingListWidget(),
+                  DiscountListWidget(),
                   SizedBox(
                     width: 20,
                   ),

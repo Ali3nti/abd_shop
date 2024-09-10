@@ -1,20 +1,20 @@
 
-class AmazingModel{
+class DiscountModel{
   int id = 0;
   String name = "" ;
   String img = "" ;
   String info = "" ;
-  String cast = "" ;
+  String price = "" ;
   String discount = "" ;
 
 
-  AmazingModel();
+  DiscountModel();
 
-  AmazingModel.fromJSON(Map<String, dynamic> json) {
+  DiscountModel.fromJSON(Map<String, dynamic> json) {
     id = json["id"];
     name = json["name"];
     info = json["info"];
-    cast = json["cast"];
+    price = json["price"];
     discount = json["discount"];
     img = (json["logo"] != null) ? json["logo"] : "images/market/0.png";
   }
