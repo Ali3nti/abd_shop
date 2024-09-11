@@ -18,7 +18,7 @@ class SliderListWidget extends StatefulWidget {
 }
 
 class _CategoryListWidgetState extends State<SliderListWidget> {
-  List<SliderListWidget> sliderWidgetList = [];
+  List<SliderItemWidget> sliderWidgetList = [];
 
   // List<Market> marketList = [];
   initMarkets() async {
