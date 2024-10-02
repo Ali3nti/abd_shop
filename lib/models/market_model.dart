@@ -1,4 +1,6 @@
 // create class and set name with UpperCamelCase
+import 'package:abd_shop/models/amazing_model.dart';
+
 class Market {
   // Properties
   int id = 0;
@@ -8,6 +10,7 @@ class Market {
   String address = "";
   String img = "";
   String info = "";
+  AmazingModel amazing = AmazingModel();
 
   // Constructor
   Market();

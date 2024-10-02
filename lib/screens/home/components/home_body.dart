@@ -1,4 +1,5 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
@@ -59,7 +60,9 @@ class _HomeBodyState extends State<HomeBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const SuperMarket(),
+        builder: (context) => SuperMarket(
+          market: Market(),
+        ),
       ),
     );
   }

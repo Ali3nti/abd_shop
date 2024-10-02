@@ -1,8 +1,11 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/market_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductSupermarketWidget extends StatefulWidget {
-  const ProductSupermarketWidget({super.key});
+  const ProductSupermarketWidget({super.key, required this.market});
+
+  final Market market;
 
   @override
   State<ProductSupermarketWidget> createState() => _ProductSupermarketState();
@@ -28,15 +31,16 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
             ),
             child: Image.asset(
               "assets/images/logo.png",
-              color:kPrimaryColor,
+              color: kPrimaryColor,
             ),
           ),
           const SizedBox(height: 15),
           Row(
             children: [
-              const Text(
-                " جت مارت | ونک ",
-                style: TextStyle(
+              Text(
+                // " جت مارت | ونک ",
+                widget.market.name,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -98,7 +102,7 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
               const Text(
                 "45  دقیقه  .  ",
                 style: TextStyle(
-                  color:kPrimaryTextColor ,
+                  color: kPrimaryTextColor,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
@@ -113,8 +117,7 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
               const Text(
                 "6,000 تومان",
                 style: TextStyle(
-
-                  color:kPrimaryTextColor ,
+                  color: kPrimaryTextColor,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
