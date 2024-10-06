@@ -1,4 +1,5 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
@@ -61,7 +62,7 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => SuperMarket(
-          market: Market(),
+          market: Market(), jetmartAmazingModel: JetMartAmazingModel(),
         ),
       ),
     );

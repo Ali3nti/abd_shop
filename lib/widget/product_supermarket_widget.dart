@@ -72,8 +72,8 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
                 color: Colors.yellow.shade700,
                 size: 18,
               ),
-              const Text(
-                "4.6   . ",
+               Text(
+                widget.market.rate.toString(),
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

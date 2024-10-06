@@ -1,3 +1,4 @@
+import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
@@ -12,9 +13,10 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 
 class SuperMarket extends StatefulWidget {
-  const SuperMarket({super.key, required this.market});
+  const SuperMarket({super.key, required this.market,required this.jetmartAmazingModel,});
 
   final Market market;
+  final JetMartAmazingModel jetmartAmazingModel;
 
   @override
   State<SuperMarket> createState() => _SuperMarketState();
@@ -108,6 +110,7 @@ class _SuperMarketState extends State<SuperMarket> {
             const SizedBox(height: 20),
             const CategorProductyBox(),
             const SizedBox(height: 20),
+            
           ],),
       ),
     );
