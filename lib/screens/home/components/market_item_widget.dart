@@ -1,4 +1,5 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/widget/price_widget.dart';
@@ -28,7 +29,7 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SuperMarket(
+                builder: (context) => SuperMarket(jetmartAmazingModel: JetMartAmazingModel(),
                   market: widget.market,
                 ),
               ));
