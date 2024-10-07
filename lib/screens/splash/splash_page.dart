@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:abd_shop/screens/home/home_page.dart';
+import 'package:abd_shop/screens/login/log_in.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class SplashPage extends StatelessWidget {
                 return Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => LogIn(),
                   ),
                 );
               } else {
