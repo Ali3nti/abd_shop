@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/amazing_item_widget.dart';
@@ -19,7 +20,7 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
         margin: const EdgeInsets.only(top: 5),
         padding: const EdgeInsets.only(top: 30),
         height: 450,
-        color: Colors.orange.shade100,
+        color: kPrimaryColor,
         child: Column(
           children: [
             Row(
