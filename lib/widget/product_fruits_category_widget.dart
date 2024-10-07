@@ -12,15 +12,15 @@ class _ProductFruitsCategoryWidgetState extends State<ProductFruitsCategoryWidge
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      //color: Colors.white,
       height: 110,
       child: Row(
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 15),
             child: CircleAvatar(
-              backgroundColor: Colors.grey.shade50,
-              radius: 40,
+              backgroundColor: Colors.white,
+              radius: 30,
               child: Image.asset("assets/images/hyper fruit.webp"),
             ),
           ),
