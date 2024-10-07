@@ -32,7 +32,11 @@ class _CategoryListWidgetState extends State<SliderListWidget> {
           sliderWidgetList.add(
             SliderItemWidget(
               sliderModel: sliderModel,
+<<<<<<< Updated upstream
             ),
+=======
+            ) as SliderListWidget,
+>>>>>>> Stashed changes
           );
         }
       } else {
