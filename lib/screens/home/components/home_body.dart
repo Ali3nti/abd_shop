@@ -1,4 +1,5 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
@@ -20,6 +21,7 @@ import '../../location/location_page.dart';
 import '../../profile/invite_page.dart';
 import '../../search/search_page.dart';
 import '../../../widget/amazing_item_widget.dart';
+import 'category_itemt_widget.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -31,6 +33,7 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
+
   //
   // List<Widget> AmazingItem = [
   //   AmazingItemWidget(
@@ -62,7 +65,8 @@ class _HomeBodyState extends State<HomeBody> {
       context,
       MaterialPageRoute(
         builder: (context) => SuperMarket(
-          market: Market(), jetmartAmazingModel: JetMartAmazingModel(),
+          market: Market(),
+          jetmartAmazingModel: JetMartAmazingModel(),
         ),
       ),
     );
@@ -195,6 +199,10 @@ class _HomeBodyState extends State<HomeBody> {
             SizedBox(
               height: 50,
             ),
+            // CategoryListWidget(),     //   The following committed code belongs to the Online category...!!!!!! //
+            SizedBox(
+              height: 40,
+            ),
             SizedBox(
               height: 150,
               child: ListView(
@@ -261,7 +269,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
                 scrollDirection: Axis.horizontal,
               ),
-            ),
+            ),     //   The following committed code belongs to the old category...!!!!!! //
             SizedBox(
               width: double.infinity,
               height: 150,
@@ -673,7 +681,10 @@ class _HomeBodyState extends State<HomeBody> {
             SizedBox(
               height: 50,
             ),
-            // CategoryListWidget(),
+
+            SizedBox(
+              height: 100,
+            )
           ],
         ),
       ),
