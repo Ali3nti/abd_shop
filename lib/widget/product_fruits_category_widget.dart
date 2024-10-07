@@ -108,7 +108,7 @@ class _ProductFruitsCategoryWidgetState extends State<ProductFruitsCategoryWidge
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade50,
+                      //color: Colors.grey.shade50,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Column(
