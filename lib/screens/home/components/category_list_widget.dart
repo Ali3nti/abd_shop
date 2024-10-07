@@ -47,8 +47,10 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: categoryWidgetList,
+    return Container(
+      child: Row(
+        children: categoryWidgetList,
+      ),
     );
   }
 }
