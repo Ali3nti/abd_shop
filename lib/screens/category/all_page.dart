@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AllPage extends StatefulWidget {
   const AllPage({super.key});
@@ -10,18 +8,12 @@ class AllPage extends StatefulWidget {
 }
 
 class _AllPageState extends State<AllPage> {
-@override
+  @override
   Widget build(BuildContext context) {
     return const Scaffold(
-     body: Center(
-       child: Text("All Page"),
-     ),
+      body: Center(
+        child: Text("All Page"),
+      ),
     );
   }
 }
-
-
-
-
-
-
