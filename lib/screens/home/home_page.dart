@@ -66,26 +66,31 @@ class _HomePageState extends State<HomePage> {
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            content: Text("آیا میخواهید از برنامه خارج شوید؟"),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  SystemNavigator.pop();
-                },
-                child: Text("بله"),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("خیر"),
-              ),
-            ],
-          ),
-        );
+        if (currentIndex == 0) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              content: Text("آیا میخواهید از برنامه خارج شوید؟"),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    SystemNavigator.pop();
+                  },
+                  child: Text("بله"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("خیر"),
+                ),
+              ],
+            ),
+          );
+        } else {
+          currentIndex = 0;
+          setState(() {});
+        }
       },
       child: Scaffold(
         body: screens[currentIndex],
