@@ -1,10 +1,10 @@
-import 'package:abd_shop/screens/cart/continue_cart_page.dart';
+import 'package:abd_shop/screens/cart/continue_cart_page.dart'; //TODO: What is this?!
 import 'package:abd_shop/widget/cart_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart'; //TODO: What is this?!
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/painting.dart'; //TODO: What is this?!
+import 'package:flutter/rendering.dart'; //TODO: What is this?!
+import 'package:flutter/widgets.dart'; //TODO: What is this?!
 
 import '../../constants.dart';
 
@@ -31,14 +31,15 @@ class _CartBodyState extends State<CartBody> {
       ),
       body: const SingleChildScrollView(
         child: Column(
-            children: [
-              CartWidget(),
-              CartWidget(),
-              CartWidget(),
-              CartWidget(),
-              CartWidget(),
-              CartWidget(),
-            ],),
+          children: [
+            CartWidget(),
+            CartWidget(),
+            CartWidget(),
+            CartWidget(),
+            CartWidget(),
+            CartWidget(),
+          ],
+        ),
       ),
     );
   }

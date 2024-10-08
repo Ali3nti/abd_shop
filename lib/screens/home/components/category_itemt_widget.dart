@@ -4,7 +4,10 @@ import 'package:abd_shop/screens/home/category_page.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItemWidget extends StatefulWidget {
-  CategoryItemWidget({super.key, required this.categoryModel});
+  const CategoryItemWidget({
+    super.key,
+    required this.categoryModel,
+  });
 
   final CategoryModel categoryModel;
 

@@ -10,7 +10,7 @@ class ItemCategoryPage extends StatefulWidget {
 class _ItemCategoryPageState extends State<ItemCategoryPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text("item category page"),
       ),

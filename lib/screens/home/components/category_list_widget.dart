@@ -1,6 +1,6 @@
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/home/components/category_itemt_widget.dart';
+import 'package:abd_shop/screens/home/components/category_itemt_widget.dart'; //TODO: What is this?!
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,8 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
-          CategoryModel categoryitem = CategoryModel.fromJSON(item);
+          CategoryModel categoryitem =
+              CategoryModel.fromJSON(item); //TODO: Use CamelCase
           // marketList.add(market);
           categoryWidgetList.add(
             CategoryItemWidget(
@@ -48,6 +49,7 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //TODO: Why using this widget?
       child: Row(
         children: categoryWidgetList,
       ),

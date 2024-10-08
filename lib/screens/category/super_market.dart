@@ -1,22 +1,25 @@
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
-import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
-import 'package:abd_shop/widget/categor_supermarket_widget.dart';
+import 'package:abd_shop/widget/category_supermarket_widget.dart';
 import 'package:abd_shop/widget/category_products_box_widget.dart';
-import 'package:abd_shop/widget/outlinedbutton_widget.dart';
+import 'package:abd_shop/widget/outlined_button_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/widget/product_supermarket_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart'; //TODO: What is this?!
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../constants.dart'; //TODO: Use full name
 
 class SuperMarket extends StatefulWidget {
-  const SuperMarket({super.key, required this.market,required this.jetmartAmazingModel,});
+  const SuperMarket({
+    super.key,
+    required this.market,
+    required this.jetmartAmazingModel,
+  });
 
   final Market market;
-  final JetMartAmazingModel jetmartAmazingModel;
+  final JetMartAmazingModel jetmartAmazingModel; //TODO: Use CamelCase
 
   @override
   State<SuperMarket> createState() => _SuperMarketState();
@@ -25,14 +28,16 @@ class SuperMarket extends StatefulWidget {
 class _SuperMarketState extends State<SuperMarket> {
   @override
   Widget build(BuildContext context) {
-    var large;
+    var large; //TODO: What is this?!
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       body: SingleChildScrollView(
         child: Column(
           children: [
             const MyAppBar(),
-            ProductSupermarketWidget(market: widget.market,),
+            ProductSupermarketWidget(
+              market: widget.market,
+            ),
             Container(
               width: double.infinity,
               height: 50,
@@ -41,13 +46,15 @@ class _SuperMarketState extends State<SuperMarket> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                     SizedBox(width: 10),
+                    SizedBox(
+                        width:
+                            10), //TODO: Why using this?! use padding or margin
                     OutLinedButtonWidget(),
-                     SizedBox(width: 5),
+                    SizedBox(width: 5),
                     OutLinedButtonWidget(),
-                     SizedBox(width: 5),
+                    SizedBox(width: 5),
                     OutLinedButtonWidget(),
-                     SizedBox(width: 5),
+                    SizedBox(width: 5),
                     OutLinedButtonWidget(),
                     SizedBox(width: 5),
                     OutLinedButtonWidget(),
@@ -72,7 +79,7 @@ class _SuperMarketState extends State<SuperMarket> {
                   Container(
                     color: kPrimaryColor,
                   ),
-                  AmazingWidget(),
+                  const AmazingWidget(),
                 ],
               ),
             ),
@@ -99,19 +106,21 @@ class _SuperMarketState extends State<SuperMarket> {
                 ),
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             const CategorProductyBox(),
             const SizedBox(height: 20),
             const CategorProductyBox(),
             const SizedBox(height: 20),
-          const CategorProductyBox(),
-            const SizedBox(height: 20),
-      const CategorProductyBox(),
+            const CategorProductyBox(),
             const SizedBox(height: 20),
             const CategorProductyBox(),
             const SizedBox(height: 20),
-            
-          ],),
+            const CategorProductyBox(),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }

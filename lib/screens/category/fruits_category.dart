@@ -1,9 +1,7 @@
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
 import 'package:abd_shop/widget/product_fruits_category_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class FruitsCategory extends StatefulWidget {
   const FruitsCategory({super.key});
@@ -24,26 +22,27 @@ class FruitsCategory extends StatefulWidget {
 class _SuperMarketState extends State<FruitsCategory> {
   @override
   Widget build(BuildContext context) {
-    var market;
+    var market; //TODO: What is this?!
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: const MyAppBar(),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 50),
+            SizedBox(height: 50),
             ProductFruitsCategoryWidget(),
-            const SizedBox(height: 3),
+            SizedBox(height: 3),
             ProductFruitsCategoryWidget(),
-            const SizedBox(height: 3),
+            SizedBox(height: 3),
             ProductFruitsCategoryWidget(),
-            const SizedBox(height: 3),
+            SizedBox(height: 3),
             ProductFruitsCategoryWidget(),
-            const SizedBox(height: 3),
+            SizedBox(height: 3),
             ProductFruitsCategoryWidget(),
-            const SizedBox(height: 3),
+            SizedBox(height: 3),
             ProductFruitsCategoryWidget(),
-          ],),
+          ],
+        ),
       ),
     );
   }

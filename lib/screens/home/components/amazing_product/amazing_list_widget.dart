@@ -1,7 +1,5 @@
 import 'package:abd_shop/models/amazing_model.dart';
-import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/home/components/category_itemt_widget.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/amazing_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +12,7 @@ class AmazingListWidget extends StatefulWidget {
 }
 
 class _CategoryListWidgetState extends State<AmazingListWidget> {
-  List<AmazingItemWidget>  amazingWidgetList = [];
+  List<AmazingItemWidget> amazingWidgetList = [];
 
   // List<Market> marketList = [];
   initMarkets() async {
@@ -27,7 +25,7 @@ class _CategoryListWidgetState extends State<AmazingListWidget> {
           // marketList.add(market);
           amazingWidgetList.add(
             AmazingItemWidget(
-             amazingModel: amazingModel,
+              amazingModel: amazingModel,
             ),
           );
         }

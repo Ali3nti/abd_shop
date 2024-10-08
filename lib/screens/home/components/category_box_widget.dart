@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CategoryBox extends StatelessWidget {
-  CategoryBox(
-      {super.key, required this.img, required this.categorytext, this.onTap});
+  CategoryBox({
+    super.key,
+    required this.img,
+    required this.categorytext,
+    this.onTap,
+  });
 
-  String img;
-  Text categorytext;
-  void Function()?onTap;
+  String img; //TODO: not changed, add final
+  Text categorytext; //TODO: Use CamelCase //TODO: not changed, add final
+  void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

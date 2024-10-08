@@ -2,7 +2,7 @@ import 'package:abd_shop/screens/category/item_category_page.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:flutter/material.dart';
 
-class Categor_SuperMarket extends StatefulWidget {
+class Categor_SuperMarket extends StatefulWidget {  //TODO: What?!?!?!?!?!?!?!
   const Categor_SuperMarket({super.key});
 
   @override
