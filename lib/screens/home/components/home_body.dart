@@ -1,11 +1,9 @@
 import 'package:abd_shop/constants.dart';
-import 'package:abd_shop/models/category_model.dart'; //TODO: What is this?!
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
+import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
-import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart'; //TODO: What is this?!
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
-import 'package:abd_shop/screens/home/components/category_list_widget.dart'; //TODO: What is this?!
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
@@ -13,15 +11,10 @@ import 'package:abd_shop/screens/slider_page/slider_page1.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart'; //TODO: What is this?!
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../widget/product_widget.dart'; //TODO: What is this?!
-import '../../category/fruits_category.dart'; //TODO: Use full name
 import '../../location/location_page.dart';
 import '../../profile/invite_page.dart';
 import '../../search/search_page.dart';
-import '../../../widget/amazing_item_widget.dart'; //TODO: What is this?!
-import 'category_itemt_widget.dart'; //TODO: What is this?!
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -66,13 +59,13 @@ class _HomeBodyState extends State<HomeBody> {
       MaterialPageRoute(
         builder: (context) => SuperMarket(
           market: Market(),
-          jetmartAmazingModel: JetMartAmazingModel(),
+          jetMartAmazingModel: JetMartAmazingModel(),
         ),
       ),
     );
   }
 
-  fruitscategory(BuildContext context) { //TODO: Use CamelCase
+  fruitsCategory(BuildContext context) { //TODO: Use CamelCase
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -103,7 +96,7 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CupertinoColors.white,
-      appBar: MyAppBar(), //TODO: Use const
+      appBar: const MyAppBar(), //TODO: Use const
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -114,12 +107,12 @@ class _HomeBodyState extends State<HomeBody> {
               padding: const EdgeInsets.all(15),
               child: Row(
                 children: [
-                  Icon( //TODO: Use const
+                  const Icon( //TODO: Use const
                     Icons.location_on_outlined,
                     color: kPrimaryColor,
                     size: 35,
                   ),
-                  Column(
+                  const Column(
                     children: [
                       Padding(
                         padding: EdgeInsets.only(left: 80),
@@ -208,7 +201,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: ListView(
                 children: [
                   CategoryBox(
-                    categorytext: Text(
+                    categoryText: Text(
                       "سوپرمارکت",
                       style: kPrimaryTextStyle,
                     ),
@@ -219,28 +212,28 @@ class _HomeBodyState extends State<HomeBody> {
                   ),
                   InkWell(
                     onTap: () {
-                      fruitscategory(context);
+                      fruitsCategory(context);
                     },
                     child: CategoryBox(
-                      categorytext: Text(
+                      categoryText: Text(
                         "پروتئینی",
                         style: kPrimaryTextStyle,
                       ),
                       img: "assets/images/protein-desktop.png",
                       onTap: () {
-                        fruitscategory(context);
+                        fruitsCategory(context);
                       },
                     ),
                   ),
                   CategoryBox(
-                    categorytext: Text(
+                    categoryText: Text(
                       "لبنیات",
                       style: kPrimaryTextStyle,
                     ),
                     img: "assets/images/dairy-desktop.png",
                   ),
                   CategoryBox(
-                    categorytext: Text(
+                    categoryText: Text(
                       "میوه و سبزیجات",
                       style: kPrimaryTextStyle,
                     ),
@@ -250,7 +243,7 @@ class _HomeBodyState extends State<HomeBody> {
                     width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text(
+                    categoryText: Text(
                       "آبمیوه و بستنی",
                       style: kPrimaryTextStyle,
                     ),
@@ -260,7 +253,7 @@ class _HomeBodyState extends State<HomeBody> {
                     width: 7,
                   ),
                   CategoryBox(
-                    categorytext: Text(
+                    categoryText: Text(
                       "نانوایی",
                       style: kPrimaryTextStyle,
                     ),

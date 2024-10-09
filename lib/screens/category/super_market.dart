@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
@@ -6,20 +7,19 @@ import 'package:abd_shop/widget/category_products_box_widget.dart';
 import 'package:abd_shop/widget/outlined_button_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/widget/product_supermarket_widget.dart';
-import 'package:flutter/cupertino.dart'; //TODO: What is this?!
 import 'package:flutter/material.dart';
 
-import '../../constants.dart'; //TODO: Use full name
+
 
 class SuperMarket extends StatefulWidget {
   const SuperMarket({
     super.key,
     required this.market,
-    required this.jetmartAmazingModel,
+    required this.jetMartAmazingModel,
   });
 
   final Market market;
-  final JetMartAmazingModel jetmartAmazingModel; //TODO: Use CamelCase
+  final JetMartAmazingModel jetMartAmazingModel; //TODO: Use CamelCase
 
   @override
   State<SuperMarket> createState() => _SuperMarketState();

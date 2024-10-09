@@ -21,12 +21,12 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
-          CategoryModel categoryitem =
+          CategoryModel categoryItem =
               CategoryModel.fromJSON(item); //TODO: Use CamelCase
           // marketList.add(market);
           categoryWidgetList.add(
             CategoryItemWidget(
-              categoryModel: categoryitem,
+              categoryModel: categoryItem,
             ),
           );
         }
@@ -48,11 +48,8 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //TODO: Why using this widget?
-      child: Row(
-        children: categoryWidgetList,
-      ),
+    return Row(
+      children: categoryWidgetList,
     );
   }
 }
