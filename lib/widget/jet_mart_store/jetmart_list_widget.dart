@@ -2,7 +2,7 @@ import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/home/components/category_itemt_widget.dart';
+import 'package:abd_shop/screens/home/components/category_item_widget.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/amazing_item_widget.dart';
 import 'package:abd_shop/widget/jet_mart_store/jetmart_item_widget.dart';

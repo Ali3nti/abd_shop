@@ -1,6 +1,6 @@
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/home/components/category_itemt_widget.dart'; //TODO: What is this?!
+import 'package:abd_shop/screens/home/components/category_item_widget.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
 
