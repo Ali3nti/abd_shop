@@ -22,7 +22,7 @@ class _Categor_SuperMarketState extends State<Categor_SuperMarket> {
         );
       },
       child: CategoryBox(
-        categorytext: const Text("لبنیات و بستنی"),
+        categoryText: const Text("لبنیات و بستنی"),
         img: "assets/images/Market.png",
       ),
     );

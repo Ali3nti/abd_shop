@@ -29,7 +29,7 @@ class _MarketItemWidgetState extends State<MarketItemWidget> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SuperMarket(jetmartAmazingModel: JetMartAmazingModel(),
+                builder: (context) => SuperMarket(jetMartAmazingModel: JetMartAmazingModel(),
                   market: widget.market,
                 ),
               ));
