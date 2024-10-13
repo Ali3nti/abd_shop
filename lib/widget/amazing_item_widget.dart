@@ -1,8 +1,10 @@
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/amazing_model.dart';
+import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
 
 class AmazingItemWidget extends StatefulWidget {
   AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
@@ -15,6 +17,7 @@ class AmazingItemWidget extends StatefulWidget {
 }
 
 class _AmazingItemWidgetState extends State<AmazingItemWidget> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,6 +51,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FloatingActionButton.extended(
                         heroTag: "button",
+                        //TODO: Create "Add to cart" function
                         onPressed: () {},
                         //TODO: Create "Add to cart" function
                         backgroundColor: Colors.orange.shade900,

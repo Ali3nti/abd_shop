@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:abd_shop/screens/splash/splash_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async{
+WidgetsFlutterBinding.ensureInitialized();
+final directory = await getApplicationDocumentsDirectory();
+Hive.init(directory.path);
   runApp(const MyApp());
+}
+
+getApplicationDocumentsDirectory() {
 }
 
 class MyApp extends StatelessWidget {
