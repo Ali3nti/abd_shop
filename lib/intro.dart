@@ -23,9 +23,11 @@ class _IntroState extends State<Intro> {
 
   _checkFirstLaunch() async {
     var box = await Hive.openBox('settings');
-    bool? isFirstLaunch = box.get('isFirstLaunch', defaultValue: true);  //TODO: این جا هم اشتباهه احتمالا
+    bool? isFirstLaunch = box.get('isFirstLaunch',
+        defaultValue: true); //TODO: این جا هم اشتباهه احتمالا
 
-    if (isFirstLaunch = false ) {  //TODO: فکر کنم این خط کد رو اشتباه نوشتم
+    if (isFirstLaunch = false) {
+      //TODO: فکر کنم این خط کد رو اشتباه نوشتم
       box.put('isFirstLaunch', false);
       setState(() {
         isFirstLaunch = true;
@@ -72,7 +74,7 @@ class _IntroState extends State<Intro> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 650, right: 160),
+                  padding: EdgeInsets.only(top: 550, right: 160),
                   child: SmoothPageIndicator(
                     controller: pageController,
                     count: 3,
@@ -87,7 +89,7 @@ class _IntroState extends State<Intro> {
             )
           : HomePage(),
       bottomSheet: _currentPage == 2
-          ? ElevatedButton(
+          ? TextButton(
               onPressed: () {
                 // Navigate to the main screen
                 Navigator.pushReplacement(
@@ -95,7 +97,11 @@ class _IntroState extends State<Intro> {
                   MaterialPageRoute(builder: (context) => HomePage()),
                 );
               },
-              child: Text("      شروع      "),
+              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("شروع",style: TextStyle(fontSize: 20),),
+                ],
+              ),
             )
           : SizedBox.shrink(),
     );
