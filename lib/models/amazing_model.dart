@@ -1,6 +1,7 @@
 
 class AmazingModel{
   int id = 0;
+  int cartCount = 0;
   String name = "" ;
   String img = "" ;
   String info = "" ;

@@ -1,3 +1,4 @@
+import 'package:abd_shop/models/amazing_model.dart';
 import 'package:flutter/material.dart';
 
 class CartUpdater extends ChangeNotifier {
