@@ -4,14 +4,13 @@ import 'package:abd_shop/screens/splash/splash_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async{
-WidgetsFlutterBinding.ensureInitialized();
-final directory = await getApplicationDocumentsDirectory();
-Hive.init(directory.path);
+// WidgetsFlutterBinding.ensureInitialized();
+// final directory = await getApplicationDocumentsDirectory();
+// Hive.init(directory.path);
   runApp(const MyApp());
 }
 
-getApplicationDocumentsDirectory() {
-}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
