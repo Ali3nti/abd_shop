@@ -21,12 +21,12 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
-          CategoryModel categoryItem =
-              CategoryModel.fromJSON(item); //TODO: Use CamelCase
+          CategoryModel CategoryItem =
+              CategoryModel.fromJSON(item);
           // marketList.add(market);
           categoryWidgetList.add(
             CategoryItemWidget(
-              categoryModel: categoryItem,
+              categoryModel: CategoryItem,
             ),
           );
         }

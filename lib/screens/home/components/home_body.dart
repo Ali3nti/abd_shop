@@ -96,18 +96,18 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CupertinoColors.white,
-      appBar: const MyAppBar(), //TODO: Use const
+      appBar: const MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox( //TODO: Use const
+            const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(15),
               child: Row(
                 children: [
-                  const Icon( //TODO: Use const
+                  const Icon(
                     Icons.location_on_outlined,
                     color: kPrimaryColor,
                     size: 35,
@@ -189,11 +189,11 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             // CategoryListWidget(),     //   The following committed code belongs to the Online category...!!!!!! //
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             SizedBox(
@@ -201,7 +201,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: ListView(
                 children: [
                   CategoryBox(
-                    categoryText: Text(
+                    CategoryText: const Text(
                       "سوپرمارکت",
                       style: kPrimaryTextStyle,
                     ),
@@ -215,7 +215,7 @@ class _HomeBodyState extends State<HomeBody> {
                       fruitsCategory(context);
                     },
                     child: CategoryBox(
-                      categoryText: Text(
+                      CategoryText: const Text(
                         "پروتئینی",
                         style: kPrimaryTextStyle,
                       ),
@@ -226,34 +226,34 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                   ),
                   CategoryBox(
-                    categoryText: Text(
+                    CategoryText: const Text(
                       "لبنیات",
                       style: kPrimaryTextStyle,
                     ),
                     img: "assets/images/dairy-desktop.png",
                   ),
                   CategoryBox(
-                    categoryText: Text(
+                    CategoryText: const Text(
                       "میوه و سبزیجات",
                       style: kPrimaryTextStyle,
                     ),
                     img: "assets/images/fruit-desktop.png",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 7,
                   ),
                   CategoryBox(
-                    categoryText: Text(
+                    CategoryText: const Text(
                       "آبمیوه و بستنی",
                       style: kPrimaryTextStyle,
                     ),
                     img: "assets/images/icecream-desktop.png",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 7,
                   ),
                   CategoryBox(
-                    categoryText: Text(
+                    CategoryText: const Text(
                       "نانوایی",
                       style: kPrimaryTextStyle,
                     ),
@@ -279,8 +279,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool1.png",
-                                detailtext: Text("مغز ران مرغ - یک کیلوگرم"),
-                                pricetext: Text("50,000"),
+                                detailtext: const Text("مغز ران مرغ - یک کیلوگرم"),
+                                pricetext: const Text("50,000"),
                               );
                             },
                           );
@@ -297,7 +297,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool",
@@ -308,7 +308,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       shape: const CircleBorder(
                                         eccentricity: 0,
                                       ),
-                                      label: Icon(
+                                      label: const Icon(
                                         Icons.add,
                                         size: 20,
                                       ),
@@ -320,8 +320,8 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70,000"),
-                                    SizedBox(
+                                    const Text("70,000"),
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.asset(
@@ -343,9 +343,9 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool2.png",
-                                detailtext: Text(
+                                detailtext: const Text(
                                     "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("50,000"),
+                                pricetext: const Text("50,000"),
                               );
                             },
                           );
@@ -362,7 +362,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool1",
@@ -373,7 +373,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       shape: const CircleBorder(
                                         eccentricity: 0,
                                       ),
-                                      label: Icon(
+                                      label: const Icon(
                                         Icons.add,
                                         size: 20,
                                       ),
@@ -385,8 +385,8 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70,000"),
-                                    SizedBox(
+                                    const Text("70,000"),
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.asset(
@@ -408,8 +408,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool3.png",
-                                detailtext: Text("تخم مرغ مروارید - 6 عدد"),
-                                pricetext: Text("50,000"),
+                                detailtext: const Text("تخم مرغ مروارید - 6 عدد"),
+                                pricetext: const Text("50,000"),
                               );
                             },
                           );
@@ -426,7 +426,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool3",
@@ -437,7 +437,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       shape: const CircleBorder(
                                         eccentricity: 0,
                                       ),
-                                      label: Icon(
+                                      label: const Icon(
                                         Icons.add,
                                         size: 20,
                                       ),
@@ -449,8 +449,8 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("80,000"),
-                                    SizedBox(
+                                    const Text("80,000"),
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.asset(
@@ -473,8 +473,8 @@ class _HomeBodyState extends State<HomeBody> {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool4.png",
                                 detailtext:
-                                    Text("ماءالشعیر کلاسیک بهنوش - یک لیتر"),
-                                pricetext: Text("50,000"),
+                                    const Text("ماءالشعیر کلاسیک بهنوش - یک لیتر"),
+                                pricetext: const Text("50,000"),
                               );
                             },
                           );
@@ -491,7 +491,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool4",
@@ -502,7 +502,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       shape: const CircleBorder(
                                         eccentricity: 0,
                                       ),
-                                      label: Icon(
+                                      label: const Icon(
                                         Icons.add,
                                         size: 20,
                                       ),
@@ -514,8 +514,8 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("44,000"),
-                                    SizedBox(
+                                    const Text("44,000"),
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.asset(
@@ -537,8 +537,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool5.png",
-                                detailtext: Text("نوشابه اسپرایت "),
-                                pricetext: Text("50,000"),
+                                detailtext: const Text("نوشابه اسپرایت "),
+                                pricetext: const Text("50,000"),
                               );
                             },
                           );
@@ -555,7 +555,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool5",
@@ -566,7 +566,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       shape: const CircleBorder(
                                         eccentricity: 0,
                                       ),
-                                      label: Icon(
+                                      label: const Icon(
                                         Icons.add,
                                         size: 20,
                                       ),
@@ -578,8 +578,8 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("70,000"),
-                                    SizedBox(
+                                    const Text("70,000"),
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.asset(
@@ -602,8 +602,8 @@ class _HomeBodyState extends State<HomeBody> {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool6.png",
                                 detailtext:
-                                    Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
-                                pricetext: Text("50,000"),
+                                    const Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
+                                pricetext: const Text("50,000"),
                               );
                             },
                           );
@@ -620,7 +620,7 @@ class _HomeBodyState extends State<HomeBody> {
                                     width: 100,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
                                     child: FloatingActionButton.extended(
                                       heroTag: "mahsool6",
@@ -631,7 +631,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       shape: const CircleBorder(
                                         eccentricity: 0,
                                       ),
-                                      label: Icon(
+                                      label: const Icon(
                                         Icons.add,
                                         size: 20,
                                       ),
@@ -643,8 +643,8 @@ class _HomeBodyState extends State<HomeBody> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("87,000"),
-                                    SizedBox(
+                                    const Text("87,000"),
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.asset(
@@ -663,19 +663,19 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            AmazingWidget(),
-            SizedBox(
+            const AmazingWidget(),
+            const SizedBox(
               height: 20,
             ),
-            MarketListWidget(),
-            SizedBox(
+            const MarketListWidget(),
+            const SizedBox(
               height: 50,
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 100,
             )
           ],
