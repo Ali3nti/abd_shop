@@ -1,7 +1,5 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/category/all_page.dart';
-import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
-import 'package:abd_shop/widget/amazing_item_widget.dart';
 import 'package:abd_shop/widget/discount_widget/discount_list_widget.dart';
 import 'package:flutter/material.dart';
 

@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+
+class CartUpdater extends ChangeNotifier {
+  int counterValue;
+  CartUpdater({
+    this.counterValue = 0,
+  });
+  void incrementNumber() {
+    counterValue++;
+    notifyListeners(); 
+  }
+
+  void decrementNumber() {
+    counterValue--;
+    notifyListeners();
+  }
+
+  void removeNumber(String value) {
+    counterValue = value as int;
+    notifyListeners();
+  }
+}
