@@ -4,12 +4,12 @@ class CategoryBox extends StatelessWidget {
   CategoryBox({
     super.key,
     required this.img,
-    required this.categoryText,
+    required this.CategoryText,
     this.onTap,
   });
 
-  String img; //TODO: not changed, add final
-  Text categoryText; //TODO: Use CamelCase //TODO: not changed, add final
+  final String img;
+  final Text CategoryText;
   void Function()? onTap;
 
   @override
@@ -23,7 +23,7 @@ class CategoryBox extends StatelessWidget {
             img,
             width: 70,
           ),
-          categoryText,
+          CategoryText,
         ],
       ),
     );
