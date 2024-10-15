@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants.dart';
 
 class AmazingItemWidget extends StatefulWidget {
   AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
@@ -18,6 +17,7 @@ class AmazingItemWidget extends StatefulWidget {
 }
 
 class _AmazingItemWidgetState extends State<AmazingItemWidget> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,6 +52,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FloatingActionButton.extended(
                         heroTag: "button",
+                        //TODO: Create "Add to cart" function
                         onPressed: () {},
 
                         //TODO: Create "Add to cart" function

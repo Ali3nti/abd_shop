@@ -4,9 +4,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:abd_shop/screens/splash/splash_page.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
+// WidgetsFlutterBinding.ensureInitialized();
+// final directory = await getApplicationDocumentsDirectory();
+// Hive.init(directory.path);
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

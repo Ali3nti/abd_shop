@@ -1,3 +1,4 @@
+import 'package:abd_shop/intro.dart';
 import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ NextPage(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => const HomePage(),
+      builder: (context) => const Intro(),
     ),
   );
 }
