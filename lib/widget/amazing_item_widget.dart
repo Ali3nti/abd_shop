@@ -1,10 +1,8 @@
 import 'package:abd_shop/cart_updater_page.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/amazing_model.dart';
-import 'package:abd_shop/widget/add_reduse_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class AmazingItemWidget extends StatefulWidget {
   AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
@@ -17,15 +15,14 @@ class AmazingItemWidget extends StatefulWidget {
 }
 
 class _AmazingItemWidgetState extends State<AmazingItemWidget> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, bottom: 20),
+      padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
         onTap: widget.onPressed,
         child: Container(
-          margin: EdgeInsets.only(left: 15),
+          margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -52,11 +49,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FloatingActionButton.extended(
                         heroTag: "button",
-                        //TODO: Create "Add to cart" function
                         onPressed: () {},
-
-                        //TODO: Create "Add to cart" function
-
                         backgroundColor: Colors.orange.shade900,
                         foregroundColor: Colors.white,
                         isExtended: true,
@@ -64,11 +57,11 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           eccentricity: 0,
                         ),
                         label: (widget.amazingModel.cartCount == 0)
-                            ?  Row(
+                            ? Row(
                                 children: [
                                   IconButton(
-                                    icon: Icon(Icons.add),
-                                    onPressed: (){
+                                    icon: const Icon(Icons.add),
+                                    onPressed: () {
                                       context
                                           .read<CartUpdater>()
                                           .incrementNumber();
@@ -78,38 +71,50 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                                   ),
                                 ],
                               )
-                            : Row(
-                                children: [
-                                  SizedBox(width: 3),
-                                  InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<CartUpdater>()
-                                          .incrementNumber();
-                                      widget.amazingModel.cartCount++;
-                                      setState(() {});
-                                    },
-                                    child: Icon(Icons.add,
-                                        color: Colors.orange.shade800),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    context
-                                        .watch<CartUpdater>().counterValue
-                                        .toString(),
-                                  ),
-                                  SizedBox(width: 10),
-                                  InkWell(
+                            : Container(
+                                width: 90,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.orange.shade100,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 3),
+                                    InkWell(
                                       onTap: () {
                                         context
                                             .read<CartUpdater>()
-                                            .decrementNumber();
-                                        widget.amazingModel.cartCount--;
+                                            .incrementNumber();
+                                        widget.amazingModel.cartCount++;
                                         setState(() {});
                                       },
-                                      child: Icon(Icons.delete,
-                                          color: Colors.orange.shade800))
-                                ],
+                                      child: Icon(Icons.add,
+                                          color: Colors.orange.shade900),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      context
+                                          .watch<CartUpdater>()
+                                          .counterValue
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.orange.shade900,
+                                          fontSize: 20),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    InkWell(
+                                        onTap: () {
+                                          context
+                                              .read<CartUpdater>()
+                                              .decrementNumber();
+                                          widget.amazingModel.cartCount--;
+                                          setState(() {});
+                                        },
+                                        child: Icon(Icons.delete,
+                                            color: Colors.orange.shade900))
+                                  ],
+                                ),
                               ),
                       ),
                     ),
@@ -137,10 +142,10 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     Container(
                       margin: const EdgeInsets.only(right: 10),
                       child: Padding(
-                        padding: EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           widget.amazingModel.info,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             // fontWeight: FontWeight.bold,
                           ),
@@ -191,7 +196,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           widget.amazingModel.discount,
-                          style: TextStyle(
+                          style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                             fontSize: 18,
                             color: Colors.grey,
@@ -208,8 +213,4 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
       ),
     );
   }
-}
-
-class Add_Reduce_widgetState {
-  const Add_Reduce_widgetState();
 }
