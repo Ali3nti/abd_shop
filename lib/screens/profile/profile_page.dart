@@ -3,13 +3,12 @@ import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
+import 'package:abd_shop/screens/profile/support_Button.dart';
 import 'package:abd_shop/screens/profile/support_page.dart';
 import 'package:abd_shop/screens/profile/takhfif.dart';
-import 'package:abd_shop/screens/profile/user_info.dart';
-import 'package:abd_shop/screens/profile/wallet_page.dart';
+import 'package:abd_shop/screens/profile/userInfo/user_info.dart';
+import 'package:abd_shop/screens/profile/wallet/wallet_page.dart';
 import 'package:flutter/material.dart';
-
-import '../../constants.dart';
 import 'address_page.dart';
 
 class ProfileBody extends StatefulWidget {
@@ -101,22 +100,38 @@ class _ProfileBodyState extends State<ProfileBody> {
           const SizedBox(height: 20),
           ratingInfoPage(context: context),
           const SizedBox(height: 20),
-          _buildSupportButton(),
+          supportButton(context: context),
           const SizedBox(height: 20),
           _buildListTile(
               "دعوت از دوستان",
               "با دعوت از دوستاتون کد تخفیف رایگان بگیرید",
               Icons.people_outline,
               invite),
-          _buildDivider(),
+      Container(
+              width: double.infinity,
+              height: 0.2,
+              color: Colors.grey,
+            ),
           _buildListTile("آدرس ها", "", Icons.map_outlined, address),
-          _buildDivider(),
+          Container(
+            width: double.infinity,
+            height: 0.2,
+            color: Colors.grey,
+          ),
           _buildListTile(
               "کارت های هدیه", "", Icons.card_giftcard, giftCardPage),
-          _buildDivider(),
+          Container(
+            width: double.infinity,
+            height: 0.2,
+            color: Colors.grey,
+          ),
           _buildListTile(
               "کدهای تخفیف", "", Icons.discount_outlined, takhfifPage),
-          _buildDivider(),
+          Container(
+            width: double.infinity,
+            height: 0.2,
+            color: Colors.grey,
+          ),
           _buildListTile(
               "پرسش های متداول", "", Icons.question_answer_outlined, faqPage),
         ],
@@ -184,28 +199,6 @@ class _ProfileBodyState extends State<ProfileBody> {
     );
   }
 
-  Widget _buildSupportButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: kPrimaryColor,
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      ),
-      onPressed: () {
-        supportPage(context);
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.headset_mic_rounded, color: Colors.white),
-          SizedBox(width: 10),
-          Text("نیاز به پشتیبانی دارم",
-              style: TextStyle(color: Colors.white, fontSize: 20)),
-        ],
-      ),
-    );
-  }
-
   Widget _buildListTile(String title, String subtitle, IconData leadingIcon,
       Function(BuildContext) onTap) {
     return ListTile(
@@ -216,10 +209,9 @@ class _ProfileBodyState extends State<ProfileBody> {
     );
   }
 
-  Widget _buildDivider() {
-    return const Divider(height: 20, thickness: 1, color: Colors.grey);
-  }
 }
+
+
 
 // import 'package:abd_shop/screens/profile/invite_page.dart';
 // import 'package:abd_shop/screens/profile/sellers_page.dart';
