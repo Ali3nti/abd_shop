@@ -1,24 +1,11 @@
 import 'package:abd_shop/intro.dart';
 import 'package:abd_shop/screens/home/home_page.dart';
+import 'package:abd_shop/sign_in.dart';
 import 'package:flutter/material.dart';
 
-class LogIn extends StatefulWidget {
+class LogIn extends StatelessWidget {
   const LogIn({super.key});
 
-  @override
-  State<LogIn> createState() => _LogInState();
-}
-
-NextPage(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => const Intro(),
-    ),
-  );
-}
-
-class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,9 +93,11 @@ class _LogInState extends State<LogIn> {
                     "حساب کاربری ندارید؟",
                     style: TextStyle(fontSize: 15, color: Colors.black),
                   ),
-                  Text(
-                    "ثبت نام",
-                    style: TextStyle(fontSize: 15, color: Colors.deepOrange),
+                  InkWell(onTap: (){signIn(context);},
+                    child: Text(
+                      "ثبت نام",
+                      style: TextStyle(fontSize: 15, color: Colors.deepOrange),
+                    ),
                   ),
                 ],
               ),
@@ -118,4 +107,22 @@ class _LogInState extends State<LogIn> {
       ),
     );
   }
+}
+
+NextPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const Intro(),
+    ),
+  );
+}
+
+void logIn(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => LogIn()));
+}
+void signIn(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => SignIn()));
 }

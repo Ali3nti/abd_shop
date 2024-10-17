@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     HomeBody(),
     OrdersBody(),
     CartBody(),
-    ProfileBody()
+    ProfileBody(users: [],)
   ];
 
   search(BuildContext context) {
