@@ -3,8 +3,10 @@ import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
+import 'package:abd_shop/screens/profile/support_page.dart';
 import 'package:abd_shop/screens/profile/takhfif.dart';
 import 'package:abd_shop/screens/profile/user_info.dart';
+import 'package:abd_shop/screens/profile/wallet_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -15,9 +17,7 @@ class ProfileBody extends StatefulWidget {
 
   @override
   State<ProfileBody> createState() => _ProfileBodyState();
-
 }
-
 
 void invite(BuildContext context) {
   Navigator.push(
@@ -35,21 +35,43 @@ void sellers(BuildContext context) {
 }
 
 void userinfo(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => UserInfo()));
+  Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfo()));
 }
 
 void takhfifPage(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) => DiscountCodePage()));
 }
+
 void faqPage(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => FAQPage()));
+  Navigator.push(context, MaterialPageRoute(builder: (context) => FAQPage()));
 }
+
 void giftCardPage(BuildContext context) {
   Navigator.push(
-      context, MaterialPageRoute(builder: (context) => GiftCardPage()));
+    context,
+    MaterialPageRoute(
+      builder: (context) => GiftCardPage(),
+    ),
+  );
+}
+
+void supportPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SupportPage(),
+    ),
+  );
+}
+
+void walletPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => WalletPage(),
+    ),
+  );
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
@@ -89,14 +111,14 @@ class _ProfileBodyState extends State<ProfileBody> {
           _buildDivider(),
           _buildListTile("آدرس ها", "", Icons.map_outlined, address),
           _buildDivider(),
-          _buildListTile("کارت های هدیه", "", Icons.card_giftcard,
-              giftCardPage),
+          _buildListTile(
+              "کارت های هدیه", "", Icons.card_giftcard, giftCardPage),
           _buildDivider(),
           _buildListTile(
               "کدهای تخفیف", "", Icons.discount_outlined, takhfifPage),
           _buildDivider(),
-          _buildListTile("پرسش های متداول", "", Icons.question_answer_outlined,
-              faqPage ),
+          _buildListTile(
+              "پرسش های متداول", "", Icons.question_answer_outlined, faqPage),
         ],
       ),
     );
@@ -129,23 +151,34 @@ class _ProfileBodyState extends State<ProfileBody> {
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Image.asset("assets/images/wallet.png", width: 50, height: 50),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("کیف پول", style: TextStyle(fontSize: 18)),
-                Row(
-                  children: [
-                    const Text("10000", style: TextStyle(fontSize: 16)),
-                    Image.asset("assets/images/toman.png", height: 15),
-                  ],
-                ),
-              ],
-            ),
-          ],
+        child: InkWell(
+          onTap: () {
+            walletPage(context);
+          },
+          child: Row(
+            children: [
+              Image.asset("assets/images/wallet.png", width: 50, height: 50),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "کیف پول",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        "10000",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Image.asset("assets/images/toman.png", height: 15),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -158,7 +191,9 @@ class _ProfileBodyState extends State<ProfileBody> {
         padding: const EdgeInsets.symmetric(vertical: 15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
-      onPressed: () {},
+      onPressed: () {
+        supportPage(context);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
@@ -184,41 +219,7 @@ class _ProfileBodyState extends State<ProfileBody> {
   Widget _buildDivider() {
     return const Divider(height: 20, thickness: 1, color: Colors.grey);
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:abd_shop/screens/profile/invite_page.dart';
 // import 'package:abd_shop/screens/profile/sellers_page.dart';
