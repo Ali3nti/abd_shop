@@ -1,18 +1,16 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
-import 'package:abd_shop/widget/amazing_item_widget.dart';
-import 'package:abd_shop/widget/discount_widget/discount_list_widget.dart';
 import 'package:flutter/material.dart';
 
-class CategorProductyBox extends StatefulWidget {
-  const CategorProductyBox({super.key});
+class CategoryProductsBox extends StatefulWidget {
+  const CategoryProductsBox({super.key});
 
   @override
-  State<CategorProductyBox> createState() => _CategorProductyBoxState();
+  State<CategoryProductsBox> createState() => _CategoryProductsBoxState();
 }
 
-class _CategorProductyBoxState extends State<CategorProductyBox> {
+class _CategoryProductsBoxState extends State<CategoryProductsBox> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -52,14 +50,14 @@ class _CategorProductyBoxState extends State<CategorProductyBox> {
                 const Icon(Icons.navigate_next, color: Colors.blue),
               ],
             ),
-            SingleChildScrollView(
+            const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   SizedBox(
                     width: 20,
                   ),
-                  DiscountListWidget(),
+                  AmazingListWidget(),
                   SizedBox(
                     width: 20,
                   ),

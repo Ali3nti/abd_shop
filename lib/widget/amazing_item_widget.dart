@@ -1,10 +1,8 @@
+import 'package:abd_shop/cart_updater_page.dart';
 import 'package:abd_shop/constants.dart';
-import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/amazing_model.dart';
-import 'package:abd_shop/widget/amazing-widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class AmazingItemWidget extends StatefulWidget {
   AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
@@ -17,14 +15,14 @@ class AmazingItemWidget extends StatefulWidget {
 }
 
 class _AmazingItemWidgetState extends State<AmazingItemWidget> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, bottom: 20),
+      padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
         onTap: widget.onPressed,
-        child: Container(margin: EdgeInsets.only(left: 15),
+        child: Container(
+          margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -51,20 +49,73 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FloatingActionButton.extended(
                         heroTag: "button",
-                        //TODO: Create "Add to cart" function
                         onPressed: () {},
-                        //TODO: Create "Add to cart" function
                         backgroundColor: Colors.orange.shade900,
                         foregroundColor: Colors.white,
                         isExtended: true,
                         shape: const CircleBorder(
                           eccentricity: 0,
                         ),
-                        label: const Row(
-                          children: [
-                            Icon(Icons.add),
-                          ],
-                        ),
+                        label: (widget.amazingModel.cartCount == 0)
+                            ? Row(
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.add),
+                                    onPressed: () {
+                                      context
+                                          .read<CartUpdater>()
+                                          .incrementNumber();
+                                      widget.amazingModel.cartCount++;
+                                      setState(() {});
+                                    },
+                                  ),
+                                ],
+                              )
+                            : Container(
+                                width: 90,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.orange.shade100,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 3),
+                                    InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<CartUpdater>()
+                                            .incrementNumber();
+                                        widget.amazingModel.cartCount++;
+                                        setState(() {});
+                                      },
+                                      child: Icon(Icons.add,
+                                          color: Colors.orange.shade900),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      context
+                                          .watch<CartUpdater>()
+                                          .counterValue
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.orange.shade900,
+                                          fontSize: 20),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    InkWell(
+                                        onTap: () {
+                                          context
+                                              .read<CartUpdater>()
+                                              .decrementNumber();
+                                          widget.amazingModel.cartCount--;
+                                          setState(() {});
+                                        },
+                                        child: Icon(Icons.delete,
+                                            color: Colors.orange.shade900))
+                                  ],
+                                ),
+                              ),
                       ),
                     ),
                     // Container(
@@ -85,15 +136,16 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child:  Text(widget.amazingModel.name,
+                      child: Text(widget.amazingModel.name,
                           style: kHeaderTextStyle),
                     ),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child:  Padding(padding:EdgeInsets.only(right: 10) ,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           widget.amazingModel.info,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             // fontWeight: FontWeight.bold,
                           ),
@@ -108,9 +160,11 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           children: [
                             Row(
                               children: [
-                                 Text( widget.amazingModel.cast, style: kHeaderTextStyle),
+                                Text(widget.amazingModel.cast,
+                                    style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
-                                Image.asset(width: 20,
+                                Image.asset(
+                                  width: 20,
                                   'assets/images/toman.png',
                                 ),
                               ],
@@ -138,11 +192,11 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     const SizedBox(height: 5),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child:  Padding(
+                      child: Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           widget.amazingModel.discount,
-                          style: TextStyle(
+                          style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                             fontSize: 18,
                             color: Colors.grey,

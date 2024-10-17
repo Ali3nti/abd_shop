@@ -1,5 +1,6 @@
 import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/discount_model.dart';
+import 'package:abd_shop/widget/add_reduse_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +50,13 @@ class _DiscountItemWidgetState extends State<DiscountItemWidget> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FloatingActionButton.extended(
                         heroTag: "button",
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => const AddReducewidget(),
+                          ),
+                          );
+                        },
+
                         //TODO: Create "Add to cart" function
                         backgroundColor: Colors.orange.shade900,
                         foregroundColor: Colors.white,

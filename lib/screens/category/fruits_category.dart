@@ -22,7 +22,6 @@ class FruitsCategory extends StatefulWidget {
 class _SuperMarketState extends State<FruitsCategory> {
   @override
   Widget build(BuildContext context) {
-    var market; //TODO: What is this?!
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: const MyAppBar(),

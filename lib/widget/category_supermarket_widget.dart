@@ -2,14 +2,14 @@ import 'package:abd_shop/screens/category/item_category_page.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:flutter/material.dart';
 
-class Categor_SuperMarket extends StatefulWidget {  //TODO: What?!?!?!?!?!?!?!
-  const Categor_SuperMarket({super.key});
+class CategorySuperMarket extends StatefulWidget {
+  const CategorySuperMarket({super.key});
 
   @override
-  State<Categor_SuperMarket> createState() => _Categor_SuperMarketState();
+  State<CategorySuperMarket> createState() => _Categor_SuperMarketState();
 }
 
-class _Categor_SuperMarketState extends State<Categor_SuperMarket> {
+class _Categor_SuperMarketState extends State<CategorySuperMarket> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -22,7 +22,7 @@ class _Categor_SuperMarketState extends State<Categor_SuperMarket> {
         );
       },
       child: CategoryBox(
-        categoryText: const Text("لبنیات و بستنی"),
+        CategoryText: const Text("لبنیات و بستنی"),
         img: "assets/images/Market.png",
       ),
     );

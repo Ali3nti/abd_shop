@@ -1,7 +1,8 @@
+import 'package:abd_shop/cart_updater_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:abd_shop/screens/splash/splash_page.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
 // WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+        providers: [
+        ChangeNotifierProvider(
+        create: (context) => CartUpdater(),
+    ),
+    ],
+      child : MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: locale,
       localizationsDelegates: const [
@@ -34,6 +41,7 @@ class MyApp extends StatelessWidget {
       ],
       theme: ThemeData(fontFamily: "Yekan", useMaterial3: true),
       home: const SplashPage(),
+      ),
     );
   }
 }

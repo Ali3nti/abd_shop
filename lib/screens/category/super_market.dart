@@ -28,7 +28,7 @@ class SuperMarket extends StatefulWidget {
 class _SuperMarketState extends State<SuperMarket> {
   @override
   Widget build(BuildContext context) {
-    var large; //TODO: What is this?!
+
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       body: SingleChildScrollView(
@@ -46,9 +46,7 @@ class _SuperMarketState extends State<SuperMarket> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    SizedBox(
-                        width:
-                            10), //TODO: Why using this?! use padding or margin
+                    SizedBox(width: 10),
                     OutLinedButtonWidget(),
                     SizedBox(width: 5),
                     OutLinedButtonWidget(),
@@ -95,12 +93,12 @@ class _SuperMarketState extends State<SuperMarket> {
                     runSpacing: 15,
                     direction: Axis.horizontal,
                     children: [
-                      Categor_SuperMarket(),
-                      Categor_SuperMarket(),
-                      Categor_SuperMarket(),
-                      Categor_SuperMarket(),
-                      Categor_SuperMarket(),
-                      Categor_SuperMarket(),
+                      CategorySuperMarket(),
+                      CategorySuperMarket(),
+                      CategorySuperMarket(),
+                      CategorySuperMarket(),
+                      CategorySuperMarket(),
+                      CategorySuperMarket(),
                     ],
                   ),
                 ),
@@ -109,15 +107,15 @@ class _SuperMarketState extends State<SuperMarket> {
             const SizedBox(
               height: 10,
             ),
-            const CategorProductyBox(),
+            const CategoryProductsBox(),
             const SizedBox(height: 20),
-            const CategorProductyBox(),
+            const CategoryProductsBox(),
             const SizedBox(height: 20),
-            const CategorProductyBox(),
+            const CategoryProductsBox(),
             const SizedBox(height: 20),
-            const CategorProductyBox(),
+            const CategoryProductsBox(),
             const SizedBox(height: 20),
-            const CategorProductyBox(),
+            const CategoryProductsBox(),
             const SizedBox(height: 20),
           ],
         ),
