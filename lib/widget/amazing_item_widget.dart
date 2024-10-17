@@ -59,7 +59,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           var cart = Provider.of<Cart>(context, listen: false);
                           cart.addProduct(widget.amazingModel);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('${widget.amazingModel!.name} added to cart')),
+                            SnackBar(content: Text('${widget.amazingModel!.name} به سبد خرید اضافه شد')),
                           );
                         },
                         backgroundColor: Colors.orange.shade900,

@@ -12,7 +12,7 @@ class Cart extends ChangeNotifier {
     items.remove(amazingModel);
     notifyListeners();
   }
-  void clear() {
+  void clearCart() {
     items.clear();
     notifyListeners();
   }

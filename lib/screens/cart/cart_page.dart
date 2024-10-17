@@ -16,13 +16,15 @@ class _OrdersBodyState extends State<CartBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CupertinoColors.extraLightBackgroundGray,
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: const Text(
           "سبد خرید",
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
       ),
@@ -38,12 +40,10 @@ class _OrdersBodyState extends State<CartBody> {
                     "assets/images/cart.png",
                     width: 300,
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: 30),
                   Text(
                     'سبد خرید خالی است.',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, color: Colors.grey),
                   ),
                 ],
               ),
@@ -54,50 +54,43 @@ class _OrdersBodyState extends State<CartBody> {
             itemCount: cart.items.length,
             itemBuilder: (context, index) {
               final item = cart.items[index];
-              return InkWell(
-                onTap: () {},
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 7,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 5,
+              return Card(
+                elevation: 4,
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "نام محصول: ${item.name}",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "مشخصات: ${item.info}",
+                              style: TextStyle(color: Colors.deepOrange),
+                            ),
+                          ],
                         ),
-                        Text("نام محصول: ${item.name}"),
-                        SizedBox(
-                          width: 40,
-                        ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(right: 40),
-                        //   child: Text('تعداد سفارش: ${item.cartCount}'),
-                        // ),
-                        // دکمه حذف
-                        IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () {
-                            // منطق حذف آیتم
-                            cart.removeItem(item);
-                            setState(() {}); // به‌روزرسانی UI
-                          },
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 260),
-                      child: Text(
-                        " مشخصات:${item.info}",
-                        style: TextStyle(color: Colors.deepOrange),
                       ),
-                    ),
-                    Container(
-                      height: 0.75,
-                      width: 500,
-                      color: Colors.grey.shade400,
-                    ),
-                  ],
+                      IconButton(
+                        icon: Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                          // منطق حذف آیتم
+                          cart.removeItem(item);
+                          setState(() {}); // به‌روزرسانی UI
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
@@ -107,54 +100,3 @@ class _OrdersBodyState extends State<CartBody> {
     );
   }
 }
-
-
-// ListTile
-// (
-// title: Text(item.name),
-// subtitle: Text(item.info),
-// trailing: Text('Count: ${item.cartCount}'),
-// onTap: () {
-// // منطق برای کلیک روی آیتم
-// },
-// );
-
-// import 'package:abd_shop/widget/cart_widget.dart';
-// import 'package:flutter/material.dart';
-//
-// class CartBody extends StatefulWidget {
-//   const CartBody({super.key});
-//
-//   @override
-//   State<CartBody> createState() => _CartBodyState();
-// }
-//
-// class _CartBodyState extends State<CartBody> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.grey.shade200,
-//       appBar: AppBar(
-//         title: const Text(
-//           "سبد خرید",
-//           style: TextStyle(
-//             fontSize: 28,
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//       ),
-//       body: const SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             CartWidget(),
-//             CartWidget(),
-//             CartWidget(),
-//             CartWidget(),
-//             CartWidget(),
-//             CartWidget(),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

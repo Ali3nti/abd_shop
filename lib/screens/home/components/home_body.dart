@@ -105,44 +105,93 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             Padding(
               padding: const EdgeInsets.all(15),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.location_on_outlined,
-                    color: kPrimaryColor,
-                    size: 35,
-                  ),
-                  const Column(
+              child: Card(
+                elevation: 2, // Adds a subtle shadow
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15), // Rounded corners
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15), // Inner padding for the card
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 80),
-                        child: Text(
-                          "آدرس انتخابی",
-                          style: kHeaderTextStyle,
+                      const Icon(
+                        Icons.location_on_outlined,
+                        color: kPrimaryColor,
+                        size: 35,
+                      ),
+                      const SizedBox(width: 15), // Spacing between icon and text
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "آدرس انتخابی",
+                              style: kHeaderTextStyle.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "آباده، میدان آزادی، کوچه هفتم",
+                              style: kHeaderTextStyle2,
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "آباده،میدان آزادی،کوچه هفتم",
-                        style: kHeaderTextStyle2,
+                      TextButton(
+                        onPressed: () {
+                          location(context);
+                        },
+                        child: const Text(
+                          "تغییر آدرس",
+                          style: TextStyle(color: Colors.blue, fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(width: 60),
-                  TextButton(
-                    onPressed: () {
-                      location(context);
-                    },
-                    child: const Text(
-                      "تغییر آدرس",
-                      style: TextStyle(color: Colors.blue, fontSize: 15),
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
+// the old code//
+            // Padding(
+            //   padding: const EdgeInsets.all(15),
+            //   child: Row(
+            //     children: [
+            //       const Icon(
+            //         Icons.location_on_outlined,
+            //         color: kPrimaryColor,
+            //         size: 35,
+            //       ),
+            //       const Column(
+            //         children: [
+            //           Padding(
+            //             padding: EdgeInsets.only(left: 80),
+            //             child: Text(
+            //               "آدرس انتخابی",
+            //               style: kHeaderTextStyle,
+            //             ),
+            //           ),
+            //           SizedBox(
+            //             height: 5,
+            //           ),
+            //           Text(
+            //             "آباده،میدان آزادی،کوچه هفتم",
+            //             style: kHeaderTextStyle2,
+            //           ),
+            //         ],
+            //       ),
+            //       const SizedBox(width: 60),
+            //       TextButton(
+            //         onPressed: () {
+            //           location(context);
+            //         },
+            //         child: const Text(
+            //           "تغییر آدرس",
+            //           style: TextStyle(color: Colors.blue, fontSize: 15),
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
             Stack(
               alignment: Alignment.bottomLeft,
               children: [
