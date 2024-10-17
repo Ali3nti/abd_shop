@@ -1,8 +1,8 @@
+import 'package:abd_shop/models/user.dart';
 import 'package:abd_shop/screens/profile/faq_page.dart';
 import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
-import 'package:abd_shop/screens/profile/rate_page/rate_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
 import 'package:abd_shop/screens/profile/support_Button.dart';
@@ -15,7 +15,10 @@ import 'package:flutter/services.dart';
 import 'address_page.dart';
 
 class ProfileBody extends StatefulWidget {
-  const ProfileBody({super.key});
+  const ProfileBody({super.key,required this.users});
+  final List<User> users;
+
+
 
   @override
   State<ProfileBody> createState() => _ProfileBodyState();
@@ -151,7 +154,8 @@ class _ProfileBodyState extends State<ProfileBody> {
   }
 
   Widget _buildUserInfo() {
-    return Row(
+    return
+      Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
