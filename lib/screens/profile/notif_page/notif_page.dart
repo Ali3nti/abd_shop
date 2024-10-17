@@ -1,8 +1,11 @@
 import 'package:abd_shop/screens/profile/notif_page/notif_card.dart';
+import 'package:abd_shop/screens/profile/rate_page/rate_page.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {

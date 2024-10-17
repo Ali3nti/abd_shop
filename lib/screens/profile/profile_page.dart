@@ -2,6 +2,7 @@ import 'package:abd_shop/screens/profile/faq_page.dart';
 import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
+import 'package:abd_shop/screens/profile/rate_page/rate_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
 import 'package:abd_shop/screens/profile/support_Button.dart';
@@ -64,7 +65,6 @@ void notifiPage(BuildContext context) {
     ),
   );
 }
-
 void supportPage(BuildContext context) {
   Navigator.push(
     context,
@@ -109,7 +109,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           const SizedBox(height: 20),
           _buildWalletInfo(),
           const SizedBox(height: 20),
-          ratingInfoPage(context: context),
+          ratingInfoPage(context: context,),
           const SizedBox(height: 20),
           supportButton(context: context),
           const SizedBox(height: 20),

@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/profile/rate_page/rate_page.dart';
 import 'package:flutter/material.dart';
 
 class ratingInfoPage extends StatelessWidget {
@@ -5,59 +6,20 @@ class ratingInfoPage extends StatelessWidget {
 
   final BuildContext context;
 
+  void ratePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RatePage(),
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          backgroundColor: Colors.white, // رنگ پس‌زمینه
-          shape: RoundedRectangleBorder(
-            borderRadius:
-            BorderRadius.vertical(top: Radius.circular(20)), // گوشه‌های گرد
-          ),
-          builder: (context) {
-            return Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset("assets/images/comments_man.png",
-                      width: 200, height: 200, fit: BoxFit.cover),
-                  const SizedBox(height: 10),
-                  const Text("هنوز امتیاز و دیدگاهی ثبت نکرده‌اید!",
-                      style:
-                      TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "با ثبت امتیاز و دیدگاه می‌توانید رضایت یا ناراضایتی خود را به فروشگاه اعلام، و خریداران را راهنمایی کنید.",
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // عملکرد دکمه ثبت نظر
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.deepOrange,
-                      // رنگ متن دکمه
-                      padding:
-                      EdgeInsets.symmetric(vertical: 12, horizontal: 30),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30), // گوشه‌های گرد
-                      ),
-                    ),
-                    child: const Text("ثبت امتیاز و دیدگاه",
-                        style: TextStyle(fontSize: 16)),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      },
+      onTap: (){ratePage(context);},
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
