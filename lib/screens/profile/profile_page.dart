@@ -1,6 +1,7 @@
 import 'package:abd_shop/screens/profile/faq_page.dart';
 import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
+import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
 import 'package:abd_shop/screens/profile/support_Button.dart';
@@ -9,6 +10,7 @@ import 'package:abd_shop/screens/profile/takhfif.dart';
 import 'package:abd_shop/screens/profile/userInfo/user_info.dart';
 import 'package:abd_shop/screens/profile/wallet/wallet_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'address_page.dart';
 
 class ProfileBody extends StatefulWidget {
@@ -54,6 +56,14 @@ void giftCardPage(BuildContext context) {
     ),
   );
 }
+void notifiPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => NotificationPage(),
+    ),
+  );
+}
 
 void supportPage(BuildContext context) {
   Navigator.push(
@@ -73,6 +83,7 @@ void walletPage(BuildContext context) {
   );
 }
 
+
 class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
@@ -83,11 +94,11 @@ class _ProfileBodyState extends State<ProfileBody> {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () {notifiPage(context);},
           ),
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () {},
+            onPressed: () { SystemNavigator.pop();},
           ),
         ],
       ),
