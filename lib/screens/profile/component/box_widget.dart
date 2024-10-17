@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class BoxWidget extends StatelessWidget {
-  const BoxWidget({super.key, required this.iconData, required this.text});
+   BoxWidget({super.key, required this.iconData, required this.text,  this.onPressed});
    final IconData iconData;
    final Text text;
+  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return InkWell(onTap: () {

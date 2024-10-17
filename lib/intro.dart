@@ -23,11 +23,9 @@ class _IntroState extends State<Intro> {
 
   _checkFirstLaunch() async {
     var box = await Hive.openBox('settings');
-    bool? isFirstLaunch = box.get('isFirstLaunch',
-        defaultValue: true); //TODO: این جا هم اشتباهه احتمالا
+    bool? firstLaunch = box.get('isFirstLaunch', defaultValue: true);
 
-    if (isFirstLaunch = false) {
-      //TODO: فکر کنم این خط کد رو اشتباه نوشتم
+    if (firstLaunch == true) {
       box.put('isFirstLaunch', false);
       setState(() {
         isFirstLaunch = true;
@@ -44,74 +42,76 @@ class _IntroState extends State<Intro> {
     return Scaffold(
       body: isFirstLaunch
           ? Stack(
-              children: [
-                PageView(
-                  controller: pageController,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentPage = index;
-                    });
-                  },
-                  children: [
-                    _buildPage(
-                      img: "assets/images/intro1.png",
-                      color: Color.fromRGBO(239, 73, 35, 5),
-                      title: "به اپلیکیشن دیجی جت خوش آمدید",
-                      description: "اولین فروشگاه آنلاین مواد غذایی در آباده",
-                    ),
-                    _buildPage(
-                      img: "assets/images/login.png",
-                      color: Color.fromRGBO(254, 102, 2, 5),
-                      title: "",
-                      description: "همراه با کلی تخفیف",
-                    ),
-                    _buildPage(
-                      img: "assets/images/vector2.png",
-                      color: Color.fromRGBO(123, 149, 242, 5),
-                      title: "",
-                      description: "پس وقت رو از دست نده!",
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 550, right: 160),
-                  child: SmoothPageIndicator(
-                    controller: pageController,
-                    count: 3,
-                    effect: ScrollingDotsEffect(
-                        dotHeight: 15,
-                        dotWidth: 15,
-                        dotColor: Colors.white,
-                        activeDotColor: Colors.black),
-                  ),
-                ),
-              ],
-            )
+        children: [
+          PageView(
+            controller: pageController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentPage = index;
+              });
+            },
+            children: [
+              _buildPage(
+                img: "assets/images/intro1.png",
+                color: Color.fromRGBO(239, 73, 35, 5),
+                title: "به اپلیکیشن دیجی جت خوش آمدید",
+                description: "اولین فروشگاه آنلاین مواد غذایی در آباده",
+              ),
+              _buildPage(
+                img: "assets/images/login.png",
+                color: Color.fromRGBO(254, 102, 2, 5),
+                title: "",
+                description: "همراه با کلی تخفیف",
+              ),
+              _buildPage(
+                img: "assets/images/vector2.png",
+                color: Color.fromRGBO(123, 149, 242, 5),
+                title: "",
+                description: "پس وقت رو از دست نده!",
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 550, right: 160),
+            child: SmoothPageIndicator(
+              controller: pageController,
+              count: 3,
+              effect: ScrollingDotsEffect(
+                  dotHeight: 15,
+                  dotWidth: 15,
+                  dotColor: Colors.white,
+                  activeDotColor: Colors.black),
+            ),
+          ),
+        ],
+      )
           : HomePage(),
       bottomSheet: _currentPage == 2
           ? TextButton(
-              onPressed: () {
-                // Navigate to the main screen
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-              },
-              child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("شروع",style: TextStyle(fontSize: 20),),
-                ],
-              ),
-            )
+        onPressed: () {
+          // Navigate to the main screen
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("شروع", style: TextStyle(fontSize: 20)),
+          ],
+        ),
+      )
           : SizedBox.shrink(),
     );
   }
 
-  Widget _buildPage(
-      {required Color color,
-      required String title,
-      String img = "",
-      required String description}) {
+  Widget _buildPage({
+    required Color color,
+    required String title,
+    String img = "",
+    required String description,
+  }) {
     return Container(
       color: color,
       child: Column(
