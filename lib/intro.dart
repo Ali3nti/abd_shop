@@ -26,7 +26,7 @@ class _IntroState extends State<Intro> {
     bool? isFirstLaunch = box.get('isFirstLaunch',
         defaultValue: true); //TODO: این جا هم اشتباهه احتمالا
 
-    if (isFirstLaunch = false) {
+    if (isFirstLaunch==true) {
       //TODO: فکر کنم این خط کد رو اشتباه نوشتم
       box.put('isFirstLaunch', false);
       setState(() {

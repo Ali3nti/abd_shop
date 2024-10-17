@@ -1,13 +1,13 @@
 import 'package:abd_shop/cart_updater_page.dart';
+import 'package:abd_shop/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:abd_shop/screens/splash/splash_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 void main() async{
-// WidgetsFlutterBinding.ensureInitialized();
-// final directory = await getApplicationDocumentsDirectory();
-// Hive.init(directory.path);
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
@@ -24,7 +24,11 @@ class MyApp extends StatelessWidget {
         providers: [
         ChangeNotifierProvider(
         create: (context) => CartUpdater(),
-    ),
+
+
+        ),
+          ChangeNotifierProvider(create: (context) => Cart()),
+
     ],
       child : MaterialApp(
       debugShowCheckedModeBanner: false,

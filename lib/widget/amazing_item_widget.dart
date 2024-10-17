@@ -1,11 +1,14 @@
 import 'package:abd_shop/cart_updater_page.dart';
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/amazing_model.dart';
+import 'package:abd_shop/models/discount_model.dart';
+import 'package:abd_shop/models/discount_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AmazingItemWidget extends StatefulWidget {
-  AmazingItemWidget({super.key, this.onPressed, required this.amazingModel});
+  AmazingItemWidget({super.key, this.onPressed, required this.amazingModel,});
 
   AmazingModel amazingModel;
   void Function()? onPressed;
@@ -15,6 +18,8 @@ class AmazingItemWidget extends StatefulWidget {
 }
 
 class _AmazingItemWidgetState extends State<AmazingItemWidget> {
+  late DiscountModel discountModel;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,7 +54,14 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FloatingActionButton.extended(
                         heroTag: "button",
-                        onPressed: () {},
+                        onPressed: () {
+                          // منطق افزودن به سبد خرید
+                          var cart = Provider.of<Cart>(context, listen: false);
+                          cart.addProduct(widget.amazingModel);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('${widget.amazingModel!.name} added to cart')),
+                          );
+                        },
                         backgroundColor: Colors.orange.shade900,
                         foregroundColor: Colors.white,
                         isExtended: true,
