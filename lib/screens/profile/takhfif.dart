@@ -13,7 +13,7 @@ class _DiscountCodePageState extends State<DiscountCodePage> {
 
   void _applyDiscount() {
     // کد تخفیف معتبر
-    const String validDiscountCode = 'DISCOUNT25';
+    const String validDiscountCode = '1382';
 
     setState(() {
       if (_controller.text.isNotEmpty) {
