@@ -12,10 +12,16 @@ class _DiscountCodePageState extends State<DiscountCodePage> {
   String _message = '';
 
   void _applyDiscount() {
-    // اینجا می‌توانید منطق بررسی کد تخفیف را پیاده‌سازی کنید
+    // کد تخفیف معتبر
+    const String validDiscountCode = '1382';
+
     setState(() {
       if (_controller.text.isNotEmpty) {
-        _message = 'کد تخفیف "${_controller.text}" با موفقیت اعمال شد!';
+        if (_controller.text == validDiscountCode) {
+          _message = 'کد تخفیف "${_controller.text}" با موفقیت اعمال شد!';
+        } else {
+          _message = 'کد تخفیف نامعتبر است. لطفاً دوباره تلاش کنید.';
+        }
       } else {
         _message = 'لطفاً کد تخفیف را وارد کنید.';
       }
@@ -54,7 +60,7 @@ class _DiscountCodePageState extends State<DiscountCodePage> {
               onPressed: _applyDiscount,
               child: const Text(
                 'اعمال کد تخفیف',
-                style: TextStyle(fontSize: 18,color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepOrange,
@@ -64,7 +70,7 @@ class _DiscountCodePageState extends State<DiscountCodePage> {
             const SizedBox(height: 20),
             Text(
               _message,
-              style: TextStyle(fontSize: 18, color: Colors.green),
+              style: TextStyle(fontSize: 18, color: _message.contains('نامعتبر') ? Colors.red : Colors.green),
               textAlign: TextAlign.center,
             ),
           ],

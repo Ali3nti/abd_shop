@@ -7,6 +7,7 @@ import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/my_app_bar.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
+import 'package:abd_shop/screens/profile/address_page.dart';
 import 'package:abd_shop/screens/slider_page/slider_page1.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,7 +49,7 @@ class _HomeBodyState extends State<HomeBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LocationPage(),
+        builder: (context) => const AddressPage(),
       ),
     );
   }
