@@ -3,8 +3,54 @@ import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/sign_in.dart';
 import 'package:flutter/material.dart';
 
-class LogIn extends StatelessWidget {
+class LogIn extends StatefulWidget {
   const LogIn({super.key});
+
+  @override
+  _LogInState createState() => _LogInState();
+}
+
+class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 700),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 1.0, end: 0.8).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void NextPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Intro(),
+      ),
+    );
+  }
+
+  void signIn(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignIn()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +58,7 @@ class LogIn extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.only(left: 55, top: 25),
               child: Image.asset(
@@ -56,24 +100,29 @@ class LogIn extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: 50),
             GestureDetector(
-              onTap: () {
-                NextPage(context);
+              onTapDown: (_) => _controller.forward(),
+              onTapUp: (_) {
+                _controller.reverse().then((_) {
+                  NextPage(context);
+                });
               },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(15),
-                  color: Colors.deepOrange,
-                ),
-                width: 400,
-                height: 40,
-                alignment: FractionalOffset.center,
-                child: Text(
-                  "ورود",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+              onTapCancel: () => _controller.reverse(),
+              child: ScaleTransition(
+                scale: _animation,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(15),
+                    color: Colors.deepOrange,
+                  ),
+                  width: 400,
+                  height: 40,
+                  alignment: FractionalOffset.center,
+                  child: Text(
+                    "ورود",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
                 ),
               ),
             ),
@@ -93,7 +142,10 @@ class LogIn extends StatelessWidget {
                     "حساب کاربری ندارید؟",
                     style: TextStyle(fontSize: 15, color: Colors.black),
                   ),
-                  InkWell(onTap: (){signIn(context);},
+                  InkWell(
+                    onTap: () {
+                      signIn(context);
+                    },
                     child: Text(
                       "ثبت نام",
                       style: TextStyle(fontSize: 15, color: Colors.deepOrange),
@@ -107,22 +159,4 @@ class LogIn extends StatelessWidget {
       ),
     );
   }
-}
-
-NextPage(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => const Intro(),
-    ),
-  );
-}
-
-void logIn(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => LogIn()));
-}
-void signIn(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => SignIn()));
 }
