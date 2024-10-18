@@ -50,7 +50,6 @@ class _JetmartItemWidgetState extends State<JetmartItemWidget> {
                       child: FloatingActionButton.extended(
                         heroTag: "button",
                         onPressed: () {},
-                        //TODO: Create "Add to cart" function
                         backgroundColor: Colors.orange.shade900,
                         foregroundColor: Colors.white,
                         isExtended: true,
