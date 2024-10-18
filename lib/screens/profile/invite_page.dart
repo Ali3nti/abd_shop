@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -7,45 +8,45 @@ class InvitePage extends StatefulWidget {
 }
 
 class _InvitePageState extends State<InvitePage> {
-  final TextEditingController _messageController = TextEditingController();
+  // متن دعوت‌نامه از پیش تعیین شده
+  final String _defaultMessage =
+      'به اپلیکیشن ما خوش آمدید! لطفاً این لینک را با دوستانتان به اشتراک بگذارید: [لینک شما]';
 
   void _shareInvitation() {
-    final message = _messageController.text;
-
-    if (message.isNotEmpty) {
-      // اشتراک‌گذاری پیام
-      Share.share(message);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('لطفاً یک متن دعوت وارد کنید.'),
-        ),
-      );
-    }
+    // استفاده از متن دعوت‌نامه از پیش تعیین شده
+    Share.share(_defaultMessage);
   }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: Colors.deepOrange,
         title: Text('دعوت از دوستان'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              controller: _messageController,
-              decoration: InputDecoration(
-                labelText: 'متن دعوت',
-                border: OutlineInputBorder(),
-              ),
-              maxLines: 5,
-            ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
+            Text("شما از طریق دکمه زیر می توانید دوستان خود را به برنامه دعوت کنید و از تخفیف های ما استفاده کنید"),
+            SizedBox(height: 100),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
               onPressed: _shareInvitation,
-              child: Text('ارسال دعوت‌نامه'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.share, color: Colors.white),
+                  SizedBox(width: 10),
+                  Text("دعوت از دوستان",
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                ],
+              ),
             ),
           ],
         ),

@@ -12,7 +12,8 @@ class supportButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return
+      ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: kPrimaryColor,
         padding: const EdgeInsets.symmetric(vertical: 15),
