@@ -26,12 +26,12 @@ class ProfileBody extends StatefulWidget {
 
 void invite(BuildContext context) {
   Navigator.push(
-      context, MaterialPageRoute(builder: (context) => const InvitePage()));
+      context, MaterialPageRoute(builder: (context) =>  InvitePage()));
 }
 
 void address(BuildContext context) {
   Navigator.push(
-      context, MaterialPageRoute(builder: (context) => const AddressPage()));
+      context, MaterialPageRoute(builder: (context) =>  AddressPage()));
 }
 
 void sellers(BuildContext context) {
