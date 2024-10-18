@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class BoxWidget extends StatelessWidget {
-   BoxWidget({super.key, required this.iconData, required this.text,  this.onPressed});
+   BoxWidget({super.key, required this.iconData, required this.text,  required this.onPressed});
    final IconData iconData;
    final Text text;
   void Function()? onPressed;
