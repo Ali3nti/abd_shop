@@ -47,7 +47,7 @@ class _SignInState extends State<SignIn> {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blue, Colors.lightBlueAccent],
+                colors: [Colors.deepOrange, Colors.lightBlueAccent],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -106,7 +106,7 @@ class _SignInState extends State<SignIn> {
                       ElevatedButton(
                         onPressed: registerUser,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: Colors.deepOrange,
                           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -114,7 +114,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         child: const Text(
                           'ثبت نام',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18,color: Colors.white),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -124,7 +124,7 @@ class _SignInState extends State<SignIn> {
                         },
                         child: const Text(
                           'قبلاً ثبت نام کرده‌اید؟ ورود',
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(color: Colors.deepOrange),
                         ),
                       ),
                     ],
