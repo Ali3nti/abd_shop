@@ -78,11 +78,19 @@ class _OrdersBodyState extends State<CartBody> {
                               "مشخصات: ${item.info}",
                               style: TextStyle(color: Colors.deepOrange),
                             ),
+                            Text(
+                              "تعداد: ${item.cartCount}",
+                              style: TextStyle(color: Colors.deepOrange),
+                            ),
+                            Text(
+                              "قیمت:${item.cast}",
+                              style: TextStyle(color: Colors.deepOrange),
+                            ),
                           ],
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: Icon(Icons.delete, color: Colors.deepOrange),
                         onPressed: () {
                           // منطق حذف آیتم
                           cart.removeItem(item);
