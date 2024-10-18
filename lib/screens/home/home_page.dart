@@ -28,7 +28,8 @@ class _HomePageState extends State<HomePage> {
     HomeBody(),
     OrdersBody(),
     CartBody(),
-    ProfileBody(users: [],)
+    ProfileBody(users: [],
+    )
   ];
 
   search(BuildContext context) {
@@ -64,61 +65,72 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
-        if (currentIndex == 0) {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              content: Text("آیا میخواهید از برنامه خارج شوید؟"),
-              actions: [
-                ElevatedButton(
-                  onPressed: () {
-                    SystemNavigator.pop();
-                  },
-                  child: Text("بله"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("خیر"),
-                ),
-              ],
-            ),
-          );
-        } else {
-          currentIndex = 0;
-          setState(() {});
-        }
-      },
-      child: Scaffold(
-        body: screens[currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          enableFeedback: false,
-          showUnselectedLabels: true,
-          selectedItemColor: kPrimaryColor,
-          unselectedItemColor: Colors.grey.shade800,
-          type: BottomNavigationBarType.shifting,
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(
-              () {
-                currentIndex = index;
-              },
+        canPop: false,
+        onPopInvoked: (didPop) {
+          if (currentIndex == 0) {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                content: Text("آیا میخواهید از برنامه خارج شوید؟"),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      SystemNavigator.pop();
+                    },
+                    child: Text("بله"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("خیر"),
+                  ),
+                ],
+              ),
             );
-          },
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled), label: "خانه"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.add_card_outlined), label: "سفارشات"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_basket_outlined), label: "سبد خرید"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "پروفایل"),
-          ],
-        ),
-      ),
-    );
+          } else {
+            currentIndex = 0;
+            setState(() {});
+          }
+        },
+        child: Scaffold(
+          body: screens[currentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            enableFeedback: false,
+            showUnselectedLabels: false,
+            selectedItemColor: Colors.orange,
+            // تغییر رنگ به نارنجی
+            unselectedItemColor: Colors.grey,
+            type: BottomNavigationBarType.fixed,
+            // نوع fixed
+            currentIndex: currentIndex,
+            onTap: (index) {
+              setState(
+                () {
+                  currentIndex = index; // تغییر ایندکس فعلی
+                },
+              );
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard_rounded, size: 30), // آیکون جدید
+                label: "خانه",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.assignment, size: 30), // آیکون جدید
+                label: "سفارشات",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_bag_outlined, size: 30),
+                // آیکون جدید
+                label: "سبد خرید",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_sharp, size: 30), // آیکون جدید
+                label: "پروفایل",
+              ),
+            ],
+          ),
+        ));
   }
 }

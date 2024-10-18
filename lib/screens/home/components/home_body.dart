@@ -88,7 +88,7 @@ class _HomeBodyState extends State<HomeBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const InvitePage(),
+        builder: (context) =>  InvitePage(),
       ),
     );
   }
