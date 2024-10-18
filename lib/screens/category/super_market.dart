@@ -19,7 +19,7 @@ class SuperMarket extends StatefulWidget {
   });
 
   final Market market;
-  final JetMartAmazingModel jetMartAmazingModel; //TODO: Use CamelCase
+  final JetMartAmazingModel jetMartAmazingModel;
 
   @override
   State<SuperMarket> createState() => _SuperMarketState();
