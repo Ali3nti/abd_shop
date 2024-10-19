@@ -10,6 +10,7 @@ import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:abd_shop/screens/profile/address_page.dart';
 import 'package:abd_shop/screens/slider_page/slider_page1.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
+import 'package:abd_shop/widget/produt_widget2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -49,7 +50,7 @@ class _HomeBodyState extends State<HomeBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const AddressPage(),
+        builder: (context) => AddressPage(),
       ),
     );
   }
@@ -66,7 +67,8 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 
-  fruitsCategory(BuildContext context) { //TODO: Use CamelCase
+  fruitsCategory(BuildContext context) {
+    //TODO: Use CamelCase
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -88,7 +90,7 @@ class _HomeBodyState extends State<HomeBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>  InvitePage(),
+        builder: (context) => InvitePage(),
       ),
     );
   }
@@ -112,7 +114,8 @@ class _HomeBodyState extends State<HomeBody> {
                   borderRadius: BorderRadius.circular(15), // Rounded corners
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(15), // Inner padding for the card
+                  padding: const EdgeInsets.all(15),
+                  // Inner padding for the card
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -121,14 +124,16 @@ class _HomeBodyState extends State<HomeBody> {
                         color: kPrimaryColor,
                         size: 35,
                       ),
-                      const SizedBox(width: 15), // Spacing between icon and text
+                      const SizedBox(width: 15),
+                      // Spacing between icon and text
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "آدرس انتخابی",
-                              style: kHeaderTextStyle.copyWith(fontWeight: FontWeight.bold),
+                              style: kHeaderTextStyle.copyWith(
+                                  fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 5),
                             Text(
@@ -144,7 +149,10 @@ class _HomeBodyState extends State<HomeBody> {
                         },
                         child: const Text(
                           "تغییر آدرس",
-                          style: TextStyle(color: Colors.blue, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
@@ -239,80 +247,155 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 50,
-            ),
             // CategoryListWidget(),     //   The following committed code belongs to the Online category...!!!!!! //
             const SizedBox(
               height: 40,
             ),
             SizedBox(
-              height: 150,
+              height: 140,
               child: ListView(
                 children: [
-                  CategoryBox(
-                    CategoryText: const Text(
-                      "سوپرمارکت",
-                      style: kPrimaryTextStyle,
+                  Card(
+                    elevation: 30,
+                    shadowColor: CupertinoColors.systemBlue,
+                    margin: EdgeInsets.all(10),
+                    child: CategoryBox(
+                      CategoryText: const Text(
+                        "سوپرمارکت",
+                        style: kPrimaryTextStyle,
+                      ),
+                      img: "assets/images/supermarket.png",
+                      onTap: () {
+                        supermarket(context);
+                      },
                     ),
-                    img: "assets/images/supermarket.png",
-                    onTap: () {
-                      supermarket(context);
-                    },
                   ),
                   InkWell(
                     onTap: () {
                       fruitsCategory(context);
                     },
+                    child: Card(
+                      elevation: 30,
+                      shadowColor: CupertinoColors.destructiveRed,
+                      margin: EdgeInsets.all(10),
+                      child: CategoryBox(
+                        CategoryText: const Text(
+                          "پروتئینی",
+                          style: kPrimaryTextStyle,
+                        ),
+                        img: "assets/images/protein-desktop.png",
+                        onTap: () {
+                          fruitsCategory(context);
+                        },
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 30,
+                    shadowColor: CupertinoColors.inactiveGray,
+                    margin: EdgeInsets.all(10),
                     child: CategoryBox(
                       CategoryText: const Text(
-                        "پروتئینی",
+                        "لبنیات",
                         style: kPrimaryTextStyle,
                       ),
-                      img: "assets/images/protein-desktop.png",
-                      onTap: () {
-                        fruitsCategory(context);
-                      },
+                      img: "assets/images/dairy-desktop.png",
                     ),
                   ),
-                  CategoryBox(
-                    CategoryText: const Text(
-                      "لبنیات",
-                      style: kPrimaryTextStyle,
+                  Card(
+                    elevation: 30,
+                    shadowColor: CupertinoColors.systemYellow,
+                    margin: EdgeInsets.all(10),
+                    child: CategoryBox(
+                      CategoryText: const Text(
+                        "میوه و سبزیجات",
+                        style: kPrimaryTextStyle,
+                      ),
+                      img: "assets/images/fruit-desktop.png",
                     ),
-                    img: "assets/images/dairy-desktop.png",
-                  ),
-                  CategoryBox(
-                    CategoryText: const Text(
-                      "میوه و سبزیجات",
-                      style: kPrimaryTextStyle,
-                    ),
-                    img: "assets/images/fruit-desktop.png",
                   ),
                   const SizedBox(
                     width: 7,
                   ),
-                  CategoryBox(
-                    CategoryText: const Text(
-                      "آبمیوه و بستنی",
-                      style: kPrimaryTextStyle,
+                  Card(
+                    elevation: 30,
+                    shadowColor: CupertinoColors.systemPurple,
+                    margin: EdgeInsets.all(10),
+                    child: CategoryBox(
+                      CategoryText: const Text(
+                        "آبمیوه و بستنی",
+                        style: kPrimaryTextStyle,
+                      ),
+                      img: "assets/images/icecream-desktop.png",
                     ),
-                    img: "assets/images/icecream-desktop.png",
                   ),
                   const SizedBox(
                     width: 7,
                   ),
-                  CategoryBox(
-                    CategoryText: const Text(
-                      "نانوایی",
-                      style: kPrimaryTextStyle,
+                  Card(
+                    elevation: 10,
+                    shadowColor: CupertinoColors.activeOrange,
+                    margin: EdgeInsets.all(10),
+                    child: CategoryBox(
+                      CategoryText: const Text(
+                        "نانوایی",
+                        style: kPrimaryTextStyle,
+                      ),
+                      img: "assets/images/bread-desktop.png",
                     ),
-                    img: "assets/images/bread-desktop.png",
                   ),
                 ],
                 scrollDirection: Axis.horizontal,
               ),
-            ), //   The following committed code belongs to the old category...!!!!!! //
+            ),
+            SizedBox(height: 40,),
+            SizedBox(height:250,width: double.infinity,
+              child: Expanded(
+                child: ListView(scrollDirection: Axis.horizontal,
+                  children: [
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            //   The following committed code belongs to the old category...!!!!!! //
+            SizedBox(
+              height: 40,
+            ),
             SizedBox(
               width: double.infinity,
               height: 150,
@@ -329,7 +412,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool1.png",
-                                detailtext: const Text("مغز ران مرغ - یک کیلوگرم"),
+                                detailtext:
+                                    const Text("مغز ران مرغ - یک کیلوگرم"),
                                 pricetext: const Text("50,000"),
                               );
                             },
@@ -458,7 +542,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool3.png",
-                                detailtext: const Text("تخم مرغ مروارید - 6 عدد"),
+                                detailtext:
+                                    const Text("تخم مرغ مروارید - 6 عدد"),
                                 pricetext: const Text("50,000"),
                               );
                             },
@@ -522,8 +607,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool4.png",
-                                detailtext:
-                                    const Text("ماءالشعیر کلاسیک بهنوش - یک لیتر"),
+                                detailtext: const Text(
+                                    "ماءالشعیر کلاسیک بهنوش - یک لیتر"),
                                 pricetext: const Text("50,000"),
                               );
                             },
@@ -651,8 +736,8 @@ class _HomeBodyState extends State<HomeBody> {
                             builder: (context) {
                               return ProductSheet(
                                 imgproduct: "assets/images/mahsool6.png",
-                                detailtext:
-                                    const Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
+                                detailtext: const Text(
+                                    "روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
                                 pricetext: const Text("50,000"),
                               );
                             },
@@ -722,12 +807,138 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             const MarketListWidget(),
             const SizedBox(
-              height: 50,
+              height: 40,
             ),
-
-            const SizedBox(
-              height: 100,
-            )
+            SizedBox(height:250,width: double.infinity,
+              child: Expanded(
+                child: ListView(scrollDirection: Axis.horizontal,
+                  children: [
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height:250,width: double.infinity,
+              child: Expanded(
+                child: ListView(scrollDirection: Axis.horizontal,
+                  children: [
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height:250,width: double.infinity,
+              child: Expanded(
+                child: ListView(scrollDirection: Axis.horizontal,
+                  children: [
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                    SizedBox(width: 10,),
+                    ProductCard(
+                      image: "assets/images/mahsool1.png",
+                      title: 'مرغ ',
+                      price: '40000',
+                      discountedPrice: '36000',
+                      discountPercentage: '10',
+                      quantity: '120',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 100,)
           ],
         ),
       ),

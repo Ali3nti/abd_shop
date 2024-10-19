@@ -52,7 +52,8 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
-                      child: FloatingActionButton.extended(
+                      child:
+                      FloatingActionButton.extended(
                         heroTag: "button",
                         onPressed: () {
                           // منطق افزودن به سبد خرید
