@@ -3,7 +3,7 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/discount_model.dart';
-import 'package:abd_shop/models/discount_model.dart';
+import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -51,84 +51,8 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: FloatingActionButton.extended(
-                        heroTag: "button",
-                        onPressed: () {
-                          // منطق افزودن به سبد خرید
-                          var cart = Provider.of<Cart>(context, listen: false);
-                          cart.addProduct(widget.amazingModel);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('${widget.amazingModel!.name} به سبد خرید اضافه شد')),
-                          );
-                        },
-                        backgroundColor: Colors.orange.shade900,
-                        foregroundColor: Colors.white,
-                        isExtended: true,
-                        shape: const CircleBorder(
-                          eccentricity: 0,
-                        ),
-                        label: (widget.amazingModel.cartCount == 0)
-                            ? Row(
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(Icons.add),
-                                    onPressed: () {
-                                      context
-                                          .read<CartUpdater>()
-                                          .incrementNumber();
-                                      widget.amazingModel.cartCount++;
-                                      setState(() {});
-                                    },
-                                  ),
-                                ],
-                              )
-                            : Container(
-                                width: 90,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  color: Colors.orange.shade100,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  children: [
-                                    const SizedBox(width: 3),
-                                    InkWell(
-                                      onTap: () {
-                                        context
-                                            .read<CartUpdater>()
-                                            .incrementNumber();
-                                        widget.amazingModel.cartCount++;
-                                        setState(() {});
-                                      },
-                                      child: Icon(Icons.add,
-                                          color: Colors.orange.shade900),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      context
-                                          .watch<CartUpdater>()
-                                          .counterValue
-                                          .toString(),
-                                      style: TextStyle(
-                                          color: Colors.orange.shade900,
-                                          fontSize: 20),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    InkWell(
-                                        onTap: () {
-                                          context
-                                              .read<CartUpdater>()
-                                              .decrementNumber();
-                                          widget.amazingModel.cartCount--;
-                                          setState(() {});
-                                        },
-                                        child: Icon(Icons.delete,
-                                            color: Colors.orange.shade900))
-                                  ],
-                                ),
-                              ),
-                      ),
+                      padding: const EdgeInsets.only(left: 150),
+                      child: ProviderWidget(),
                     ),
                     // Container(
                     //   //margin: EdgeInsets.only(top: 50),
