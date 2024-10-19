@@ -17,7 +17,7 @@ class _ProviderWidgetState extends State<ProviderWidget> {
     return Center(
       child: _isExpanded
           ? Container(
-        width: 100,
+        width: 90,
         height: 50,
         decoration: BoxDecoration(
           color: Colors.orange.shade100,
@@ -25,7 +25,7 @@ class _ProviderWidgetState extends State<ProviderWidget> {
         ),
         child: Row(
           children: [
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             InkWell(
               onTap: () {
                 context.read<CartUpdater>().incrementNumber();
@@ -33,13 +33,13 @@ class _ProviderWidgetState extends State<ProviderWidget> {
               },
               child: Icon(Icons.add, color: Colors.orange.shade900),
             ),
-            const SizedBox(width: 5),
+            const SizedBox(width: 3),
             Text(
               context.watch<CartUpdater>().counterValue.toString(),
               style:
               TextStyle(color: Colors.orange.shade900, fontSize: 20),
             ),
-            const SizedBox(width: 5),
+            const SizedBox(width: 3),
             InkWell(
               onTap: () {
                 if (context.read<CartUpdater>().counterValue > 0) {
@@ -64,8 +64,8 @@ class _ProviderWidgetState extends State<ProviderWidget> {
           });
         },
         child: Container(
-          width: 70,
-          height: 70,
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
             color: Colors.orange.shade900,
             shape: BoxShape.circle,
@@ -79,7 +79,7 @@ class _ProviderWidgetState extends State<ProviderWidget> {
             },
             child: Text(
               '+',
-              style: TextStyle(fontSize: 40, color: Colors.white),
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
           ),
         ),

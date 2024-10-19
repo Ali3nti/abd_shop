@@ -11,10 +11,10 @@ import 'package:abd_shop/screens/profile/address_page.dart';
 import 'package:abd_shop/screens/slider_page/slider_page1.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:abd_shop/widget/produt_widget2.dart';
+import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../location/location_page.dart';
 import '../../profile/invite_page.dart';
 import '../../search/search_page.dart';
 
@@ -348,12 +348,18 @@ class _HomeBodyState extends State<HomeBody> {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            SizedBox(height: 40,),
-            SizedBox(height:250,width: double.infinity,
+            SizedBox(
+              height: 40,
+            ),
+            SizedBox(
+              height: 250,
+              width: double.infinity,
               child: Expanded(
-                child: ListView(scrollDirection: Axis.horizontal,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
-                    ProductCard( color: Colors.red,
+                    ProductCard(
+                      color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -361,8 +367,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.red,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -370,8 +379,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.red,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -379,8 +391,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.red,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -433,20 +448,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
-                                    child: FloatingActionButton.extended(
-                                      heroTag: "mahsool",
-                                      onPressed: () {},
-                                      backgroundColor: kPrimaryColor,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
+                                    child: ProviderWidget(),
                                   ),
                                 ],
                               ),
@@ -498,20 +500,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
-                                    child: FloatingActionButton.extended(
-                                      heroTag: "mahsool1",
-                                      onPressed: () {},
-                                      backgroundColor: kPrimaryColor,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
+                                    child: ProviderWidget(),
                                   ),
                                 ],
                               ),
@@ -563,20 +552,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
-                                    child: FloatingActionButton.extended(
-                                      heroTag: "mahsool3",
-                                      onPressed: () {},
-                                      backgroundColor: kPrimaryColor,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
+                                    child: ProviderWidget(),
                                   ),
                                 ],
                               ),
@@ -628,20 +604,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
-                                    child: FloatingActionButton.extended(
-                                      heroTag: "mahsool4",
-                                      onPressed: () {},
-                                      backgroundColor: kPrimaryColor,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
+                                    child: ProviderWidget(),
                                   ),
                                 ],
                               ),
@@ -692,20 +655,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
-                                    child: FloatingActionButton.extended(
-                                      heroTag: "mahsool5",
-                                      onPressed: () {},
-                                      backgroundColor: kPrimaryColor,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
+                                    child: ProviderWidget(),
                                   ),
                                 ],
                               ),
@@ -757,20 +707,7 @@ class _HomeBodyState extends State<HomeBody> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 60, right: 60, bottom: 10),
-                                    child: FloatingActionButton.extended(
-                                      heroTag: "mahsool6",
-                                      onPressed: () {},
-                                      backgroundColor: kPrimaryColor,
-                                      foregroundColor: Colors.white,
-                                      isExtended: true,
-                                      shape: const CircleBorder(
-                                        eccentricity: 0,
-                                      ),
-                                      label: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      ),
-                                    ),
+                                    child: ProviderWidget(),
                                   ),
                                 ],
                               ),
@@ -809,9 +746,12 @@ class _HomeBodyState extends State<HomeBody> {
             const SizedBox(
               height: 40,
             ),
-            SizedBox(height:250,width: double.infinity,
+            SizedBox(
+              height: 250,
+              width: double.infinity,
               child: Expanded(
-                child: ListView(scrollDirection: Axis.horizontal,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
                     ProductCard(
                       image: "assets/images/mahsool1.png",
@@ -819,10 +759,14 @@ class _HomeBodyState extends State<HomeBody> {
                       price: '40000',
                       discountedPrice: '36000',
                       discountPercentage: '10',
-                      quantity: '120', color: Colors.deepPurpleAccent,
+                      quantity: '120',
+                      color: Colors.deepPurpleAccent,
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.deepPurpleAccent,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.deepPurpleAccent,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -830,8 +774,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard(  color: Colors.deepPurpleAccent,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.deepPurpleAccent,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -839,8 +786,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.deepPurpleAccent,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.deepPurpleAccent,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -852,11 +802,15 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
             ),
-            SizedBox(height:250,width: double.infinity,
+            SizedBox(
+              height: 250,
+              width: double.infinity,
               child: Expanded(
-                child: ListView(scrollDirection: Axis.horizontal,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
-                    ProductCard( color: Colors.teal,
+                    ProductCard(
+                      color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -864,8 +818,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.teal,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -873,8 +830,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.teal,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -882,8 +842,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.teal,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -895,11 +858,15 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
             ),
-            SizedBox(height:250,width: double.infinity,
+            SizedBox(
+              height: 250,
+              width: double.infinity,
               child: Expanded(
-                child: ListView(scrollDirection: Axis.horizontal,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
-                    ProductCard( color: Colors.amber,
+                    ProductCard(
+                      color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -907,8 +874,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.amber,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -916,8 +886,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard(  color: Colors.amber,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -925,8 +898,11 @@ class _HomeBodyState extends State<HomeBody> {
                       discountPercentage: '10',
                       quantity: '120',
                     ),
-                    SizedBox(width: 10,),
-                    ProductCard( color: Colors.amber,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ProductCard(
+                      color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -938,7 +914,9 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
             ),
-            SizedBox(height: 100,)
+            SizedBox(
+              height: 100,
+            )
           ],
         ),
       ),
