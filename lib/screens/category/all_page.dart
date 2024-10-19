@@ -272,6 +272,222 @@ class _AllPageState extends State<AllPage> {
                 ),
               ],
             ),
+            Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 3),
+                  width: 203,
+                  height: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          margin: const EdgeInsets.only(top: 50),
+                          //  color: Colors.orange,
+                          child: Image.asset(
+                            width: 20,
+                            'assets/images/p11.png',
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: ProviderWidget(),
+                      ),
+                      const Text("15/000 تومان",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      const SizedBox(height: 20),
+                      const Text("روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(
+                            color: Colors.grey),),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 3, bottom: 3),
+                  width: 203,
+                  height: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          margin: const EdgeInsets.only(top: 50),
+                          //  color: Colors.orange,
+                          child: Image.asset(
+                            width: 20,
+                            'assets/images/p11.png',
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: ProviderWidget(),
+                      ),
+                      const Text("15/000 تومان",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      const SizedBox(height: 20),
+                      const Text("روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(
+                            color: Colors.grey),),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 3),
+                  width: 203,
+                  height: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          margin: const EdgeInsets.only(top: 50),
+                          //  color: Colors.orange,
+                          child: Image.asset(
+                            width: 20,
+                            'assets/images/p11.png',
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: ProviderWidget(),
+                      ),
+                      const Text("15/000 تومان",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      const SizedBox(height: 20),
+                      const Text("روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(
+                            color: Colors.grey),),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 3, bottom: 3),
+                  width: 203,
+                  height: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          margin: const EdgeInsets.only(top: 50),
+                          //  color: Colors.orange,
+                          child: Image.asset(
+                            width: 20,
+                            'assets/images/p11.png',
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: ProviderWidget(),
+                      ),
+                      const Text("15/000 تومان",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      const SizedBox(height: 20),
+                      const Text("روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(
+                            color: Colors.grey),),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 3),
+                  width: 203,
+                  height: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          margin: const EdgeInsets.only(top: 50),
+                          //  color: Colors.orange,
+                          child: Image.asset(
+                            width: 20,
+                            'assets/images/p11.png',
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: ProviderWidget(),
+                      ),
+                      const Text("15/000 تومان",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      const SizedBox(height: 20),
+                      const Text("روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(
+                            color: Colors.grey),),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 3, bottom: 3),
+                  width: 203,
+                  height: 300,
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          margin: const EdgeInsets.only(top: 50),
+                          //  color: Colors.orange,
+                          child: Image.asset(
+                            width: 20,
+                            'assets/images/p11.png',
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 100),
+                        child: ProviderWidget(),
+                      ),
+                      const Text("15/000 تومان",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      const SizedBox(height: 20),
+                      const Text("روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(
+                            color: Colors.grey),),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
