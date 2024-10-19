@@ -7,6 +7,7 @@ class ProductCard extends StatelessWidget {
   final String discountedPrice;
   final String discountPercentage;
   final String quantity;
+  final Color color;
 
   const ProductCard({
     Key? key,
@@ -15,12 +16,12 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.discountedPrice,
     required this.discountPercentage,
-    required this.quantity,
+    required this.quantity, required this.color,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(shadowColor: Colors.cyanAccent,
+    return Card(shadowColor: color,
       elevation: 20,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

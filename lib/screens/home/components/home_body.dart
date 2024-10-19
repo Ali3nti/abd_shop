@@ -353,7 +353,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: Expanded(
                 child: ListView(scrollDirection: Axis.horizontal,
                   children: [
-                    ProductCard(
+                    ProductCard( color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -362,7 +362,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -371,7 +371,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -380,7 +380,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.red,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -819,10 +819,10 @@ class _HomeBodyState extends State<HomeBody> {
                       price: '40000',
                       discountedPrice: '36000',
                       discountPercentage: '10',
-                      quantity: '120',
+                      quantity: '120', color: Colors.deepPurpleAccent,
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.deepPurpleAccent,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -831,7 +831,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard(  color: Colors.deepPurpleAccent,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -840,7 +840,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.deepPurpleAccent,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -856,7 +856,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: Expanded(
                 child: ListView(scrollDirection: Axis.horizontal,
                   children: [
-                    ProductCard(
+                    ProductCard( color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -865,7 +865,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -874,7 +874,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -883,7 +883,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.teal,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -899,7 +899,7 @@ class _HomeBodyState extends State<HomeBody> {
               child: Expanded(
                 child: ListView(scrollDirection: Axis.horizontal,
                   children: [
-                    ProductCard(
+                    ProductCard( color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -908,7 +908,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -917,7 +917,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard(  color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
@@ -926,7 +926,7 @@ class _HomeBodyState extends State<HomeBody> {
                       quantity: '120',
                     ),
                     SizedBox(width: 10,),
-                    ProductCard(
+                    ProductCard( color: Colors.amber,
                       image: "assets/images/mahsool1.png",
                       title: 'مرغ ',
                       price: '40000',
