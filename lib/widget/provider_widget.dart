@@ -36,8 +36,8 @@ class _ProviderWidgetState extends State<ProviderWidget> {
             const SizedBox(width: 5),
             Text(
               context.watch<CartUpdater>().counterValue.toString(),
-              style: TextStyle(
-                  color: Colors.orange.shade900, fontSize: 20),
+              style:
+              TextStyle(color: Colors.orange.shade900, fontSize: 20),
             ),
             const SizedBox(width: 5),
             InkWell(
@@ -67,7 +67,7 @@ class _ProviderWidgetState extends State<ProviderWidget> {
           width: 70,
           height: 70,
           decoration: BoxDecoration(
-            color: Colors.orange,
+            color: Colors.orange.shade900,
             shape: BoxShape.circle,
           ),
           alignment: Alignment.center,
@@ -87,3 +87,4 @@ class _ProviderWidgetState extends State<ProviderWidget> {
     );
   }
 }
+
