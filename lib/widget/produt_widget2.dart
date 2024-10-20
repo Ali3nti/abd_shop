@@ -1,3 +1,4 @@
+import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -90,20 +91,11 @@ class ProductCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 40,
-            child: FloatingActionButton.extended(
-              heroTag: "button",
-              onPressed: () {},
-              backgroundColor: Colors.orange.shade900,
-              foregroundColor: Colors.white,
-              isExtended: true,
-              shape: const CircleBorder(
-                eccentricity: 0,
-              ),
-              label: Icon(Icons.add),
-            ),
-          ),
-        ],
+    Padding(
+    padding: const EdgeInsets.only(left: 100),
+    child: ProviderWidget(),
+    ),
+    ],
       ),
     );
   }
