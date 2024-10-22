@@ -1,5 +1,6 @@
 import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/response_model.dart';
+import 'package:abd_shop/screens/product_page_detail.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/amazing_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,16 @@ class AmazingListWidget extends StatefulWidget {
   @override
   State<AmazingListWidget> createState() => _CategoryListWidgetState();
 }
+
+productPageDetail(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ProductPageDetail(),
+    ),
+  );
+}
+
 
 class _CategoryListWidgetState extends State<AmazingListWidget> {
   List<AmazingItemWidget> amazingWidgetList = [];
@@ -24,7 +35,7 @@ class _CategoryListWidgetState extends State<AmazingListWidget> {
           AmazingModel amazingModel = AmazingModel.fromJSON(item);
           // marketList.add(market);
           amazingWidgetList.add(
-            AmazingItemWidget(
+            AmazingItemWidget(onPressed: (){productPageDetail(context);},
               amazingModel: amazingModel,
             ),
           );
