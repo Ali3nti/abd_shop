@@ -1,14 +1,12 @@
-import 'package:abd_shop/cart_updater_page.dart';
 import 'package:abd_shop/constants.dart';
-import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/discount_model.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AmazingItemWidget extends StatefulWidget {
-  AmazingItemWidget({super.key, this.onPressed, required this.amazingModel,});
+  AmazingItemWidget({super.key, required this.onPressed, required this.amazingModel,});
 
   AmazingModel amazingModel;
   void Function()? onPressed;
@@ -25,7 +23,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
-        onTap: widget.onPressed,
+        onTap: (){productPageDetail(context);},
         child: Container(
           margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
