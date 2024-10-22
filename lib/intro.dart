@@ -1,134 +1,155 @@
 import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Intro extends StatefulWidget {
-  const Intro({super.key});
-
   @override
-  State<Intro> createState() => _IntroState();
+  _IntroState createState() => _IntroState();
 }
 
-
-
 class _IntroState extends State<Intro> {
-  final PageController pageController = PageController();
+  final PageController _pageController = PageController();
   int _currentPage = 0;
-  bool isFirstLaunch = true;
+
+  List<Map<String, String>> slides = [
+    {
+      "title": "Welcome to My App",
+      "description": "This is the first slide description.",
+      "image": "assets/images/intro1.png",
+    },
+    {
+      "title": "Discover Features",
+      "description": "Explore the amazing features of our app.",
+      "image": "assets/images/login.png",
+    },
+    {
+      "title": "Get Started",
+      "description": "Let's get started with the app!",
+      "image": "assets/images/vector2.png",
+    },
+  ];
 
   @override
   void initState() {
     super.initState();
-    _checkFirstLaunch();
+    _checkIfIntroShown();
   }
 
-  _checkFirstLaunch() async {
+  Future<void> _checkIfIntroShown() async {
+    await Hive.initFlutter();
     var box = await Hive.openBox('settings');
-    bool? firstLaunch = box.get('isFirstLaunch', defaultValue: true);
+    bool isIntroShown = box.get('isIntroShown', defaultValue: false);
 
-    if (firstLaunch == true) {
-      box.put('isFirstLaunch', false);
-      setState(() {
-        isFirstLaunch = true;
-      });
-    } else {
-      setState(() {
-        isFirstLaunch = false;
-      });
+    if (isIntroShown) {
+      // Navigate to HomeScreen if intro has already been shown
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     }
+  }
+
+  Future<void> _setIntroShown() async {
+    var box = await Hive.openBox('settings');
+    box.put('isIntroShown', true);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isFirstLaunch
-          ? Stack(
-        children: [
-          PageView(
-            controller: pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            children: [
-              _buildPage(
-                img: "assets/images/intro1.png",
-                color: Color.fromRGBO(239, 73, 35, 5),
-                title: "به اپلیکیشن دیجی جت خوش آمدید",
-                description: "اولین فروشگاه آنلاین مواد غذایی در آباده",
-              ),
-              _buildPage(
-                img: "assets/images/login.png",
-                color: Color.fromRGBO(254, 102, 2, 5),
-                title: "",
-                description: "همراه با کلی تخفیف",
-              ),
-              _buildPage(
-                img: "assets/images/vector2.png",
-                color: Color.fromRGBO(123, 149, 242, 5),
-                title: "",
-                description: "پس وقت رو از دست نده!",
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 550, right: 160),
-            child: SmoothPageIndicator(
-              controller: pageController,
-              count: 3,
-              effect: ScrollingDotsEffect(
-                  dotHeight: 15,
-                  dotWidth: 15,
-                  dotColor: Colors.white,
-                  activeDotColor: Colors.black),
-            ),
-          ),
-        ],
-      )
-          : HomePage(),
-      bottomSheet: _currentPage == 2
-          ? TextButton(
-        onPressed: () {
-          // Navigate to the main screen
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
-          );
+      body: PageView.builder(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            _currentPage = index;
+          });
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("شروع", style: TextStyle(fontSize: 20)),
-          ],
-        ),
-      )
-          : SizedBox.shrink(),
+        itemCount: slides.length,
+        itemBuilder: (context, index) {
+          return _buildSlide(slides[index]);
+        },
+      ),
+      bottomSheet: _buildBottomSheet(),
     );
   }
 
-  Widget _buildPage({
-    required Color color,
-    required String title,
-    String img = "",
-    required String description,
-  }) {
+  Widget _buildSlide(Map<String, String> slide) {
     return Container(
-      color: color,
+      color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(width: 250, child: Image.asset(img)),
-          Text(
-            title,
-            style: TextStyle(fontSize: 24, color: Colors.white),
+          Image.asset(
+            slide["image"]!,
+            height: 300,
+            fit: BoxFit.cover,
           ),
           SizedBox(height: 20),
           Text(
-            description,
-            style: TextStyle(fontSize: 16, color: Colors.white),
-            textAlign: TextAlign.center,
+            slide["title"]!,
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              slide["description"]!,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBottomSheet() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(slides.length, (index) {
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: 5),
+                width: _currentPage == index ? 12 : 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: _currentPage == index ? Colors.blue : Colors.grey,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              );
+            }),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (_currentPage == slides.length - 1) // Show Skip only on the last page
+                TextButton(
+                  onPressed: () {
+                    _setIntroShown();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
+                  child: Text("Skip"),
+                ),
+              if (_currentPage < slides.length - 1) // Show Next button only on the first two pages
+                TextButton(
+                  onPressed: () {
+                    _pageController.nextPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                  },
+                  child: Text("Next"),
+                ),
+            ],
           ),
         ],
       ),
