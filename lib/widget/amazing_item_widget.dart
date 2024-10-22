@@ -34,7 +34,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
           ),
           // padding: const EdgeInsets.all(8),
           height: 350,
-          width: 250,
+          width: 200,
           child: Padding(
             padding: const EdgeInsets.only(top: 15),
             child: Column(
@@ -51,7 +51,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 150),
+                      padding: const EdgeInsets.only(left: 120),
                       child: ProviderWidget(),
                     ),
                     // Container(

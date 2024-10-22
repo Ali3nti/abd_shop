@@ -107,8 +107,8 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                     color: CupertinoColors.white,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  height: 300,
-                  width: 180,
+                  height: 350,
+                  width: 200,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
