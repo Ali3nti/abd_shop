@@ -1,22 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('گردونه شانس با عقربه')),
-        body: WheelOfFortune(),
-      ),
-    );
-  }
-}
-
 class WheelOfFortune extends StatefulWidget {
   @override
   _WheelOfFortuneState createState() => _WheelOfFortuneState();
@@ -26,7 +10,6 @@ class _WheelOfFortuneState extends State<WheelOfFortune>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   double _rotation = 0;
-  bool _isSpinning = false; // پرچم برای جلوگیری از چرخش دوباره
 
   final List<String> prizes = [
     'جایزه 1',
@@ -47,9 +30,6 @@ class _WheelOfFortuneState extends State<WheelOfFortune>
   }
 
   void spinWheel() {
-    if (_isSpinning) return; // اگر در حال چرخش است، برگشت
-    _isSpinning = true; // پرچم را فعال کنید
-
     final random = Random();
     final spins = random.nextInt(360) + 720; // 2 دور + یک دور تصادفی
     _controller.forward(from: 0);
@@ -71,7 +51,6 @@ class _WheelOfFortuneState extends State<WheelOfFortune>
                 child: Text('باشه'),
                 onPressed: () {
                   Navigator.of(context).pop();
-                  _isSpinning = false; // پرچم را غیرفعال کنید
                 },
               ),
             ],
@@ -89,7 +68,7 @@ class _WheelOfFortuneState extends State<WheelOfFortune>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:  Center(
+    return Center(
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -132,7 +111,6 @@ class _WheelOfFortuneState extends State<WheelOfFortune>
           ),
         ],
       ),
-    ),
     );
   }
 }
