@@ -56,7 +56,7 @@ void giftCardPage(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => GiftCardPage(),
+      builder: (context) => WheelOfFortune(),
     ),
   );
 }
