@@ -1,4 +1,5 @@
 import 'package:abd_shop/screens/category/OutlinedButton_page.dart';
+import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:flutter/material.dart';
 
 class OutLinedButtonWidget extends StatefulWidget {
@@ -16,7 +17,7 @@ class _OutLinedButtonWidgetState extends State<OutLinedButtonWidget> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => OutLinedButtonPage(),
+            builder: (context) => AllPage(),
           ),
         );
       },

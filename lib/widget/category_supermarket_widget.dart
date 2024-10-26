@@ -1,4 +1,4 @@
-import 'package:abd_shop/screens/category/item_category_page.dart';
+import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class _Categor_SuperMarketState extends State<CategorySuperMarket> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const ItemCategoryPage(),
+            builder: (context) => const FruitsCategory(),
           ),
         );
       },
