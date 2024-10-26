@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CategoryBox extends StatelessWidget {
-  CategoryBox(
-      {super.key, required this.img, required this.categorytext, this.onTap});
+  CategoryBox({
+    super.key,
+    required this.img,
+    required this.CategoryText,
+    this.onTap,
+  });
 
-  String img;
-  Text categorytext;
-  void Function()?onTap;
+  final String img;
+  final Text CategoryText;
+  void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class CategoryBox extends StatelessWidget {
             img,
             width: 70,
           ),
-          categorytext,
+          CategoryText,
         ],
       ),
     );

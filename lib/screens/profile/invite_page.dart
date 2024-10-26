@@ -1,97 +1,55 @@
+import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class InvitePage extends StatefulWidget {
-  const InvitePage({super.key});
-
   @override
-  State<InvitePage> createState() => _InvitePageState();
+  _InvitePageState createState() => _InvitePageState();
 }
 
 class _InvitePageState extends State<InvitePage> {
+  // متن دعوت‌نامه از پیش تعیین شده
+  final String _defaultMessage =
+      'به اپلیکیشن ما خوش آمدید! لطفاً این لینک را با دوستانتان به اشتراک بگذارید: [لینک شما]';
+
+  void _shareInvitation() {
+    // استفاده از متن دعوت‌نامه از پیش تعیین شده
+    Share.share(_defaultMessage);
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 35, left: 200),
-            child: Text(
-              "کد تخفیف رایگان",
-              style: TextStyle(fontSize: 30),
+      appBar: AppBar(backgroundColor: Colors.deepOrange,
+        title: Text('دعوت از دوستان'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            Text("شما از طریق دکمه زیر می توانید دوستان خود را به برنامه دعوت کنید و از تخفیف های ما استفاده کنید"),
+            SizedBox(height: 100),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              onPressed: _shareInvitation,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.share, color: Colors.white),
+                  SizedBox(width: 10),
+                  Text("دعوت از دوستان",
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Image.asset(
-            "assets/images/P31.png",
-            height: 150,
-            width: 300,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: EdgeInsets.all(12),
-            child: Text(
-              "با دعوت ۱۰ نفر از دوستان‌تون می‌تونید بهشون کد تخفیف 25,000 تومانی هدیه بدید و بعدش به ازای هر دعوت موفق که سفارش ثبت کنند، خودتون هم یک کد تخفیف 25,000 تومانی از ما هدیه بگیرید که در صفحه‌ی “کدهای تخفیف” قابل نمایش خواهد بود.",
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
-          Container(
-            width: 350,
-            height: 200,
-            decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(15)),
-            child: Column(
-              children: [
-                Row(mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 110,
-                    ),
-                    Text(
-                      "تخفیف برای دوستان شما",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    Text(
-                      "25000",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 60,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      color: Colors.deepOrange,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.share,
-                        color: Colors.white,
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "اشتراک گذاری با دوستان",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
