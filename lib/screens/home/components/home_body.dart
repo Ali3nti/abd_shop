@@ -129,12 +129,54 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CupertinoColors.white,
-      appBar: const MyAppBar(),
+      // appBar: const MyAppBar(),
       body: RefreshIndicator(
         onRefresh: _refreshData,
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: 50,),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Container(
+                  height: 50,
+                  width: 340,
+                  padding: const EdgeInsets.symmetric(horizontal: 12), // Horizontal padding
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100, // Lighter background
+                    borderRadius: BorderRadius.circular(10), // More rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.search, size: 28, color: Colors.grey.shade600),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            const Text(
+                              "جستجو در",
+                              style: TextStyle(fontSize: 16, color: Colors.black87,),
+                            ),
+                            const SizedBox(width: 8),
+                            Image.asset(
+                              'assets/images/logo.png',
+                              color: kPrimaryColor,
+                              width: 90,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -281,11 +323,11 @@ class _HomeBodyState extends State<HomeBody> {
               ),
               // CategoryListWidget(),     //   The following committed code belongs to the Online category...!!!!!! //
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
 
               SizedBox(
-                  height: 100,
+                  height: 115,
                   child:
                   GridView(
                     children: [
@@ -517,7 +559,7 @@ class _HomeBodyState extends State<HomeBody> {
                   //   scrollDirection: Axis.horizontal,
                   // ),
                   ),
-              SizedBox(height:100,child:
+              SizedBox(height:115,child:
               GridView(
                 children: [
                   Column(

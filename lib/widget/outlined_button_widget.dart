@@ -1,4 +1,3 @@
-import 'package:abd_shop/screens/category/OutlinedButton_page.dart';
 import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:flutter/material.dart';
 
