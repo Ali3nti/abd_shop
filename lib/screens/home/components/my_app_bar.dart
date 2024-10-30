@@ -30,8 +30,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: 50,
           padding: const EdgeInsets.symmetric(horizontal: 16), // Horizontal padding
           decoration: BoxDecoration(
-            color: Colors.grey.shade200, // Lighter background
-            borderRadius: BorderRadius.circular(30), // More rounded corners
+            color: Colors.grey.shade100, // Lighter background
+            borderRadius: BorderRadius.circular(14), // More rounded corners
             boxShadow: [
               BoxShadow(
                 color: Colors.black26,
