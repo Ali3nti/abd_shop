@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
           bottomNavigationBar: BottomNavigationBar(
             enableFeedback: false,
             showUnselectedLabels: false,
-            selectedItemColor: Colors.orange,
+            selectedItemColor: Colors.deepOrange,
             // تغییر رنگ به نارنجی
             unselectedItemColor: Colors.grey,
             type: BottomNavigationBarType.fixed,

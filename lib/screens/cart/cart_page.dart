@@ -19,7 +19,7 @@ class _OrdersBodyState extends State<CartBody> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.deepOrange,
         title: const Text(
           "سبد خرید",
           style: TextStyle(
