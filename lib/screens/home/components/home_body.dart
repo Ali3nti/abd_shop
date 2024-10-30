@@ -140,55 +140,49 @@ class _HomeBodyState extends State<HomeBody> {
               ),
               Padding(
                 padding: const EdgeInsets.all(15),
-                child: Card(
-                  elevation: 2, // Adds a subtle shadow
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15), // Rounded corners
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    // Inner padding for the card
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.location_on_outlined,
-                          color: kPrimaryColor,
-                          size: 35,
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  // Inner padding for the card
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.location_on_outlined,
+                        color: kPrimaryColor,
+                        size: 35,
+                      ),
+                      const SizedBox(width: 15),
+                      // Spacing between icon and text
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "آدرس انتخابی",
+                              style: kHeaderTextStyle.copyWith(
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "آباده، میدان آزادی، کوچه هفتم",
+                              style: kHeaderTextStyle2,
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 15),
-                        // Spacing between icon and text
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "آدرس انتخابی",
-                                style: kHeaderTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                "آباده، میدان آزادی، کوچه هفتم",
-                                style: kHeaderTextStyle2,
-                              ),
-                            ],
-                          ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          location(context);
+                        },
+                        child: const Text(
+                          "تغییر آدرس",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            location(context);
-                          },
-                          child: const Text(
-                            "تغییر آدرس",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -645,7 +639,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ],
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  childAspectRatio: 1,
+                  childAspectRatio: 1.1,
                   crossAxisSpacing: 0,
                   mainAxisSpacing: 5,
                 ),
