@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
@@ -26,10 +28,31 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  // PageController pageController =
+  //     PageController(initialPage: 0, viewportFraction: 0.9);
+
   PageController pageController =
       PageController(initialPage: 0, viewportFraction: 0.9);
+  int currentPage = 0;
+  Timer? timer;
 
+  @override
+  void initState() {
+    super.initState();
+    startAutoSlide();
+  }
 
+  void startAutoSlide() {
+    timer = Timer.periodic(Duration(seconds: 6), (Timer timer) {
+      if (currentPage < 4) {
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+      pageController.animateToPage(currentPage,
+          duration: Duration(milliseconds: 300), curve: Curves.easeInQuad);
+    });
+  }
 
   //
   // List<Widget> AmazingItem = [
@@ -39,15 +62,12 @@ class _HomeBodyState extends State<HomeBody> {
   //   ),
   // ];
 
-
-
   Future<void> _refreshData() async {
     // کد برای بارگذاری مجدد داده‌ها
     await Future.delayed(Duration(seconds: 1));
-  }// شبیه‌سازی بارگذاری
+  } // شبیه‌سازی بارگذاری
 
-
-    search(BuildContext context) {
+  search(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -110,7 +130,8 @@ class _HomeBodyState extends State<HomeBody> {
     return Scaffold(
       backgroundColor: CupertinoColors.white,
       appBar: const MyAppBar(),
-      body: RefreshIndicator(onRefresh: _refreshData,
+      body: RefreshIndicator(
+        onRefresh: _refreshData,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -171,7 +192,7 @@ class _HomeBodyState extends State<HomeBody> {
                   ),
                 ),
               ),
-        // the old code//
+              // the old code//
               // Padding(
               //   padding: const EdgeInsets.all(15),
               //   child: Row(
@@ -225,7 +246,7 @@ class _HomeBodyState extends State<HomeBody> {
                               sliderPage(context);
                             },
                             ImageUrl:
-                                "https://dkstatics-public.digikala.com/jet-public/5cfe6551e1e7aed448bc2fe2878816c02fcd4c0a_1719394303.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                                "https://dkstatics-public.digikala.com/jet-public/1f05b854f620f190fec7189f31ef89487d5364cf_1730190500.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                         SliderImage(
                             onTap: () {},
                             ImageUrl:
@@ -242,6 +263,12 @@ class _HomeBodyState extends State<HomeBody> {
                             },
                             ImageUrl:
                                 "https://dkstatics-public.digikala.com/jet-public/287f806c0a801981f5e085734e9d4273bd1d3299_1718721407.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                        SliderImage(
+                            onTap: () {
+                              sliderPage2(context);
+                            },
+                            ImageUrl:
+                                "https://dkstatics-public.digikala.com/jet-public/b1f8c75e632c39a3e095a7fc5687fba76ac5ee8b_1730190734.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
                       ],
                     ),
                   ),
@@ -249,7 +276,7 @@ class _HomeBodyState extends State<HomeBody> {
                     padding: const EdgeInsets.only(left: 60, bottom: 20),
                     child: SmoothPageIndicator(
                       controller: pageController,
-                      count: 4,
+                      count: 5,
                       effect: const WormEffect(
                           activeDotColor: kPrimaryTextColor,
                           dotHeight: 7,
@@ -260,105 +287,372 @@ class _HomeBodyState extends State<HomeBody> {
               ),
               // CategoryListWidget(),     //   The following committed code belongs to the Online category...!!!!!! //
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
+
               SizedBox(
-                height: 140,
-                child: ListView(
-                  children: [
-                    Card(
-                      elevation: 30,
-                      shadowColor: CupertinoColors.systemBlue,
-                      margin: EdgeInsets.all(10),
-                      child: CategoryBox(
-                        CategoryText: const Text(
-                          "سوپرمارکت",
-                          style: kPrimaryTextStyle,
-                        ),
-                        img: "assets/images/supermarket.png",
-                        onTap: () {
-                          supermarket(context);
-                        },
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        fruitsCategory(context);
-                      },
-                      child: Card(
-                        elevation: 30,
-                        shadowColor: CupertinoColors.destructiveRed,
-                        margin: EdgeInsets.all(10),
-                        child: CategoryBox(
-                          CategoryText: const Text(
-                            "پروتئینی",
-                            style: kPrimaryTextStyle,
+                  height: 100,
+                  child:
+                  GridView(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 60,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.blue.withOpacity(0.5),
+                                  blurRadius: 5,
+                                  spreadRadius: 2,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ClipOval(
+                              child: InkWell(
+                                onTap: () { supermarket(context); },
+                                child: Image.network(
+                                  "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/supermarket-desktop.png",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
                           ),
-                          img: "assets/images/protein-desktop.png",
-                          onTap: () {
-                            fruitsCategory(context);
-                          },
+                          SizedBox(height: 8),
+                          Text('سوپرمارکت', style: TextStyle(fontSize: 16)),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 60,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.brown.withOpacity(0.5),
+                                  blurRadius: 5,
+                                  spreadRadius: 2,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ClipOval(
+                              child: InkWell(
+                                onTap: () { fruitsCategory(context); },
+                                child: Image.network(
+                                  "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/cafe-desktop.png",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text('کافه', style: TextStyle(fontSize: 16)),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 60,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.pink.withOpacity(0.5),
+                                  blurRadius: 5,
+                                  spreadRadius: 2,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ClipOval(
+                              child: Image.network(
+                                "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/icecream-desktop.png",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text('آبمیوه و بستنی', style: TextStyle(fontSize: 16)),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 60,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.orange.withOpacity(0.5),
+                                  blurRadius: 5,
+                                  spreadRadius: 2,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ClipOval(
+                              child: Image.network(
+                                "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/confectionary-desktop.png",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text('شیرینی', style: TextStyle(fontSize: 16)),
+                        ],
+                      ),
+                    ],
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    physics: NeverScrollableScrollPhysics(), // جلوگیری از اسکرول
+                    shrinkWrap: true, // جمع کردن اندازه GridView
+                  ),
+
+                // ListView(
+                  //   children: [
+                  //     Card(
+                  //       elevation: 30,
+                  //       shadowColor: CupertinoColors.systemBlue,
+                  //       margin: EdgeInsets.all(10),
+                  //       child: CategoryBox(
+                  //         CategoryText: const Text(
+                  //           "سوپرمارکت",
+                  //           style: kPrimaryTextStyle,
+                  //         ),
+                  //         img: "assets/images/supermarket.png",
+                  //         onTap: () {
+                  //           supermarket(context);
+                  //         },
+                  //       ),
+                  //     ),
+                  //     InkWell(
+                  //       onTap: () {
+                  //         fruitsCategory(context);
+                  //       },
+                  //       child: Card(
+                  //         elevation: 30,
+                  //         shadowColor: CupertinoColors.destructiveRed,
+                  //         margin: EdgeInsets.all(10),
+                  //         child: CategoryBox(
+                  //           CategoryText: const Text(
+                  //             "پروتئینی",
+                  //             style: kPrimaryTextStyle,
+                  //           ),
+                  //           img: "assets/images/protein-desktop.png",
+                  //           onTap: () {
+                  //             fruitsCategory(context);
+                  //           },
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     Card(
+                  //       elevation: 30,
+                  //       shadowColor: CupertinoColors.inactiveGray,
+                  //       margin: EdgeInsets.all(10),
+                  //       child: CategoryBox(
+                  //         CategoryText: const Text(
+                  //           "لبنیات",
+                  //           style: kPrimaryTextStyle,
+                  //         ),
+                  //         img: "assets/images/dairy-desktop.png",
+                  //       ),
+                  //     ),
+                  //     Card(
+                  //       elevation: 30,
+                  //       shadowColor: CupertinoColors.systemYellow,
+                  //       margin: EdgeInsets.all(10),
+                  //       child: CategoryBox(
+                  //         CategoryText: const Text(
+                  //           "میوه و سبزیجات",
+                  //           style: kPrimaryTextStyle,
+                  //         ),
+                  //         img: "assets/images/fruit-desktop.png",
+                  //       ),
+                  //     ),
+                  //     const SizedBox(
+                  //       width: 7,
+                  //     ),
+                  //     Card(
+                  //       elevation: 30,
+                  //       shadowColor: CupertinoColors.systemPurple,
+                  //       margin: EdgeInsets.all(10),
+                  //       child: CategoryBox(
+                  //         CategoryText: const Text(
+                  //           "آبمیوه و بستنی",
+                  //           style: kPrimaryTextStyle,
+                  //         ),
+                  //         img: "assets/images/icecream-desktop.png",
+                  //       ),
+                  //     ),
+                  //     const SizedBox(
+                  //       width: 7,
+                  //     ),
+                  //     Card(
+                  //       elevation: 10,
+                  //       shadowColor: CupertinoColors.activeOrange,
+                  //       margin: EdgeInsets.all(10),
+                  //       child: CategoryBox(
+                  //         CategoryText: const Text(
+                  //           "نانوایی",
+                  //           style: kPrimaryTextStyle,
+                  //         ),
+                  //         img: "assets/images/bread-desktop.png",
+                  //       ),
+                  //     ),
+                  //   ],
+                  //   scrollDirection: Axis.horizontal,
+                  // ),
+                  ),
+              SizedBox(height:100,child:
+              GridView(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.purple.withOpacity(0.5),
+                              blurRadius: 5,
+                              spreadRadius: 2,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: ClipOval(
+                          child: Image.network(
+                            "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/dairy-desktop.png",
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    Card(
-                      elevation: 30,
-                      shadowColor: CupertinoColors.inactiveGray,
-                      margin: EdgeInsets.all(10),
-                      child: CategoryBox(
-                        CategoryText: const Text(
-                          "لبنیات",
-                          style: kPrimaryTextStyle,
+                      SizedBox(height: 8),
+                      Text('لبنیات', style: TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black87.withOpacity(0.5),
+                              blurRadius: 5,
+                              spreadRadius: 2,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
                         ),
-                        img: "assets/images/dairy-desktop.png",
-                      ),
-                    ),
-                    Card(
-                      elevation: 30,
-                      shadowColor: CupertinoColors.systemYellow,
-                      margin: EdgeInsets.all(10),
-                      child: CategoryBox(
-                        CategoryText: const Text(
-                          "میوه و سبزیجات",
-                          style: kPrimaryTextStyle,
+                        child: ClipOval(
+                          child: Image.network(
+                            "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/nuts-desktop.png",
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        img: "assets/images/fruit-desktop.png",
                       ),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Card(
-                      elevation: 30,
-                      shadowColor: CupertinoColors.systemPurple,
-                      margin: EdgeInsets.all(10),
-                      child: CategoryBox(
-                        CategoryText: const Text(
-                          "آبمیوه و بستنی",
-                          style: kPrimaryTextStyle,
+                      SizedBox(height: 8),
+                      Text('آجیل', style: TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.deepOrange.withOpacity(0.5),
+                              blurRadius: 5,
+                              spreadRadius: 2,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
                         ),
-                        img: "assets/images/icecream-desktop.png",
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Card(
-                      elevation: 10,
-                      shadowColor: CupertinoColors.activeOrange,
-                      margin: EdgeInsets.all(10),
-                      child: CategoryBox(
-                        CategoryText: const Text(
-                          "نانوایی",
-                          style: kPrimaryTextStyle,
+                        child: ClipOval(
+                          child: Image.network(
+                            "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/bread-desktop.png",
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        img: "assets/images/bread-desktop.png",
                       ),
-                    ),
-                  ],
-                  scrollDirection: Axis.horizontal,
+                      SizedBox(height: 8),
+                      Text('نانوایی', style: TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.teal.withOpacity(0.5),
+                              blurRadius: 5,
+                              spreadRadius: 2,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: ClipOval(
+                          child: Image.network(
+                            "https://cdn.snappfood.ir/uploads/images/review-app/icons/count/other-desktop.png",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text('سایر فروشگاه ها', style: TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                ],
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  childAspectRatio: 1,
+                  crossAxisSpacing: 0,
+                  mainAxisSpacing: 5,
                 ),
-              ),
+                physics: NeverScrollableScrollPhysics(), // جلوگیری از اسکرول
+                shrinkWrap: true, // جمع کردن اندازه GridView
+              )
+                ,),
               SizedBox(
                 height: 40,
               ),
@@ -951,8 +1245,9 @@ class SliderImage extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Material(
+        color: CupertinoColors.white,
         child: Container(
-          margin: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(15),
           child: ClipRRect(
             borderRadius: BorderRadiusDirectional.circular(10),
             child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
