@@ -1243,7 +1243,7 @@ class SliderImage extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.all(15),
           child: ClipRRect(
-            borderRadius: BorderRadiusDirectional.circular(10),
+            borderRadius: BorderRadiusDirectional.circular(20),
             child: Image.network(ImageUrl, fit: BoxFit.fitWidth),
           ),
         ),
