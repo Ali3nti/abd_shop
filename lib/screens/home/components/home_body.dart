@@ -136,6 +136,9 @@ class _HomeBodyState extends State<HomeBody> {
           child: Column(
             children: [
               SizedBox(height: 50,),
+              const SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
@@ -176,9 +179,6 @@ class _HomeBodyState extends State<HomeBody> {
                     ],
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.all(15),
