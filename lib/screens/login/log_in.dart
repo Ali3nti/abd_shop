@@ -136,21 +136,17 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
                             ),
                             child: TextButton(
                               onPressed: () {
+                                NextPage(context);
                                 // Logic for login
                                 String username = usernameController.text;
                                 String password = passwordController.text;
                                 // Add your login logic here
                               },
-                              child: InkWell(
-                                onTap: () {
-                                  NextPage(context);
-                                },
-                                child: Text(
-                                  'Login',
-                                  style: TextStyle(
-                                    color: Colors.white, // رنگ متن
-                                    fontSize: 18.0, // اندازه متن
-                                  ),
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                  color: Colors.white, // رنگ متن
+                                  fontSize: 18.0, // اندازه متن
                                 ),
                               ),
                             ),
