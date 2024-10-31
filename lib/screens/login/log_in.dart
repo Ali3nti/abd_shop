@@ -56,104 +56,32 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: EdgeInsets.only(left: 55, top: 25),
-              child: Image.asset(
-                "assets/images/login.png",
-                width: 300,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 20),
-              child: TextField(
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    size: 33,
-                    Icons.person_2_outlined,
-                    color: Colors.deepOrange,
-                  ),
-                  hintText: "نام کاربری",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 15),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.lock_outlined,
-                    size: 33,
-                    color: Colors.deepOrange,
-                  ),
-                  hintText: "رمز عبور",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 50),
-            GestureDetector(
-              onTapDown: (_) => _controller.forward(),
-              onTapUp: (_) {
-                _controller.reverse().then((_) {
-                  NextPage(context);
-                });
-              },
-              onTapCancel: () => _controller.reverse(),
-              child: ScaleTransition(
-                scale: _animation,
-                child: Container(
+            Column(
+              children: [
+                Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(15),
-                    color: Colors.deepOrange,
-                  ),
-                  width: 400,
-                  height: 40,
-                  alignment: FractionalOffset.center,
-                  child: Text(
-                    "ورود",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "رمز عبور خود را فراموش کرده اید؟",
-                style: TextStyle(fontSize: 15, color: Colors.black),
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "حساب کاربری ندارید؟",
-                    style: TextStyle(fontSize: 15, color: Colors.black),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      signIn(context);
-                    },
-                    child: Text(
-                      "ثبت نام",
-                      style: TextStyle(fontSize: 15, color: Colors.deepOrange),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
                     ),
                   ),
-                ],
-              ),
+                  height: 360,
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Colors.red,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                  height: 350,
+                ),
+              ],
             ),
+            Padding(padding: EdgeInsets.all(100),child: Image.asset("assets/images/login2.png")),
           ],
         ),
       ),
