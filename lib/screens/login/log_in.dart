@@ -54,141 +54,140 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool _isPasswordVisible = false; // وضعیت نمایش پسورد
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
+                    ),
                   ),
+                  height: 349,
                 ),
-                height: 350,
-              ),
-              Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextField(
-                            controller: usernameController,
-                            decoration: InputDecoration(
-                              labelText: 'نام کاربری',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                // گوشه‌های گرد
-                                borderSide: BorderSide(
-                                    color: Colors.blue,
-                                    width: 2.0), // رنگ و عرض خط
+                Container(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextField(
+                              controller: usernameController,
+                              decoration: InputDecoration(
+                                labelText: 'نام کاربری',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
                               ),
-                              filled: true,
-                              // فعال‌سازی پس‌زمینه
-                              fillColor: Colors.white,
-                              // رنگ پس‌زمینه
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // رنگ متن راهنما
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15.0,
-                                  horizontal: 10.0), // فاصله داخلی
                             ),
-                          ),
-                          SizedBox(height: 16.0),
-                          TextField(
-                            controller: usernameController,
-                            decoration: InputDecoration(
-                              labelText: 'رمز عبور',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                // گوشه‌های گرد
-                                borderSide: BorderSide(
-                                    color: Colors.blue,
-                                    width: 2.0), // رنگ و عرض خط
-                              ),
-                              filled: true,
-                              // فعال‌سازی پس‌زمینه
-                              fillColor: Colors.white,
-                              // رنگ پس‌زمینه
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // رنگ متن راهنما
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15.0,
-                                  horizontal: 10.0), // فاصله داخلی
-                            ),
-                          ),
-                          SizedBox(height: 36.0),
-                          Container(
-                            width: double.infinity, // عرض کامل
-                            height: 50.0, // ارتفاع دکمه
-                            decoration: BoxDecoration(
-                              color: Colors.black12, // رنگ پس‌زمینه
-                              borderRadius:
-                                  BorderRadius.circular(10.0), // گوشه‌های گرد
-                            ),
-                            child: TextButton(
-                              onPressed: () {
-                                NextPage(context);
-                                // Logic for login
-                                String username = usernameController.text;
-                                String password = passwordController.text;
-                                // Add your login logic here
-                              },
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                  color: Colors.white, // رنگ متن
-                                  fontSize: 18.0, // اندازه متن
+                            SizedBox(height: 10.0),
+                            TextField(
+                              controller: passwordController,
+                              obscureText: !_isPasswordVisible, // نمایش ستاره یا متن
+                              decoration: InputDecoration(
+                                labelText: 'رمز عبور',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                                    color: Colors.grey,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPasswordVisible = !_isPasswordVisible; // تغییر وضعیت نمایش پسورد
+                                    });
+                                  },
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "حساب کاربری ندارید؟",
-                                style: TextStyle(color: Colors.white),
+                            SizedBox(height: 36),
+                            Container(
+                              width: double.infinity, // عرض کامل
+                              height: 45, // ارتفاع دکمه
+                              decoration: BoxDecoration(
+                                color: Colors.black12, // رنگ پس‌زمینه
+                                borderRadius:
+                                    BorderRadius.circular(10.0), // گوشه‌های گرد
                               ),
-                              InkWell(
-                                  onTap: () {
-                                    signIn(context);
-                                  },
-                                  child: Text("ثبت نام")),
-                            ],
-                          )
-                        ],
+                              child: TextButton(
+                                onPressed: () {
+                                  NextPage(context);
+                                  // Logic for login
+                                  String username = usernameController.text;
+                                  String password = passwordController.text;
+                                  // Add your login logic here
+                                },
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                    color: Colors.white, // رنگ متن
+                                    fontSize: 16, // اندازه متن
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "حساب کاربری ندارید؟",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                InkWell(
+                                    onTap: () {
+                                      signIn(context);
+                                    },
+                                    child: Text("ثبت نام")),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.teal,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
+                    ],
                   ),
+                  decoration: BoxDecoration(
+                    color: Colors.teal,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                  height: 357,
                 ),
-                height: 357,
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.all(40),
-            child: Image.asset("assets/images/login3.png"),
-          ),
-        ],
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(40),
+              child: Image.asset("assets/images/login3.png"),
+            ),
+          ],
+        ),
       ),
     );
   }
