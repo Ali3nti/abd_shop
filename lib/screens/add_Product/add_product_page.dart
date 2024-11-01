@@ -96,6 +96,7 @@ class _AddProductPageState extends State<AddProductPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('اضافه کردن محصول'),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -104,107 +105,16 @@ class _AddProductPageState extends State<AddProductPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // فرم ورودی اطلاعات محصول
-                // TextFormField(
-                //   decoration: InputDecoration(labelText: 'شناسه محصول (ID)'),
-                //   validator: (value) {
-                //     if (value!.isEmpty) {
-                //       return 'لطفاً شناسه محصول را وارد کنید';
-                //     }
-                //     return null;
-                //   },
-                //   onSaved: (value) {
-                //     _id = value!;
-                //   },
-                // ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'نام محصول'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً نام محصول را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _name = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'شناسه دسته‌بندی (Category ID)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً شناسه دسته‌بندی را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _categoryId = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'قیمت محصول'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً قیمت محصول را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _price = double.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'توضیحات محصول'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً توضیحات محصول را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _description = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'مقدار موجودی (Stock Quantity)'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً مقدار موجودی را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _stockQuantity = int.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'واحد (Unit)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً واحد را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _unit = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'برند (Brand)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً برند را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _brand = value!;
-                  },
-                ),
+                _buildTextField('شناسه محصول (ID)', 'مثال: 123', (value) => _id = value!),
+                _buildTextField('نام محصول', 'مثال: گوشی هوشمند', (value) => _name = value!),
+                _buildTextField('شناسه دسته‌بندی (Category ID)', 'مثال: 456', (value) => _categoryId = value!),
+                _buildDateField('تاریخ شروع پیشنهاد (Offer Start)', 'مثال: 2023-11-01', (value) => _offerStart = DateTime.parse(value!)),
+                _buildDateField('تاریخ پایان پیشنهاد (Offer End)', 'مثال: 2023-12-01', (value) => _offerEnd = DateTime.parse(value!)),
+                _buildTextField('قیمت محصول', 'مثال: 1500000', (value) => _price = double.parse(value!), keyboardType: TextInputType.number),
+                _buildTextField('توضیحات محصول', 'مثال: این یک گوشی هوشمند است', (value) => _description = value!),
+                _buildTextField('مقدار موجودی (Stock Quantity)', 'مثال: 50', (value) => _stockQuantity = int.parse(value!), keyboardType: TextInputType.number),
+                _buildTextField('واحد (Unit)', 'مثال: عدد', (value) => _unit = value!),
+                _buildTextField('برند (Brand)', 'مثال: سامسونگ', (value) => _brand = value!),
                 SwitchListTile(
                   title: Text('فعال (Is Active)'),
                   value: _isActive,
@@ -214,140 +124,26 @@ class _AddProductPageState extends State<AddProductPage> {
                     });
                   },
                 ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'وزن (Weight)'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً وزن را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _weight = double.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'ابعاد (Dimensions)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً ابعاد را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _dimensions = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'رنگ (Color)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً رنگ را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _color = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'رتبه‌بندی (Rating)'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً رتبه‌بندی را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _rating = double.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration:
-                      InputDecoration(labelText: 'تعداد نظرات (Review Count)'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً تعداد نظرات را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _reviewCount = int.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'تخفیف (Discount)'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً تخفیف را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _discount = double.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'گارانتی (Warranty)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً گارانتی را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _warranty = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'برچسب‌ها (Tags)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً برچسب‌ها را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _tags = value!.split(',').map((tag) => tag.trim()).toList();
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'تامین‌کنندگان (Provider Vendors)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً تامین‌کنندگان را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _providerVendors = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration:
-                      InputDecoration(labelText: 'لینک عکس (Image URL)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً لینک عکس را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _imageUrl = value!;
-                  },
-                ),
+                _buildTextField('وزن (Weight)', 'مثال: 200', (value) => _weight = double.parse(value!), keyboardType: TextInputType.number),
+                _buildTextField('ابعاد (Dimensions)', 'مثال: 15x7x0.8', (value) => _dimensions = value!),
+                _buildTextField('رنگ (Color)', 'مثال: سیاه', (value) => _color = value!),
+                _buildTextField('رتبه‌بندی (Rating)', 'مثال: 4.5', (value) => _rating = double.parse(value!), keyboardType: TextInputType.number),
+                _buildTextField('تعداد نظرات (Review Count)', 'مثال: 100', (value) => _reviewCount = int.parse(value!), keyboardType: TextInputType.number),
+                _buildTextField('تخفیف (Discount)', 'مثال: 10', (value) => _discount = double.parse(value!), keyboardType: TextInputType.number),
+                _buildTextField('گارانتی (Warranty)', 'مثال: 1 سال', (value) => _warranty = value!),
+                _buildTextField('برچسب‌ها (Tags)', 'مثال: الکترونیک, گوشی', (value) => _tags = value!.split(',').map((tag) => tag.trim()).toList()),
+                _buildTextField('تامین‌کنندگان (Provider Vendors)', 'مثال: تامین‌کننده A', (value) => _providerVendors = value!),
+                _buildTextField('لینک عکس (Image URL)', 'مثال: http://example.com/image.jpg', (value) => _imageUrl = value!),
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: _addProduct,
                   child: Text('اضافه کردن محصول'),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    textStyle: TextStyle(fontSize: 18),
+                  ),
                 ),
                 SizedBox(height: 20),
-                // نمایش لیست محصولات
                 if (_products.isNotEmpty) ...[
                   Text('محصولات اضافه شده:',
                       style:
@@ -358,76 +154,80 @@ class _AddProductPageState extends State<AddProductPage> {
                     itemCount: _products.length,
                     itemBuilder: (context, index) {
                       final product = _products[index];
-                      return Card(
-                        elevation: 5,
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.network(product.imageUrl,
-                                  height: 100,
-                                  width: 100,
-                                  fit: BoxFit.cover), // نمایش تصویر
-                              Text('شناسه: ${product.id}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('نام: ${product.name}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('دسته‌بندی: ${product.categoryId}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text(
-                                  'تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text(
-                                  'تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('قیمت: ${product.price.toString()} تومان',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('توضیحات: ${product.description}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('موجودی: ${product.stockQuantity}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('واحد: ${product.unit}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('برند: ${product.brand}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('فعال: ${product.isActive ? "بله" : "خیر"}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('وزن: ${product.weight}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('ابعاد: ${product.dimensions}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('رنگ: ${product.color}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('رتبه‌بندی: ${product.rating}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('تعداد نظرات: ${product.reviewCount}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('تخفیف: ${product.discount}%',
-                                  style: TextStyle(fontSize: 16)),
-                              if (product.offerStart != null)
-                                Text(
-                                    'تاریخ شروع پیشنهاد: ${product.offerStart!.toLocal().toString().split(' ')[0]}',
-                                    style: TextStyle(fontSize: 16)),
-                              if (product.offerEnd != null)
-                                Text(
-                                    'تاریخ پایان پیشنهاد: ${product.offerEnd!.toLocal().toString().split(' ')[0]}',
-                                    style: TextStyle(fontSize: 16)),
-                              Text('گارانتی: ${product.warranty}',
-                                  style: TextStyle(fontSize: 16)),
-                              Text('برچسب‌ها: ${product.tags.join(', ')}',
-                                  style: TextStyle(fontSize: 16)),
-                            ],
-                          ),
-                        ),
-                      );
+                      return _buildProductCard(product);
                     },
                   ),
                 ],
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String label, String hint, Function(String?) onSaved, {TextInputType keyboardType = TextInputType.text}) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint, // اضافه کردن راهنما
+      ),
+      keyboardType: keyboardType,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'لطفاً ${label} را وارد کنید';
+        }
+        return null;
+      },
+      onSaved: onSaved,
+    );
+  }
+
+  Widget _buildDateField(String label, String hint, Function(String?) onSaved) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint, // اضافه کردن راهنما
+      ),
+      keyboardType: TextInputType.datetime,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'لطفاً ${label} را وارد کنید';
+        }
+        return null;
+      },
+      onSaved: onSaved,
+    );
+  }
+
+  Widget _buildProductCard(Product product) {
+    return Card(
+      elevation: 5,
+      margin: EdgeInsets.symmetric(vertical: 5),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(product.imageUrl, height: 100, width: 100, fit: BoxFit.cover),
+            SizedBox(height: 8),
+            Text('شناسه: ${product.id}', style: TextStyle(fontSize: 16)),
+            Text('نام: ${product.name}', style: TextStyle(fontSize: 16)),
+            Text('دسته‌بندی: ${product.categoryId}', style: TextStyle(fontSize: 16)),
+            Text('تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
+            Text('تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
+            Text('قیمت: ${product.price.toString()} تومان', style: TextStyle(fontSize: 16)),
+            Text('توضیحات: ${product.description}', style: TextStyle(fontSize: 16)),
+            Text('موجودی: ${product.stockQuantity}', style: TextStyle(fontSize: 16)),
+            Text('واحد: ${product.unit}', style: TextStyle(fontSize: 16)),
+            Text('برند: ${product.brand}', style: TextStyle(fontSize: 16)),
+            Text('فعال: ${product.isActive ? "بله" : "خیر"}', style: TextStyle(fontSize: 16)),
+            Text('وزن: ${product.weight}', style: TextStyle(fontSize: 16)),
+            Text('ابعاد: ${product.dimensions}', style: TextStyle(fontSize: 16)),
+            Text('رنگ: ${product.color}', style: TextStyle(fontSize: 16)),
+            Text('رتبه‌بندی: ${product.rating}', style: TextStyle(fontSize: 16)),
+            Text('تعداد نظرات: ${product.reviewCount}', style: TextStyle(fontSize: 16)),
+          ],
         ),
       ),
     );

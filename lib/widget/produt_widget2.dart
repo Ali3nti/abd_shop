@@ -83,7 +83,10 @@ class _ProductCardState extends State<ProductCard> {
             children: [
               Stack(
                 children: [
-                  Image.asset(widget.image, height: 80, width: 100),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25),
+                    child: Image.asset(widget.image, height: 80, width: 100),
+                  ),
                   Positioned.fill(
                     child: Align(
                       alignment: Alignment.topRight,
@@ -91,7 +94,10 @@ class _ProductCardState extends State<ProductCard> {
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: Colors.deepOrange,
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10),
+                          ),
                         ),
                         child: Text(
                           widget.discountPercentage + '%',
