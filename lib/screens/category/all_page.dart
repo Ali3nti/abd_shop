@@ -1,4 +1,4 @@
-import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -47,14 +47,15 @@ class _AllPageState extends State<AllPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10,right: 20),
+              padding: const EdgeInsets.only(top: 10, right: 20),
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               height: 50,
               //color: Colors.blue,
-              child: const Text("12 محصول",style: TextStyle(
-                  color: Colors.grey
-              ),),
+              child: const Text(
+                "12 محصول",
+                style: TextStyle(color: Colors.grey),
+              ),
             ),
             Row(
               children: [
@@ -81,14 +82,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -115,14 +117,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -153,14 +156,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -187,14 +191,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -225,14 +230,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -259,14 +265,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -297,14 +304,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -331,14 +339,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -369,14 +378,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -403,14 +413,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -441,14 +452,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -475,14 +487,15 @@ class _AllPageState extends State<AllPage> {
                         padding: EdgeInsets.only(left: 100),
                         child: ProviderWidget(),
                       ),
-                      const Text("15/000 تومان",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      const Text(
+                        "15/000 تومان",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
-                      const Text("روغن زیتون درجه یک _ 100 گرم",
-                        style: TextStyle(
-                            color: Colors.grey),),
+                      const Text(
+                        "روغن زیتون درجه یک _ 100 گرم",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
@@ -494,5 +507,3 @@ class _AllPageState extends State<AllPage> {
     );
   }
 }
-
-

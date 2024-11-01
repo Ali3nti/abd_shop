@@ -16,12 +16,12 @@ const TextStyle kTextStyle = TextStyle(
   color: kPrimaryTextColor,
 );
 const TextStyle kHeaderTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 16,
   color: kPrimaryTextColor,
   fontWeight: FontWeight.bold,
 );
 const TextStyle kHeaderTextStyle2 = TextStyle(
-  fontSize: 16,
+  fontSize: 12,
   color: kPrimaryTextColor,
   fontWeight: FontWeight.normal,
 );

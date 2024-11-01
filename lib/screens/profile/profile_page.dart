@@ -1,4 +1,3 @@
-import 'package:abd_shop/models/user.dart';
 import 'package:abd_shop/screens/profile/faq_page.dart';
 import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
@@ -14,24 +13,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'address_page.dart';
 
-class ProfileBody extends StatefulWidget {
-  const ProfileBody({super.key,required this.users});
-  final List<User> users;
-
-
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+  // final User? user;
 
   @override
-  State<ProfileBody> createState() => _ProfileBodyState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
 void invite(BuildContext context) {
   Navigator.push(
-      context, MaterialPageRoute(builder: (context) =>  InvitePage()));
+      context, MaterialPageRoute(builder: (context) => InvitePage()));
 }
 
 void address(BuildContext context) {
   Navigator.push(
-      context, MaterialPageRoute(builder: (context) =>  AddressPage()));
+      context, MaterialPageRoute(builder: (context) => AddressPage()));
 }
 
 void sellers(BuildContext context) {
@@ -60,6 +57,7 @@ void giftCardPage(BuildContext context) {
     ),
   );
 }
+
 void notifiPage(BuildContext context) {
   Navigator.push(
     context,
@@ -68,6 +66,7 @@ void notifiPage(BuildContext context) {
     ),
   );
 }
+
 void supportPage(BuildContext context) {
   Navigator.push(
     context,
@@ -86,8 +85,7 @@ void walletPage(BuildContext context) {
   );
 }
 
-
-class _ProfileBodyState extends State<ProfileBody> {
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,11 +95,15 @@ class _ProfileBodyState extends State<ProfileBody> {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {notifiPage(context);},
+            onPressed: () {
+              notifiPage(context);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () { SystemNavigator.pop();},
+            onPressed: () {
+              SystemNavigator.pop();
+            },
           ),
         ],
       ),
@@ -112,7 +114,9 @@ class _ProfileBodyState extends State<ProfileBody> {
           const SizedBox(height: 20),
           _buildWalletInfo(),
           const SizedBox(height: 20),
-          ratingInfoPage(context: context,),
+          ratingInfoPage(
+            context: context,
+          ),
           const SizedBox(height: 20),
           supportButton(context: context),
           const SizedBox(height: 20),
@@ -121,11 +125,11 @@ class _ProfileBodyState extends State<ProfileBody> {
               "با دعوت از دوستاتون کد تخفیف رایگان بگیرید",
               Icons.people_outline,
               invite),
-      Container(
-              width: double.infinity,
-              height: 0.2,
-              color: Colors.grey,
-            ),
+          Container(
+            width: double.infinity,
+            height: 0.2,
+            color: Colors.grey,
+          ),
           _buildListTile("آدرس ها", "", Icons.map_outlined, address),
           Container(
             width: double.infinity,
@@ -154,8 +158,7 @@ class _ProfileBodyState extends State<ProfileBody> {
   }
 
   Widget _buildUserInfo() {
-    return
-      Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
@@ -223,10 +226,7 @@ class _ProfileBodyState extends State<ProfileBody> {
       onTap: () => onTap(context),
     );
   }
-
 }
-
-
 
 // import 'package:abd_shop/screens/profile/invite_page.dart';
 // import 'package:abd_shop/screens/profile/sellers_page.dart';

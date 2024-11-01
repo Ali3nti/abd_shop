@@ -1,5 +1,4 @@
 import 'package:abd_shop/intro.dart';
-import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/sign_in.dart';
 import 'package:flutter/material.dart';
 
@@ -88,36 +87,44 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
                                 labelText: 'نام کاربری',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                                  borderSide: BorderSide(
+                                      color: Colors.blue, width: 2.0),
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
                                 hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 15.0, horizontal: 10.0),
                               ),
                             ),
                             SizedBox(height: 10.0),
                             TextField(
                               controller: passwordController,
-                              obscureText: !_isPasswordVisible, // نمایش ستاره یا متن
+                              obscureText:
+                                  !_isPasswordVisible, // نمایش ستاره یا متن
                               decoration: InputDecoration(
                                 labelText: 'رمز عبور',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                                  borderSide: BorderSide(
+                                      color: Colors.blue, width: 2.0),
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
                                 hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 15.0, horizontal: 10.0),
                                 suffixIcon: IconButton(
                                   icon: Icon(
-                                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                                    _isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
                                     color: Colors.grey,
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      _isPasswordVisible = !_isPasswordVisible; // تغییر وضعیت نمایش پسورد
+                                      _isPasswordVisible =
+                                          !_isPasswordVisible; // تغییر وضعیت نمایش پسورد
                                     });
                                   },
                                 ),

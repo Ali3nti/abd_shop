@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'package:abd_shop/screens/add_Product/add_Product_Page.dart';
+import 'package:abd_shop/screens/add_Product/add_product_page.dart';
+import 'package:abd_shop/screens/product_page_detail.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -67,8 +68,8 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: _remainingTime > 0,
-      // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
+      visible: _remainingTime >
+          0, // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
       child: InkWell(
         onTap: () {
           productPageDetail(context);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
-import '../../search/search_page.dart';
+import '../constants.dart';
+import '../screens/search/search_page.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -28,7 +28,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         child: Container(
           height: 50,
-          padding: const EdgeInsets.symmetric(horizontal: 16), // Horizontal padding
+          padding:
+              const EdgeInsets.symmetric(horizontal: 16), // Horizontal padding
           decoration: BoxDecoration(
             color: Colors.grey.shade100, // Lighter background
             borderRadius: BorderRadius.circular(14), // More rounded corners
@@ -67,11 +68,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
-
-
-
-
-
 
 //
 // import 'package:flutter/material.dart';

@@ -1,14 +1,16 @@
+import 'package:abd_shop/models/product_model_2.dart';
 import 'package:flutter/material.dart';
-import '../../models/product_model_2.dart';
 
 class AddProductPage extends StatefulWidget {
+  const AddProductPage({super.key});
+
   @override
-  _AddProductPageState createState() => _AddProductPageState();
+  State<AddProductPage> createState() => _AddProductPageState();
 }
 
 class _AddProductPageState extends State<AddProductPage> {
   final _formKey = GlobalKey<FormState>();
-  List<Product> _products = []; // لیست محصولات
+  final List<Product> _products = []; // لیست محصولات
   String _id = '';
   String _name = '';
   String _categoryId = '';
@@ -143,7 +145,9 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 SizedBox(height: 20),
                 if (_products.isNotEmpty) ...[
-                  Text('محصولات اضافه شده:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text('محصولات اضافه شده:',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
