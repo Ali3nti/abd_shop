@@ -32,21 +32,21 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(onTap: (){productPageDetail(context);},
-      child: Card(shadowColor: color,
+      child: Card(shadowColor: color,color: Colors.white,
         elevation: 20,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
-                Image.asset(image, height: 100, width: 130),
+                Image.asset(image, height: 80, width: 100),
                 Positioned.fill(
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Colors.deepOrange,
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
@@ -64,45 +64,56 @@ class ProductCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                Padding(padding: EdgeInsets.only(right: 8),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Row(
+                Column(
                   children: [
-                    Text(
-                      discountedPrice,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Text(
+                        discountedPrice,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     SizedBox(width: 8),
-                    Text(
-                      price,
-                      style: TextStyle(
-                        fontSize: 14,
-                        decoration: TextDecoration.lineThrough,
-                        color: Colors.grey,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Text(
+                        price,
+                        style: TextStyle(
+                          fontSize: 14,
+                          decoration: TextDecoration.lineThrough,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                Text(
-                  '${quantity} (${quantity.substring(0, 2)} عدد)',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    '${quantity} (${quantity.substring(0, 2)} عدد)',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],
             ),
       Padding(
-      padding: const EdgeInsets.only(left: 100),
+      padding: const EdgeInsets.only(left: 90),
       child: ProviderWidget(),
       ),
       ],
