@@ -68,7 +68,8 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: _remainingTime > 0, // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
+      visible: _remainingTime > 0,
+      // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
       child: InkWell(
         onTap: () {
           productPageDetail(context);
@@ -90,7 +91,10 @@ class _ProductCardState extends State<ProductCard> {
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: Colors.deepOrange,
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10),
+                          ),
                         ),
                         child: Text(
                           widget.discountPercentage + '%',
