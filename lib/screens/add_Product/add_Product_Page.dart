@@ -1,52 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Product {
-  String id;
-  String name;
-  String categoryId;
-  double price;
-  String description;
-  int stockQuantity;
-  String unit;
-  String brand;
-  bool isActive;
-  double weight;
-  String dimensions;
-  String color;
-  double rating;
-  int reviewCount;
-  double discount;
-  DateTime? offerStart;
-  DateTime? offerEnd;
-  String warranty;
-  List<String> tags;
-  String providerVendors;
-  String productUrl;
-
-  Product({
-    required this.id,
-    required this.name,
-    required this.categoryId,
-    required this.price,
-    required this.description,
-    required this.stockQuantity,
-    required this.unit,
-    required this.brand,
-    required this.isActive,
-    required this.weight,
-    required this.dimensions,
-    required this.color,
-    required this.rating,
-    required this.reviewCount,
-    required this.discount,
-    this.offerStart,
-    this.offerEnd,
-    required this.warranty,
-    required this.tags,
-    required this.providerVendors,
-    required this.productUrl,
-  });
-}
+import '../../models/product_model_2.dart';
 
 class AddProductPage extends StatefulWidget {
   @override
@@ -77,6 +30,7 @@ class _AddProductPageState extends State<AddProductPage> {
   List<String> _tags = [];
   String _providerVendors = '';
   String _productUrl = '';
+  String _imageUrl = ''; // متغیر جدید برای لینک عکس
 
   void _addProduct() {
     if (_formKey.currentState!.validate()) {
@@ -104,6 +58,7 @@ class _AddProductPageState extends State<AddProductPage> {
         tags: _tags,
         providerVendors: _providerVendors,
         productUrl: _productUrl,
+        imageUrl: _imageUrl, // لینک عکس
       ));
       // پاک کردن فرم برای اضافه کردن محصول بعدی
       _formKey.currentState!.reset();
@@ -129,6 +84,7 @@ class _AddProductPageState extends State<AddProductPage> {
         _tags = [];
         _providerVendors = '';
         _productUrl = '';
+        _imageUrl = ''; // پاک کردن لینک عکس
       });
     }
   }
@@ -181,6 +137,32 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                   onSaved: (value) {
                     _categoryId = value!;
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'تاریخ شروع پیشنهاد (Offer Start)'),
+                  keyboardType: TextInputType.datetime,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'لطفاً تاریخ شروع پیشنهاد را وارد کنید';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _offerStart = DateTime.parse(value!);
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'تاریخ پایان پیشنهاد (Offer End)'),
+                  keyboardType: TextInputType.datetime,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'لطفاً تاریخ پایان پیشنهاد را وارد کنید';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _offerEnd = DateTime.parse(value!);
                   },
                 ),
                 TextFormField(
@@ -330,32 +312,6 @@ class _AddProductPageState extends State<AddProductPage> {
                     _discount = double.parse(value!);
                   },
                 ),
-                // TextFormField(
-                //   decoration: InputDecoration(labelText: 'تاریخ شروع پیشنهاد (Offer Start)'),
-                //   keyboardType: TextInputType.datetime,
-                //   validator: (value) {
-                //     if (value!.isEmpty) {
-                //       return 'لطفاً تاریخ شروع پیشنهاد را وارد کنید';
-                //     }
-                //     return null;
-                //   },
-                //   onSaved: (value) {
-                //     _offerStart = DateTime.parse(value!);
-                //   },
-                // ),
-                // TextFormField(
-                //   decoration: InputDecoration(labelText: 'تاریخ پایان پیشنهاد (Offer End)'),
-                //   keyboardType: TextInputType.datetime,
-                //   validator: (value) {
-                //     if (value!.isEmpty) {
-                //       return 'لطفاً تاریخ پایان پیشنهاد را وارد کنید';
-                //     }
-                //     return null;
-                //   },
-                //   onSaved: (value) {
-                //     _offerEnd = DateTime.parse(value!);
-                //   },
-                // ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'گارانتی (Warranty)'),
                   validator: (value) {
@@ -393,15 +349,15 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'لینک URL محصول'),
+                  decoration: InputDecoration(labelText: 'لینک عکس (Image URL)'),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'لطفاً لینک URL محصول را وارد کنید';
+                      return 'لطفاً لینک عکس را وارد کنید';
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _productUrl = value!;
+                    _imageUrl = value!;
                   },
                 ),
                 SizedBox(height: 20),
@@ -427,9 +383,12 @@ class _AddProductPageState extends State<AddProductPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Image.network(product.imageUrl, height: 100, width: 100, fit: BoxFit.cover), // نمایش تصویر
                               Text('شناسه: ${product.id}', style: TextStyle(fontSize: 16)),
                               Text('نام: ${product.name}', style: TextStyle(fontSize: 16)),
                               Text('دسته‌بندی: ${product.categoryId}', style: TextStyle(fontSize: 16)),
+                              Text('تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
+                              Text('تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
                               Text('قیمت: ${product.price.toString()} تومان', style: TextStyle(fontSize: 16)),
                               Text('توضیحات: ${product.description}', style: TextStyle(fontSize: 16)),
                               Text('موجودی: ${product.stockQuantity}', style: TextStyle(fontSize: 16)),
@@ -442,8 +401,10 @@ class _AddProductPageState extends State<AddProductPage> {
                               Text('رتبه‌بندی: ${product.rating}', style: TextStyle(fontSize: 16)),
                               Text('تعداد نظرات: ${product.reviewCount}', style: TextStyle(fontSize: 16)),
                               Text('تخفیف: ${product.discount}%', style: TextStyle(fontSize: 16)),
-                              Text('تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
-                              Text('تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
+                              if (product.offerStart != null)
+                                Text('تاریخ شروع پیشنهاد: ${product.offerStart!.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
+                              if (product.offerEnd != null)
+                                Text('تاریخ پایان پیشنهاد: ${product.offerEnd!.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
                               Text('گارانتی: ${product.warranty}', style: TextStyle(fontSize: 16)),
                               Text('برچسب‌ها: ${product.tags.join(', ')}', style: TextStyle(fontSize: 16)),
                             ],
