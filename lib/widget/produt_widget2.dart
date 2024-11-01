@@ -119,7 +119,7 @@ class _ProductCardState extends State<ProductCard> {
                   Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
+                        padding: const EdgeInsets.only(right: 7),
                         child: Row(
                           children: [
                             Text(
