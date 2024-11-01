@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:abd_shop/screens/add_Product/add_Product_Page.dart';
 import 'package:abd_shop/screens/product_page_detail.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _ProductCardState extends State<ProductCard> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ProductPageDetail(),
+        builder: (context) => AddProductPage(),
       ),
     );
   }
