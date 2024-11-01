@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:abd_shop/screens/add_Product/add_Product_Page.dart';
-import 'package:abd_shop/screens/product_page_detail.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +82,10 @@ class _ProductCardState extends State<ProductCard> {
             children: [
               Stack(
                 children: [
-                  Image.asset(widget.image, height: 80, width: 100),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25),
+                    child: Image.asset(widget.image, height: 80, width: 100),
+                  ),
                   Positioned.fill(
                     child: Align(
                       alignment: Alignment.topRight,
