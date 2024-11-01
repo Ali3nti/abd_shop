@@ -67,14 +67,12 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: _remainingTime > 0,
-      // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
+      visible: _remainingTime > 0, // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
       child: InkWell(
         onTap: () {
           productPageDetail(context);
         },
-        child:
-        Card(
+        child: Card(
           shadowColor: widget.color,
           color: Colors.white,
           elevation: 20,

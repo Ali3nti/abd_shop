@@ -1106,7 +1106,7 @@ class _HomeBodyState extends State<HomeBody> {
                 height: 40,
               ),
               SizedBox(
-                height: 250,
+                height: 280,
                 width: double.infinity,
                 child: Expanded(
                   child: ListView(
@@ -1162,7 +1162,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
               SizedBox(
-                height: 250,
+                height: 280,
                 width: double.infinity,
                 child: Expanded(
                   child: ListView(
@@ -1218,7 +1218,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
               SizedBox(
-                height: 250,
+                height: 280,
                 width: double.infinity,
                 child: Expanded(
                   child: ListView(
