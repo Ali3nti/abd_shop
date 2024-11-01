@@ -1,5 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/category_model.dart';
+import 'package:abd_shop/screens/home/components/category_Page.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItemWidget extends StatelessWidget {
@@ -12,6 +13,12 @@ class CategoryItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryPage(category: category), // انتقال به صفحه محصولات کتگوری
+          ),
+        );
         //TODO: Go To Next Page (List of Products of this category)
       },
       radius: 16,
