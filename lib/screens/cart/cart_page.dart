@@ -1,19 +1,16 @@
-import 'package:abd_shop/global.dart';
+import 'package:abd_shop/cart_updater_page.dart';
 import 'package:abd_shop/screens/cart/continue_cart_page.dart';
-import 'package:abd_shop/screens/home/home_page.dart';
-import 'package:abd_shop/screens/orders/store_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CartBody extends StatefulWidget {
-  const CartBody({super.key});
+class CartPage extends StatefulWidget {
+  const CartPage({super.key});
 
   @override
-  State<CartBody> createState() => _OrdersBodyState();
+  State<CartPage> createState() => _OrdersBodyState();
 }
 
-class _OrdersBodyState extends State<CartBody> {
+class _OrdersBodyState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +40,7 @@ class _OrdersBodyState extends State<CartBody> {
                     Row(
                       children: [
                         Container(
-                          margin:  EdgeInsets.only(top: 10, right: 10),
+                          margin: EdgeInsets.only(top: 10, right: 10),
                           width: 60,
                           height: 60,
                           child: Image.asset("assets/images/p8.png"),
@@ -56,12 +53,14 @@ class _OrdersBodyState extends State<CartBody> {
                                 const Text(
                                   "جت مارت",
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 const Text(
                                   "|ونک",
                                   style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Container(
                                   margin: const EdgeInsets.only(right: 190),
@@ -87,7 +86,8 @@ class _OrdersBodyState extends State<CartBody> {
                                   Text(
                                     "6,500 تومان",
                                     style: TextStyle(
-                                        fontSize: 14, fontWeight: FontWeight.bold),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(width: 10),
                                   Text(
@@ -195,8 +195,8 @@ class _OrdersBodyState extends State<CartBody> {
                               margin: const EdgeInsets.only(right: 20),
                               child: const Text(
                                 "155.300 تومان",
-                                style:
-                                TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
                               ),
                             ),
                           ],

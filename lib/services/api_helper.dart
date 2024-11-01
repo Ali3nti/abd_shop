@@ -9,7 +9,7 @@ Future<DataResponse> getDataFromServer({
   String query = '',
 }) async {
   // Uri url = Uri.parse("${baseUrl}api/getmarket.php");
-  Uri url = Uri.parse("${baseUrl}api/$apiName.php${query}");
+  Uri url = Uri.parse("${baseUrl}api/$apiName${query}");
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -25,6 +25,10 @@ Future<DataResponse> getDataFromServer({
     throw Exception(
         'Exception error: api_helper.dart - $apiName: Failed to load $apiName');
   }
+}
+
+Future<DataResponse> getAllCategories() async {
+  return await getDataFromServer(apiName: "all_categories");
 }
 
 Future<DataResponse> postData(int id) async {

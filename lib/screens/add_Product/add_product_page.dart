@@ -1,14 +1,16 @@
+import 'package:abd_shop/models/product_model_2.dart';
 import 'package:flutter/material.dart';
-import '../../models/product_model_2.dart';
 
 class AddProductPage extends StatefulWidget {
+  const AddProductPage({super.key});
+
   @override
-  _AddProductPageState createState() => _AddProductPageState();
+  State<AddProductPage> createState() => _AddProductPageState();
 }
 
 class _AddProductPageState extends State<AddProductPage> {
   final _formKey = GlobalKey<FormState>();
-  List<Product> _products = []; // لیست محصولات
+  final List<Product> _products = []; // لیست محصولات
   String _id = '';
   String _name = '';
   String _categoryId = '';
@@ -103,18 +105,18 @@ class _AddProductPageState extends State<AddProductPage> {
             child: Column(
               children: [
                 // فرم ورودی اطلاعات محصول
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'شناسه محصول (ID)'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً شناسه محصول را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _id = value!;
-                  },
-                ),
+                // TextFormField(
+                //   decoration: InputDecoration(labelText: 'شناسه محصول (ID)'),
+                //   validator: (value) {
+                //     if (value!.isEmpty) {
+                //       return 'لطفاً شناسه محصول را وارد کنید';
+                //     }
+                //     return null;
+                //   },
+                //   onSaved: (value) {
+                //     _id = value!;
+                //   },
+                // ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'نام محصول'),
                   validator: (value) {
@@ -128,7 +130,8 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'شناسه دسته‌بندی (Category ID)'),
+                  decoration: InputDecoration(
+                      labelText: 'شناسه دسته‌بندی (Category ID)'),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'لطفاً شناسه دسته‌بندی را وارد کنید';
@@ -137,32 +140,6 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                   onSaved: (value) {
                     _categoryId = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'تاریخ شروع پیشنهاد (Offer Start)'),
-                  keyboardType: TextInputType.datetime,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً تاریخ شروع پیشنهاد را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _offerStart = DateTime.parse(value!);
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'تاریخ پایان پیشنهاد (Offer End)'),
-                  keyboardType: TextInputType.datetime,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'لطفاً تاریخ پایان پیشنهاد را وارد کنید';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _offerEnd = DateTime.parse(value!);
                   },
                 ),
                 TextFormField(
@@ -191,7 +168,8 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'مقدار موجودی (Stock Quantity)'),
+                  decoration: InputDecoration(
+                      labelText: 'مقدار موجودی (Stock Quantity)'),
                   keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -287,7 +265,8 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'تعداد نظرات (Review Count)'),
+                  decoration:
+                      InputDecoration(labelText: 'تعداد نظرات (Review Count)'),
                   keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -337,7 +316,8 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'تامین‌کنندگان (Provider Vendors)'),
+                  decoration: InputDecoration(
+                      labelText: 'تامین‌کنندگان (Provider Vendors)'),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'لطفاً تامین‌کنندگان را وارد کنید';
@@ -349,7 +329,8 @@ class _AddProductPageState extends State<AddProductPage> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'لینک عکس (Image URL)'),
+                  decoration:
+                      InputDecoration(labelText: 'لینک عکس (Image URL)'),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'لطفاً لینک عکس را وارد کنید';
@@ -368,7 +349,9 @@ class _AddProductPageState extends State<AddProductPage> {
                 SizedBox(height: 20),
                 // نمایش لیست محصولات
                 if (_products.isNotEmpty) ...[
-                  Text('محصولات اضافه شده:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text('محصولات اضافه شده:',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -383,30 +366,58 @@ class _AddProductPageState extends State<AddProductPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.network(product.imageUrl, height: 100, width: 100, fit: BoxFit.cover), // نمایش تصویر
-                              Text('شناسه: ${product.id}', style: TextStyle(fontSize: 16)),
-                              Text('نام: ${product.name}', style: TextStyle(fontSize: 16)),
-                              Text('دسته‌بندی: ${product.categoryId}', style: TextStyle(fontSize: 16)),
-                              Text('تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
-                              Text('تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
-                              Text('قیمت: ${product.price.toString()} تومان', style: TextStyle(fontSize: 16)),
-                              Text('توضیحات: ${product.description}', style: TextStyle(fontSize: 16)),
-                              Text('موجودی: ${product.stockQuantity}', style: TextStyle(fontSize: 16)),
-                              Text('واحد: ${product.unit}', style: TextStyle(fontSize: 16)),
-                              Text('برند: ${product.brand}', style: TextStyle(fontSize: 16)),
-                              Text('فعال: ${product.isActive ? "بله" : "خیر"}', style: TextStyle(fontSize: 16)),
-                              Text('وزن: ${product.weight}', style: TextStyle(fontSize: 16)),
-                              Text('ابعاد: ${product.dimensions}', style: TextStyle(fontSize: 16)),
-                              Text('رنگ: ${product.color}', style: TextStyle(fontSize: 16)),
-                              Text('رتبه‌بندی: ${product.rating}', style: TextStyle(fontSize: 16)),
-                              Text('تعداد نظرات: ${product.reviewCount}', style: TextStyle(fontSize: 16)),
-                              Text('تخفیف: ${product.discount}%', style: TextStyle(fontSize: 16)),
+                              Image.network(product.imageUrl,
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.cover), // نمایش تصویر
+                              Text('شناسه: ${product.id}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('نام: ${product.name}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('دسته‌بندی: ${product.categoryId}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text(
+                                  'تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text(
+                                  'تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('قیمت: ${product.price.toString()} تومان',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('توضیحات: ${product.description}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('موجودی: ${product.stockQuantity}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('واحد: ${product.unit}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('برند: ${product.brand}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('فعال: ${product.isActive ? "بله" : "خیر"}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('وزن: ${product.weight}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('ابعاد: ${product.dimensions}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('رنگ: ${product.color}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('رتبه‌بندی: ${product.rating}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('تعداد نظرات: ${product.reviewCount}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('تخفیف: ${product.discount}%',
+                                  style: TextStyle(fontSize: 16)),
                               if (product.offerStart != null)
-                                Text('تاریخ شروع پیشنهاد: ${product.offerStart!.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
+                                Text(
+                                    'تاریخ شروع پیشنهاد: ${product.offerStart!.toLocal().toString().split(' ')[0]}',
+                                    style: TextStyle(fontSize: 16)),
                               if (product.offerEnd != null)
-                                Text('تاریخ پایان پیشنهاد: ${product.offerEnd!.toLocal().toString().split(' ')[0]}', style: TextStyle(fontSize: 16)),
-                              Text('گارانتی: ${product.warranty}', style: TextStyle(fontSize: 16)),
-                              Text('برچسب‌ها: ${product.tags.join(', ')}', style: TextStyle(fontSize: 16)),
+                                Text(
+                                    'تاریخ پایان پیشنهاد: ${product.offerEnd!.toLocal().toString().split(' ')[0]}',
+                                    style: TextStyle(fontSize: 16)),
+                              Text('گارانتی: ${product.warranty}',
+                                  style: TextStyle(fontSize: 16)),
+                              Text('برچسب‌ها: ${product.tags.join(', ')}',
+                                  style: TextStyle(fontSize: 16)),
                             ],
                           ),
                         ),

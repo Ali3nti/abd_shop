@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'package:abd_shop/global.dart';
+import 'package:abd_shop/models/category_model.dart';
+import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/screens/login/log_in.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';
 
@@ -12,23 +14,32 @@ class SplashPage extends StatelessWidget {
 
   void goNextPage(BuildContext context) {
     Future.delayed(const Duration(seconds: 2)).then(
-          (value) async {
+      (value) async {
         try {
           bool isConnect = false;
           var connectivity = await (Connectivity().checkConnectivity());
-          if (connectivity == ConnectivityResult.mobile || connectivity == ConnectivityResult.wifi) {
+          if (connectivity == ConnectivityResult.mobile ||
+              connectivity == ConnectivityResult.wifi) {
             isConnect = true;
           }
 
           if (isConnect) {
-            final result = await InternetAddress.lookup('www.digikala.com');
+            final result = await InternetAddress.lookup('www.mehdidehghani.ir');
             if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LogIn(),
-                ),
-              );
+              getAllCategories().then((value) {
+                if (value.status == 1) {
+                  var data = value.data;
+                  for (var item in data) {
+                    allCategoriesList.add(CategoryModel.fromJSON(item));
+                  }
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LogIn(),
+                    ),
+                  );
+                } else {}
+              });
             } else {
               MySnackBar(
                 label: "تلاش مجدد",
@@ -103,11 +114,10 @@ class SplashPage extends StatelessWidget {
   }
 }
 
-
 //
 // import 'dart:io';
 //
-// import 'package:abd_shop/screens/home/home_page.dart';
+// import 'package:abd_shop/screens/home/base_page.dart';
 // import 'package:abd_shop/screens/login/log_in.dart';
 // import 'package:abd_shop/widget/my_snack_bar.dart';
 // import 'package:connectivity_plus/connectivity_plus.dart';

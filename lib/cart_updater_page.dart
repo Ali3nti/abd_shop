@@ -8,7 +8,7 @@ class CartUpdater extends ChangeNotifier {
   });
   void incrementNumber() {
     counterValue++;
-    notifyListeners(); 
+    notifyListeners();
   }
 
   void decrementNumber() {
@@ -18,6 +18,24 @@ class CartUpdater extends ChangeNotifier {
 
   void removeNumber(String value) {
     counterValue = value as int;
+    notifyListeners();
+  }
+}
+
+class Cart extends ChangeNotifier {
+  final List<AmazingModel> items = [];
+
+  void addProduct(AmazingModel amazingModel) {
+    items.add(amazingModel);
+  }
+
+  void removeItem(AmazingModel amazingModel) {
+    items.remove(amazingModel);
+    notifyListeners();
+  }
+
+  void clearCart() {
+    items.clear();
     notifyListeners();
   }
 }

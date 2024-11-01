@@ -1,4 +1,4 @@
-import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/product_widget_two.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +47,7 @@ class _SliderPageState extends State<SliderPage> {
             ),
             Container(
               height: 2,
-              width:double.infinity,
+              width: double.infinity,
               color: Colors.grey.shade300,
             ),
             Row(
@@ -79,7 +79,7 @@ class _SliderPageState extends State<SliderPage> {
             ),
             Container(
               height: 2,
-              width:double.infinity,
+              width: double.infinity,
               color: Colors.grey.shade300,
             ),
             Row(
@@ -111,7 +111,7 @@ class _SliderPageState extends State<SliderPage> {
             ),
             Container(
               height: 2,
-              width:double.infinity,
+              width: double.infinity,
               color: Colors.grey.shade300,
             ),
             Row(
@@ -143,7 +143,7 @@ class _SliderPageState extends State<SliderPage> {
             ),
             Container(
               height: 2,
-              width:double.infinity,
+              width: double.infinity,
               color: Colors.grey.shade300,
             ),
           ],

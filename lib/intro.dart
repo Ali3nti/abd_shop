@@ -1,4 +1,4 @@
-import 'package:abd_shop/screens/home/home_page.dart';
+import 'package:abd_shop/screens/Base/base_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -45,7 +45,7 @@ class _IntroState extends State<Intro> {
       // Navigate to HomeScreen if intro has already been shown
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => const BasePage()),
       );
     }
   }
@@ -128,18 +128,21 @@ class _IntroState extends State<Intro> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (_currentPage == slides.length - 1) // Show Skip only on the last page
+              if (_currentPage ==
+                  slides.length - 1) // Show Skip only on the last page
                 TextButton(
                   onPressed: () {
                     _setIntroShown();
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => const BasePage()),
                     );
                   },
                   child: Text("Skip"),
                 ),
-              if (_currentPage < slides.length - 1) // Show Next button only on the first two pages
+              if (_currentPage <
+                  slides.length -
+                      1) // Show Next button only on the first two pages
                 TextButton(
                   onPressed: () {
                     _pageController.nextPage(

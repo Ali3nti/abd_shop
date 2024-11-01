@@ -5,11 +5,9 @@ import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:abd_shop/widget/category_supermarket_widget.dart';
 import 'package:abd_shop/widget/category_products_box_widget.dart';
 import 'package:abd_shop/widget/outlined_button_widget.dart';
-import 'package:abd_shop/screens/home/components/my_app_bar.dart';
+import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/product_supermarket_widget.dart';
 import 'package:flutter/material.dart';
-
-
 
 class SuperMarket extends StatefulWidget {
   const SuperMarket({
@@ -28,7 +26,6 @@ class SuperMarket extends StatefulWidget {
 class _SuperMarketState extends State<SuperMarket> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       body: SingleChildScrollView(
