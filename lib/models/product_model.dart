@@ -32,6 +32,7 @@ class Product {
     name = json['name'] ?? '';
     categoryId = json['category_id'] ?? 0;
     price = json['price'] ?? 0;
+    image = json['image'] ?? 'N/A';
     description = json['description'] ?? '';
     stockQuantity = json['stock_quantity'] ?? 0;
     unit = json['unit'] ?? '';
@@ -52,6 +53,5 @@ class Product {
     warranty = json['warranty'] ?? '';
     tags = json['tags'] ?? '';
     providerVendors = json['provider_vendors'] ?? '';
-    image = json['image'] ?? 'N/A';
   }
 }
