@@ -3,10 +3,14 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
-  CategoryPage({super.key, required this.category,required this.product});
+  const CategoryPage({
+    super.key,
+    required this.category,
+    required this.products,
+  });
 
-  CategoryModel category;
-  Product product;
+  final CategoryModel category;
+  final List<Product> products;
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
@@ -21,7 +25,24 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [Text(widget.product.name)],
+          children: widget.products
+              .map((e) => Row(
+                    children: [
+                      Text(e.name),
+                      Spacer(),
+                      Text(e.description),
+                      Spacer(),
+                      Text(e.color),
+                      Spacer(),
+                      Text(e.brand),
+                      Spacer(),
+                      Text(e.image),
+                      Spacer(),
+                      Text(e.isActive.toString()),
+                      Spacer(),
+                    ],
+                  ))
+              .toList(),
         ),
       ),
     );

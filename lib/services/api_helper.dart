@@ -10,7 +10,7 @@ Future<DataResponse> getDataFromServer({
   String query = '',
 }) async {
   // Uri url = Uri.parse("${baseUrl}api/getmarket.php");
-  Uri url = Uri.parse("${baseUrl}api/$apiName${query}");
+  Uri url = Uri.parse("${baseUrl}api/$apiName$query");
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -30,6 +30,11 @@ Future<DataResponse> getDataFromServer({
 
 Future<DataResponse> getAllCategories() async {
   return await getDataFromServer(apiName: "all_categories");
+}
+
+Future<DataResponse> getProductsOfCategory(int categoryId) async {
+  return await getDataFromServer(
+      apiName: "cat_products", query: "?id=$categoryId");
 }
 
 Future<DataResponse> postData(int id) async {
@@ -85,10 +90,8 @@ Future<List<Product>> getProducts(int category) async {
 
   if (response.statusCode == 200) {
     List<dynamic> jsonList = jsonDecode(response.body);
-    return jsonList.map((json) => Product.fromJSON(json)).toList();
+    return jsonList.map((json) => Product.fromJson(json)).toList();
   } else {
     throw Exception('Failed to load products');
   }
 }
-
-
