@@ -76,7 +76,7 @@ Future<DataResponse> postData(int id) async {
 //   }
 // }
 Future<List<Product>> getProducts(int category) async {
-  Uri url = Uri.parse("${baseUrl}api/all_products.php?id=$category");
+  Uri url = Uri.parse("${baseUrl}api/cat_products?id=$category");
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
