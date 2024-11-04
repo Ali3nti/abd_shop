@@ -21,13 +21,12 @@ productPageDetail(BuildContext context) {
   );
 }
 
-
 class _CategoryListWidgetState extends State<AmazingListWidget> {
   List<AmazingItemWidget> amazingWidgetList = [];
 
   // List<Market> marketList = [];
   initMarkets() async {
-    await getDataFromServer(apiName: "getamazing").then((value) {
+    await getRequest(apiName: "getamazing").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
@@ -35,7 +34,10 @@ class _CategoryListWidgetState extends State<AmazingListWidget> {
           AmazingModel amazingModel = AmazingModel.fromJSON(item);
           // marketList.add(market);
           amazingWidgetList.add(
-            AmazingItemWidget(onPressed: (){productPageDetail(context);},
+            AmazingItemWidget(
+              onPressed: () {
+                productPageDetail(context);
+              },
               amazingModel: amazingModel,
             ),
           );

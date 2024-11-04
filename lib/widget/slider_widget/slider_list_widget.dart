@@ -22,7 +22,7 @@ class _CategoryListWidgetState extends State<SliderListWidget> {
 
   // List<Market> marketList = [];
   initMarkets() async {
-    await getDataFromServer(apiName: "getproduct").then((value) {
+    await getRequest(apiName: "getproduct").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
@@ -32,7 +32,7 @@ class _CategoryListWidgetState extends State<SliderListWidget> {
           sliderWidgetList.add(
             SliderItemWidget(
               sliderModel: sliderModel,
-            ) ,
+            ),
           );
         }
       } else {
