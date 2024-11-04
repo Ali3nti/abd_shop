@@ -13,6 +13,7 @@ class AddProductPage extends StatefulWidget {
 class _AddProductPageState extends State<AddProductPage> {
   // final _formKey = GlobalKey<FormState>();
   Product newProduct = Product();
+  final List<Product> _products = []; // تعریف لیست محصولات
   // final List<Product> _products = []; // لیست محصولات
   // String _id = '';
   // String _name = '';
@@ -114,69 +115,69 @@ class _AddProductPageState extends State<AddProductPage> {
           child: Column(
             children: [
               _buildTextField(
-                  'شناسه محصول (ID)', 'مثال: 123', (value) => _id = value!),
+                  'شناسه محصول (ID)', 'مثال: 123', (value) =>newProduct.id = int.parse(value!)),
               _buildTextField(
-                  'نام محصول', 'مثال: گوشی هوشمند', (value) => _name = value!),
+                  'نام محصول', 'مثال: گوشی هوشمند', (value) => newProduct.name = value!),
               _buildTextField('شناسه دسته‌بندی (Category ID)', 'مثال: 456',
-                  (value) => _categoryId = value!),
-              _buildDateField(
-                  'تاریخ شروع پیشنهاد (Offer Start)',
-                  'مثال: 2023-11-01',
-                  (value) => _offerStart = DateTime.parse(value!)),
-              _buildDateField(
-                  'تاریخ پایان پیشنهاد (Offer End)',
-                  'مثال: 2023-12-01',
-                  (value) => _offerEnd = DateTime.parse(value!)),
+                  (value) => newProduct.categoryId = int.parse(value!)),
+              // _buildDateField(
+              //     'تاریخ شروع پیشنهاد (Offer Start)',
+              //     'مثال: 2023-11-01',
+              //     (value) =>newProduct.offerStart = DateTime.parse(value!)),
+              // _buildDateField(
+              //     'تاریخ پایان پیشنهاد (Offer End)',
+              //     'مثال: 2023-12-01',
+              //     (value) => newProduct.offerEnd = DateTime.parse(value!)),
               _buildTextField('قیمت محصول', 'مثال: 1500000',
-                  (value) => _price = double.parse(value!),
+                  (value) => newProduct.price =int.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField('توضیحات محصول', 'مثال: این یک گوشی هوشمند است',
-                  (value) => _description = value!),
+                  (value) => newProduct.description = value!),
               _buildTextField('مقدار موجودی (Stock Quantity)', 'مثال: 50',
-                  (value) => _stockQuantity = int.parse(value!),
+                  (value) => newProduct.stockQuantity = int.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField(
-                  'واحد (Unit)', 'مثال: عدد', (value) => _unit = value!),
+                  'واحد (Unit)', 'مثال: عدد', (value) => newProduct.unit = value!),
               _buildTextField(
-                  'برند (Brand)', 'مثال: سامسونگ', (value) => _brand = value!),
-              SwitchListTile(
-                title: Text('فعال (Is Active)'),
-                value: _isActive,
-                onChanged: (bool value) {
-                  setState(() {
-                    _isActive = value;
-                  });
-                },
-              ),
+                  'برند (Brand)', 'مثال: سامسونگ', (value) => newProduct.brand = value!),
+              // SwitchListTile(     //  problem :The argument type 'int' can't be assigned to the parameter type 'bool'//
+              //   title: Text('فعال (Is Active)'),
+              //   value: newProduct.isActive,
+              //   onChanged: (bool value) {
+              //     setState(() {
+              //       newProduct.isActive = value;
+              //     });
+              //   },
+              // ),
               _buildTextField('وزن (Weight)', 'مثال: 200',
-                  (value) => _weight = double.parse(value!),
+                  (value) => newProduct.weight = double.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField('ابعاد (Dimensions)', 'مثال: 15x7x0.8',
-                  (value) => _dimensions = value!),
+                  (value) => newProduct.dimensions = value!),
               _buildTextField(
-                  'رنگ (Color)', 'مثال: سیاه', (value) => _color = value!),
+                  'رنگ (Color)', 'مثال: سیاه', (value) => newProduct.color = value!),
               _buildTextField('رتبه‌بندی (Rating)', 'مثال: 4.5',
-                  (value) => _rating = double.parse(value!),
+                  (value) => newProduct.rating = double.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField('تعداد نظرات (Review Count)', 'مثال: 100',
-                  (value) => _reviewCount = int.parse(value!),
+                  (value) => newProduct.reviewCount = int.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField('تخفیف (Discount)', 'مثال: 10',
-                  (value) => _discount = double.parse(value!),
+                  (value) => newProduct.discount = double.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField('گارانتی (Warranty)', 'مثال: 1 سال',
-                  (value) => _warranty = value!),
-              _buildTextField(
-                  'برچسب‌ها (Tags)',
-                  'مثال: الکترونیک, گوشی',
-                  (value) => _tags =
-                      value!.split(',').map((tag) => tag.trim()).toList()),
+                  (value) => newProduct.warranty = value!),
+              // _buildTextField(  // problem :A value of type 'List<String>' can't be assigned to a variable of type 'String' //
+              //     'برچسب‌ها (Tags)',
+              //     'مثال: الکترونیک, گوشی',
+              //     (value) => newProduct.tags =
+              //         value!.split(',').map((tag) => tag.trim()).toList()),
               _buildTextField('تامین‌کنندگان (Provider Vendors)',
-                  'مثال: تامین‌کننده A', (value) => _providerVendors = value!),
+                  'مثال: تامین‌کننده A', (value) => newProduct.providerVendors = value!),
               _buildTextField(
                   'لینک عکس (Image URL)',
                   'مثال: http://example.com/image.jpg',
-                  (value) => _imageUrl = value!),
+                  (value) => newProduct.image = value!),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _addProduct,
@@ -252,7 +253,7 @@ class _AddProductPageState extends State<AddProductPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(product.imageUrl,
+            Image.network(product.image,
                 height: 100, width: 100, fit: BoxFit.cover),
             SizedBox(height: 8),
             Text('شناسه: ${product.id}', style: TextStyle(fontSize: 16)),
@@ -273,8 +274,8 @@ class _AddProductPageState extends State<AddProductPage> {
                 style: TextStyle(fontSize: 16)),
             Text('واحد: ${product.unit}', style: TextStyle(fontSize: 16)),
             Text('برند: ${product.brand}', style: TextStyle(fontSize: 16)),
-            Text('فعال: ${product.isActive ? "بله" : "خیر"}',
-                style: TextStyle(fontSize: 16)),
+            // Text('فعال: ${product.isActive ? "بله" : "خیر"}',
+            //     style: TextStyle(fontSize: 16)),
             Text('وزن: ${product.weight}', style: TextStyle(fontSize: 16)),
             Text('ابعاد: ${product.dimensions}',
                 style: TextStyle(fontSize: 16)),
