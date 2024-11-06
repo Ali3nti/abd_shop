@@ -1,5 +1,6 @@
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
+import 'package:abd_shop/widget/camera/images_uploader_container.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -39,12 +40,15 @@ class _AddProductPageState extends State<AddProductPage> {
   // String _imageUrl = ''; // متغیر جدید برای لینک عکس
 
   void _addProduct() {
-    sendNewProduct(product: newProduct).then((value) {
+    print(newProduct.name);
+    sendNewProduct(product: newProduct, images: _imagesList).then((value) {
       if (value.status == 1) {
         MySnackBar(context: context, message: "محصول اضافه شد");
       } else {
         MySnackBar(context: context, message: "محصول اضافه نشد!");
       }
+    }).catchError((error) {
+      throw Exception("*.* error in line 50 add_product_page.dart -> $error");
     });
     // if (_formKey.currentState!.validate()) {
     //   _formKey.currentState!.save();
@@ -102,11 +106,13 @@ class _AddProductPageState extends State<AddProductPage> {
     // }
   }
 
+  List<dynamic> _imagesList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('اضافه کردن محصول'),
+        title: const Text('اضافه کردن محصول'),
         centerTitle: true,
       ),
       body: Padding(
@@ -114,10 +120,10 @@ class _AddProductPageState extends State<AddProductPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _buildTextField(
-                  'شناسه محصول (ID)', 'مثال: 123', (value) =>newProduct.id = int.parse(value!)),
-              _buildTextField(
-                  'نام محصول', 'مثال: گوشی هوشمند', (value) => newProduct.name = value!),
+              // _buildTextField('شناسه محصول (ID)', 'مثال: 123',
+              //     (value) => newProduct.id = int.parse(value!)),
+              _buildTextField('نام محصول', 'مثال: گوشی هوشمند',
+                  (value) => newProduct.name = value!),
               _buildTextField('شناسه دسته‌بندی (Category ID)', 'مثال: 456',
                   (value) => newProduct.categoryId = int.parse(value!)),
               // _buildDateField(
@@ -129,17 +135,17 @@ class _AddProductPageState extends State<AddProductPage> {
               //     'مثال: 2023-12-01',
               //     (value) => newProduct.offerEnd = DateTime.parse(value!)),
               _buildTextField('قیمت محصول', 'مثال: 1500000',
-                  (value) => newProduct.price =int.parse(value!),
+                  (value) => newProduct.price = int.parse(value!),
                   keyboardType: TextInputType.number),
               _buildTextField('توضیحات محصول', 'مثال: این یک گوشی هوشمند است',
                   (value) => newProduct.description = value!),
               _buildTextField('مقدار موجودی (Stock Quantity)', 'مثال: 50',
                   (value) => newProduct.stockQuantity = int.parse(value!),
                   keyboardType: TextInputType.number),
-              _buildTextField(
-                  'واحد (Unit)', 'مثال: عدد', (value) => newProduct.unit = value!),
-              _buildTextField(
-                  'برند (Brand)', 'مثال: سامسونگ', (value) => newProduct.brand = value!),
+              _buildTextField('واحد (Unit)', 'مثال: عدد',
+                  (value) => newProduct.unit = value!),
+              _buildTextField('برند (Brand)', 'مثال: سامسونگ',
+                  (value) => newProduct.brand = value!),
               // SwitchListTile(     //  problem :The argument type 'int' can't be assigned to the parameter type 'bool'//
               //   title: Text('فعال (Is Active)'),
               //   value: newProduct.isActive,
@@ -154,8 +160,8 @@ class _AddProductPageState extends State<AddProductPage> {
                   keyboardType: TextInputType.number),
               _buildTextField('ابعاد (Dimensions)', 'مثال: 15x7x0.8',
                   (value) => newProduct.dimensions = value!),
-              _buildTextField(
-                  'رنگ (Color)', 'مثال: سیاه', (value) => newProduct.color = value!),
+              _buildTextField('رنگ (Color)', 'مثال: سیاه',
+                  (value) => newProduct.color = value!),
               _buildTextField('رتبه‌بندی (Rating)', 'مثال: 4.5',
                   (value) => newProduct.rating = double.parse(value!),
                   keyboardType: TextInputType.number),
@@ -172,29 +178,41 @@ class _AddProductPageState extends State<AddProductPage> {
               //     'مثال: الکترونیک, گوشی',
               //     (value) => newProduct.tags =
               //         value!.split(',').map((tag) => tag.trim()).toList()),
-              _buildTextField('تامین‌کنندگان (Provider Vendors)',
-                  'مثال: تامین‌کننده A', (value) => newProduct.providerVendors = value!),
               _buildTextField(
-                  'لینک عکس (Image URL)',
-                  'مثال: http://example.com/image.jpg',
-                  (value) => newProduct.image = value!),
-              SizedBox(height: 20),
+                  'تامین‌کنندگان (Provider Vendors)',
+                  'مثال: تامین‌کننده A',
+                  (value) => newProduct.providerVendors = value!),
+
+              const SizedBox(height: 20),
+
+              //Add Image Box for upload images of product
+              SizedBox(
+                width: double.infinity,
+                height: 300,
+                child: ImagesUploaderContainer(onChanged: (images) {
+                  print(images.length);
+                  _imagesList = images;
+                }),
+              ),
+
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _addProduct,
-                child: Text('اضافه کردن محصول'),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                  textStyle: TextStyle(fontSize: 18),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  textStyle: const TextStyle(fontSize: 18),
                 ),
+                child: const Text('اضافه کردن محصول'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               if (_products.isNotEmpty) ...[
-                Text('محصولات اضافه شده:',
+                const Text('محصولات اضافه شده:',
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: _products.length,
                   itemBuilder: (context, index) {
                     final product = _products[index];
@@ -219,7 +237,7 @@ class _AddProductPageState extends State<AddProductPage> {
       keyboardType: keyboardType,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'لطفاً ${label} را وارد کنید';
+          return 'لطفاً $label را وارد کنید';
         }
         return null;
       },
@@ -227,27 +245,27 @@ class _AddProductPageState extends State<AddProductPage> {
     );
   }
 
-  Widget _buildDateField(String label, String hint, Function(String?) onSaved) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint, // اضافه کردن راهنما
-      ),
-      keyboardType: TextInputType.datetime,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'لطفاً ${label} را وارد کنید';
-        }
-        return null;
-      },
-      onSaved: onSaved,
-    );
-  }
+  // Widget _buildDateField(String label, String hint, Function(String?) onSaved) {
+  //   return TextFormField(
+  //     decoration: InputDecoration(
+  //       labelText: label,
+  //       hintText: hint, // اضافه کردن راهنما
+  //     ),
+  //     keyboardType: TextInputType.datetime,
+  //     validator: (value) {
+  //       if (value!.isEmpty) {
+  //         return 'لطفاً $label را وارد کنید';
+  //       }
+  //       return null;
+  //     },
+  //     onSaved: onSaved,
+  //   );
+  // }
 
   Widget _buildProductCard(Product product) {
     return Card(
       elevation: 5,
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -255,35 +273,37 @@ class _AddProductPageState extends State<AddProductPage> {
           children: [
             Image.network(product.image,
                 height: 100, width: 100, fit: BoxFit.cover),
-            SizedBox(height: 8),
-            Text('شناسه: ${product.id}', style: TextStyle(fontSize: 16)),
-            Text('نام: ${product.name}', style: TextStyle(fontSize: 16)),
+            const SizedBox(height: 8),
+            Text('شناسه: ${product.id}', style: const TextStyle(fontSize: 16)),
+            Text('نام: ${product.name}', style: const TextStyle(fontSize: 16)),
             Text('دسته‌بندی: ${product.categoryId}',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text(
                 'تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text(
                 'تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text('قیمت: ${product.price.toString()} تومان',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text('توضیحات: ${product.description}',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text('موجودی: ${product.stockQuantity}',
-                style: TextStyle(fontSize: 16)),
-            Text('واحد: ${product.unit}', style: TextStyle(fontSize: 16)),
-            Text('برند: ${product.brand}', style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
+            Text('واحد: ${product.unit}', style: const TextStyle(fontSize: 16)),
+            Text('برند: ${product.brand}',
+                style: const TextStyle(fontSize: 16)),
             // Text('فعال: ${product.isActive ? "بله" : "خیر"}',
             //     style: TextStyle(fontSize: 16)),
-            Text('وزن: ${product.weight}', style: TextStyle(fontSize: 16)),
+            Text('وزن: ${product.weight}',
+                style: const TextStyle(fontSize: 16)),
             Text('ابعاد: ${product.dimensions}',
-                style: TextStyle(fontSize: 16)),
-            Text('رنگ: ${product.color}', style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
+            Text('رنگ: ${product.color}', style: const TextStyle(fontSize: 16)),
             Text('رتبه‌بندی: ${product.rating}',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text('تعداد نظرات: ${product.reviewCount}',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
           ],
         ),
       ),

@@ -1,13 +1,13 @@
 import 'dart:io';
 
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/widget/camera/image_helper.dart';
+import 'package:abd_shop/widget/my_alert_dialog.dart';
+import 'package:abd_shop/widget/my_snack_bar.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:ftm_service_app/constants.dart';
-import 'package:ftm_service_app/services/image_helper.dart';
-import 'package:ftm_service_app/widgets/my_alert_dialog.dart';
-import 'package:ftm_service_app/widgets/my_snack_bar.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagesUploaderContainer extends StatefulWidget {
