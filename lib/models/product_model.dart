@@ -1,5 +1,6 @@
 class Product {
   int id = 0;
+  int cartCount = 0;
   String name = '';
   int categoryId = 0;
   int price = 0;

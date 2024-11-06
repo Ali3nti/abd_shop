@@ -10,7 +10,8 @@ import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
-import 'package:abd_shop/widget/produt_widget2.dart';
+import 'package:abd_shop/widget/product_Card_List_Widget.dart';
+import 'package:abd_shop/widget/product_card_widget.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -98,62 +99,6 @@ class _HomeBodyState extends State<HomeBody> {
             const CategoryListWidget(),
             const AmazingWidget(),
             const SizedBox(height: 20),
-            SizedBox(
-              height: 250,
-              width: double.infinity,
-              child: Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    ProductCard(
-                      color: Colors.red,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.red,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.red,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.red,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                  ],
-                ),
-              ),
-            ),
             //   The following committed code belongs to the old category...!!!!!! //
             const SizedBox(
               height: 40,
@@ -472,177 +417,10 @@ class _HomeBodyState extends State<HomeBody> {
             const SizedBox(
               height: 20,
             ),
+            ProductCardListWidget(),
             const MarketListWidget(),
             const SizedBox(
               height: 40,
-            ),
-            SizedBox(
-              height: 280,
-              width: double.infinity,
-              child: Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    ProductCard(
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                      color: Colors.deepPurpleAccent,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.deepPurpleAccent,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.deepPurpleAccent,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.deepPurpleAccent,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 280,
-              width: double.infinity,
-              child: Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    ProductCard(
-                      color: Colors.teal,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.teal,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.teal,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.teal,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 280,
-              width: double.infinity,
-              child: Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    ProductCard(
-                      color: Colors.amber,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.amber,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.amber,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ProductCard(
-                      color: Colors.amber,
-                      image: "assets/images/mahsool1.png",
-                      title: 'مرغ ',
-                      price: '40000',
-                      discountedPrice: '36000',
-                      discountPercentage: '10',
-                      quantity: '120',
-                    ),
-                  ],
-                ),
-              ),
             ),
             const SizedBox(
               height: 100,
