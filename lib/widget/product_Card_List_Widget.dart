@@ -44,8 +44,8 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return SingleChildScrollView(scrollDirection: Axis.horizontal,
+      child: Row(
         children: productWidgetList,
       ),
     );
