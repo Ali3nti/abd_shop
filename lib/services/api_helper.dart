@@ -15,6 +15,9 @@ Future<DataResponse> getAllCategories() async {
 Future<DataResponse> getProductsOfCategory(int categoryId) async {
   return await getRequest(apiName: "cat_products", query: "?id=$categoryId");
 }
+Future<DataResponse> getProducts() async {
+  return await getRequest(apiName: "all_products");
+}
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////Post Request////////////////////////////
 ////////////////////////////////////////////////////////////////////////

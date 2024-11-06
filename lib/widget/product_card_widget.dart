@@ -26,28 +26,28 @@ class _ProductCardState extends State<ProductCard> {
                 padding: const EdgeInsets.only(right: 25),
                 child: Image.asset(widget.productModel.image, height: 80, width: 100),
               ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.deepOrange,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      widget.productModel.discount as String,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // Positioned.fill(
+              //   child: Align(
+              //     alignment: Alignment.topRight,
+              //     child: Container(
+              //       padding: EdgeInsets.all(8),
+              //       decoration: BoxDecoration(
+              //         color: Colors.deepOrange,
+              //         borderRadius: BorderRadius.only(
+              //           topLeft: Radius.circular(10),
+              //           bottomRight: Radius.circular(10),
+              //         ),
+              //       ),
+              //       child: Text(
+              //         widget.productModel.discount as String,
+              //         style: TextStyle(
+              //           color: Colors.white,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           Column(
@@ -69,14 +69,14 @@ class _ProductCardState extends State<ProductCard> {
                     padding: const EdgeInsets.only(right: 7),
                     child: Row(
                       children: [
-                        Text(
-                          widget.productModel.price as String,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        // Text(
+                        //   widget.productModel.price as String,
+                        //   style: TextStyle(
+                        //     fontSize: 16,
+                        //     color: Colors.red,
+                        //     fontWeight: FontWeight.bold,
+                        //   ),
+                        // ),
                         SizedBox(width: 4),
                         Image.asset("assets/images/toman.png", height: 15),
                       ],

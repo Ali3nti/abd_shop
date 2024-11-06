@@ -1,39 +1,25 @@
-
-
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/product_card_widget.dart';
 import 'package:flutter/material.dart';
 
-class productCardListWidget extends StatefulWidget {
-  const productCardListWidget({super.key});
+class ProductCardListWidget extends StatefulWidget {
+  const ProductCardListWidget({super.key});
 
   @override
-  State<productCardListWidget> createState() => _productCardListWidgetState();
+  State<ProductCardListWidget> createState() => _ProductCardListWidgetState();
 }
 
-// productPageDetail(BuildContext context) {
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(
-//       builder: (context) => ProductPageDetail(),
-//     ),
-//   );
-// }
-
-class _productCardListWidgetState extends State<productCardListWidget> {
+class _ProductCardListWidgetState extends State<ProductCardListWidget> {
   List<ProductCard> productWidgetList = [];
 
-  // List<Market> marketList = [];
   initMarkets() async {
-    await getRequest(apiName: "cat_products").then((value) {
+    await getProducts().then((value) {
       DataResponse dataResponse = value;
-
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
           Product productModel = Product.fromJson(item);
-          // marketList.add(market);
           productWidgetList.add(
             ProductCard(
               productModel: productModel,
@@ -58,9 +44,10 @@ class _productCardListWidgetState extends State<productCardListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: productWidgetList,
+    return SingleChildScrollView(
+      child: Column(
+        children: productWidgetList,
+      ),
     );
   }
 }
-
