@@ -13,116 +13,118 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    return  Card(
-      shadowColor: Colors.red,
-      color: Colors.white,
-      elevation: 20,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 25),
-                child: Image.asset(widget.productModel.image, height: 80, width: 100),
-              ),
-              // Positioned.fill(
-              //   child: Align(
-              //     alignment: Alignment.topRight,
-              //     child: Container(
-              //       padding: EdgeInsets.all(8),
-              //       decoration: BoxDecoration(
-              //         color: Colors.deepOrange,
-              //         borderRadius: BorderRadius.only(
-              //           topLeft: Radius.circular(10),
-              //           bottomRight: Radius.circular(10),
-              //         ),
-              //       ),
-              //       child: Text(
-              //         widget.productModel.discount as String,
-              //         style: TextStyle(
-              //           color: Colors.white,
-              //           fontWeight: FontWeight.bold,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(right: 8),
-                child: Text(
-                  widget.productModel.name,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return  InkWell(onTap: (){},
+      child: Card(
+        shadowColor: Colors.red,
+        color: Colors.white,
+        elevation: 20,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 25),
+                  child: Image.asset(widget.productModel.image, height: 80, width: 100),
                 ),
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 7),
-                    child: Row(
-                      children: [
-                        // Text(
-                        //   widget.productModel.price as String,
-                        //   style: TextStyle(
-                        //     fontSize: 16,
-                        //     color: Colors.red,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        // ),
-                        SizedBox(width: 4),
-                        Image.asset("assets/images/toman.png", height: 15),
-                      ],
+                // Positioned.fill(
+                //   child: Align(
+                //     alignment: Alignment.topRight,
+                //     child: Container(
+                //       padding: EdgeInsets.all(8),
+                //       decoration: BoxDecoration(
+                //         color: Colors.deepOrange,
+                //         borderRadius: BorderRadius.only(
+                //           topLeft: Radius.circular(10),
+                //           bottomRight: Radius.circular(10),
+                //         ),
+                //       ),
+                //       child: Text(
+                //         widget.productModel.discount as String,
+                //         style: TextStyle(
+                //           color: Colors.white,
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 8),
+                  child: Text(
+                    widget.productModel.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 8),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(right: 8),
-                  //   child: Text(
-                  //     widget.price,
-                  //     style: TextStyle(
-                  //       fontSize: 14,
-                  //       decoration: TextDecoration.lineThrough,
-                  //       color: Colors.grey,
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  '${widget.productModel.stockQuantity} (${widget.productModel.stockQuantity} عدد)',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 7),
+                      child: Row(
+                        children: [
+                          // Text(
+                          //   widget.productModel.price as String,
+                          //   style: TextStyle(
+                          //     fontSize: 16,
+                          //     color: Colors.red,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
+                          SizedBox(width: 4),
+                          Image.asset("assets/images/toman.png", height: 15),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(right: 8),
+                    //   child: Text(
+                    //     widget.price,
+                    //     style: TextStyle(
+                    //       fontSize: 14,
+                    //       decoration: TextDecoration.lineThrough,
+                    //       color: Colors.grey,
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    '${widget.productModel.stockQuantity} (${widget.productModel.stockQuantity} عدد)',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.only(right: 8.0),
-              //   child: Text(
-              //     'زمان باقی‌مانده : ${(_remainingTime ~/ 3600).toString().padLeft(2, '0')}:${((_remainingTime % 3600) ~/ 60).toString().padLeft(2, '0')}:${(_remainingTime % 60).toString().padLeft(2, '0')}',
-              //     style: TextStyle(
-              //       fontSize: 14,
-              //       color: Colors.red,
-              //     ),
-              //   ),
-              // ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 90),
-            child: ProviderWidget(),
-          ),
-        ],
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 8.0),
+                //   child: Text(
+                //     'زمان باقی‌مانده : ${(_remainingTime ~/ 3600).toString().padLeft(2, '0')}:${((_remainingTime % 3600) ~/ 60).toString().padLeft(2, '0')}:${(_remainingTime % 60).toString().padLeft(2, '0')}',
+                //     style: TextStyle(
+                //       fontSize: 14,
+                //       color: Colors.red,
+                //     ),
+                //   ),
+                // ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 90),
+              child: ProviderWidget(),
+            ),
+          ],
+        ),
       ),
     );
   }
