@@ -68,9 +68,23 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'قیمت'),
-                  onSaved: (value) => newProduct.price,
-                  validator: (value) => value!.isEmpty ? 'لطفا قیمت را وارد کنید' : null,
+                  initialValue: newProduct.price.toString(), // تعیین مقدار اولیه
+                  keyboardType: TextInputType.number, // ورودی عددی
+                  onSaved: (value) {
+                    // تبدیل مقدار ورودی به int
+                    newProduct.price = int.tryParse(value ?? '') ?? 0; // مقدار پیش‌فرض 0
+                  },
+                  validator: (value) {
+                    // اعتبارسنجی برای اطمینان از ورود مقدار
+                    if (value!.isEmpty) {
+                      return 'لطفا قیمت را وارد کنید';
+                    } else if (int.tryParse(value) == null) {
+                      return 'لطفا یک عدد صحیح وارد کنید';
+                    }
+                    return null; // اگر اعتبارسنجی موفق بود
+                  },
                 ),
+
                 TextFormField(
                   decoration: InputDecoration(labelText: 'توضیحات محصول'),
                   onSaved: (value) => newProduct.description = value ?? '',
@@ -109,7 +123,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'تخفیف'),
-                  onSaved: (value) => newProduct.discount = value ?? '',
+                  onSaved: (value) => newProduct.discount = double.tryParse(value ?? '') ?? 0.0,
                   validator: (value) => value!.isEmpty ? 'لطفا تخفیف محصول را وارد کنید' : null,
                 ),
                 TextFormField(
