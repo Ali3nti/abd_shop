@@ -3,11 +3,11 @@ class Product {
   int cartCount = 0;
   String name = '';
   int categoryId = 0;
-  int price = 0;
+  String price = "";
   String image = 'N/A';
   String description = '';
   int stockQuantity =
-      0; //Number of products available or exist in store (stock)
+  0; //Number of products available or exist in store (stock)
   String unit = '';
   String brand = '';
   int isActive = 0;
@@ -17,7 +17,7 @@ class Product {
   double rating = 0;
   String comments = '';
   int reviewCount = 0;
-  double discount = 0; //percentage for selling the product in offers
+  String discount = ""; //percentage for selling the product in offers
   DateTime? offerStart;
   DateTime? offerEnd;
   String warranty = '';
@@ -44,7 +44,8 @@ class Product {
     color = json['color'] ?? '';
     rating = (json['rating'] as num?)?.toDouble() ?? 0;
     reviewCount = json['review_count'] ?? 0;
-    discount = (json['discount'] as num?)?.toDouble() ?? 0;
+    // discount = (json['discount'] as num?)?.toDouble() ?? 0;
+    discount = json['discount'] ?? '';
     // offerStart = json['offer_start'] != null
     //     ? DateTime.parse(json['offerStart'])
     //     : DateTime.now();
