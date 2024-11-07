@@ -32,7 +32,7 @@ Future<DataResponse> sendNewProduct({
     'name': product.name,
     'category_id': product.categoryId,
     'price': product.price,
-    'image': product.image,
+    // 'image': product.image,
     'description': product.description,
     'stock_quantity': product.stockQuantity,
     'unit': product.unit,
@@ -40,7 +40,7 @@ Future<DataResponse> sendNewProduct({
     'is_active': product.isActive,
     'weight': product.weight,
     'dimensions': product.dimensions,
-    'color': product.color,
+    // 'color': product.color,
     'warranty': product.warranty,
     'discount': product.discount,
     "images": (!kIsWeb)

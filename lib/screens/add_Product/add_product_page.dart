@@ -1,8 +1,9 @@
+import 'package:abd_shop/models/response_model.dart';
+import 'package:abd_shop/widget/camera/images_uploader_container.dart';
+import 'package:flutter/material.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
-import 'package:abd_shop/widget/camera/images_uploader_container.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';
-import 'package:flutter/material.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -12,299 +13,125 @@ class AddProductPage extends StatefulWidget {
 }
 
 class _AddProductPageState extends State<AddProductPage> {
-  // final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   Product newProduct = Product();
-  final List<Product> _products = []; // تعریف لیست محصولات
-  // final List<Product> _products = []; // لیست محصولات
-  // String _id = '';
-  // String _name = '';
-  // String _categoryId = '';
-  // double _price = 0.0;
-  // String _description = '';
-  // int _stockQuantity = 0;
-  // String _unit = '';
-  // String _brand = '';
-  // bool _isActive = true;
-  // double _weight = 0.0;
-  // String _dimensions = '';
-  // String _color = '';
-  // double _rating = 0.0;
-  // int _reviewCount = 0;
-  // double _discount = 0.0;
-  // DateTime? _offerStart;
-  // DateTime? _offerEnd;
-  // String _warranty = '';
-  // List<String> _tags = [];
-  // String _providerVendors = '';
-  // String _productUrl = '';
-  // String _imageUrl = ''; // متغیر جدید برای لینک عکس
+  List<dynamic> imagesList = [];
 
-  void _addProduct() {
-    print(newProduct.name);
-    sendNewProduct(product: newProduct, images: _imagesList).then((value) {
-      if (value.status == 1) {
-        MySnackBar(context: context, message: "محصول اضافه شد");
-      } else {
-        MySnackBar(context: context, message: "محصول اضافه نشد!");
+  void _addProduct() async {
+    print("تابع _addProduct فراخوانی شد");
+
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+
+      try {
+        print("در حال ارسال اطلاعات محصول...");
+        DataResponse response = await sendNewProduct(product: newProduct, images: imagesList);
+
+        print("پاسخ سرور: ${response.status}");
+        if (response.status == 1) {
+          print("محصول با موفقیت اضافه شد.");
+        } else {
+          print("خطا در اضافه کردن محصول: ${response.message}");
+        }
+      } catch (e) {
+        print("خطا در ارسال محصول: $e");
       }
-    }).catchError((error) {
-      throw Exception("*.* error in line 50 add_product_page.dart -> $error");
-    });
-    // if (_formKey.currentState!.validate()) {
-    //   _formKey.currentState!.save();
-    //   // اضافه کردن محصول جدید به لیست
-    //   _products.add(Product(
-    //     id: _id,
-    //     name: _name,
-    //     categoryId: _categoryId,
-    //     price: _price,
-    //     description: _description,
-    //     stockQuantity: _stockQuantity,
-    //     unit: _unit,
-    //     brand: _brand,
-    //     isActive: _isActive,
-    //     weight: _weight,
-    //     dimensions: _dimensions,
-    //     color: _color,
-    //     rating: _rating,
-    //     reviewCount: _reviewCount,
-    //     discount: _discount,
-    //     offerStart: _offerStart,
-    //     offerEnd: _offerEnd,
-    //     warranty: _warranty,
-    //     tags: _tags,
-    //     providerVendors: _providerVendors,
-    //     productUrl: _productUrl,
-    //     imageUrl: _imageUrl, // لینک عکس
-    //   ));
-    //   // پاک کردن فرم برای اضافه کردن محصول بعدی
-    //   _formKey.currentState!.reset();
-    //   setState(() {
-    //     _id = '';
-    //     _name = '';
-    //     _categoryId = '';
-    //     _price = 0.0;
-    //     _description = '';
-    //     _stockQuantity = 0;
-    //     _unit = '';
-    //     _brand = '';
-    //     _isActive = true;
-    //     _weight = 0.0;
-    //     _dimensions = '';
-    //     _color = '';
-    //     _rating = 0.0;
-    //     _reviewCount = 0;
-    //     _discount = 0.0;
-    //     _offerStart = null;
-    //     _offerEnd = null;
-    //     _warranty = '';
-    //     _tags = [];
-    //     _providerVendors = '';
-    //     _productUrl = '';
-    //     _imageUrl = ''; // پاک کردن لینک عکس
-    //   });
-    // }
+    } else {
+      print("اعتبارسنجی ناموفق بود.");
+    }
   }
-
-  List<dynamic> _imagesList = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('اضافه کردن محصول'),
+        title: Text('اضافه کردن محصول'),
         centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // _buildTextField('شناسه محصول (ID)', 'مثال: 123',
-              //     (value) => newProduct.id = int.parse(value!)),
-              _buildTextField('نام محصول', 'مثال: گوشی هوشمند',
-                  (value) => newProduct.name = value!),
-              _buildTextField('شناسه دسته‌بندی (Category ID)', 'مثال: 456',
-                  (value) => newProduct.categoryId = int.parse(value!)),
-              // _buildDateField(
-              //     'تاریخ شروع پیشنهاد (Offer Start)',
-              //     'مثال: 2023-11-01',
-              //     (value) =>newProduct.offerStart = DateTime.parse(value!)),
-              // _buildDateField(
-              //     'تاریخ پایان پیشنهاد (Offer End)',
-              //     'مثال: 2023-12-01',
-              //     (value) => newProduct.offerEnd = DateTime.parse(value!)),
-              _buildTextField('قیمت محصول', 'مثال: 1500000',
-                  (value) => newProduct.price = int.parse(value!),
-                  keyboardType: TextInputType.number),
-              _buildTextField('توضیحات محصول', 'مثال: این یک گوشی هوشمند است',
-                  (value) => newProduct.description = value!),
-              _buildTextField('مقدار موجودی (Stock Quantity)', 'مثال: 50',
-                  (value) => newProduct.stockQuantity = int.parse(value!),
-                  keyboardType: TextInputType.number),
-              _buildTextField('واحد (Unit)', 'مثال: عدد',
-                  (value) => newProduct.unit = value!),
-              _buildTextField('برند (Brand)', 'مثال: سامسونگ',
-                  (value) => newProduct.brand = value!),
-              // SwitchListTile(     //  problem :The argument type 'int' can't be assigned to the parameter type 'bool'//
-              //   title: Text('فعال (Is Active)'),
-              //   value: newProduct.isActive,
-              //   onChanged: (bool value) {
-              //     setState(() {
-              //       newProduct.isActive = value;
-              //     });
-              //   },
-              // ),
-              _buildTextField('وزن (Weight)', 'مثال: 200',
-                  (value) => newProduct.weight = double.parse(value!),
-                  keyboardType: TextInputType.number),
-              _buildTextField('ابعاد (Dimensions)', 'مثال: 15x7x0.8',
-                  (value) => newProduct.dimensions = value!),
-              _buildTextField('رنگ (Color)', 'مثال: سیاه',
-                  (value) => newProduct.color = value!),
-              _buildTextField('رتبه‌بندی (Rating)', 'مثال: 4.5',
-                  (value) => newProduct.rating = double.parse(value!),
-                  keyboardType: TextInputType.number),
-              _buildTextField('تعداد نظرات (Review Count)', 'مثال: 100',
-                  (value) => newProduct.reviewCount = int.parse(value!),
-                  keyboardType: TextInputType.number),
-              _buildTextField('تخفیف (Discount)', 'مثال: 10',
-                  (value) => newProduct.discount = double.parse(value!),
-                  keyboardType: TextInputType.number),
-              _buildTextField('گارانتی (Warranty)', 'مثال: 1 سال',
-                  (value) => newProduct.warranty = value!),
-              // _buildTextField(  // problem :A value of type 'List<String>' can't be assigned to a variable of type 'String' //
-              //     'برچسب‌ها (Tags)',
-              //     'مثال: الکترونیک, گوشی',
-              //     (value) => newProduct.tags =
-              //         value!.split(',').map((tag) => tag.trim()).toList()),
-              _buildTextField(
-                  'تامین‌کنندگان (Provider Vendors)',
-                  'مثال: تامین‌کننده A',
-                  (value) => newProduct.providerVendors = value!),
-
-              const SizedBox(height: 20),
-
-              //Add Image Box for upload images of product
-              SizedBox(
-                width: double.infinity,
-                height: 300,
-                child: ImagesUploaderContainer(onChanged: (images) {
-                  print(images.length);
-                  _imagesList = images;
-                }),
-              ),
-
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _addProduct,
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                  textStyle: const TextStyle(fontSize: 18),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'نام محصول'),
+                  initialValue: newProduct.name,
+                  onSaved: (value) => newProduct.name = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا نام محصول را وارد کنید' : null,
                 ),
-                child: const Text('اضافه کردن محصول'),
-              ),
-              const SizedBox(height: 20),
-              if (_products.isNotEmpty) ...[
-                const Text('محصولات اضافه شده:',
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _products.length,
-                  itemBuilder: (context, index) {
-                    final product = _products[index];
-                    return _buildProductCard(product);
-                  },
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'شناسه دسته بندی(Category ID)'),
+                  onSaved: (value) => newProduct.categoryId = int.tryParse(value ?? '') ?? 0,
+                  validator: (value) => value!.isEmpty ? 'لطفا شناسه دسته بندی را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'قیمت'),
+                  onSaved: (value) => newProduct.price,
+                  validator: (value) => value!.isEmpty ? 'لطفا قیمت را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'توضیحات محصول'),
+                  onSaved: (value) => newProduct.description = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا توضیحات محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'مقدار موجودی'),
+                  onSaved: (value) => newProduct.stockQuantity = int.tryParse(value ?? '') ?? 0,
+                  validator: (value) => value!.isEmpty ? 'لطفا مقدار موجودی محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'واحد(unit)'),
+                  onSaved: (value) => newProduct.unit = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا واحد محصول را وارد کنید' : null,
+                ),TextFormField(
+                  decoration: InputDecoration(labelText: 'فعال بودن محصول(بله/خیر)'),
+                  onSaved: (value) =>
+                  newProduct.isActive,
+                  validator: (value) =>
+                  value!.isEmpty ? 'لطفا فعال بودن یا نبودن محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'وزن'),
+                  onSaved: (value) => newProduct.weight = double.tryParse(value ?? '') ?? 0.0,
+                  validator: (value) => value!.isEmpty ? 'لطفا وزن محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'ابعاد'),
+                  onSaved: (value) => newProduct.dimensions = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا ابعاد محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'برند'),
+                  onSaved: (value) => newProduct.brand = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا برند محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'تخفیف'),
+                  onSaved: (value) => newProduct.discount = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا تخفیف محصول را وارد کنید' : null,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'گارانتی'),
+                  onSaved: (value) => newProduct.warranty = value ?? '',
+                  validator: (value) => value!.isEmpty ? 'لطفا گارانتی محصول را وارد کنید' : null,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 300,
+                  child: ImagesUploaderContainer(onChanged: (images) {
+                    print(images.length);
+                    imagesList = images;
+                  }),
+                ),
+                ElevatedButton(
+                  onPressed: _addProduct,
+                  child: Text('اضافه کردن محصول'),
                 ),
               ],
-            ],
+            ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField(String label, String hint, Function(String?) onSaved,
-      {TextInputType keyboardType = TextInputType.text}) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint, // اضافه کردن راهنما
-      ),
-      keyboardType: keyboardType,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'لطفاً $label را وارد کنید';
-        }
-        return null;
-      },
-      onSaved: onSaved,
-    );
-  }
-
-  // Widget _buildDateField(String label, String hint, Function(String?) onSaved) {
-  //   return TextFormField(
-  //     decoration: InputDecoration(
-  //       labelText: label,
-  //       hintText: hint, // اضافه کردن راهنما
-  //     ),
-  //     keyboardType: TextInputType.datetime,
-  //     validator: (value) {
-  //       if (value!.isEmpty) {
-  //         return 'لطفاً $label را وارد کنید';
-  //       }
-  //       return null;
-  //     },
-  //     onSaved: onSaved,
-  //   );
-  // }
-
-  Widget _buildProductCard(Product product) {
-    return Card(
-      elevation: 5,
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.network(product.image,
-                height: 100, width: 100, fit: BoxFit.cover),
-            const SizedBox(height: 8),
-            Text('شناسه: ${product.id}', style: const TextStyle(fontSize: 16)),
-            Text('نام: ${product.name}', style: const TextStyle(fontSize: 16)),
-            Text('دسته‌بندی: ${product.categoryId}',
-                style: const TextStyle(fontSize: 16)),
-            Text(
-                'تاریخ شروع پیشنهاد: ${product.offerStart?.toLocal().toString().split(' ')[0]}',
-                style: const TextStyle(fontSize: 16)),
-            Text(
-                'تاریخ پایان پیشنهاد: ${product.offerEnd?.toLocal().toString().split(' ')[0]}',
-                style: const TextStyle(fontSize: 16)),
-            Text('قیمت: ${product.price.toString()} تومان',
-                style: const TextStyle(fontSize: 16)),
-            Text('توضیحات: ${product.description}',
-                style: const TextStyle(fontSize: 16)),
-            Text('موجودی: ${product.stockQuantity}',
-                style: const TextStyle(fontSize: 16)),
-            Text('واحد: ${product.unit}', style: const TextStyle(fontSize: 16)),
-            Text('برند: ${product.brand}',
-                style: const TextStyle(fontSize: 16)),
-            // Text('فعال: ${product.isActive ? "بله" : "خیر"}',
-            //     style: TextStyle(fontSize: 16)),
-            Text('وزن: ${product.weight}',
-                style: const TextStyle(fontSize: 16)),
-            Text('ابعاد: ${product.dimensions}',
-                style: const TextStyle(fontSize: 16)),
-            Text('رنگ: ${product.color}', style: const TextStyle(fontSize: 16)),
-            Text('رتبه‌بندی: ${product.rating}',
-                style: const TextStyle(fontSize: 16)),
-            Text('تعداد نظرات: ${product.reviewCount}',
-                style: const TextStyle(fontSize: 16)),
-          ],
         ),
       ),
     );
