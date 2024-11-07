@@ -14,7 +14,7 @@ class Product {
   double weight = 0;
   String dimensions = ''; //size of the product x,y,z
   String color = '';
-  double rating = 0;
+  String rating = "";
   String comments = '';
   int reviewCount = 0;
   String discount = ""; //percentage for selling the product in offers
@@ -42,7 +42,8 @@ class Product {
     weight = (json['weight'] as num?)?.toDouble() ?? 0;
     dimensions = json['dimensions'] ?? '';
     color = json['color'] ?? '';
-    rating = (json['rating'] as num?)?.toDouble() ?? 0;
+    rating = json['color'] ?? '';
+    // rating = (json['rating'] as num?)?.toDouble() ?? 0;
     reviewCount = json['review_count'] ?? 0;
     // discount = (json['discount'] as num?)?.toDouble() ?? 0;
     discount = json['discount'] ?? '';
