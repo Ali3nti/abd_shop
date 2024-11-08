@@ -14,7 +14,7 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(width: 140,height: 250,
+    return  SizedBox(width: 150,height: 250,
       child: InkWell(
         child: Card(
           shadowColor: Colors.red,
@@ -41,12 +41,12 @@ class _ProductCardState extends State<ProductCard> {
                             bottomRight: Radius.circular(10),
                           ),
                         ),
-                        child: SizedBox(width: 28,
+                        child: SizedBox(width: 35,
                           child: Row(mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                widget.productModel.discount,
-                                style: TextStyle(
+                                widget.productModel.discount.toString(),
+                                style: TextStyle(fontSize: 11,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -86,13 +86,14 @@ class _ProductCardState extends State<ProductCard> {
                         child: Row(
                           children: [
                             Text(
-                              widget.productModel.price,
+                              widget.productModel.price.toString(),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+
                             SizedBox(width: 4),
                             Image.asset("assets/images/toman.png", height: 15),
                           ],
@@ -100,13 +101,16 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                       SizedBox(width: 8),
                       Padding(
-                        padding: const EdgeInsets.only(right: 8),
+                        padding: const EdgeInsets.only(left: 80),
                         child: Text(
-                          widget.productModel.price,
+                          widget.productModel.price.toString(), // تبدیل به رشته
                           style: TextStyle(
-                            fontSize: 14,
-                            decoration: TextDecoration.lineThrough,
+                            fontSize: 16,
                             color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.lineThrough, // کشیدن خط روی متن
+                            decorationColor: Colors.black54, // رنگ خط
+                            decorationThickness: 2, // ضخامت خط
                           ),
                         ),
                       ),
