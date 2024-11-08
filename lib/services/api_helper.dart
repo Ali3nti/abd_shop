@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 ////////////////////////////////////////////////////////////////////////
@@ -15,6 +16,7 @@ Future<DataResponse> getAllCategories() async {
 Future<DataResponse> getProductsOfCategory(int categoryId) async {
   return await getRequest(apiName: "cat_products", query: "?id=$categoryId");
 }
+
 Future<DataResponse> getProducts() async {
   return await getRequest(apiName: "all_products");
 }
@@ -24,12 +26,13 @@ Future<DataResponse> getProducts() async {
 
 Future<DataResponse> sendNewProduct({
   required Product product,
+  required List<dynamic> images,
 }) async {
   Map<String, dynamic> dataBody = {
     'name': product.name,
     'category_id': product.categoryId,
     'price': product.price,
-    'image': product.image,
+    // 'image': product.image,
     'description': product.description,
     'stock_quantity': product.stockQuantity,
     'unit': product.unit,
@@ -37,11 +40,15 @@ Future<DataResponse> sendNewProduct({
     'is_active': product.isActive,
     'weight': product.weight,
     'dimensions': product.dimensions,
-    'color': product.color,
+    // 'color': product.color,
     'warranty': product.warranty,
     'discount': product.discount,
+    "images": (!kIsWeb)
+        ? images.map((e) => base64Encode(e.readAsBytesSync())).toList()
+        : null
   };
-  return await postRequest(apiName: "cat_products", dataBody: dataBody);
+  print(dataBody);
+  return await postRequest(apiName: "add_products", dataBody: dataBody);
 }
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////Base API////////////////////////////////

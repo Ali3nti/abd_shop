@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/add_Product/add_product_page.dart';
 import 'package:abd_shop/screens/profile/faq_page.dart';
 import 'package:abd_shop/screens/profile/gift_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
@@ -29,6 +30,11 @@ void invite(BuildContext context) {
 void address(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) => AddressPage()));
+}
+
+void addProduct(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => AddProductPage()));
 }
 
 void sellers(BuildContext context) {
@@ -131,6 +137,13 @@ class _ProfilePageState extends State<ProfilePage> {
             color: Colors.grey,
           ),
           _buildListTile("آدرس ها", "", Icons.map_outlined, address),
+          Container(
+            width: double.infinity,
+            height: 0.2,
+            color: Colors.grey,
+          ),
+          _buildListTile(
+              "اضافه کردن محصول", "", Icons.map_outlined, addProduct),
           Container(
             width: double.infinity,
             height: 0.2,
