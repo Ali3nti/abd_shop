@@ -1,5 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/screens/product_information_page.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -26,7 +27,7 @@ class _ProductCardState extends State<ProductCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetailsPage(product: widget.productModel),
+            builder: (context) => ProductInformation(product: widget.productModel),
           ),
         );
       },
