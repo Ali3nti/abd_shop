@@ -54,5 +54,6 @@ class Product {
     warranty = json['warranty'] ?? '';
     tags = json['tags'] ?? '';
     providerVendors = json['provider_vendors'] ?? '';
+
   }
 }
