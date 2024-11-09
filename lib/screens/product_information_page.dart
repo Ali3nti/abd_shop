@@ -1,10 +1,14 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/widget/providwe_widget2.dart';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ProductInformation extends StatefulWidget {
-  const ProductInformation({super.key});
+  ProductInformation({super.key, required this.product});
+
+  Product product;
 
   @override
   State<ProductInformation> createState() => _ProductInformationState();
@@ -13,6 +17,12 @@ class ProductInformation extends StatefulWidget {
 class _ProductInformationState extends State<ProductInformation> {
   @override
   Widget build(BuildContext context) {
+    double discountAmount = widget.product.price *
+        (widget.product.discount / 100); //Percentage formula//
+    double finalPrice = widget.product.price -
+        discountAmount; // final price = Subtract the amount of discount from the original price//
+    final formatter =
+        NumberFormat('#,###'); //Create an instance of NumberFormat.//
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
@@ -22,13 +32,10 @@ class _ProductInformationState extends State<ProductInformation> {
         child: Column(
           children: [
             Container(
-              color: Colors.grey.shade50,
+              color: Colors.white,
               width: double.infinity,
               height: 200,
-              child: Image.asset(
-                width: 20,
-                'assets/images/p11.png',
-              ),
+              child: Image.network(baseUrl + widget.product.image),
             ),
             Container(
               padding: const EdgeInsets.only(top: 10, right: 20),
@@ -45,176 +52,169 @@ class _ProductInformationState extends State<ProductInformation> {
               color: Colors.grey.shade50,
               width: double.infinity,
               height: 100,
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "مشخصات محصول",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                  Text("مشخصات محصول"),
-                  Text("مشخصات محصول"),
-                ],
+              child: Text(
+                widget.product.description,
+                style: TextStyle(color: Colors.blue),
               ),
             ),
-            Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: 50,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey.shade300),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.shade300,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.shade300,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.shade300,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.shade300,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.shade300,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 3),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 5),
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey.shade300,
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              "مشخصات محصول",
-                              style: TextStyle(color: Colors.grey.shade600),
-                            ),
-                            const Text("مشخصات محصول"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   color: Colors.white,
+            //   width: double.infinity,
+            //   height: 50,
+            //   child: SingleChildScrollView(
+            //     scrollDirection: Axis.horizontal,
+            //     child: Row(
+            //       children: [
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(5),
+            //                 color: Colors.grey.shade300),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(5),
+            //               color: Colors.grey.shade300,
+            //             ),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(5),
+            //               color: Colors.grey.shade300,
+            //             ),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(5),
+            //               color: Colors.grey.shade300,
+            //             ),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(5),
+            //               color: Colors.grey.shade300,
+            //             ),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(5),
+            //               color: Colors.grey.shade300,
+            //             ),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(right: 3),
+            //           child: Container(
+            //             padding: const EdgeInsets.only(top: 5),
+            //             width: 100,
+            //             height: 50,
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(5),
+            //               color: Colors.grey.shade300,
+            //             ),
+            //             child: Column(
+            //               children: [
+            //                 Text(
+            //                   "مشخصات محصول",
+            //                   style: TextStyle(color: Colors.grey.shade600),
+            //                 ),
+            //                 const Text("مشخصات محصول"),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Container(
               padding: const EdgeInsets.only(top: 10, right: 20),
               color: Colors.white,
@@ -288,28 +288,28 @@ class _ProductInformationState extends State<ProductInformation> {
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
               height: 50,
-              child: const Row(
+              child: Row(
                 children: [
                   Icon(Icons.stars, color: kPrimaryColor),
                   SizedBox(width: 10),
-                  Text("امتیاز"),
+                  Text(widget.product.rating.toString()),
                 ],
               ),
             ),
             const SizedBox(height: 5),
-            Container(
-              padding: const EdgeInsets.only(top: 10, right: 10),
-              color: Colors.grey.shade50,
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text("گزارش نادرستی مشخصات"),
-                  const SizedBox(width: 10),
-                  Icon(Icons.report, color: Colors.red.shade900),
-                ],
-              ),
-            ),
+            // Container(
+            //   padding: const EdgeInsets.only(top: 10, right: 10),
+            //   color: Colors.grey.shade50,
+            //   height: 50,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.end,
+            //     children: [
+            //       const Text("گزارش نادرستی مشخصات"),
+            //       const SizedBox(width: 10),
+            //       Icon(Icons.report, color: Colors.red.shade900),
+            //     ],
+            //   ),
+            // ),
             const SizedBox(height: 5),
             Container(
               padding: const EdgeInsets.only(top: 10, right: 10),
@@ -326,14 +326,17 @@ class _ProductInformationState extends State<ProductInformation> {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  Row(
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const ProviderWidget2(),
-                      const SizedBox(width: 170),
-                      const Text("قیمت"),
-                      const SizedBox(width: 10),
+                       Padding(
+                         padding: const EdgeInsets.only(left: 170),
+                         child: ProviderWidget2(),
+                       ),
+                      Text(
+                        formatter.format(finalPrice),
+                      ),
                       Image.asset("assets/images/toman.png",
-                          width: 20, height: 20),
+                          width: 25, height: 20),
                     ],
                   ),
                 ],
