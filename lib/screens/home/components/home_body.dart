@@ -1,6 +1,8 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
+import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/home/components/category_list_widget.dart';
@@ -9,9 +11,10 @@ import 'package:abd_shop/screens/home/components/images_slider.dart';
 import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
 import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
+import 'package:abd_shop/screens/search/serch_Page_Home.dart';
+import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/amazing-widget.dart';
 import 'package:abd_shop/widget/product_Card_List_Widget.dart';
-import 'package:abd_shop/widget/product_card_widget.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +45,26 @@ class _HomeBodyState extends State<HomeBody> {
               padding: const EdgeInsets.only(right: 10),
               child: InkWell(
                 onTap: () {
-                  search(context);
+                  List<Product> ProductsList = [];
+                  getProducts().then((value) {
+                    //Handle API Response
+                    DataResponse response = value;
+                    if (response.status == 1) {
+                      response.data.forEach((value) {
+                        // Handle Product Data
+                        ProductsList.add(Product.fromJson(value));
+                      });
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchPageHome(
+                              products:
+                              ProductsList), // انتقال به صفحه محصولات کتگوری
+                        ),
+                      );
+                    }
+                  });
                 },
                 child: Container(
                   height: 50,
@@ -439,7 +461,6 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
-
   supermarket(BuildContext context) {
     Navigator.push(
       context,

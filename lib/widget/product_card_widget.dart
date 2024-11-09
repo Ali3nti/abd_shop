@@ -2,9 +2,10 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ProductCard extends StatefulWidget {
-  ProductCard({super.key,required this.productModel});
+  ProductCard({super.key, required this.productModel});
   Product productModel;
 
   @override
@@ -14,10 +15,23 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(width: 150,height: 250,
-      child: InkWell(
+    double discountAmount = widget.productModel.price * (widget.productModel.discount / 100); //Percentage formula//
+    double finalPrice = widget.productModel.price - discountAmount; // final price = Subtract the amount of discount from the original price//
+    final formatter = NumberFormat('#,###'); //Create an instance of NumberFormat.//
+
+    return SizedBox(
+      width: 150,
+      height: 260,
+      child: InkWell( onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsPage(product: widget.productModel),
+          ),
+        );
+      },
         child: Card(
-          shadowColor: Colors.red,
+          shadowColor: Colors.teal,
           color: Colors.white,
           elevation: 20,
           child: Column(
@@ -27,7 +41,7 @@ class _ProductCardState extends State<ProductCard> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 25),
-                    child: Image.network(baseUrl +widget.productModel.image, height: 80, width: 100),
+                    child: Image.network(baseUrl + widget.productModel.image, height: 80, width: 100),
                   ),
                   Positioned.fill(
                     child: Align(
@@ -41,12 +55,15 @@ class _ProductCardState extends State<ProductCard> {
                             bottomRight: Radius.circular(10),
                           ),
                         ),
-                        child: SizedBox(width: 35,
-                          child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        child: SizedBox(
+                          width: 35,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 widget.productModel.discount.toString(),
-                                style: TextStyle(fontSize: 11,
+                                style: TextStyle(
+                                  fontSize: 11,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -86,14 +103,13 @@ class _ProductCardState extends State<ProductCard> {
                         child: Row(
                           children: [
                             Text(
-                              widget.productModel.price.toString(),
+                              formatter.format(finalPrice),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-
                             SizedBox(width: 4),
                             Image.asset("assets/images/toman.png", height: 15),
                           ],
@@ -103,14 +119,14 @@ class _ProductCardState extends State<ProductCard> {
                       Padding(
                         padding: const EdgeInsets.only(left: 80),
                         child: Text(
-                          widget.productModel.price.toString(), // تبدیل به رشته
+                          formatter.format(widget.productModel.price),
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.lineThrough, // کشیدن خط روی متن
-                            decorationColor: Colors.black54, // رنگ خط
-                            decorationThickness: 2, // ضخامت خط
+                            decoration: TextDecoration.lineThrough,
+                            decorationColor: Colors.black54,
+                            decorationThickness: 2,
                           ),
                         ),
                       ),
@@ -126,24 +142,68 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(right: 8.0),
-                  //   child: Text(
-                  //     'زمان باقی‌مانده : ${(_remainingTime ~/ 3600).toString().padLeft(2, '0')}:${((_remainingTime % 3600) ~/ 60).toString().padLeft(2, '0')}:${(_remainingTime % 60).toString().padLeft(2, '0')}',
-                  //     style: TextStyle(
-                  //       fontSize: 14,
-                  //       color: Colors.red,
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 70,top: 10),
+                padding: const EdgeInsets.only(left: 70, top: 10),
                 child: ProviderWidget(),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class ProductDetailsPage extends StatelessWidget {
+  final Product product;
+
+  ProductDetailsPage({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    final formatter = NumberFormat('#,###');
+    double discountAmount = product.price * (product.discount / 100);
+    double finalPrice = product.price - discountAmount;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(product.name),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(baseUrl + product.image),
+            SizedBox(height: 16),
+            Text(
+              product.name,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'قیمت: ${formatter.format(finalPrice)} تومان',
+              style: TextStyle(fontSize: 20, color: Colors.red),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'قیمت اصلی: ${formatter.format(product.price)} تومان',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+                decoration: TextDecoration.lineThrough,
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'توضیحات: ${product.description}',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
         ),
       ),
     );
