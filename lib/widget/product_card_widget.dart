@@ -1,81 +1,23 @@
-import 'dart:async';
-import 'package:abd_shop/screens/add_Product/add_product_page.dart';
-import 'package:abd_shop/screens/product_page_detail.dart';
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/widget/provider_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatefulWidget {
-  final String image;
-  final String title;
-  final String price;
-  final String discountedPrice;
-  final String discountPercentage;
-  final String quantity;
-  final Color color;
-
-  const ProductCard({
-    Key? key,
-    required this.image,
-    required this.title,
-    required this.price,
-    required this.discountedPrice,
-    required this.discountPercentage,
-    required this.quantity,
-    required this.color,
-  }) : super(key: key);
+  ProductCard({super.key,required this.productModel});
+  Product productModel;
 
   @override
-  _ProductCardState createState() => _ProductCardState();
+  State<ProductCard> createState() => _ProductCardState();
 }
 
 class _ProductCardState extends State<ProductCard> {
-  late Timer _timer;
-  int _remainingTime = 36000; // 10 ساعت به ثانیه
-
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (_remainingTime > 0) {
-        setState(() {
-          _remainingTime--;
-        });
-      } else {
-        _timer.cancel();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void productPageDetail(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => AddProductPage(),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: _remainingTime >
-          0, // فقط وقتی که زمان باقی‌مانده وجود دارد، نمایش داده می‌شود
+    return  SizedBox(width: 150,height: 250,
       child: InkWell(
-        onTap: () {
-          productPageDetail(context);
-        },
         child: Card(
-          shadowColor: widget.color,
+          shadowColor: Colors.red,
           color: Colors.white,
           elevation: 20,
           child: Column(
@@ -85,7 +27,7 @@ class _ProductCardState extends State<ProductCard> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 25),
-                    child: Image.asset(widget.image, height: 80, width: 100),
+                    child: Image.network(baseUrl +widget.productModel.image, height: 80, width: 100),
                   ),
                   Positioned.fill(
                     child: Align(
@@ -99,11 +41,24 @@ class _ProductCardState extends State<ProductCard> {
                             bottomRight: Radius.circular(10),
                           ),
                         ),
-                        child: Text(
-                          widget.discountPercentage + '%',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                        child: SizedBox(width: 35,
+                          child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                widget.productModel.discount.toString(),
+                                style: TextStyle(fontSize: 11,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                ("%"),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -117,7 +72,7 @@ class _ProductCardState extends State<ProductCard> {
                   Padding(
                     padding: EdgeInsets.only(right: 8),
                     child: Text(
-                      widget.title,
+                      widget.productModel.name,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -131,13 +86,14 @@ class _ProductCardState extends State<ProductCard> {
                         child: Row(
                           children: [
                             Text(
-                              widget.discountedPrice,
+                              widget.productModel.price.toString(),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+
                             SizedBox(width: 4),
                             Image.asset("assets/images/toman.png", height: 15),
                           ],
@@ -145,13 +101,16 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                       SizedBox(width: 8),
                       Padding(
-                        padding: const EdgeInsets.only(right: 8),
+                        padding: const EdgeInsets.only(left: 80),
                         child: Text(
-                          widget.price,
+                          widget.productModel.price.toString(), // تبدیل به رشته
                           style: TextStyle(
-                            fontSize: 14,
-                            decoration: TextDecoration.lineThrough,
+                            fontSize: 16,
                             color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.lineThrough, // کشیدن خط روی متن
+                            decorationColor: Colors.black54, // رنگ خط
+                            decorationThickness: 2, // ضخامت خط
                           ),
                         ),
                       ),
@@ -160,27 +119,27 @@ class _ProductCardState extends State<ProductCard> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Text(
-                      '${widget.quantity} (${widget.quantity.substring(0, 2)} عدد)',
+                      '${widget.productModel.stockQuantity} (${widget.productModel.stockQuantity} عدد)',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Text(
-                      'زمان باقی‌مانده : ${(_remainingTime ~/ 3600).toString().padLeft(2, '0')}:${((_remainingTime % 3600) ~/ 60).toString().padLeft(2, '0')}:${(_remainingTime % 60).toString().padLeft(2, '0')}',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 8.0),
+                  //   child: Text(
+                  //     'زمان باقی‌مانده : ${(_remainingTime ~/ 3600).toString().padLeft(2, '0')}:${((_remainingTime % 3600) ~/ 60).toString().padLeft(2, '0')}:${(_remainingTime % 60).toString().padLeft(2, '0')}',
+                  //     style: TextStyle(
+                  //       fontSize: 14,
+                  //       color: Colors.red,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 90),
+                padding: const EdgeInsets.only(left: 70,top: 10),
                 child: ProviderWidget(),
               ),
             ],

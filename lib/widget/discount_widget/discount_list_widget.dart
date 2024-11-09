@@ -19,7 +19,7 @@ class _CategoryListWidgetState extends State<DiscountListWidget> {
 
   // List<Market> marketList = [];
   initMarkets() async {
-    await getDataFromServer(apiName: "getdiscounted").then((value) {
+    await getRequest(apiName: "getdiscounted").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
@@ -29,7 +29,7 @@ class _CategoryListWidgetState extends State<DiscountListWidget> {
           discountWidgetList.add(
             DiscountItemWidget(
               discountModel: discountModel,
-            ) ,
+            ),
           );
         }
       } else {

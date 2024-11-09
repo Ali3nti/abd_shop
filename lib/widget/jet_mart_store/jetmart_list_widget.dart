@@ -16,16 +16,17 @@ class JetmartListWidget extends StatefulWidget {
 }
 
 class _JetmartListWidgetState extends State<JetmartListWidget> {
-  List<JetmartItemWidget>  jetmartWidgetList = [];
+  List<JetmartItemWidget> jetmartWidgetList = [];
 
   // List<Market> marketList = [];
   initMarkets() async {
-    await getDataFromServer(apiName: "getjetmart").then((value) {
+    await getRequest(apiName: "getjetmart").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
-          JetMartAmazingModel jetmartAmazingModel = JetMartAmazingModel.fromJSON(item);
+          JetMartAmazingModel jetmartAmazingModel =
+              JetMartAmazingModel.fromJSON(item);
           // marketList.add(market);
           jetmartWidgetList.add(
             JetmartItemWidget(
