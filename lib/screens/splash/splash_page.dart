@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:abd_shop/screens/category/global.dart';
 import 'package:abd_shop/models/category_model.dart';
+import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:abd_shop/screens/login/log_In_Page.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';
 
 class SplashPage extends StatelessWidget {
@@ -35,7 +35,7 @@ class SplashPage extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LogIn(),
+                      builder: (context) => HomeBody(),
                     ),
                   );
                 } else {}
