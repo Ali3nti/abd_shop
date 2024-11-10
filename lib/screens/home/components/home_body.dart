@@ -1,21 +1,22 @@
-import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/constant/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
-import 'package:abd_shop/screens/home/components/category_list_widget.dart';
-import 'package:abd_shop/screens/home/components/current_user_address_widget.dart';
-import 'package:abd_shop/screens/home/components/images_slider.dart';
-import 'package:abd_shop/screens/home/components/markets_list_widget.dart';
-import 'package:abd_shop/screens/home/components/product_modal_sheet.dart';
+import 'package:abd_shop/screens/category/category_list_widget.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing-widget.dart';
+import 'package:abd_shop/screens/home/components/app_Bar/app_Bar_Original.dart';
+import 'package:abd_shop/screens/home/components/address/current_user_address_widget.dart';
+import 'package:abd_shop/screens/home/components/slider_Image/images_slider.dart';
+import 'package:abd_shop/screens/market/markets_list_widget.dart';
+import 'package:abd_shop/product/product_modal_sheet.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
-import 'package:abd_shop/screens/search/serch_Page_Home.dart';
+import 'package:abd_shop/screens/search/search_Page_Home.dart';
 import 'package:abd_shop/services/api_helper.dart';
-import 'package:abd_shop/widget/amazing-widget.dart';
-import 'package:abd_shop/widget/product_Card_List_Widget.dart';
-import 'package:abd_shop/widget/provider_widget.dart';
+import 'package:abd_shop/product/product_Card_Widget/product_Card_List_Widget.dart';
+import 'package:abd_shop/widget/provider/provider_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeBody extends StatefulWidget {
@@ -41,81 +42,7 @@ class _HomeBodyState extends State<HomeBody> {
             const SizedBox(
               height: 50,
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: InkWell(
-                onTap: () {
-                  List<Product> ProductsList = [];
-                  getProducts().then((value) {
-                    //Handle API Response
-                    DataResponse response = value;
-                    if (response.status == 1) {
-                      response.data.forEach((value) {
-                        // Handle Product Data
-                        ProductsList.add(Product.fromJson(value));
-                      });
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SearchPageHome(
-                              products:
-                              ProductsList), // انتقال به صفحه محصولات کتگوری
-                        ),
-                      );
-                    }
-                  });
-                },
-                child: Container(
-                  height: 50,
-                  width: 340,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  // Horizontal padding
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    // Lighter background
-                    borderRadius: BorderRadius.circular(10),
-                    // More rounded corners
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.search,
-                        size: 28,
-                        color: Colors.grey.shade600,
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            const Text(
-                              "جستجو در",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black87,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Image.asset(
-                              'assets/images/logo.png',
-                              color: kPrimaryColor,
-                              width: 90,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            AppBarOriginal(),
             const CurrentUserAddress(),
             const HomeImagesSlider(),
             const CategoryListWidget(),
@@ -483,3 +410,4 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 }
+

@@ -1,7 +1,7 @@
-import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/constant/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
-import 'package:abd_shop/widget/amazing-widget.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing-widget.dart';
 import 'package:abd_shop/widget/category_supermarket_widget.dart';
 import 'package:abd_shop/widget/category_products_box_widget.dart';
 import 'package:abd_shop/widget/outlined_button_widget.dart';

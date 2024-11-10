@@ -1,5 +1,4 @@
 import 'package:abd_shop/screens/category/fruits_category.dart';
-import 'package:abd_shop/screens/home/components/category_box_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategorySuperMarket extends StatefulWidget {
@@ -21,10 +20,6 @@ class _Categor_SuperMarketState extends State<CategorySuperMarket> {
           ),
         );
       },
-      child: CategoryBox(
-        CategoryText: const Text("لبنیات و بستنی"),
-        img: "assets/images/Market.png",
-      ),
     );
   }
 }
