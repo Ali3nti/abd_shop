@@ -12,77 +12,79 @@ class AppBarOriginal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: InkWell(
-        onTap: () {
-          List<Product> ProductsList = [];
-          getProducts().then((value) {
-            //Handle API Response
-            DataResponse response = value;
-            if (response.status == 1) {
-              response.data.forEach((value) {
-                // Handle Product Data
-                ProductsList.add(Product.fromJson(value));
-              });
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchPageHome(
-                      products:
-                      ProductsList), // انتقال به صفحه محصولات کتگوری
+    return Material(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: InkWell(
+          onTap: () {
+            List<Product> ProductsList = [];
+            getProducts().then((value) {
+              //Handle API Response
+              DataResponse response = value;
+              if (response.status == 1) {
+                response.data.forEach((value) {
+                  // Handle Product Data
+                  ProductsList.add(Product.fromJson(value));
+                });
+      
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchPageHome(
+                        products:
+                        ProductsList), // انتقال به صفحه محصولات کتگوری
+                  ),
+                );
+              }
+            });
+          },
+          child: Container(
+            height: 50,
+            width: 340,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            // Horizontal padding
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              // Lighter background
+              borderRadius: BorderRadius.circular(10),
+              // More rounded corners
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  offset: Offset(0, 2),
                 ),
-              );
-            }
-          });
-        },
-        child: Container(
-          height: 50,
-          width: 340,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          // Horizontal padding
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            // Lighter background
-            borderRadius: BorderRadius.circular(10),
-            // More rounded corners
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 6,
-                offset: Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              Icon(
-                Icons.search,
-                size: 28,
-                color: Colors.grey.shade600,
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Row(
-                  children: [
-                    const Text(
-                      "جستجو در",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
+              ],
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.search,
+                  size: 28,
+                  color: Colors.grey.shade600,
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Row(
+                    children: [
+                      const Text(
+                        "جستجو در",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black87,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Image.asset(
-                      'assets/images/logo.png',
-                      color: kPrimaryColor,
-                      width: 90,
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      Image.asset(
+                        'assets/images/logo.png',
+                        color: kPrimaryColor,
+                        width: 90,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

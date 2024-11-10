@@ -13,17 +13,19 @@ class ImageSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Material(
-        color: CupertinoColors.white,
-        child: Container(
-          margin: const EdgeInsets.all(15),
-          child: ClipRRect(
-            borderRadius: BorderRadiusDirectional.circular(20),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.fitWidth,
+    return Material(
+      child: InkWell(
+        onTap: onTap,
+        child: Material(
+          color: CupertinoColors.white,
+          child: Container(
+            margin: const EdgeInsets.all(15),
+            child: ClipRRect(
+              borderRadius: BorderRadiusDirectional.circular(20),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.fitWidth,
+              ),
             ),
           ),
         ),

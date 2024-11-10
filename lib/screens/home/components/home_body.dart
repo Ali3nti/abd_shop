@@ -34,347 +34,349 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: _refreshData,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            AppBarOriginal(),
-            const CurrentUserAddress(),
-            const HomeImagesSlider(),
-            const CategoryListWidget(),
-            const AmazingWidget(),
-            const SizedBox(height: 20),
-            //   The following committed code belongs to the old category...!!!!!! //
-            const SizedBox(
-              height: 40,
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: 150,
-              child: Stack(
-                children: [
-                  ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ProductSheet(
-                                imgproduct: "assets/images/mahsool1.png",
-                                detailtext: Text("مغز ران مرغ - یک کیلوگرم"),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool1.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 60, right: 60, bottom: 10),
-                                    child: ProviderWidget(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text("70,000"),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ProductSheet(
-                                imgproduct: "assets/images/mahsool2.png",
-                                detailtext: Text(
-                                    "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool2.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 60, right: 60, bottom: 10),
-                                    child: ProviderWidget(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text("70,000"),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ProductSheet(
-                                imgproduct: "assets/images/mahsool3.png",
-                                detailtext: Text("تخم مرغ مروارید - 6 عدد"),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool3.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 60, right: 60, bottom: 10),
-                                    child: ProviderWidget(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text("80,000"),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ProductSheet(
-                                imgproduct: "assets/images/mahsool4.png",
-                                detailtext:
-                                    Text("ماءالشعیر کلاسیک بهنوش - یک لیتر"),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool4.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 60, right: 60, bottom: 10),
-                                    child: ProviderWidget(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text("44,000"),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ProductSheet(
-                                imgproduct: "assets/images/mahsool5.png",
-                                detailtext: Text("نوشابه اسپرایت "),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool5.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 60, right: 60, bottom: 10),
-                                    child: ProviderWidget(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text("70,000"),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        /*It should be converted to a widget and change its size */
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ProductSheet(
-                                imgproduct: "assets/images/mahsool6.png",
-                                detailtext:
-                                    Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
-                                pricetext: Text("50,000"),
-                              );
-                            },
-                          );
-                        },
-                        child: SizedBox(
-                          height: 11,
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/mahsool6.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 60, right: 60, bottom: 10),
-                                    child: ProviderWidget(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text("87,000"),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/toman.png",
-                                    width: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+    return Material(
+      child: RefreshIndicator(
+        onRefresh: _refreshData,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 50,
               ),
-            ),
-
-            const SizedBox(
-              height: 20,
-            ),
-            ProductCardListWidget(),
-            const MarketListWidget(),
-            const SizedBox(
-              height: 40,
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-          ],
+              AppBarOriginal(),
+              const CurrentUserAddress(),
+              const HomeImagesSlider(),
+              const CategoryListWidget(),
+              const AmazingWidget(),
+              const SizedBox(height: 20),
+              //   The following committed code belongs to the old category...!!!!!! //
+              const SizedBox(
+                height: 40,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: Stack(
+                  children: [
+                    ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        InkWell(
+                          /*It should be converted to a widget and change its size */
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const ProductSheet(
+                                  imgproduct: "assets/images/mahsool1.png",
+                                  detailtext: Text("مغز ران مرغ - یک کیلوگرم"),
+                                  pricetext: Text("50,000"),
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: 11,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/mahsool1.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 60, right: 60, bottom: 10),
+                                      child: ProviderWidget(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("70,000"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          /*It should be converted to a widget and change its size */
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const ProductSheet(
+                                  imgproduct: "assets/images/mahsool2.png",
+                                  detailtext: Text(
+                                      "کنسرو ماهی تن در روغن زیتون شیلتون - 180 گرم"),
+                                  pricetext: Text("50,000"),
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: 11,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/mahsool2.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 60, right: 60, bottom: 10),
+                                      child: ProviderWidget(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("70,000"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          /*It should be converted to a widget and change its size */
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const ProductSheet(
+                                  imgproduct: "assets/images/mahsool3.png",
+                                  detailtext: Text("تخم مرغ مروارید - 6 عدد"),
+                                  pricetext: Text("50,000"),
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: 11,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/mahsool3.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 60, right: 60, bottom: 10),
+                                      child: ProviderWidget(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("80,000"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          /*It should be converted to a widget and change its size */
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const ProductSheet(
+                                  imgproduct: "assets/images/mahsool4.png",
+                                  detailtext:
+                                      Text("ماءالشعیر کلاسیک بهنوش - یک لیتر"),
+                                  pricetext: Text("50,000"),
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: 11,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/mahsool4.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 60, right: 60, bottom: 10),
+                                      child: ProviderWidget(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("44,000"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          /*It should be converted to a widget and change its size */
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const ProductSheet(
+                                  imgproduct: "assets/images/mahsool5.png",
+                                  detailtext: Text("نوشابه اسپرایت "),
+                                  pricetext: Text("50,000"),
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: 11,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/mahsool5.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 60, right: 60, bottom: 10),
+                                      child: ProviderWidget(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("70,000"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          /*It should be converted to a widget and change its size */
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return const ProductSheet(
+                                  imgproduct: "assets/images/mahsool6.png",
+                                  detailtext:
+                                      Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
+                                  pricetext: Text("50,000"),
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: 11,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/mahsool6.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 60, right: 60, bottom: 10),
+                                      child: ProviderWidget(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("87,000"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "assets/images/toman.png",
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+      
+              const SizedBox(
+                height: 20,
+              ),
+              ProductCardListWidget(),
+              const MarketListWidget(),
+              const SizedBox(
+                height: 40,
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+            ],
+          ),
         ),
       ),
     );
