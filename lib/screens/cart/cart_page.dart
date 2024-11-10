@@ -1,4 +1,4 @@
-import 'package:abd_shop/cart_updater_page.dart';
+import 'package:abd_shop/widget/provider/cart_updater_model.dart';
 import 'package:abd_shop/screens/cart/continue_cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

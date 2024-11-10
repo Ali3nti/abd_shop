@@ -1,5 +1,5 @@
 import 'package:abd_shop/widget/my_app_bar.dart';
-import 'package:abd_shop/widget/provider_widget.dart';
+import 'package:abd_shop/widget/provider/provider_widget.dart';
 import 'package:flutter/material.dart';
 
 class AllPage extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../constant/constants.dart';
 
 class BoxWidget extends StatelessWidget {
    BoxWidget({super.key, required this.iconData, required this.text,  required this.onPressed});

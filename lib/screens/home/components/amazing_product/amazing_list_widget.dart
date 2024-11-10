@@ -1,9 +1,9 @@
 import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/product_information_page.dart';
+import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/services/api_helper.dart';
-import 'package:abd_shop/widget/amazing_item_widget.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class AmazingListWidget extends StatefulWidget {
