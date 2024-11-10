@@ -1,5 +1,3 @@
-
-
 import 'package:abd_shop/screens/splash/splash_page.dart';
 import 'package:abd_shop/widget/provider/cart_updater_model.dart';
 import 'package:flutter/material.dart';

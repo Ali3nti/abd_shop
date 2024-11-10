@@ -1,8 +1,6 @@
-import 'package:abd_shop/constant/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
-import 'package:abd_shop/models/product_model.dart';
-import 'package:abd_shop/models/response_model.dart';
+
 import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/category/category_list_widget.dart';
@@ -13,8 +11,6 @@ import 'package:abd_shop/screens/home/components/slider_Image/images_slider.dart
 import 'package:abd_shop/screens/market/markets_list_widget.dart';
 import 'package:abd_shop/product/product_modal_sheet.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
-import 'package:abd_shop/screens/search/search_Page_Home.dart';
-import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/product/product_Card_Widget/product_Card_List_Widget.dart';
 import 'package:abd_shop/widget/provider/provider_widget.dart';
 import 'package:flutter/material.dart';
@@ -367,7 +363,9 @@ class _HomeBodyState extends State<HomeBody> {
               const SizedBox(
                 height: 20,
               ),
-              ProductCardListWidget(),
+              ProductCardListWidget(categoryId: 1, categoryName: 'لبنیات',),
+              ProductCardListWidget(categoryId: 2, categoryName: 'آجیل ',),
+
               const MarketListWidget(),
               const SizedBox(
                 height: 40,
