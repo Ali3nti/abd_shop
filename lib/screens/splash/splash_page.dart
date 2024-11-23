@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/screens/Base/base_page.dart';
 import 'package:abd_shop/screens/category/global.dart';
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/screens/home/components/home_body.dart';
@@ -41,7 +42,7 @@ class _SplashPageState extends State<SplashPage> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeBody(),
+                builder: (context) => BasePage(),
               ),
             );
           } else {

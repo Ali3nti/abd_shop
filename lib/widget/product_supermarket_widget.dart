@@ -1,4 +1,4 @@
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:flutter/material.dart';
 

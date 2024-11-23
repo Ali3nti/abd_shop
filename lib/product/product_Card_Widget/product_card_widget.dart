@@ -1,4 +1,4 @@
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/widget/provider/provider_widget.dart';
