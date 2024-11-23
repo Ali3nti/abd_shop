@@ -1,4 +1,4 @@
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/category/super_market.dart';

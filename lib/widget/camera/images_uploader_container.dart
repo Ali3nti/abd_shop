@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/widget/camera/image_helper.dart';
 import 'package:abd_shop/widget/my_alert_dialog.dart';
 import 'package:abd_shop/widget/my_snack_bar.dart';

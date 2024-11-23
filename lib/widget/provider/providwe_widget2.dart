@@ -1,5 +1,5 @@
 import 'package:abd_shop/widget/provider/cart_updater_model.dart';
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

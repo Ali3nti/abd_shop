@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/image_slider.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:flutter/material.dart';
