@@ -5,6 +5,7 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/provider/provider_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AmazingItemWidget extends StatefulWidget {
   AmazingItemWidget({super.key,  required this.amazingModel,});
@@ -21,6 +22,10 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double discountAmount = widget.amazingModel.price * (widget.amazingModel.discount / 100);
+    double finalPrice = widget.amazingModel.price - discountAmount;
+    final formatter = NumberFormat('#,###');
+
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
@@ -95,7 +100,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           children: [
                             Row(
                               children: [
-                                Text(widget.amazingModel.price.toString(),
+                                Text(formatter.format(finalPrice),
                                     style: kHeaderTextStyle),
                                 const SizedBox(width: 6),
                                 Image.asset(
@@ -130,7 +135,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          widget.amazingModel.discount.toString(),
+                          formatter.format(widget.amazingModel.price),
                           style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                             fontSize: 18,
