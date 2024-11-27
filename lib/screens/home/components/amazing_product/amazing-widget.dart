@@ -1,4 +1,4 @@
-import 'package:abd_shop/constant/constants.dart';
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:flutter/cupertino.dart';

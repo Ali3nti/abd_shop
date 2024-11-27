@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/screens/Base/base_page.dart';
 import 'package:abd_shop/screens/category/global.dart';
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/screens/home/components/home_body.dart';
@@ -7,69 +9,82 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:abd_shop/widget/my_snack_bar.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
-  void goNextPage(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2)).then(
-      (value) async {
-        try {
-          bool isConnect = false;
-          var connectivity = await (Connectivity().checkConnectivity());
-          if (connectivity == ConnectivityResult.mobile ||
-              connectivity == ConnectivityResult.wifi) {
-            isConnect = true;
-          }
+  @override
+  _SplashPageState createState() => _SplashPageState();
+}
 
-          if (isConnect) {
-            final result = await InternetAddress.lookup('www.mehdidehghani.ir');
-            if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-              getAllCategories().then((value) {
-                if (value.status == 1) {
-                  var data = value.data;
-                  for (var item in data) {
-                    allCategoriesList.add(CategoryModel.fromJSON(item));
-                  }
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomeBody(),
-                    ),
-                  );
-                } else {}
-              });
-            } else {
-              MySnackBar(
-                label: "تلاش مجدد",
-                onPress: () {},
-                context: context,
-                message: 'ارتباط با سرور برقرار نشد!',
-                isWarning: true,
-              );
+class _SplashPageState extends State<SplashPage> {
+  bool isLoading = true;
+  bool hasError = false;
+
+  void goNextPage() async {
+    try {
+      bool isConnect = false;
+      var connectivity = await (Connectivity().checkConnectivity());
+      if (connectivity == ConnectivityResult.mobile ||
+          connectivity == ConnectivityResult.wifi) {
+        isConnect = true;
+      }
+
+      if (isConnect) {
+        final result = await InternetAddress.lookup('www.mehdidehghani.ir');
+        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+          final value = await getAllCategories();
+          if (value.status == 1) {
+            var data = value.data;
+            for (var item in data) {
+              allCategoriesList.add(CategoryModel.fromJSON(item));
             }
-          } else {
-            MySnackBar(
-              label: "تلاش مجدد",
-              onPress: () {},
-              context: context,
-              message: 'اتصال به اینترنت را بررسی کنید',
-              isWarning: true,
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BasePage(),
+              ),
             );
+          } else {
+            setState(() {
+              hasError = true;
+              isLoading = false;
+            });
           }
-        } catch (e) {
-          throw Exception('Error checking connectivity: $e');
+        } else {
+          setState(() {
+            hasError = true;
+            isLoading = false;
+          });
         }
-      },
-    );
+      } else {
+        setState(() {
+          hasError = true;
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      print("Error: $e");
+      setState(() {
+        hasError = true;
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1), () {
+      goNextPage();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    goNextPage(context);
     return Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.deepOrange, CupertinoColors.activeOrange],
@@ -81,7 +96,7 @@ class SplashPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/logo.png", // لوگوی دیجیکالا
+              "assets/images/logo.png",
               height: 300,
               width: 150,
             ),
@@ -103,147 +118,49 @@ class SplashPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 200),
-            SpinKitFadingCircle(
-              color: Colors.white,
-              size: 50.0,
-            ),
+            if (isLoading) // اگر در حال بارگذاری است
+              const SpinKitFadingCircle(
+                color: Colors.white,
+                size: 50.0,
+              )
+            else if (hasError) // اگر خطا وجود دارد
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    isLoading = true;
+                    hasError = false;
+                  });
+                  goNextPage();
+                },
+                child: Container(
+                  padding: EdgeInsets.only(top: 7),
+                  width: 70,
+                  height: 60,
+                  decoration: const BoxDecoration(
+                      color: Colors.white, shape: BoxShape.circle),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "تلاش مجدد",
+                        style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 5),
+                      Icon(
+                        Icons.refresh,
+                        color: kPrimaryColor,
+                        size: 18,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
           ],
         ),
       ),
     );
   }
 }
-
-//
-// import 'dart:io';
-//
-// import 'package:abd_shop/screens/home/base_page.dart';
-// import 'package:abd_shop/screens/login/log_In_Page.dart';
-// import 'package:abd_shop/widget/my_snack_bar.dart';
-// import 'package:connectivity_plus/connectivity_plus.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
-//
-// class SplashPage extends StatelessWidget {
-//   const SplashPage({super.key});
-//
-//   goNextPage(BuildContext context) {
-//     Future.delayed(const Duration(seconds: 0)).then(
-//       (value) async {
-//         try {
-//           bool isConnect = false;
-//           // async function for checking connectivity
-//           var connectivity = await (Connectivity().checkConnectivity());
-//           if (connectivity == ConnectivityResult.mobile) {
-//             //check mobile data for connectivity
-//             isConnect = true;
-//           } else if (connectivity == ConnectivityResult.wifi) {
-//             //check wifi for connectivity
-//             isConnect = true;
-//           } else {
-//             //No connectivity
-//             isConnect = false;
-//           }
-//           if (isConnect) {
-//             try {
-//               // Lookup URL for check connectivity
-//               final result =
-//                   await InternetAddress.lookup('www.varzesh3.ir');
-//               if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-//                 //Go to the next page (HomePage)
-//                 return Navigator.pushReplacement(
-//                   context,
-//                   MaterialPageRoute(
-//                     builder: (context) => LogIn(),
-//                   ),
-//                 );
-//               } else {
-//                 //TODO: Define way to show refresh button
-//                 MySnackBar(
-//                     label: "تلاش مجدد",
-//                     onPress: () {},
-//                     context: context,
-//                     message: 'ارتباط با سرور برقرار نشد!',
-//                     isWarning: true);
-//               }
-//             } on SocketException catch (e) {
-//               throw Exception(
-//                   'SocketException - splash_page.dart - checkConnectivity(): $e');
-//             }
-//           } else {
-//             //Show Snackbar and show refresh button
-//             print("no internet");
-//             //TODO: Define way to show refresh button
-//             MySnackBar(
-//                 label: "تلاش مجدد",
-//                 onPress: () {},
-//                 context: context,
-//                 message: 'اتصال به اینترنت را بررسی کنید',
-//                 isWarning: true);
-//           }
-//         } catch (e) {
-//           throw Exception(
-//               'Exception - splash_page.dart - checkConnectivity(): $e');
-//         }
-//       },
-//     );
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     goNextPage(context);
-//     return Scaffold(
-//       //backgroundColor: Colors.orange,
-//
-//       body: Container(
-//         decoration: const BoxDecoration(
-//           gradient: LinearGradient(
-//             colors: [Colors.yellowAccent, Colors.orange],
-//             begin: Alignment.bottomLeft,
-//             end: Alignment.topRight,
-//             stops: [0.05, 0.7],
-//             tileMode: TileMode.repeated,
-//           ),
-//         ),
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//           children: [
-//             Image.asset(
-//               "assets/images/logo.png",
-//               height: 200,
-//               width: 300,
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: Container(
-//                 margin: EdgeInsets.symmetric(horizontal: 36),
-//                 child: Text(
-//                   "پرتاب از فروشگاه نزدیک شما",
-//                   style: TextStyle(
-//                     color: Colors.white,
-//                     fontSize: 25,
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             // SpinKitThreeBounce(
-//             //   color: Colors.white,
-//             //   size: 14,
-//             // ),
-//             SpinKitThreeBounce(
-//               size: 20,
-//               itemBuilder: (BuildContext context, int index) {
-//                 return DecoratedBox(
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(40),
-//                     color: index.isEven ? Colors.white : Colors.yellow,
-//                   ),
-//                 );
-//               },
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
