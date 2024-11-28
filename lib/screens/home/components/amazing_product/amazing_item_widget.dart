@@ -110,21 +110,6 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                               ],
                             ),
                             const SizedBox(width: 12),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 2,
-                                horizontal: 8,
-                              ),
-                              // alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: const Text(
-                                "25 %",
-                                style: kHeaderTextStyle3,
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -141,6 +126,28 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                             fontSize: 18,
                             color: Colors.grey,
                           ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 5,
+                      ),
+                      // alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child:  SizedBox(width: 50,
+                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              widget.amazingModel.discount.toString(),
+                              style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.w900),
+                            ),
+                            Text("%",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w900,color: Colors.white),),
+                          ],
                         ),
                       ),
                     ),
