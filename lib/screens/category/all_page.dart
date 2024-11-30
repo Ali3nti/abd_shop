@@ -1,5 +1,6 @@
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
-import 'package:abd_shop/widget/provider/provider_widget.dart';
+import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 
 class AllPage extends StatefulWidget {
@@ -78,9 +79,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -113,9 +116,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -152,9 +157,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -187,9 +194,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -226,9 +235,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -261,9 +272,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -300,9 +313,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -335,9 +350,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -374,9 +391,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -409,9 +428,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -448,9 +469,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",
@@ -483,9 +506,11 @@ class _AllPageState extends State<AllPage> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 100),
-                        child: ProviderWidget(),
+                        child: AddToCartWidget(
+                          product: Product(),
+                        ),
                       ),
                       const Text(
                         "15/000 تومان",

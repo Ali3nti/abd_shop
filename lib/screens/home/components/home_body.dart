@@ -1,5 +1,6 @@
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
+import 'package:abd_shop/models/product_model.dart';
 
 import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
@@ -12,7 +13,7 @@ import 'package:abd_shop/screens/market/markets_list_widget.dart';
 import 'package:abd_shop/product/product_modal_sheet.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
 import 'package:abd_shop/product/product_Card_Widget/product_Card_List_Widget.dart';
-import 'package:abd_shop/widget/provider/provider_widget.dart';
+import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeBody extends StatefulWidget {
@@ -82,10 +83,12 @@ class _HomeBodyState extends State<HomeBody> {
                                       height: 100,
                                       width: 100,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
                                           top: 60, right: 60, bottom: 10),
-                                      child: ProviderWidget(),
+                                      child: AddToCartWidget(
+                                        product: Product(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -132,10 +135,12 @@ class _HomeBodyState extends State<HomeBody> {
                                       height: 100,
                                       width: 100,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
                                           top: 60, right: 60, bottom: 10),
-                                      child: ProviderWidget(),
+                                      child: AddToCartWidget(
+                                        product: Product(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -181,10 +186,12 @@ class _HomeBodyState extends State<HomeBody> {
                                       height: 100,
                                       width: 100,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
                                           top: 60, right: 60, bottom: 10),
-                                      child: ProviderWidget(),
+                                      child: AddToCartWidget(
+                                        product: Product(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -231,10 +238,12 @@ class _HomeBodyState extends State<HomeBody> {
                                       height: 100,
                                       width: 100,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
                                           top: 60, right: 60, bottom: 10),
-                                      child: ProviderWidget(),
+                                      child: AddToCartWidget(
+                                        product: Product(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -280,10 +289,12 @@ class _HomeBodyState extends State<HomeBody> {
                                       height: 100,
                                       width: 100,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
                                           top: 60, right: 60, bottom: 10),
-                                      child: ProviderWidget(),
+                                      child: AddToCartWidget(
+                                        product: Product(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -312,8 +323,8 @@ class _HomeBodyState extends State<HomeBody> {
                               builder: (context) {
                                 return const ProductSheet(
                                   imgproduct: "assets/images/mahsool6.png",
-                                  detailtext:
-                                      Text("روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
+                                  detailtext: Text(
+                                      "روغن مایع سرخ‌کردنی بهار - 1.5 لیتر"),
                                   pricetext: Text("50,000"),
                                 );
                               },
@@ -330,10 +341,12 @@ class _HomeBodyState extends State<HomeBody> {
                                       height: 100,
                                       width: 100,
                                     ),
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
                                           top: 60, right: 60, bottom: 10),
-                                      child: ProviderWidget(),
+                                      child: AddToCartWidget(
+                                        product: Product(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -359,12 +372,18 @@ class _HomeBodyState extends State<HomeBody> {
                   ],
                 ),
               ),
-      
+
               const SizedBox(
                 height: 20,
               ),
-              ProductCardListWidget(categoryId: 1, categoryName: 'لبنیات',),
-              ProductCardListWidget(categoryId: 2, categoryName: 'آجیل ',),
+              ProductCardListWidget(
+                categoryId: 1,
+                categoryName: 'لبنیات',
+              ),
+              ProductCardListWidget(
+                categoryId: 2,
+                categoryName: 'آجیل ',
+              ),
 
               const MarketListWidget(),
               const SizedBox(
@@ -388,6 +407,7 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
+
   supermarket(BuildContext context) {
     Navigator.push(
       context,
@@ -410,4 +430,3 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 }
-

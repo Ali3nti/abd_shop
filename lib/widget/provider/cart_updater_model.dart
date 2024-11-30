@@ -22,7 +22,7 @@ class CartUpdater extends ChangeNotifier {
   }
 }
 
-class Cart extends ChangeNotifier {
+class CartUpdaterrrrrrr extends ChangeNotifier {
   final List<AmazingModel> items = [];
 
   void addProduct(AmazingModel amazingModel) {
