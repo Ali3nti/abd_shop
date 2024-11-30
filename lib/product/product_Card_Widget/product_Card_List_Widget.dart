@@ -23,12 +23,13 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
 
   initMarkets() async {
     try {
-      DataResponse dataResponse = await getProductsOfCategory(widget.categoryId);
+      DataResponse dataResponse =
+          await getProductsOfCategory(widget.categoryId);
       if (dataResponse.status == 1) {
         setState(() {
           productWidgetList = dataResponse.data.map<ProductCard>((item) {
             Product productModel = Product.fromJson(item);
-            return ProductCard(productModel: productModel);
+            return ProductCard(product: productModel);
           }).toList();
         });
       } else {
@@ -52,7 +53,9 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(height: 60,width: 69,
+        Container(
+          height: 60,
+          width: 69,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.deepOrange, Colors.orange], // Gradient background

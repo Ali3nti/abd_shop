@@ -3,14 +3,17 @@ import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/discount_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
-import 'package:abd_shop/widget/provider/provider_widget.dart';
+import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AmazingItemWidget extends StatefulWidget {
-  AmazingItemWidget({super.key,  required this.amazingModel,});
+  AmazingItemWidget({
+    super.key,
+    required this.product,
+  });
 
-  Product amazingModel;
+  Product product;
   // void Function()? onPressed;
 
   @override
@@ -22,14 +25,17 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    double discountAmount = widget.amazingModel.price * (widget.amazingModel.discount / 100);
-    double finalPrice = widget.amazingModel.price - discountAmount;
+    double discountAmount =
+        widget.product.price * (widget.product.discount / 100);
+    double finalPrice = widget.product.price - discountAmount;
     final formatter = NumberFormat('#,###');
 
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
-        onTap: (){productPageDetail(context);},
+        onTap: () {
+          productPageDetail(context);
+        },
         child: Container(
           margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
@@ -50,13 +56,13 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       width: double.infinity,
                       height: 110,
                       child: Image.network(
-                        baseUrl + widget.amazingModel.image,
+                        baseUrl + widget.product.image,
                         fit: BoxFit.contain,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 120),
-                      child: ProviderWidget(),
+                      child: AddToCartWidget(product: widget.product),
                     ),
                     // Container(
                     //   //margin: EdgeInsets.only(top: 50),
@@ -76,15 +82,14 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      child: Text(widget.amazingModel.name,
-                          style: kHeaderTextStyle),
+                      child: Text(widget.product.name, style: kHeaderTextStyle),
                     ),
                     Container(
                       margin: const EdgeInsets.only(right: 10),
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          widget.amazingModel.description,
+                          widget.product.description,
                           style: const TextStyle(
                             fontSize: 20,
                             // fontWeight: FontWeight.bold,
@@ -120,7 +125,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          formatter.format(widget.amazingModel.price),
+                          formatter.format(widget.product.price),
                           style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                             fontSize: 18,
@@ -139,14 +144,25 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child:  SizedBox(width: 50,
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      child: SizedBox(
+                        width: 50,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              widget.amazingModel.discount.toString(),
-                              style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.w900),
+                              widget.product.discount.toString(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w900),
                             ),
-                            Text("%",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w900,color: Colors.white),),
+                            Text(
+                              "%",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
+                            ),
                           ],
                         ),
                       ),

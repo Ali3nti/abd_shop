@@ -1,10 +1,15 @@
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/global.dart';
 import 'package:abd_shop/screens/cart/cart_page.dart';
 import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:abd_shop/screens/orders/orders_page.dart';
 import 'package:abd_shop/screens/profile/profile_page.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
+import 'package:abd_shop/widget/provider/cart_updater_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({super.key});
@@ -85,22 +90,62 @@ class _BasePageState extends State<BasePage> {
               },
             );
           },
-          items: const [
-            BottomNavigationBarItem(
+          items: [
+            const BottomNavigationBarItem(
               icon: Icon(Icons.dashboard_rounded, size: 30), // آیکون جدید
               label: "خانه",
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.assignment, size: 30), // آیکون جدید
               label: "سفارشات",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_outlined, size: 30),
+              icon: Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: (Provider.of<CartUpdater>(context).counterValue > 0)
+                          ? 10
+                          : 0,
+                    ),
+                    child: const Icon(
+                      Icons.shopping_bag_outlined,
+                      size: 30,
+                    ),
+                  ),
+                  if (Provider.of<CartUpdater>(context).counterValue > 0)
+                    Container(
+                      padding: const EdgeInsets.all(2),
+                      margin: const EdgeInsets.only(),
+                      decoration: BoxDecoration(
+                        color: kBackgroundColor,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: kPrimaryColor,
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: Text(
+                          Provider.of<CartUpdater>(context)
+                              .counterValue
+                              .toString(),
+                          style: const TextStyle(fontSize: 11),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               // آیکون جدید
               label: "سبد خرید",
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_sharp, size: 30), // آیکون جدید
+            const BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_circle_sharp,
+                size: 30,
+              ), // آیکون جدید
               label: "پروفایل",
             ),
           ],
