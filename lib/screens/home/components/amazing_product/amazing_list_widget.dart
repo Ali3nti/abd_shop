@@ -17,7 +17,9 @@ productPageDetail(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) =>ProductInformation(product: Product(),),
+      builder: (context) => ProductInformation(
+        product: Product(),
+      ),
     ),
   );
 }
@@ -36,7 +38,7 @@ class _CategoryListWidgetState extends State<AmazingListWidget> {
           // marketList.add(market);
           amazingWidgetList.add(
             AmazingItemWidget(
-              amazingModel: amazingModel,
+              product: amazingModel,
             ),
           );
         }
@@ -49,7 +51,6 @@ class _CategoryListWidgetState extends State<AmazingListWidget> {
     });
     setState(() {});
   }
-
 
   @override
   void initState() {
