@@ -2,6 +2,7 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/amazing_model.dart';
 import 'package:abd_shop/models/discount_model.dart';
 import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,13 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: InkWell(
         onTap: () {
-          productPageDetail(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  ProductInformation(product: widget.product),
+            ),
+          );
         },
         child: Container(
           margin: const EdgeInsets.only(left: 15),
