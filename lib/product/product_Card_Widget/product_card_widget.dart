@@ -1,13 +1,16 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/product/product_information_page.dart';
-import 'package:abd_shop/widget/provider/provider_widget.dart';
+import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ProductCard extends StatefulWidget {
-  ProductCard({super.key, required this.productModel});
-  Product productModel;
+  const ProductCard({
+    super.key,
+    required this.product,
+  });
+  final Product product;
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -16,20 +19,23 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    double discountAmount = widget.productModel.price * (widget.productModel.discount / 100);
-    double finalPrice = widget.productModel.price - discountAmount;
+    double discountAmount =
+        widget.product.price * (widget.product.discount / 100);
+    double finalPrice = widget.product.price - discountAmount;
     final formatter = NumberFormat('#,###');
 
     return SizedBox(
       width: 150,
       height: 260,
-      child: Material( // اضافه کردن Material
+      child: Material(
+        // اضافه کردن Material
         child: InkWell(
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProductInformation(product: widget.productModel),
+                builder: (context) =>
+                    ProductInformation(product: widget.product),
               ),
             );
           },
@@ -44,14 +50,15 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 25),
-                      child: Image.network(baseUrl + widget.productModel.image, height: 80, width: 100),
+                      child: Image.network(baseUrl + widget.product.image,
+                          height: 80, width: 100),
                     ),
                     Positioned.fill(
                       child: Align(
                         alignment: Alignment.topRight,
                         child: Container(
-                          padding: EdgeInsets.all(8),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.all(8),
+                          decoration: const BoxDecoration(
                             color: Colors.deepOrange,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
@@ -64,14 +71,14 @@ class _ProductCardState extends State<ProductCard> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  widget.productModel.discount.toString(),
-                                  style: TextStyle(
+                                  widget.product.discount.toString(),
+                                  style: const TextStyle(
                                     fontSize: 11,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   ("%"),
                                   style: TextStyle(
                                     color: Colors.white,
@@ -90,10 +97,10 @@ class _ProductCardState extends State<ProductCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(right: 8),
+                      padding: const EdgeInsets.only(right: 8),
                       child: Text(
-                        widget.productModel.name,
-                        style: TextStyle(
+                        widget.product.name,
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -107,23 +114,24 @@ class _ProductCardState extends State<ProductCard> {
                             children: [
                               Text(
                                 formatter.format(finalPrice),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(width: 4),
-                              Image.asset("assets/images/toman.png", height: 15),
+                              const SizedBox(width: 4),
+                              Image.asset("assets/images/toman.png",
+                                  height: 15),
                             ],
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Padding(
                           padding: const EdgeInsets.only(left: 80),
                           child: Text(
-                            formatter.format(widget.productModel.price),
-                            style: TextStyle(
+                            formatter.format(widget.product.price),
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.grey,
                               fontWeight: FontWeight.bold,
@@ -138,8 +146,8 @@ class _ProductCardState extends State<ProductCard> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Text(
-                        '${widget.productModel.stockQuantity} (${widget.productModel.stockQuantity} عدد)',
-                        style: TextStyle(
+                        '${widget.product.stockQuantity} (${widget.product.stockQuantity} عدد)',
+                        style: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
                         ),
@@ -149,7 +157,9 @@ class _ProductCardState extends State<ProductCard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 70, top: 10),
-                  child: ProviderWidget(),
+                  child: AddToCartWidget(
+                    product: widget.product,
+                  ),
                 ),
               ],
             ),

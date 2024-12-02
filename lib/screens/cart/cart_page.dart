@@ -26,7 +26,7 @@ class _OrdersBodyState extends State<CartPage> {
           ),
         ),
       ),
-      body: Consumer<Cart>(
+      body: Consumer<CartUpdaterrrrrrr>(
         builder: (context, cart, child) {
           if (cart.items.isEmpty) {
             return SizedBox(

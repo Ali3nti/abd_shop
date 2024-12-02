@@ -1,4 +1,4 @@
-import 'package:abd_shop/screens/category/global.dart';
+import 'package:abd_shop/global.dart';
 import 'package:abd_shop/screens/category/category_item_widget.dart';
 
 import 'package:flutter/material.dart';
