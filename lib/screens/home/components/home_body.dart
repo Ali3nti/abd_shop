@@ -30,7 +30,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Material(color: Colors.white,
       child: RefreshIndicator(
         onRefresh: _refreshData,
         child: const SingleChildScrollView(

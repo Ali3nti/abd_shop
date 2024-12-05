@@ -14,7 +14,7 @@ class CategoryItemWidget extends StatelessWidget {
   final CategoryModel category;
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Material(color: Colors.white,
       child: InkWell(
         onTap: () {
           List<Product> categoryProductsList = [];
