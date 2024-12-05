@@ -10,30 +10,48 @@ class CategoryItemWidget extends StatelessWidget {
   const CategoryItemWidget({
     super.key,
     required this.category,
+    required this.index,
   });
+
   final CategoryModel category;
+  final int index;
+
   @override
   Widget build(BuildContext context) {
-    return Material(color: Colors.white,
+    final List<Color> categoryColors = [
+      Colors.red,
+      Colors.blue,
+      Colors.green,
+      Colors.orange,
+      Colors.purple,
+      Colors.teal,
+      Colors.yellow,
+      Colors.pink,
+      Colors.deepOrange,
+      Colors.tealAccent,
+      Colors.green,
+    ];
+    Color categoryColor = categoryColors[index % categoryColors.length];
+
+    return Material(
+      color: Colors.white,
       child: InkWell(
         onTap: () {
           List<Product> categoryProductsList = [];
           getProductsOfCategory(category.id).then((value) {
-            //Handle API Response
             DataResponse response = value;
             if (response.status == 1) {
               response.data.forEach((value) {
-                // Handle Product Data
                 categoryProductsList.add(Product.fromJson(value));
               });
-      
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => CategoryPage(
-                      category: category,
-                      products:
-                          categoryProductsList), // انتقال به صفحه محصولات کتگوری
+                    category: category,
+                    products: categoryProductsList,
+                  ),
                 ),
               );
             }
@@ -47,10 +65,10 @@ class CategoryItemWidget extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white,
+                color: categoryColor,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.blue.withOpacity(0.5),
+                    color: categoryColor.withOpacity(0.8),
                     blurRadius: 5,
                     spreadRadius: 2,
                     offset: const Offset(0, 3),
