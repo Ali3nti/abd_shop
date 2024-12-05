@@ -28,7 +28,6 @@ class _ProductCardState extends State<ProductCard> {
       width: 150,
       height: 260,
       child: Material(
-        // اضافه کردن Material
         child: InkWell(
           onTap: () {
             Navigator.push(
@@ -40,7 +39,7 @@ class _ProductCardState extends State<ProductCard> {
             );
           },
           child: Card(
-            shadowColor: Colors.teal,
+            shadowColor: Colors.red,
             color: Colors.white,
             elevation: 20,
             child: Column(

@@ -1,6 +1,7 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SearchPageHome extends StatefulWidget {
   final List<Product> products;
@@ -36,7 +37,7 @@ class _SearchPageHomeState extends State<SearchPageHome> {
       return matchesQuery && matchesCategory;
     }).toList();
   }
-
+  final formatter = NumberFormat('#,###');
   @override
   Widget build(BuildContext context) {
     final categories = [
@@ -120,9 +121,15 @@ class _SearchPageHomeState extends State<SearchPageHome> {
                       product.name,
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Text(
-                      'قیمت: ${product.price} تومان',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    subtitle: Row(
+                      children: [
+                        Text(
+                          formatter.format(product.price),
+                          style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                        ),
+                        SizedBox(width: 5,),
+                        Image.asset("assets/images/toman.png",width: 18,)
+                      ],
                     ),
                     trailing: Icon(Icons.arrow_forward, color: Colors.teal),
                     onTap: () {
