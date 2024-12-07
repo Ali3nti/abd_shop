@@ -17,12 +17,13 @@ class _OutLinedButtonWidgetState extends State<OutLinedButtonWidget> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => AllPage(product: Product()),
+            builder: (context) => AllPage(),
           ),
         );
       },
       child: const Text(
         "میوه",
-      ),);
+      ),
+    );
   }
 }

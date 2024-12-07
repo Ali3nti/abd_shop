@@ -36,45 +36,45 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                       const Text(
                         "شگفت",
                         style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                       const Text(
                         "انگیزهای",
                         style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                       const Text(
                         "امروز",
                         style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: 200,
-                        height: 200,
-                        //color: Colors.yellow,
-                        child: Image.asset(
-                          "assets/images/amazing.jpg",
-                          fit: BoxFit.contain,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
+                      SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Image.asset(
+                          "assets/images/amazing.jpg",
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
                       InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllPage(product: Product(),),
+                              builder: (context) => AllPage(),
                             ),
                           );
                         },
@@ -86,10 +86,11 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                               Text(
                                 "همه",
                                 style: TextStyle(
-                                    fontSize: 18, color: Colors.white),
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
                               ),
-                              Icon(Icons.navigate_next,
-                                  color: Colors.white),
+                              Icon(Icons.navigate_next, color: Colors.white),
                             ],
                           ),
                         ),
@@ -100,7 +101,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
               ),
               AmazingListWidget(),
               Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 20),
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
                 child: InkWell(
                   onTap: () {},
                   child: Container(
@@ -118,30 +119,29 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AllPage(product: Product()),
+                                builder: (context) => AllPage(),
                               ),
                             );
                           },
-                          child: Icon(
+                          child: const Icon(
                             size: 60,
                             CupertinoIcons.arrow_left_circle_fill,
                             color: Color.fromARGB(500, 255, 98, 0),
                           ),
                         ),
-                        Text(
+                        const Text(
                           "مشاهده همه",
                           style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromARGB(500, 255, 98, 0)),
+                            fontSize: 20,
+                            color: Color.fromARGB(500, 255, 98, 0),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(
-                width: 10,
-              ),
+              const SizedBox(width: 10),
             ],
           ),
         ),

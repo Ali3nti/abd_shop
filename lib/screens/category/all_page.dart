@@ -1,6 +1,7 @@
-import 'dart:math';
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/models/response_model.dart';
+import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,39 @@ import 'package:flutter/material.dart';
 class AllPage extends StatefulWidget {
   const AllPage({
     super.key,
-    required this.product,
   });
-  final Product product;
 
   @override
   State<AllPage> createState() => _AllPageState();
 }
 
 class _AllPageState extends State<AllPage> {
+  List<Product> productList = [];
+  initProductsList() {
+    getProducts().then((value) {
+      DataResponse response = value;
+      if (response.status == 1) {
+        List<dynamic> list = response.data;
+        for (var item in list) {
+          Product product = Product.fromJson(item);
+          productList.add(product);
+        }
+      } else {
+        //TODO: if don't have a product in response show error widget
+      }
+      return;
+    }).catchError(
+      (error) =>
+          throw Exception("Error on all_page when use getProduct(): $error"),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initProductsList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,54 +85,68 @@ class _AllPageState extends State<AllPage> {
               height: 50,
               //color: Colors.blue,
               child: const Text(
-                "12 محصول",
+                productList.length.toString(),
                 style: TextStyle(color: Colors.grey),
               ),
             ),
-            Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 3),
-                  width: 203,
-                  height: 300,
-                  color: Colors.white,
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          margin: const EdgeInsets.only(top: 50),
-                          //  color: Colors.orange,
-                          child: Image.network(baseUrl + widget.product.image,
-                              height: 80, width: 100),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 100),
-                        child: AddToCartWidget(
-                          product: Product(),
-                        ),
-                      ),
-                      const Text("widget.product.price.toString()",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          const Text("widget.product.name",
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          SizedBox(width: 2),
-                          Text("widget.product.discount.toString()"),
-                        ],
-                      ),
-                    ],
-                  ),
+            SizedBox(
+              width: double.infinity,
+              height: 500,
+              child: GridView(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
                 ),
-
-
-              ],
+                children: productList
+                    .map(
+                      (item) => Container(
+                        margin: const EdgeInsets.only(bottom: 3),
+                        width: 303,
+                        height: 400,
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Container(
+                                // width: 100,
+                                // height: 100,
+                                margin: const EdgeInsets.only(top: 5),
+                                //  color: Colors.orange,
+                                child: Image.network(
+                                  baseUrl + item.image,
+                                  height: 80,
+                                  width: 100,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 100),
+                              child: AddToCartWidget(
+                                product: Product(),
+                              ),
+                            ),
+                            Text(
+                              item.price.toString(),
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Text(
+                                  item.name,
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                SizedBox(width: 2),
+                                Text(
+                                  item.discount.toString(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
           ],
         ),

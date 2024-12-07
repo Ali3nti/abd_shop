@@ -39,7 +39,7 @@ class _CategoryProductsBoxState extends State<CategoryProductsBox> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AllPage(product: Product(),),
+                        builder: (context) => AllPage(),
                       ),
                     );
                   },
