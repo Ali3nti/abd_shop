@@ -31,6 +31,7 @@ dependencies:
   image_cropper: ^5.0.0
   dotted_border: ^2.1.0
   flutter_image_compress: ^2.1.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
