@@ -419,14 +419,4 @@ class _HomeBodyState extends State<HomeBody> {
       ),
     );
   }
-
-  fruitsCategory(BuildContext context) {
-    //TODO: Use CamelCase
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const FruitsCategory(),
-      ),
-    );
-  }
 }
