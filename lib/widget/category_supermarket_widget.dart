@@ -11,15 +11,22 @@ class CategorySuperMarket extends StatefulWidget {
 class _Categor_SuperMarketState extends State<CategorySuperMarket> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const FruitsCategory(),
-          ),
-        );
-      },
+    return Scaffold(
+      body: SizedBox(
+        width: 100,
+        height: 100,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FruitsCategory(),
+              ),
+            );
+          },
+          child: Text("data"),
+        ),
+      ),
     );
   }
 }

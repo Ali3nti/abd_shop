@@ -15,7 +15,7 @@ class _MarketListWidgetState extends State<MarketListWidget> {
   List<MarketItemWidget> marketsWidgetList = [];
   // List<Market> marketList = [];
   initMarkets() async {
-    await getRequest(apiName: "getmarkets").then((value) {
+    await getRequest(apiName: "all_markets").then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {

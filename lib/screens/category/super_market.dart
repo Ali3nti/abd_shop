@@ -81,23 +81,20 @@ class _SuperMarketState extends State<SuperMarket> {
             Container(
               height: 110,
               color: Colors.white,
-              child: const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Wrap(
-                    spacing: 15,
-                    runSpacing: 15,
-                    direction: Axis.horizontal,
-                    children: [
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                    ],
-                  ),
+              child: Padding(
+                padding: EdgeInsets.all(15),
+                child: Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  direction: Axis.horizontal,
+                  children: [
+                    CategorySuperMarket(),
+                    CategorySuperMarket(),
+                    CategorySuperMarket(),
+                    CategorySuperMarket(),
+                    CategorySuperMarket(),
+                    CategorySuperMarket(),
+                  ],
                 ),
               ),
             ),
