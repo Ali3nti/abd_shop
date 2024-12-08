@@ -285,10 +285,14 @@ final formatter = NumberFormat('#,###');
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    double totalPrice = cartList.values.fold(0, (sum, cartItem) {
+      return sum + (cartItem.product.price.toDouble() * cartItem.count);
+    });
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: const Text('سبد خرید',style: TextStyle(color: Colors.white),),
+        title: const Text('سبد خرید', style: TextStyle(color: Colors.white)),
       ),
       body: cartList.isEmpty
           ? Center(child: const Text('سبد خرید خالی است!'))
@@ -303,20 +307,34 @@ class _CartPageState extends State<CartPage> {
                     cartItem.product.price.toDouble() * cartItem.count;
 
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   child: ListTile(
-                    contentPadding: EdgeInsets.all(10),
+                    contentPadding: const EdgeInsets.all(10),
                     title: Text(
                       cartItem.product.name,
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text('تعداد: ${cartItem.count}'),
-                    trailing: Text(
-                      formatter.format(itemTotalPrice),
-                      style: const TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          formatter.format(itemTotalPrice),
+                          style: const TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () {
+                            // عمل حذف محصول از سبد خرید
+                            setState(() {
+                              cartList.remove(cartItem.product.id); // فرض بر این است که id محصول موجود است
+                            });
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 );
@@ -336,7 +354,7 @@ class _CartPageState extends State<CartPage> {
               decoration: BoxDecoration(
                   color: Colors.deepOrange,
                   borderRadius: BorderRadius.circular(12)),
-              width: 400,
+              width: double.infinity,
               height: 50,
               child: const Center(
                 child: Text(
