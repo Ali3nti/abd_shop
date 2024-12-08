@@ -1,6 +1,7 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SearchPageHome extends StatefulWidget {
   final List<Product> products;
@@ -36,11 +37,11 @@ class _SearchPageHomeState extends State<SearchPageHome> {
       return matchesQuery && matchesCategory;
     }).toList();
   }
-
+  final formatter = NumberFormat('#,###');
   @override
   Widget build(BuildContext context) {
     final categories = [
-      {'id': null, 'name': 'همه'}, // گزینه برای نمایش همه محصولات
+      {'id': null, 'name': ' همه محصولات'}, // گزینه برای نمایش همه محصولات
       {'id': 1, 'name': 'کالاهای اساسی'},
       {'id': 2, 'name': 'لبنیات'},
       {'id': 3, 'name': 'مواد پروتئینی'},
@@ -101,33 +102,41 @@ class _SearchPageHomeState extends State<SearchPageHome> {
               itemCount: filteredProducts.length,
               itemBuilder: (context, index) {
                 final product = filteredProducts[index];
-                return Card(
-                  color: Colors.white,
-                  shadowColor: Colors.deepOrange,
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(16),
-                    leading: Image.network(
-                      baseUrl + product.image,
-                      height: 80,
-                      width: 100,
+                return InkWell(onTap: (){},
+                  child: Card(
+                    color: Colors.white,
+                    shadowColor: Colors.deepOrange,
+                    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    title: Text(
-                      product.name,
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(16),
+                      leading: Image.network(
+                        baseUrl + product.image,
+                        height: 80,
+                        width: 100,
+                      ),
+                      title: Text(
+                        product.name,
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Row(
+                        children: [
+                          Text(
+                            formatter.format(product.price),
+                            style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                          ),
+                          SizedBox(width: 5,),
+                          Image.asset("assets/images/toman.png",width: 18,)
+                        ],
+                      ),
+                      trailing: Icon(Icons.arrow_forward, color: Colors.teal),
+                      onTap: () {
+                        // Navigate to product details
+                      },
                     ),
-                    subtitle: Text(
-                      'قیمت: ${product.price} تومان',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                    ),
-                    trailing: Icon(Icons.arrow_forward, color: Colors.teal),
-                    onTap: () {
-                      // Navigate to product details
-                    },
                   ),
                 );
               },

@@ -1,6 +1,5 @@
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/screens/category/category_item_widget.dart';
-
 import 'package:flutter/material.dart';
 
 class CategoryListWidget extends StatefulWidget {
@@ -22,9 +21,14 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: allCategoriesList
+            .asMap()
+            .entries
             .map(
-              (e) => CategoryItemWidget(category: e),
-            )
+              (entry) => CategoryItemWidget(
+            category: entry.value,
+            index: entry.key,
+          ),
+        )
             .toList(),
       ),
     );
