@@ -108,7 +108,7 @@ class _AllPageState extends State<AllPage> {
                         children: productList
                             .map(
                               (item) => Container(
-                                margin: const EdgeInsets.only(bottom: 3),
+                                margin: const EdgeInsets.only(bottom: 3,left: 3),
                                 width: 303,
                                 height: 400,
                                  color: Colors.white,
