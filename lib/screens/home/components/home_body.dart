@@ -5,7 +5,7 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/category/category_list_widget.dart';
-import 'package:abd_shop/screens/home/components/amazing_product/amazing-widget.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_widget.dart';
 import 'package:abd_shop/screens/home/components/app_Bar/app_Bar_Original.dart';
 import 'package:abd_shop/screens/home/components/address/current_user_address_widget.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/images_slider.dart';
