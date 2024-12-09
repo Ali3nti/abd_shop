@@ -4,7 +4,6 @@ import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -57,7 +56,7 @@ class _AllPageState extends State<AllPage> {
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               height: 50,
-              // color: Colors.red,
+             // color: Colors.red,
               child: Row(
                 children: [
                   const SizedBox(width: 20),
@@ -90,11 +89,11 @@ class _AllPageState extends State<AllPage> {
                 ? Column(
                     children: [
                       Container(
+                        //color: Colors.yellow,
                         padding: const EdgeInsets.only(top: 10, right: 20),
                         margin: const EdgeInsets.only(top: 20),
                         width: double.infinity,
                         height: 50,
-                        //color: Colors.blue,
                         child: Text(
                           "${productList.length} محصول",
                           style: const TextStyle(color: Colors.grey),
@@ -112,15 +111,13 @@ class _AllPageState extends State<AllPage> {
                                 margin: const EdgeInsets.only(bottom: 3),
                                 width: 303,
                                 height: 400,
-                                color: Colors.white,
+                                 color: Colors.white,
                                 child: Column(
                                   children: [
                                     Center(
                                       child: Container(
-                                        // width: 100,
-                                        // height: 100,
                                         margin: const EdgeInsets.only(top: 5),
-                                        //  color: Colors.orange,
+                                      //  color: Colors.blue,
                                         child: Image.network(
                                           baseUrl + item.image,
                                           height: 80,
@@ -129,18 +126,33 @@ class _AllPageState extends State<AllPage> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 100),
+                                      padding: const EdgeInsets.only(
+                                          left: 100, top: 12),
                                       child: AddToCartWidget(
                                         product: Product(),
                                       ),
                                     ),
-                                    Text(
-                                      item.price.toString(),
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const SizedBox(height: 20),
+                                    const SizedBox(height: 10),
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          item.price.toString(),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        Image.asset(
+                                          width: 15,
+                                          'assets/images/toman.png',
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           item.name,
@@ -148,8 +160,17 @@ class _AllPageState extends State<AllPage> {
                                               color: Colors.grey),
                                         ),
                                         const SizedBox(width: 2),
+                                        const Text(
+                                          "_",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const SizedBox(width: 2),
                                         Text(
                                           item.discount.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.grey),
                                         ),
                                       ],
                                     ),
