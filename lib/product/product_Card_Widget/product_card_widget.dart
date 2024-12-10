@@ -24,9 +24,10 @@ class _ProductCardState extends State<ProductCard> {
     double finalPrice = widget.product.price - discountAmount;
     final formatter = NumberFormat('#,###');
 
-    return SizedBox(
+    return Container(
       width: 150,
       height: 260,
+      margin: EdgeInsets.fromLTRB(10, 18, 10, 28),
       child: Material(
         child: InkWell(
           onTap: () {
@@ -41,7 +42,7 @@ class _ProductCardState extends State<ProductCard> {
           child: Card(
             shadowColor: Colors.red,
             color: Colors.white,
-            elevation: 20,
+            elevation: 10,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -155,7 +156,7 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 70, top: 10),
+                  padding: const EdgeInsets.only(left: 70, top: 8),
                   child: AddToCartWidget(
                     product: widget.product,
                   ),

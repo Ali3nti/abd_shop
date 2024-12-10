@@ -2,7 +2,6 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_widget.dart';
-import 'package:abd_shop/widget/category_supermarket_widget.dart';
 import 'package:abd_shop/widget/category_products_box_widget.dart';
 import 'package:abd_shop/widget/outlined_button_widget.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
@@ -76,29 +75,6 @@ class _SuperMarketState extends State<SuperMarket> {
                   ),
                   const AmazingWidget(),
                 ],
-              ),
-            ),
-            Container(
-              height: 110,
-              color: Colors.white,
-              child: const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Wrap(
-                    spacing: 15,
-                    runSpacing: 15,
-                    direction: Axis.horizontal,
-                    children: [
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                      CategorySuperMarket(),
-                    ],
-                  ),
-                ),
               ),
             ),
             const SizedBox(

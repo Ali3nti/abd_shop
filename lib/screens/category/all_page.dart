@@ -19,6 +19,7 @@ class AllPage extends StatefulWidget {
 
 class _AllPageState extends State<AllPage> {
   List<Product> productList = [];
+
   initProductsList() async {
     await getProducts().then((value) {
       DataResponse response = value;
@@ -28,10 +29,10 @@ class _AllPageState extends State<AllPage> {
           Product product = Product.fromJson(item);
           productList.add(product);
         }
+        setState(() {});
       } else {
         //TODO: if don't have a product in response show error widget
       }
-      return;
     }).catchError(
       (error) =>
           throw Exception("Error on all_page when use getProduct(): $error"),
@@ -41,11 +42,11 @@ class _AllPageState extends State<AllPage> {
   @override
   void initState() {
     super.initState();
+    initProductsList();
   }
 
   @override
   Widget build(BuildContext context) {
-    initProductsList();
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: const MyAppBar(),
@@ -99,85 +100,16 @@ class _AllPageState extends State<AllPage> {
                           style: const TextStyle(color: Colors.grey),
                         ),
                       ),
-                      GridView(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                        ),
+                      // GridView.count(
+                      //   crossAxisCount: 2,
+                      //   shrinkWrap: true,
+                      //   physics: NeverScrollableScrollPhysics(),
+                      GridView.extent(
+                        physics: const NeverScrollableScrollPhysics(),
+                        maxCrossAxisExtent: 300,
                         shrinkWrap: true,
                         children: productList
-                            .map(
-                              (item) => Container(
-                                margin: const EdgeInsets.only(bottom: 3,left: 3),
-                                width: 303,
-                                height: 400,
-                                 color: Colors.white,
-                                child: Column(
-                                  children: [
-                                    Center(
-                                      child: Container(
-                                        margin: const EdgeInsets.only(top: 5),
-                                      //  color: Colors.blue,
-                                        child: Image.network(
-                                          baseUrl + item.image,
-                                          height: 80,
-                                          width: 100,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 100, top: 12),
-                                      child: AddToCartWidget(
-                                        product: Product(),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          item.price.toString(),
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(width: 5),
-                                        Image.asset(
-                                          width: 15,
-                                          'assets/images/toman.png',
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          item.name,
-                                          style: const TextStyle(
-                                              color: Colors.grey),
-                                        ),
-                                        const SizedBox(width: 2),
-                                        const Text(
-                                          "_",
-                                          style: TextStyle(
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(width: 2),
-                                        Text(
-                                          item.discount.toString(),
-                                          style: const TextStyle(
-                                              color: Colors.grey),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                            .map((item) => GridProductWidget(product: item))
                             .toList(),
                       ),
                     ],
@@ -250,5 +182,65 @@ class _AllPageState extends State<AllPage> {
       }
       return const SizedBox();
     }
+  }
+}
+
+class GridProductWidget extends StatefulWidget {
+  const GridProductWidget({super.key, required this.product});
+  final Product product;
+
+  @override
+  State<GridProductWidget> createState() => _GridProductWidgetState();
+}
+
+class _GridProductWidgetState extends State<GridProductWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 3),
+      width: 303,
+      height: 400,
+      color: Colors.white,
+      child: Column(
+        children: [
+          Center(
+            child: Container(
+              // width: 100,
+              // height: 100,
+              margin: const EdgeInsets.only(top: 5),
+              //  color: Colors.orange,
+              child: Image.network(
+                baseUrl + widget.product.image,
+                height: 80,
+                width: 100,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 100),
+            child: AddToCartWidget(
+              product: Product(),
+            ),
+          ),
+          Text(
+            widget.product.price.toString(),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Text(
+                widget.product.name,
+                style: const TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(width: 2),
+              Text(
+                widget.product.discount.toString(),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
