@@ -1,19 +1,15 @@
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
-import 'package:abd_shop/models/product_model.dart';
 
-import 'package:abd_shop/screens/category/fruits_category.dart';
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/category/category_list_widget.dart';
-import 'package:abd_shop/screens/home/components/amazing_product/amazing-widget.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_widget.dart';
 import 'package:abd_shop/screens/home/components/app_Bar/app_Bar_Original.dart';
 import 'package:abd_shop/screens/home/components/address/current_user_address_widget.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/images_slider.dart';
 import 'package:abd_shop/screens/market/markets_list_widget.dart';
-import 'package:abd_shop/product/product_modal_sheet.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
 import 'package:abd_shop/product/product_Card_Widget/product_Card_List_Widget.dart';
-import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeBody extends StatefulWidget {
@@ -30,7 +26,8 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(color: Colors.white,
+    return Material(
+      color: Colors.white,
       child: RefreshIndicator(
         onRefresh: _refreshData,
         child: const SingleChildScrollView(
@@ -53,7 +50,6 @@ class _HomeBodyState extends State<HomeBody> {
                 categoryId: 2,
                 categoryName: 'آجیل ',
               ),
-
               MarketListWidget(),
               SizedBox(
                 height: 40,
@@ -85,16 +81,6 @@ class _HomeBodyState extends State<HomeBody> {
           market: Market(),
           jetMartAmazingModel: JetMartAmazingModel(),
         ),
-      ),
-    );
-  }
-
-  fruitsCategory(BuildContext context) {
-    //TODO: Use CamelCase
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const FruitsCategory(),
       ),
     );
   }

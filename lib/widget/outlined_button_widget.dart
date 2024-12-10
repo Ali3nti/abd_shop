@@ -22,6 +22,7 @@ class _OutLinedButtonWidgetState extends State<OutLinedButtonWidget> {
       },
       child: const Text(
         "میوه",
-      ),);
+      ),
+    );
   }
 }
