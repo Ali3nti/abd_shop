@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/image_slider.dart';
+import 'package:abd_shop/screens/orders/Order_Tracking_Page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -50,6 +51,14 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       ),
     );
   }
+  sliderPage3(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OrderTrackingPage(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +72,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
             children: [
               ImageSlider(
                 onTap: () {
+                  sliderPage3(context);
                 },
                 imageUrl:
                     "https://dkstatics-public.digikala.com/jet-public/1f05b854f620f190fec7189f31ef89487d5364cf_1730190500.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
