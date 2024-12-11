@@ -2,6 +2,8 @@ import 'package:abd_shop/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class OrderTrackingPage extends StatefulWidget {
   const OrderTrackingPage({super.key});
@@ -33,7 +35,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     timer.cancel();
     super.dispose();
   }
-
+  LatLng? origin; // مبدا
+  LatLng? destination; // مقصد
   @override
   Widget build(BuildContext context) {
     String timerText =
@@ -43,141 +46,216 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
 
     return Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                left: 280,
-                top: 20,
-              ),
-              child: Text(
-                "پیگیری سفارش",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+              padding: EdgeInsets.only(left: 280, top: 20),
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "پیگیری سفارش",
+                  style: kHeaderTextStyle,
+                ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                left: 290,
-                top: 200,
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 300,
+                child:
+                FlutterMap(
+                  options: MapOptions(
+                    initialCenter: LatLng(31.1611, 52.6488), //ABADEH LOCATION!!!!!!//
+                    minZoom: 10.0,
+                    onTap: (tapPosition, point) {
+                      setState(() {
+                        if (origin == null) {
+                          origin = point;
+                        } else if (destination == null) {
+                          destination = point;
+                        } else {
+                          origin = point;
+                          destination = null;
+                        }
+                      });
+                    },
+                  ),
+                  children: [
+                    TileLayer(
+                      urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      subdomains: ['a', 'b', 'c'],
+                    ),
+                    MarkerLayer(
+                      markers: [
+                        if (origin != null)
+                          Marker(
+                            point: origin!,
+                            child:Icon(Icons.location_on, color: Colors.blue, size: 40),
+                          ),
+                        if (destination != null)
+                          Marker(
+                            point: destination!,
+                            child:Icon(Icons.location_on, color: Colors.red),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              child: Text(
-                "جزئیات سفارش",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
+            )
+
+            ,
+
+            Padding(
+              padding: EdgeInsets.only(left: 290,),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "جزئیات سفارش",
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
+                ),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.greenAccent.shade100,
-                borderRadius: BorderRadiusDirectional.circular(10),
-              ),
-              width: 480,
-              height: 100,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadiusDirectional.circular(10),
+                ),
+                width: 480,
+                height: 60,
+                child: Card(
+                  color: Colors.greenAccent.shade100,
+                  child: Column(
                     children: [
-                      Text(
-                        "سفارش تحویل داده شد",
-                        style: TextStyle(
-                            color: Colors.green.shade900,
-                            fontWeight: FontWeight.w900),
-                      ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("تحویل تا"),
-                          SizedBox(
-                            width: 5,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "سفارش تحویل داده شد",
+                              style: TextStyle(
+                                  color: Colors.green.shade900,
+                                  fontWeight: FontWeight.w900),
+                            ),
                           ),
-                          Text(
-                            timerText,
-                            style: TextStyle(
-                                color: Colors.green.shade900,
-                                fontWeight: FontWeight.w900),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Text("تحویل تا"),
+                                SizedBox(width: 5),
+                                Text(
+                                  timerText,
+                                  style: TextStyle(
+                                      color: Colors.green.shade900,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
+                      Container(
+                        width: 380,
+                        child: LinearProgressIndicator(
+                          value: progress < 0 ? 0 : progress,
+                          backgroundColor: Colors.white,
+                          valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.green),
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  CircularProgressIndicator(
-                    value: progress < 0 ? 0 : progress,
-                    backgroundColor: Colors.grey[300],
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "ارسال به خانه",
+                style: TextStyle(fontWeight: FontWeight.normal),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "میدان آزادی،خیابان تلاش،کوچه هفتم",
+                style: TextStyle(fontWeight: FontWeight.w900),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "فروشگاه",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          "دیلی مارکت /بلوار نصر",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w900, color: Colors.blue),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.blue,
+                          size: 12,
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            Text(
-              "ارسال به خانه",
-              style: TextStyle(fontWeight: FontWeight.normal),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "زمان ثبت سفارش",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  Text(
+                    "جمعه،18آبان1403 19:42",
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
             ),
-            Text(
-              "میدان آزادی،خیابان تلاش،کوچه هفتم",
-              style: TextStyle(fontWeight: FontWeight.w900),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "فروشگاه",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey),
-                ),
-                Text(
-                  "دیلی مارکت /بلوار نصر >",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.blue),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "زمان ثبت سفارش",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey),
-                ),
-                Text(
-                  "جمعه،18آبان1403 19:42",
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "شناسه پیگیری",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey),
-                ),
-                Text(
-                  "190-118687-386",
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "شناسه پیگیری",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  Text(
+                    "190-118687-386",
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
             ),
             Stack(
               children: [
@@ -193,35 +271,154 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 7, left: 7, top: 7),
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: CupertinoColors.white,
-                        borderRadius: BorderRadiusDirectional.circular(10)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.sms_outlined, color: Colors.deepOrange),
-                        SizedBox(width: 10),
-                        Text(
-                          "ثبت امتیاز و بازخورد",
-                          style:
-                              TextStyle(color: Colors.deepOrange, fontSize: 20),
-                        ),
-                      ],
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: CupertinoColors.white,
+                          borderRadius: BorderRadiusDirectional.circular(10)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.sms_outlined, color: Colors.deepOrange),
+                          SizedBox(width: 10),
+                          Text(
+                            "ثبت امتیاز و بازخورد",
+                            style: TextStyle(
+                                color: Colors.deepOrange, fontSize: 20),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
-            ), // Container for rate & comments
-            SizedBox(
-              height: 10,
             ),
-            Container(
-              height: 4,
-              color: Colors.grey.shade300,
+            SizedBox(height: 10),
+            Container(height: 4, color: Colors.grey.shade300),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "سبد خرید",
+                style: TextStyle(fontWeight: FontWeight.w900),
+              ),
             ),
-            Text("سبد خرید",style: TextStyle(fontWeight: FontWeight.w900),),
+            Padding(
+              padding: const EdgeInsets.only(top: 100, right: 8),
+              child: Text(
+                "جزئیات پرداخت",
+                style: TextStyle(fontWeight: FontWeight.w900),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "قیمت کالاها",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "169,400",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
+                      ),
+                      Image.asset("assets/images/toman.png", width: 15)
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "هزینه ارسال",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "6,500",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
+                      ),
+                      Image.asset("assets/images/toman.png", width: 15)
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "هزینه آماده سازی",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.grey),
+                      ),
+                      Icon(Icons.radio_button_on_sharp, color: Colors.deepOrange)
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "6,500",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
+                      ),
+                      Image.asset("assets/images/toman.png", width: 15)
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "تخفیف کالاها",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "76,000",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.deepOrange),
+                      ),
+                      Image.asset("assets/images/toman.png", width: 15, color: Colors.deepOrange)
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(height: 4, color: Colors.grey.shade300),
+
+            // افزودن نقشه OpenStreetMap
           ],
         ),
       ),
