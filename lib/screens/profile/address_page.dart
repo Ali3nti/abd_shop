@@ -9,8 +9,8 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
-  LatLng? selectedLocation; // موقعیت انتخاب شده
-  String locationName = "موقعیت را انتخاب کنید"; // نام موقعیت
+  LatLng? selectedLocation;
+  String locationName = "موقعیت را انتخاب کنید";
 
   Future<void> _getLocationName(LatLng point) async {
     try {
@@ -39,12 +39,12 @@ class _AddressPageState extends State<AddressPage> {
               height: 300,
               child: FlutterMap(
                 options: MapOptions(
-                  initialCenter: LatLng(31.1611, 52.6488), // موقعیت اولیه (اباده)
+                  initialCenter: LatLng(31.1611, 52.6488),
                   minZoom: 10.0,
                   onTap: (tapPosition, point) {
                     setState(() {
                       selectedLocation = point;
-                      _getLocationName(point); // دریافت نام لوکیشن
+                      _getLocationName(point);
                     });
                   },
                 ),
