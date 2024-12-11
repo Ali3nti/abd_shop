@@ -39,15 +39,18 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                       // context.read<CartUpdater>().incrementNumber();
                       setState(() {});
                     },
-                    child: Icon(Icons.add, color: Colors.orange.shade900),
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.orange.shade900,
+                    ),
                   ),
-                  //const SizedBox(width: 2),
                   Text(
                     cartList[widget.product.id]!.count.toString(),
-                    style:
-                        TextStyle(color: Colors.orange.shade900, fontSize: 20),
+                    style: TextStyle(
+                      color: Colors.orange.shade900,
+                      fontSize: 20,
+                    ),
                   ),
-                  //const SizedBox(width: 3),
                   InkWell(
                     onTap: () {
                       // if (context.read<CartUpdater>().counterValue > 0) {
@@ -61,7 +64,10 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                       // }
                       setState(() {});
                     },
-                    child: Icon(Icons.delete, color: Colors.orange.shade900),
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.orange.shade900,
+                    ),
                   ),
                 ],
               ),
@@ -80,16 +86,19 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                 });
               },
               child: Container(
-                width: 50,
-                height: 50,
+                width: 35,
+                height: 35,
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade900,
-                  shape: BoxShape.circle,
+                  color: Colors.orange.shade100,
+                  borderRadius: BorderRadius.circular(5),
                 ),
                 alignment: Alignment.center,
-                child: const Text(
+                child: Text(
                   '+',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.orange.shade900,
+                  ),
                 ),
               ),
             ),

@@ -122,11 +122,11 @@ class _BasePageState extends State<BasePage> {
                       ),
                       child: Container(
                         width: 25,
-                        height: 25,
+                        height: 20,
                         padding: const EdgeInsets.all(2),
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: kPrimaryColor,
-                          shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         alignment: Alignment.center,
                         child: Text(
