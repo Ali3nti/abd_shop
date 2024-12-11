@@ -4,8 +4,10 @@ import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AllPage extends StatefulWidget {
@@ -57,7 +59,7 @@ class _AllPageState extends State<AllPage> {
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               height: 50,
-             // color: Colors.red,
+              // color: Colors.red,
               child: Row(
                 children: [
                   const SizedBox(width: 20),
@@ -197,45 +199,64 @@ class _GridProductWidgetState extends State<GridProductWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 3),
+      color: Colors.white,
+      margin: const EdgeInsets.only(bottom: 3, left: 3),
       width: 303,
       height: 400,
-      color: Colors.white,
       child: Column(
         children: [
-          Center(
-            child: Container(
-              // width: 100,
-              // height: 100,
-              margin: const EdgeInsets.only(top: 5),
-              //  color: Colors.orange,
-              child: Image.network(
-                baseUrl + widget.product.image,
-                height: 80,
-                width: 100,
-              ),
+          Container(
+            margin: const EdgeInsets.only(top: 5),
+            child: Image.network(
+              baseUrl + widget.product.image,
+              width: 80,
+              height: 90,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 100),
-            child: AddToCartWidget(
-              product: Product(),
-            ),
+          AddToCartWidget(
+            product: Product(),
           ),
-          Text(
-            widget.product.price.toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
+          SizedBox(height: 10),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                widget.product.price.toString(),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 5),
+              Image.asset(
+                width: 15,
+                'assets/images/toman.png',
+              ),
+            ],
+          ),
+          const SizedBox(height: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 widget.product.name,
-                style: const TextStyle(color: Colors.grey),
+                style: const TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(width: 2),
+              const Text(
+                "_",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(width: 2),
               Text(
                 widget.product.discount.toString(),
+                style: const TextStyle(
+                  color: Colors.grey,
+                ),
               ),
             ],
           ),
