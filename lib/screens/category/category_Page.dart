@@ -21,131 +21,152 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         title: Text(widget.category.name),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: widget.products
-              .map(
-                (e) => Container(
-                  padding: const EdgeInsets.only(top: 10),
-                  color: Colors.grey.shade50,
-                  width: double.infinity,
-                  height: 200,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        alignment: Alignment.center,
-                        child: Image.network(
-                          baseUrl + e.image,
-                          width: 100,
-                          height: 100,
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.7,
+        ),
+        itemCount: widget.products.length,
+        itemBuilder: (context, index) {
+          final e = widget.products[index];
+          return Container(
+            color: Colors.white,
+            margin: const EdgeInsets.all(2),
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  width: 100,
+                  height: 100,
+                  alignment: Alignment.center,
+                  child: Image.network(
+                    baseUrl + e.image,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      top: 10,
+                      right: 10,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          e.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 50),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                e.name,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                        Text(
+                          e.brand,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          e.description,
+                        ),
+                        Text(
+                          e.color,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              e.isActive.toString(),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10,
                               ),
-                              const SizedBox(height: 3),
-                              Text(
-                                e.brand,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 3),
-                              Text(e.description),
-                              const SizedBox(height: 3),
-                              Text(e.color),
-                              const SizedBox(height: 3),
-                              Row(
+                              child: Row(
                                 children: [
-                                  Text(e.isActive.toString()),
-                                  const SizedBox(width: 160),
                                   Text(
                                     e.rating.toString(),
                                     style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                  const Icon(Icons.star,
-                                      color: Colors.yellow, size: 15),
+                                  const SizedBox(width: 2),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.yellow,
+                                    size: 15,
+                                  ),
                                 ],
                               ),
-                              Row(
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width: 50,
-                                    height: 20,
-                                    decoration: BoxDecoration(
-                                      color: kPrimaryColor,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Center(
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            e.discount.toString(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          const Text(
-                                            "%",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                  Text(
+                                    e.discount.toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
                                     ),
                                   ),
-                                  const SizedBox(width: 120),
-                                  Column(
+                                  const Text(
+                                    "%",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Row(
                                     children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            e.price.toString(),
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          const SizedBox(width: 5),
-                                          Image.asset("assets/images/toman.png",
-                                              width: 20, height: 20),
-                                        ],
-                                      ),
                                       Text(
                                         e.price.toString(),
                                         style: const TextStyle(
-                                          decoration:
-                                              TextDecoration.lineThrough,
+                                          fontWeight: FontWeight.bold,
                                         ),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Image.asset(
+                                        width: 15,
+                                        'assets/images/toman.png',
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                                Text(
+                                  e.price.toString(),
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              )
-              .toList(),
-        ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
