@@ -45,13 +45,21 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     double progress = remainingTime.inSeconds / (30 * 60);
 
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 280, top: 20),
+              padding: EdgeInsets.only(left: 280),
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
@@ -104,10 +112,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   ],
                 ),
               ),
-            )
-
-            ,
-
+            ),
             Padding(
               padding: EdgeInsets.only(left: 290,),
               child: Padding(
