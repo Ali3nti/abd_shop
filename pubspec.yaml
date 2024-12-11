@@ -32,6 +32,10 @@ dependencies:
   dotted_border: ^2.1.0
   flutter_image_compress: ^2.1.0
   shimmer: ^3.0.0
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  geocoding: ^3.0.0
+
 
 dev_dependencies:
   flutter_test:
