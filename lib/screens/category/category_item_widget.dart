@@ -65,11 +65,11 @@ class CategoryItemWidget extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: categoryColor,
+                color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: categoryColor.withOpacity(0.8),
-                    blurRadius: 5,
+                    color: categoryColor.withOpacity(0.5),
+                    blurRadius:10,
                     spreadRadius: 2,
                     offset: const Offset(0, 3),
                   ),
