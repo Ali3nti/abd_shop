@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geocoding/geocoding.dart';
-import 'dart:math';
-
-class Driver {
-  final String name;
-  final LatLng location;
-
-  Driver(this.name, this.location);
-}
 
 class AddressPage extends StatefulWidget {
   @override
@@ -19,13 +11,6 @@ class AddressPage extends StatefulWidget {
 class _AddressPageState extends State<AddressPage> {
   LatLng? selectedLocation;
   String locationName = "موقعیت را انتخاب کنید";
-  Driver? nearestDriver;
-
-  List<Driver> drivers = [
-    Driver("راننده ۱", LatLng(31.1601, 52.6480)),
-    Driver("راننده ۲", LatLng(31.1620, 52.6500)),
-    Driver("راننده ۳", LatLng(31.1590, 52.6400)),
-  ];
 
   Future<void> _getLocationName(LatLng point) async {
     try {
@@ -38,40 +23,6 @@ class _AddressPageState extends State<AddressPage> {
     } catch (e) {
       print("خطا در دریافت نام مکان: $e");
     }
-  }
-
-  void _findNearestDriver() {
-    if (selectedLocation == null) return;
-
-    double minDistance = double.infinity;
-    Driver? closestDriver;
-
-    for (var driver in drivers) {
-      double distance = _calculateDistance(selectedLocation!, driver.location);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestDriver = driver;
-      }
-    }
-
-    setState(() {
-      nearestDriver = closestDriver;
-    });
-  }
-
-  double _calculateDistance(LatLng point1, LatLng point2) {
-    const double earthRadius = 6371;
-    double dLat = _degreesToRadians(point2.latitude - point1.latitude);
-    double dLon = _degreesToRadians(point2.longitude - point1.longitude);
-    double a = sin(dLat / 2) * sin(dLat / 2) +
-        cos(_degreesToRadians(point1.latitude)) * cos(_degreesToRadians(point2.latitude)) *
-            sin(dLon / 2) * sin(dLon / 2);
-    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-    return earthRadius * c;
-  }
-
-  double _degreesToRadians(double degrees) {
-    return degrees * (pi / 180);
   }
 
   @override
@@ -94,7 +45,6 @@ class _AddressPageState extends State<AddressPage> {
                     setState(() {
                       selectedLocation = point;
                       _getLocationName(point);
-                      _findNearestDriver();
                     });
                   },
                 ),
@@ -123,14 +73,6 @@ class _AddressPageState extends State<AddressPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          if (nearestDriver != null)
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "نزدیک‌ترین راننده: ${nearestDriver!.name}",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
         ],
       ),
     );
