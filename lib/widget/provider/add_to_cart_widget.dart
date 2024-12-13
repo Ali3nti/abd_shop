@@ -22,15 +22,14 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
     return Center(
       child: _isExpanded
           ? Container(
-              width: 80,
-              height: 50,
+              width: 50,
+              height: 30,
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
                 children: [
-                  const SizedBox(width: 5),
                   InkWell(
                     onTap: () {
                       Cart cart = cartList[widget.product.id]!;
@@ -42,13 +41,14 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                     child: Icon(
                       Icons.add,
                       color: Colors.orange.shade900,
+                      size: 15,
                     ),
                   ),
                   Text(
                     cartList[widget.product.id]!.count.toString(),
                     style: TextStyle(
                       color: Colors.orange.shade900,
-                      fontSize: 20,
+                      fontSize: 15,
                     ),
                   ),
                   InkWell(
@@ -67,6 +67,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                     child: Icon(
                       Icons.delete,
                       color: Colors.orange.shade900,
+                      size: 15,
                     ),
                   ),
                 ],
@@ -81,9 +82,11 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                 );
                 cartList.addEntries([MapEntry(widget.product.id, newCart)]);
                 context.read<CartUpdater>().incrementNumber();
-                setState(() {
-                  _isExpanded = true;
-                });
+                setState(
+                  () {
+                    _isExpanded = true;
+                  },
+                );
               },
               child: Container(
                 width: 35,
