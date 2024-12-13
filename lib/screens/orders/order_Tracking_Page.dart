@@ -363,7 +363,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               ],
             ),
             SizedBox(height: 10),
-            Container(height: 4, color: Colors.grey.shade300),
+            Divider(thickness: 3,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -485,7 +485,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                 ],
               ),
             ),
-            Container(height: 4, color: Colors.grey.shade300),
+            Divider(thickness: 3,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
