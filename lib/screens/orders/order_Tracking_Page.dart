@@ -35,8 +35,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     timer.cancel();
     super.dispose();
   }
+
   LatLng? origin; // مبدا
   LatLng? destination; // مقصد
+
   @override
   Widget build(BuildContext context) {
     String timerText =
@@ -45,6 +47,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     double progress = remainingTime.inSeconds / (30 * 60);
 
     return Scaffold(
+      backgroundColor: CupertinoColors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -72,10 +75,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 height: 300,
-                child:
-                FlutterMap(
+                child: FlutterMap(
                   options: MapOptions(
-                    initialCenter: LatLng(31.1611, 52.6488), //ABADEH LOCATION!!!!!!//
+                    initialCenter: LatLng(31.1611, 52.6488),
+                    //ABADEH LOCATION!!!!!!//
                     minZoom: 10.0,
                     onTap: (tapPosition, point) {
                       setState(() {
@@ -92,7 +95,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      urlTemplate:
+                          "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                       subdomains: ['a', 'b', 'c'],
                     ),
                     MarkerLayer(
@@ -100,14 +104,14 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         if (origin != null)
                           Marker(
                             point: origin!,
-                            child:Icon(Icons.location_on, color: Colors.blue, size: 40),
+                            child: Icon(Icons.location_on,
+                                color: Colors.blue, size: 40),
                           ),
                         if (destination != null)
                           Marker(
                             point: destination!,
-                            child:Icon(Icons.location_on, color: Colors.red),
+                            child: Icon(Icons.location_on, color: Colors.red),
                           ),
-
                       ],
                     ),
                   ],
@@ -115,7 +119,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 290,),
+              padding: EdgeInsets.only(left: 290),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -129,10 +133,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.blueAccent.shade100,
+                  color: Colors.greenAccent.shade100,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(16.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -148,11 +152,14 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                               Text("اطلاعات پیک موتوری"),
                               Text(
                                 "علی رضایی",
-                                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w900, fontSize: 18),
                               ),
                               Text(
                                 "@AliRezaei",
-                                style: TextStyle(fontWeight: FontWeight.w600, color: Colors.grey),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey),
                               ),
                             ],
                           ),
@@ -183,42 +190,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                           ),
                           Text(
                             "آنلاین",
-                            style: TextStyle(fontWeight: FontWeight.w500, color: Colors.green),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.green),
                           ),
                         ],
                       ),
                       SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "زمان تخمینی رسیدن:",
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            "15 دقیقه دیگر",
-                            style: TextStyle(fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(10),
-                ),
-                width: 480,
-                height: 60,
-                child: Card(
-                  color: Colors.greenAccent.shade100,
-                  child: Column(
-                    children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -254,7 +232,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                           value: progress < 0 ? 0 : progress,
                           backgroundColor: Colors.white,
                           valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.green),
+                              AlwaysStoppedAnimation<Color>(Colors.green),
                         ),
                       ),
                     ],
@@ -462,7 +440,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         style: TextStyle(
                             fontWeight: FontWeight.w900, color: Colors.grey),
                       ),
-                      Icon(Icons.radio_button_on_sharp, color: Colors.deepOrange)
+                      Icon(Icons.radio_button_on_sharp,
+                          color: Colors.deepOrange)
                     ],
                   ),
                   Row(
@@ -499,7 +478,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                             fontWeight: FontWeight.w500,
                             color: Colors.deepOrange),
                       ),
-                      Image.asset("assets/images/toman.png", width: 15, color: Colors.deepOrange)
+                      Image.asset("assets/images/toman.png",
+                          width: 15, color: Colors.deepOrange)
                     ],
                   ),
                 ],
@@ -525,13 +505,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                             fontWeight: FontWeight.w500,
                             color: Colors.green.shade900),
                       ),
-                      Image.asset("assets/images/toman.png", width: 15, color: Colors.green.shade900)
+                      Image.asset("assets/images/toman.png",
+                          width: 15, color: Colors.green.shade900)
                     ],
                   ),
                 ],
               ),
             ),
-
           ],
         ),
       ),
