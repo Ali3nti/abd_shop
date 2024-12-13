@@ -4,10 +4,8 @@ import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AllPage extends StatefulWidget {
@@ -205,18 +203,27 @@ class _GridProductWidgetState extends State<GridProductWidget> {
       height: 400,
       child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.only(top: 5),
-            child: Image.network(
-              baseUrl + widget.product.image,
-              width: 80,
-              height: 90,
-            ),
+          Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              Container(
+                //color: Colors.yellow,
+                margin: const EdgeInsets.only(top: 5),
+                child: Image.network(
+                  baseUrl + widget.product.image,
+                  width: 100,
+                  height: 120,
+                ),
+              ),
+              SizedBox(
+                width: 50,
+                height: 30,
+                child: AddToCartWidget(product: Product(),),
+              ),
+            ],
           ),
-          AddToCartWidget(
-            product: Product(),
-          ),
-          SizedBox(height: 10),
+
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
