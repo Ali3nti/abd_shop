@@ -59,17 +59,18 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    SizedBox(
-                      width: double.infinity,
-                      height: 110,
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
                       child: Image.network(
                         baseUrl + widget.product.image,
-                        fit: BoxFit.contain,
+                        width: 100,
+                        height: 120,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 120),
-                      child: AddToCartWidget(product: widget.product),
+                    Container(
+                      width: 50,
+                      height: 30,
+                      child: AddToCartWidget(product: Product(),),
                     ),
                     // Container(
                     //   //margin: EdgeInsets.only(top: 50),
