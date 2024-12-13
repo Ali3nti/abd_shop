@@ -1,5 +1,4 @@
 import 'package:abd_shop/screens/Base/base_page.dart';
-import 'package:abd_shop/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatefulWidget {
@@ -25,62 +24,160 @@ class _OrdersPageState extends State<OrdersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('سفارشات من'),
+        title: const Text(
+          "سفارش های من",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
+        // margin: EdgeInsets.all(10),
+        color: Colors.grey.shade100,
         child: orders.isNotEmpty
             ? ListView.builder(
                 itemCount: orders.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 4,
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            orders[index]['orderNumber']!,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(orders[index]['date']!),
-                          const SizedBox(height: 8),
-                          Text(orders[index]['total']!),
-                          const SizedBox(height: 8),
-                          Text(
-                            orders[index]['status']!,
-                            style: TextStyle(color: Colors.orange),
-                          ),
-                          const SizedBox(height: 16),
-                          Row(
+                  return Container(
+                    margin: const EdgeInsets.all(10),
+                    height: 270,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  // عملکرد برای مشاهده جزئیات سفارش
-                                },
-                                child: const Text('جزئیات'),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 60,
+                                    height: 60,
+                                    child: Image.asset("assets/images/p8.png"),
+                                  ),
+                                  const Text(
+                                    "جت مارکت",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Text(
+                                    "|ونک",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  // لغو سفارش و حذف از لیست
-                                  setState(() {
-                                    orders.removeAt(index);
-                                  });
-                                },
-                                child: const Text('لغو سفارش',
-                                    style: TextStyle(color: Colors.red)),
+                              const Row(
+                                children: [
+                                  Text(
+                                    "جزییات سفارش",
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.navigate_next,
+                                    color: Colors.blue,
+                                    size: 15,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("جمعه ، 18 آبان 1403 _ 19:42"),
+                              Row(
+                                children: [
+                                  Text("102.304"),
+                                  Image.asset(
+                                    width: 15,
+                                    'assets/images/toman.png',
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(right: 10),
+                                width: 50,
+                                height: 50,
+                                color: Colors.grey.shade50,
+                                child: Image.asset("assets/images/p16.png"),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(right: 10),
+                                width: 50,
+                                height: 50,
+                                color: Colors.grey.shade50,
+                                child: Image.asset("assets/images/p16.png"),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(right: 10),
+                                width: 50,
+                                height: 50,
+                                color: Colors.grey.shade50,
+                                child: Image.asset("assets/images/p16.png"),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(right: 7, left: 7, top: 15),
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Colors.deepOrange,
+                                  width: 3,
+                                ),
+                              ),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.sms_outlined,
+                                    color: Colors.deepOrange,
+                                    size: 30,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "ثبت امتیاز و بازخورد",
+                                    style: TextStyle(
+                                      color: Colors.deepOrange,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },
@@ -88,29 +185,30 @@ class _OrdersPageState extends State<OrdersPage> {
             : Column(
                 children: [
                   Container(
-                    //color: Colors.red,
                     margin: const EdgeInsets.only(left: 60, top: 30),
                     height: 300,
                     width: 300,
                     child: Image.asset("assets/images/P31.png"),
                   ),
                   Container(
-                      margin: const EdgeInsets.only(left: 70, top: 2),
-                      child: const Text(
-                        "اینجا سفارش ندارید!",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
+                    margin: const EdgeInsets.only(left: 70, top: 2),
+                    child: const Text(
+                      "اینجا سفارش ندارید!",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   Container(
-                      margin: const EdgeInsets.only(left: 70, top: 10),
-                      child: const Text(
-                        "چندین فروشگاه دیگر نزدیک شما هستند.",
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
-                      )),
+                    margin: const EdgeInsets.only(left: 70, top: 10),
+                    child: const Text(
+                      "چندین فروشگاه دیگر نزدیک شما هستند.",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -132,9 +230,10 @@ class _OrdersPageState extends State<OrdersPage> {
                         child: Text(
                           "مشاهده فروشگاه های نزدیک",
                           style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
