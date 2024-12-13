@@ -57,7 +57,6 @@ class _AllPageState extends State<AllPage> {
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               height: 50,
-              // color: Colors.red,
               child: Row(
                 children: [
                   const SizedBox(width: 20),
@@ -90,7 +89,6 @@ class _AllPageState extends State<AllPage> {
                 ? Column(
                     children: [
                       Container(
-                        //color: Colors.yellow,
                         padding: const EdgeInsets.only(top: 10, right: 20),
                         margin: const EdgeInsets.only(top: 20),
                         width: double.infinity,
@@ -207,7 +205,6 @@ class _GridProductWidgetState extends State<GridProductWidget> {
             alignment: Alignment.bottomRight,
             children: [
               Container(
-                //color: Colors.yellow,
                 margin: const EdgeInsets.only(top: 5),
                 child: Image.network(
                   baseUrl + widget.product.image,

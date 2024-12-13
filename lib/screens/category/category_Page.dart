@@ -1,6 +1,7 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -38,131 +39,142 @@ class _CategoryPageState extends State<CategoryPage> {
             margin: const EdgeInsets.all(2),
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 5),
-                  width: 100,
-                  height: 100,
-                  alignment: Alignment.center,
-                  child: Image.network(
-                    baseUrl + e.image,
-                  ),
+                Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
+                      child: Image.network(
+                        baseUrl + e.image,
+                        width: 100,
+                        height: 120,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 50,
+                      height: 30,
+                      child: AddToCartWidget(
+                        product: Product(),
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                   padding: const EdgeInsets.only(
-                      top: 10,
-                      right: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          e.name,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                    top: 10,
+                    right: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        e.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        e.brand,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        e.description,
+                      ),
+                      Text(
+                        e.color,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            e.isActive.toString(),
                           ),
-                        ),
-                        Text(
-                          e.brand,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          e.description,
-                        ),
-                        Text(
-                          e.color,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              e.isActive.toString(),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 10,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    e.rating.toString(),
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 2),
-                                  const Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 15,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    e.discount.toString(),
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const Text(
-                                    "%",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Column(
+                            child: Row(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        e.price.toString(),
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Image.asset(
-                                        width: 15,
-                                        'assets/images/toman.png',
-                                      ),
-                                    ],
+                                Text(
+                                  e.rating.toString(),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
+                                const SizedBox(width: 2),
+                                const Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 15,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: kPrimaryColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
                                 Text(
-                                  e.price.toString(),
+                                  e.discount.toString(),
                                   style: const TextStyle(
-                                    decoration: TextDecoration.lineThrough,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const Text(
+                                  "%",
+                                  style: TextStyle(
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      e.price.toString(),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Image.asset(
+                                      width: 15,
+                                      'assets/images/toman.png',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Text(
+                                e.price.toString(),
+                                style: const TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                ),
               ],
             ),
           );
