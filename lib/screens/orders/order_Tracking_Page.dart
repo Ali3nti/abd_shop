@@ -128,6 +128,89 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.blueAccent.shade100,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                          ),
+                          SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("اطلاعات پیک موتوری"),
+                              Text(
+                                "علی رضایی",
+                                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
+                              ),
+                              Text(
+                                "@AliRezaei",
+                                style: TextStyle(fontWeight: FontWeight.w600, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "شماره تلفن:",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "0912-345-6789",
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "وضعیت:",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "آنلاین",
+                            style: TextStyle(fontWeight: FontWeight.w500, color: Colors.green),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "زمان تخمینی رسیدن:",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "15 دقیقه دیگر",
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadiusDirectional.circular(10),
                 ),
                 width: 480,
@@ -423,8 +506,32 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               ),
             ),
             Container(height: 4, color: Colors.grey.shade300),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "قیمت قابل پرداخت",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.grey),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "105,000",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.green.shade900),
+                      ),
+                      Image.asset("assets/images/toman.png", width: 15, color: Colors.green.shade900)
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
-            // افزودن نقشه OpenStreetMap
           ],
         ),
       ),
