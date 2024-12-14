@@ -59,120 +59,123 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                    right: 10,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        e.name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                      right: 10,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          e.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        e.brand,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          e.brand,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        e.description,
-                      ),
-                      Text(
-                        e.color,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            e.isActive.toString(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 10,
+                        Text(
+                          e.description,
+                        ),
+                        Text(
+                          e.color,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              e.isActive.toString(),
                             ),
-                            child: Row(
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    e.rating.toString(),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 2),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.yellow,
+                                    size: 15,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    e.discount.toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const Text(
+                                    "%",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
                               children: [
-                                Text(
-                                  e.rating.toString(),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(width: 2),
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
-                                  size: 15,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 50,
-                            height: 20,
-                            decoration: BoxDecoration(
-                              color: kPrimaryColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  e.discount.toString(),
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                const Text(
-                                  "%",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      e.price.toString(),
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        e.price.toString(),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Image.asset(
-                                      width: 15,
-                                      'assets/images/toman.png',
-                                    ),
-                                  ],
+                                      const SizedBox(width: 5),
+                                      Image.asset(
+                                        width: 15,
+                                        'assets/images/toman.png',
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                e.price.toString(),
-                                style: const TextStyle(
-                                  decoration: TextDecoration.lineThrough,
+                                Text(
+                                  e.price.toString(),
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

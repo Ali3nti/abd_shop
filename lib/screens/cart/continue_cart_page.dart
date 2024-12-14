@@ -37,7 +37,10 @@ class _AllPageState extends State<ContinueCartPage> {
               width: double.infinity,
               child: const Text(
                 "روش پرداخت",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Container(
@@ -54,13 +57,14 @@ class _AllPageState extends State<ContinueCartPage> {
                       });
                     },
                     activeColor: Colors.blue,
-                    title: const Text("پرداخت اینترنتی"),
-                    subtitle:
-                        const Text("پرداخت آنلاین با تمامی کارت های بانکی"),
+                    title: const Text(
+                      "پرداخت اینترنتی",
+                    ),
+                    subtitle: const Text(
+                      "پرداخت آنلاین با تمامی کارت های بانکی",
+                    ),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   RadioListTile(
                     value: 2,
                     groupValue: _value,
@@ -70,8 +74,12 @@ class _AllPageState extends State<ContinueCartPage> {
                       });
                     },
                     activeColor: Colors.blue,
-                    title: const Text(" کیف پول "),
-                    subtitle: const Text(" اعتبار باقی مانده : 0 تومان"),
+                    title: const Text(
+                      " کیف پول ",
+                    ),
+                    subtitle: const Text(
+                      " اعتبار باقی مانده : 0 تومان",
+                    ),
                   ),
                 ],
               ),
@@ -84,77 +92,104 @@ class _AllPageState extends State<ContinueCartPage> {
               color: Colors.white,
               child: const Text(
                 "جزییات قیمت",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 20),
+              padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
               color: Colors.white,
               height: 50,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "قیمت کالا",
-                    style: TextStyle(color: Colors.grey.shade800, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.grey.shade800,
+                      fontSize: 16,
+                    ),
                   ),
-                  const SizedBox(width: 230),
                   const Text(
                     "184,000 تومان",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.all(8),
               color: Colors.white,
               height: 50,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "هزینه ارسال",
-                    style: TextStyle(color: Colors.grey.shade800, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.grey.shade800,
+                      fontSize: 16,
+                    ),
                   ),
-                  const SizedBox(width: 225),
                   const Text(
                     "9,000 تومان",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.all(8),
               color: Colors.white,
               height: 50,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "هزینه آماده سازی",
-                    style: TextStyle(color: Colors.grey.shade800, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.grey.shade800,
+                      fontSize: 16,
+                    ),
                   ),
-                  const SizedBox(width: 195),
                   const Text(
                     "2,500 تومان",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.all(8),
               color: Colors.white,
               height: 50,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "تخفیف کالاها",
-                    style: TextStyle(color: Colors.grey.shade800, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.grey.shade800,
+                      fontSize: 16,
+                    ),
                   ),
-                  const SizedBox(width: 220),
                   const Text(
                     "43,900 تومان",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -165,16 +200,17 @@ class _AllPageState extends State<ContinueCartPage> {
               color: Colors.grey.shade300,
             ),
             Container(
-              padding: const EdgeInsets.only(right: 20),
+              margin: const EdgeInsets.only(top: 2),
+              padding: const EdgeInsets.all(8),
               color: Colors.white,
               height: 50,
               child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "مبلغ قابل پرداخت",
                     style: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(width: 175),
                   Text(
                     "151,600 تومان",
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
@@ -183,38 +219,47 @@ class _AllPageState extends State<ContinueCartPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 3),
+              margin: const EdgeInsets.only(top: 2),
+              padding: const EdgeInsets.all(8),
               color: Colors.white,
               height: 100,
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    padding: const EdgeInsets.only(right: 20),
+                    color: Colors.white,
                     child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "مبلغ قابل پرداخت",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "جزییات",
-                          style: TextStyle(
+                        Row(
+                          children: [
+                            Text(
+                              "مبلغ قابل پرداخت",
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              "جزییات",
+                              style: TextStyle(
+                                color: Colors.lightBlue,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 5),
+                            Icon(
+                              Icons.navigate_next,
                               color: Colors.lightBlue,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 5),
-                        Icon(
-                          Icons.navigate_next,
-                          color: Colors.lightBlue,
-                        ),
-                        SizedBox(width: 115),
                         Text(
                           "151,600 تومان",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -243,9 +288,10 @@ class _AllPageState extends State<ContinueCartPage> {
                           Text(
                             "پرداخت اینترنتی",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
