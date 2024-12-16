@@ -26,7 +26,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
               fit: BoxFit.cover,
             ),
             decoration: BoxDecoration(
-              color: Colors.teal,
+              color: _isCodeSent ?Colors.teal : Colors.deepOrange,
               borderRadius: BorderRadiusDirectional.only(
                 bottomEnd: Radius.circular(70),
               ),
