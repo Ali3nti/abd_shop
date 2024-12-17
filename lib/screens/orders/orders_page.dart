@@ -2,6 +2,7 @@ import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/screens/Base/base_page.dart';
 import 'package:abd_shop/screens/orders/order_tracking_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class OrdersPage extends StatefulWidget {
   const OrdersPage({Key? key}) : super(key: key);
@@ -11,14 +12,16 @@ class OrdersPage extends StatefulWidget {
 }
 
 class _OrdersPageState extends State<OrdersPage> {
-
   List<Order> orders = List.generate(10, (index) {
     Order order = Order();
     order.id = index + 1;
     order.userId = 1;
     order.totalPrice = 20000.0;
-    order.orderDate = DateTime.now().subtract(Duration(days: index));
+    order.orderDate = DateTime.now().subtract(
+      Duration(days: index),
+    );
     order.products = [];
+    order.storeName = "دیلی مارکت آباده";
     return order;
   });
 
@@ -59,15 +62,16 @@ class _OrdersPageState extends State<OrdersPage> {
                                   SizedBox(
                                     width: 60,
                                     height: 60,
-                                    child: Image.asset("assets/images/p8.png",
+                                    child: Image.asset(
+                                      "assets/images/p${index + 1}.png",
                                     ),
                                   ),
                                   const SizedBox(width: 5),
-                                  const Text(
-                                    "جت مارکت",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                  Text(
+                                    order.storeName,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ],
@@ -108,10 +112,15 @@ class _OrdersPageState extends State<OrdersPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("تاریخ: ${order.orderDate}"),
+                              Text(
+                                " تاریخ :  ${DateFormat('yyyy_MM_dd / HH:mm')
+                                    .format(order.orderDate.toLocal(),
+                                )}",
+                              ),
                               Row(
                                 children: [
-                                  Text("${order.totalPrice.toString()}",
+                                  Text(
+                                    order.totalPrice.toString(),
                                   ),
                                   Image.asset(
                                     width: 15,
@@ -131,7 +140,8 @@ class _OrdersPageState extends State<OrdersPage> {
                                 width: 50,
                                 height: 50,
                                 color: Colors.grey.shade100,
-                                child: Image.asset("assets/images/p16.png",
+                                child: Image.asset(
+                                  "assets/images/p${index + 1}.png",
                                 ),
                               );
                             }).toList(),
@@ -185,8 +195,7 @@ class _OrdersPageState extends State<OrdersPage> {
                     margin: const EdgeInsets.only(left: 60, top: 30),
                     height: 300,
                     width: 300,
-                    child: Image.asset("assets/images/P31.png",
-                    ),
+                    child: Image.asset("assets/images/P31.png"),
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 70, top: 2),
@@ -212,27 +221,15 @@ class _OrdersPageState extends State<OrdersPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const BasePage(),
+                          builder: (context) => BasePage(),
                         ),
                       );
                     },
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 70, top: 30),
-                      width: 210,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.orange.shade900,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "مشاهده فروشگاه های نزدیک",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                    child: const Text(
+                      "مشاهده فروشگاه‌ها",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16,
                       ),
                     ),
                   ),
