@@ -44,11 +44,9 @@ class _HomeBodyState extends State<HomeBody> {
               SizedBox(height: 20),
               ProductCardListWidget(
                 categoryId: 1,
-                categoryName: 'لبنیات',
               ),
               ProductCardListWidget(
                 categoryId: 2,
-                categoryName: 'آجیل ',
               ),
               MarketListWidget(),
               SizedBox(
