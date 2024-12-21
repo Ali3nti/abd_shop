@@ -51,9 +51,40 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
           height: 350,
           width: 200,
           child: Padding(
-            padding: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 0),
             child: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 130),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2,
+                      horizontal: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade700,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: SizedBox(
+                      width: 60,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            widget.product.discount.toString(),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Image.asset("assets/images/01.png",color: Colors.white,height: 20,),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
@@ -104,6 +135,8 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                                 width: 20,
                                 'assets/images/toman.png',
                               ),
+                              Image.asset("assets/images/00.png",color: Colors.red,),
+
                             ],
                           ),
                         ],
@@ -115,38 +148,6 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                           decoration: TextDecoration.lineThrough,
                           fontSize: 18,
                           color: Colors.grey,
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 2,
-                          horizontal: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: SizedBox(
-                          width: 50,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                widget.product.discount.toString(),
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                              const Text(
-                                "%",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
                         ),
                       ),
                     ],

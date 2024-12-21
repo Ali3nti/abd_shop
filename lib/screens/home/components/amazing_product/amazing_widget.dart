@@ -33,36 +33,13 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: Column(
                     children: [
-                      const Text(
-                        "شگفت",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const Text(
-                        "انگیزهای",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const Text(
-                        "امروز",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                       const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
                         width: 200,
-                        height: 200,
+                        height: 170,
                         child: Image.asset(
                           "assets/images/amazing.jpg",
                           fit: BoxFit.contain,
