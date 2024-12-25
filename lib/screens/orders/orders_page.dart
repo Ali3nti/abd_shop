@@ -1,8 +1,10 @@
 import 'package:abd_shop/models/order_model.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/Base/base_page.dart';
 import 'package:abd_shop/screens/orders/order_tracking_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shamsi_date/shamsi_date.dart';
 
 class OrdersPage extends StatefulWidget {
   const OrdersPage({Key? key}) : super(key: key);
@@ -17,13 +19,29 @@ class _OrdersPageState extends State<OrdersPage> {
     order.id = index + 1;
     order.userId = 1;
     order.totalPrice = 20000.0;
-    order.orderDate = DateTime.now().subtract(
-      Duration(days: index),
-    );
-    order.products = [];
+    order.orderDate = DateTime.now().subtract(Duration(days: index));
+
+    order.products = List.generate(3, (productIndex) {
+      Product product = Product();
+      product.image = "assets/images/p${productIndex + 1}.png";
+      return product;
+    });
+
     order.storeName = "دیلی مارکت آباده";
     return order;
   });
+
+  String formatPersianDate(DateTime date) {
+    final gregorianDate = Gregorian(date.year, date.month, date.day);
+    final jalaliDate = Jalali.fromGregorian(gregorianDate);
+
+    final formattedDate =
+        '${jalaliDate.day} / ${jalaliDate.month} / ${jalaliDate.year}';
+    final formattedDay = DateFormat('EEEE', 'fa_IR').format(date);
+    final formattedTime = DateFormat('HH:mm').format(date);
+
+    return '$formattedDay $formattedDate _ $formattedTime';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,9 +131,9 @@ class _OrdersPageState extends State<OrdersPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                " تاریخ :  ${DateFormat('yyyy_MM_dd / HH:mm')
-                                    .format(order.orderDate.toLocal(),
-                                )}",
+                                formatPersianDate(
+                                  order.orderDate.toLocal(),
+                                ),
                               ),
                               Row(
                                 children: [
@@ -141,7 +159,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                 height: 50,
                                 color: Colors.grey.shade100,
                                 child: Image.asset(
-                                  "assets/images/p${index + 1}.png",
+                                  product.image,
                                 ),
                               );
                             }).toList(),
@@ -221,7 +239,7 @@ class _OrdersPageState extends State<OrdersPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BasePage(),
+                          builder: (context) => const BasePage(),
                         ),
                       );
                     },
@@ -230,6 +248,7 @@ class _OrdersPageState extends State<OrdersPage> {
                       style: TextStyle(
                         color: Colors.blue,
                         fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -239,3 +258,75 @@ class _OrdersPageState extends State<OrdersPage> {
     );
   }
 }
+
+
+// import 'package:abd_shop/screens/home/base_page.dart';
+// import 'package:flutter/material.dart';
+//
+// class OrdersBody extends StatefulWidget {
+//   const OrdersBody({super.key});
+//
+//   @override
+//   State<OrdersBody> createState() => _OrdersBdyState();
+// }
+//
+// class _OrdersBdyState extends State<OrdersBody> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(body:
+//     Column(
+//       children: [
+//         Container(
+//           //color: Colors.red,
+//           margin: const EdgeInsets.only(left: 60,top: 30),
+//           height: 300,
+//           width: 300,
+//           child: Image.asset("assets/images/P31.png"),
+//         ),
+//         Container(
+//             margin: const EdgeInsets.only(left: 70, top: 2),
+//             child: const Text(
+//               "اینجا سفارش ندارید!",
+//               style: TextStyle(
+//                 fontSize: 20,
+//                 fontWeight: FontWeight.bold,
+//               ),
+//             )),
+//         Container(
+//             margin: const EdgeInsets.only(left: 70, top: 10),
+//             child: const Text(
+//               "چندین فروشگاه دیگر نزدیک شما هستند.",
+//               style: TextStyle(
+//                 fontSize: 14,
+//               ),
+//             )),
+//         InkWell(
+//           onTap: (){
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(
+//                 builder: (context) => const HomePage(),
+//               ),
+//             );
+//           },
+//           child: Container(
+//             margin: const EdgeInsets.only(left: 70, top: 30),
+//             width: 210,
+//             height: 50,
+//             decoration: BoxDecoration(
+//               color: Colors.orange.shade900,
+//               borderRadius: BorderRadius.circular(10),),
+//             child:  const Center(
+//               child: Text("مشاهده فروشگاه های نزدیک",style: TextStyle(
+//                   color: Colors.white,
+//                   fontSize: 16, fontWeight: FontWeight.bold),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),);
+//   }
+// }
+
+
