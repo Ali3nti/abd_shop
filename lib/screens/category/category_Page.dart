@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 class CategoryPage extends StatefulWidget {
   const CategoryPage({
     super.key,
-    required this.category,
     required this.products,
   });
 
-  final CategoryModel category;
   final List<Product> products;
 
   @override
@@ -24,7 +22,6 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: Text(widget.category.name),
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

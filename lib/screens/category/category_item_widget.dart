@@ -49,7 +49,6 @@ class CategoryItemWidget extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CategoryPage(
-                    category: category,
                     products: categoryProductsList,
                   ),
                 ),
