@@ -31,8 +31,27 @@ class _SplashPageState extends State<SplashPage> {
       }
 
       if (isConnect) {
-        final result = await InternetAddress.lookup('www.mehdidehghani.ir');
-        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        List<String> sitesToCheck = [
+          'www.varzesh3.ir',
+          'www.digikala.com',
+          'www.torob.com'
+        ];
+
+        bool isSiteReachable = false;
+
+        for (String site in sitesToCheck) {
+          try {
+            final result = await InternetAddress.lookup(site);
+            if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+              isSiteReachable = true;
+              break;
+            }
+          } catch (e) {
+            continue;
+          }
+        }
+
+        if (isSiteReachable) {
           final value = await getAllCategories();
           if (value.status == 1) {
             var data = value.data;
