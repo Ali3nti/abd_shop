@@ -18,15 +18,15 @@ class _ProviderWidgetState extends State<ProviderWidget2> {
     return Center(
       child: _isExpanded
           ? Container(
-              width: 90,
-              height: 50,
+              width: 85,
+              height: 40,
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 children: [
-                  const SizedBox(width: 5),
+                  const SizedBox(width: 3),
                   InkWell(
                     onTap: () {
                       context.read<CartUpdater>().incrementNumber();
