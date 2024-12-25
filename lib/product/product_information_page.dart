@@ -25,7 +25,10 @@ class _ProductInformationState extends State<ProductInformation> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: const Text("اطلاعات محصول", style: kHeaderTextStyle),
+        title: const Text(
+          "اطلاعات محصول",
+          style: kHeaderTextStyle,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -34,7 +37,9 @@ class _ProductInformationState extends State<ProductInformation> {
               color: Colors.white,
               width: double.infinity,
               height: 200,
-              child: Image.network(baseUrl + widget.product.image),
+              child: Image.network(
+                baseUrl + widget.product.image,
+              ),
             ),
             Container(
               padding: const EdgeInsets.only(top: 10, right: 20),
@@ -53,7 +58,9 @@ class _ProductInformationState extends State<ProductInformation> {
               height: 100,
               child: Text(
                 widget.product.description,
-                style: TextStyle(color: Colors.blue),
+                style: const TextStyle(
+                  color: Colors.blue,
+                ),
               ),
             ),
             // Container(
@@ -239,9 +246,13 @@ class _ProductInformationState extends State<ProductInformation> {
                         color: kPrimaryColor,
                       ),
                       SizedBox(width: 10),
-                      Text("اسم فروشگاه"),
+                      Text(
+                        "اسم فروشگاه",
+                      ),
                       SizedBox(width: 20),
-                      Text("منتخب"),
+                      Text(
+                        "منتخب",
+                      ),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -249,18 +260,26 @@ class _ProductInformationState extends State<ProductInformation> {
                     padding: const EdgeInsets.only(right: 35),
                     child: const Row(
                       children: [
-                        Text("عملکرد"),
+                        Text(
+                          "عملکرد",
+                        ),
                         SizedBox(width: 20),
-                        Text("عالی"),
+                        Text(
+                          "عالی",
+                        ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 10),
                   const Row(
                     children: [
-                      Icon(Icons.safety_check_outlined),
+                      Icon(
+                        Icons.safety_check_outlined,
+                      ),
                       SizedBox(width: 10),
-                      Text("گارانتی اصالت و سلامت فیزیکی"),
+                      Text(
+                        "گارانتی اصالت و سلامت فیزیکی",
+                      ),
                     ],
                   ),
                 ],
@@ -278,7 +297,9 @@ class _ProductInformationState extends State<ProductInformation> {
                     color: kPrimaryColor,
                   ),
                   SizedBox(width: 10),
-                  Text("ارسال آباده شاپ"),
+                  Text(
+                    "ارسال آباده شاپ",
+                  ),
                 ],
               ),
             ),
@@ -289,9 +310,14 @@ class _ProductInformationState extends State<ProductInformation> {
               height: 50,
               child: Row(
                 children: [
-                  Icon(Icons.stars, color: kPrimaryColor),
-                  SizedBox(width: 10),
-                  Text(widget.product.rating.toString()),
+                  const Icon(
+                    Icons.stars,
+                    color: kPrimaryColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    widget.product.rating.toString(),
+                  ),
                 ],
               ),
             ),
@@ -311,31 +337,40 @@ class _ProductInformationState extends State<ProductInformation> {
             // ),
             const SizedBox(height: 5),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 10),
+              padding: const EdgeInsets.all(10),
               color: Colors.grey.shade50,
               height: 100,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Row(
                     children: [
-                      Icon(Icons.check_box, color: kPrimaryColor),
+                      Icon(
+                        Icons.check_box,
+                        color: kPrimaryColor,
+                      ),
                       SizedBox(width: 10),
-                      Text("تعداد باقیمانده در انبار"),
+                      Text(
+                        "تعداد باقیمانده در انبار",
+                      ),
                     ],
                   ),
-                  const SizedBox(height: 15),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Padding(
-                         padding: const EdgeInsets.only(left: 170),
-                         child: ProviderWidget2(),
-                       ),
-                      Text(
-                        formatter.format(finalPrice),
+                      const ProviderWidget2(),
+                      Row(
+                        children: [
+                          Text(
+                            formatter.format(finalPrice),
+                          ),
+                          Image.asset(
+                            "assets/images/toman.png",
+                            width: 25,
+                            height: 20,
+                          ),
+                        ],
                       ),
-                      Image.asset("assets/images/toman.png",
-                          width: 25, height: 20),
                     ],
                   ),
                 ],
