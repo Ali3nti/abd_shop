@@ -4,6 +4,8 @@ import 'package:abd_shop/screens/delivery/delivery_page.dart';
 import 'package:abd_shop/screens/delivery/driver_page.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/image_slider.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
+import 'package:abd_shop/screens/user/user_registration_page.dart';
+import 'package:abd_shop/screens/verify/phone_Verify_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -42,12 +44,19 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       },
     );
   }
-
+  sliderPage1(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => UserRegistrationPage(),
+      ),
+    );
+  }
   sliderPage2(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => InvitePage(),
+        builder: (context) => PhoneVerificationPage(),
       ),
     );
   }
@@ -78,7 +87,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
                     "https://dkstatics-public.digikala.com/jet-public/1f05b854f620f190fec7189f31ef89487d5364cf_1730190500.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
               ),
               ImageSlider(
-                onTap: () {},
+                onTap: () {sliderPage1(context);},
                 imageUrl:
                     "https://dkstatics-public.digikala.com/jet-public/ff7c6541fd471b0de113e2bb955e8bfc88d262b6_1719908556.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
               ),
