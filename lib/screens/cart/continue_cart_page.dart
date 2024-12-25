@@ -209,11 +209,16 @@ class _AllPageState extends State<ContinueCartPage> {
                 children: [
                   Text(
                     "مبلغ قابل پرداخت",
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
                   Text(
                     "151,600 تومان",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
