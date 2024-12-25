@@ -20,26 +20,21 @@ class _OrdersPageState extends State<OrdersPage> {
     order.userId = 1;
     order.totalPrice = 20000.0;
     order.orderDate = DateTime.now().subtract(Duration(days: index));
-
     order.products = List.generate(3, (productIndex) {
       Product product = Product();
       product.image = "assets/images/p${productIndex + 1}.png";
       return product;
     });
-
     order.storeName = "دیلی مارکت آباده";
     return order;
   });
-
   String formatPersianDate(DateTime date) {
     final gregorianDate = Gregorian(date.year, date.month, date.day);
     final jalaliDate = Jalali.fromGregorian(gregorianDate);
-
     final formattedDate =
         '${jalaliDate.day} / ${jalaliDate.month} / ${jalaliDate.year}';
     final formattedDay = DateFormat('EEEE', 'fa_IR').format(date);
     final formattedTime = DateFormat('HH:mm').format(date);
-
     return '$formattedDay $formattedDate _ $formattedTime';
   }
 
@@ -259,7 +254,6 @@ class _OrdersPageState extends State<OrdersPage> {
   }
 }
 
-
 // import 'package:abd_shop/screens/home/base_page.dart';
 // import 'package:flutter/material.dart';
 //
@@ -328,5 +322,3 @@ class _OrdersPageState extends State<OrdersPage> {
 //     ),);
 //   }
 // }
-
-
