@@ -29,7 +29,7 @@ class _CategoryPageState extends State<CategoryPage> {
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.7,
+          childAspectRatio: 0.6,
         ),
         itemCount: widget.products.length,
         itemBuilder: (context, index) {
