@@ -21,7 +21,7 @@ class _DriverPageState extends State<DriverPage> {
               padding: const EdgeInsets.only(top: 60, right: 30),
               child: Row(
                 children: [
-                  CircleAvatar(),
+                  Image.asset("assets/images/212.png",width: 65,),
                   SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
