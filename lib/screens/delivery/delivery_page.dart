@@ -17,7 +17,7 @@ class _DeliveryDriverPageState extends State<DeliveryDriverPage> {
           children: [
             Image.asset(
               "assets/images/delivery.png",
-              width: 300,
+              width: 200,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 280),
