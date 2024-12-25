@@ -51,12 +51,24 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                       const SizedBox(height: 10),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AllPage(),
-                            ),
-                          );
+                          List<Product> categoryProductsList = [];
+                          getProducts().then((value) {
+                            DataResponse response = value;
+                            if (response.status == 1) {
+                              response.data.forEach((value) {
+                                categoryProductsList.add(Product.fromJson(value));
+                              });
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CategoryPage(
+                                    products: categoryProductsList,
+                                  ),
+                                ),
+                              );
+                            }
+                          });
                         },
                         child: Container(
                           padding: const EdgeInsets.only(right: 60),
