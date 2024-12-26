@@ -123,7 +123,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'تخفیف'),
-                  onSaved: (value) => newProduct.discount = double.tryParse(value ?? '') ?? 0.0,
+                  onSaved: (value) => newProduct.discount = int.tryParse(value ?? '') ?? 0,
                   validator: (value) => value!.isEmpty ? 'لطفا تخفیف محصول را وارد کنید' : null,
                 ),
                 TextFormField(
