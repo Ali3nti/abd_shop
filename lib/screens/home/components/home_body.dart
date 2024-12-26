@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
 
@@ -30,7 +31,7 @@ class _HomeBodyState extends State<HomeBody> {
       color: Colors.white,
       child: RefreshIndicator(
         onRefresh: _refreshData,
-        child: const SingleChildScrollView(
+        child:  SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
@@ -39,7 +40,6 @@ class _HomeBodyState extends State<HomeBody> {
               AppBarOriginal(),
               CurrentUserAddress(),
               HomeImagesSlider(),
-              CategoryListWidget(),
               AmazingWidget(),
               SizedBox(height: 20),
               ProductCardListWidget(
@@ -48,10 +48,22 @@ class _HomeBodyState extends State<HomeBody> {
               ProductCardListWidget(
                 categoryId: 2,
               ),
+              Row(
+                children: [
+                  SizedBox(width: 10,),
+                  Text("فروشگاه های محبوب",style: kHeaderTextStyle,),
+                  SizedBox(width: 10,),
+                  Image.asset("assets/images/shop.png",width: 20,color: Colors.deepOrange,),
+
+                ],
+              ),
+              SizedBox(height: 10,),
               MarketListWidget(),
               SizedBox(
                 height: 40,
               ),
+              CategoryListWidget(),
+
               SizedBox(
                 height: 100,
               ),

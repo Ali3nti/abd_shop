@@ -55,7 +55,6 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            color: Colors.deepOrange,
             width: double.infinity,
             height: 310,
             padding: EdgeInsets.all(8),
@@ -65,14 +64,6 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: productWidgetList,
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset(
-                    "assets/images/amazing2.png",color: Colors.white,
-                    fit: BoxFit.cover,
                   ),
                 ),
               ],
