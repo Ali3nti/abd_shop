@@ -128,8 +128,13 @@ class _DeliveryDriverPageState extends State<DeliveryDriverPage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  CircleAvatar(
-                    radius: 30,
+                  ClipOval(
+                    child: Image.asset(
+                      "assets/images/Number=17.png",
+                      width: 62,
+                      height: 62,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SizedBox(width: 10),
                   Column(

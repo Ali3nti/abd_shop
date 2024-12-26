@@ -14,20 +14,27 @@ class _DriverPageState extends State<DriverPage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      child: Scaffold(backgroundColor: Colors.white,
+      child: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 60, right: 30),
               child: Row(
                 children: [
-                  Image.asset("assets/images/212.png",width: 65,),
+                  ClipOval(
+                    child: Image.asset(
+                      "assets/images/212.png",
+                      width: 62,
+                      height: 62,
+                    ),
+                  ),
                   SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "سلام مهدی!",
+                        "سلام امیر!",
                         style: kHeaderTextStyle,
                       ),
                       Text(
@@ -46,7 +53,9 @@ class _DriverPageState extends State<DriverPage> {
               ),
             ),
             SizedBox(height: 20),
-            TabBar(indicatorColor: Colors.teal,labelColor: Colors.teal,
+            TabBar(
+              indicatorColor: Colors.teal,
+              labelColor: Colors.teal,
               tabs: [
                 Tab(
                   text: 'تاریخچه سفارشات',
@@ -62,8 +71,10 @@ class _DriverPageState extends State<DriverPage> {
                     padding: const EdgeInsets.all(14),
                     child: Column(
                       children: [
-                        InkWell(onTap: (){},
-                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,9 +95,13 @@ class _DriverPageState extends State<DriverPage> {
                             ],
                           ),
                         ),
-                        Divider(height: 20,),
-                        InkWell(onTap: (){},
-                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Divider(
+                          height: 20,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,9 +122,13 @@ class _DriverPageState extends State<DriverPage> {
                             ],
                           ),
                         ),
-                        Divider(height: 20,),
-                        InkWell(onTap: (){},
-                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Divider(
+                          height: 20,
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +140,8 @@ class _DriverPageState extends State<DriverPage> {
                                   ),
                                 ],
                               ),
-                              InkWell(onTap: (){},
+                              InkWell(
+                                onTap: () {},
                                 child: Row(
                                   children: [
                                     Text("3 آیتم"),
@@ -132,7 +152,6 @@ class _DriverPageState extends State<DriverPage> {
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -142,7 +161,8 @@ class _DriverPageState extends State<DriverPage> {
                     children: [
                       Text(
                         "موجودی کیف پول:",
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -173,7 +193,8 @@ class _DriverPageState extends State<DriverPage> {
                       SizedBox(height: 20),
                       Text(
                         "تاریخچه تراکنش‌ها:",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 10),
                       Expanded(
