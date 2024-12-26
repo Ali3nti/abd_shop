@@ -135,8 +135,6 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                                 width: 20,
                                 'assets/images/toman.png',
                               ),
-                              Image.asset("assets/images/00.png",color: Colors.red,),
-
                             ],
                           ),
                         ],

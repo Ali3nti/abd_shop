@@ -62,73 +62,75 @@ class _DriverPageState extends State<DriverPage> {
                     padding: const EdgeInsets.all(14),
                     child: Column(
                       children: [
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("آیدی سفارش : #212546"),
-                                Text(
-                                  "20/8/1403",
-                                  style: TextStyle(color: kRedColor),
-                                ),
-                              ],
-                            ),
-                            InkWell(onTap: (){},
-                              child: Row(
+                        InkWell(onTap: (){},
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("آیدی سفارش : #212546"),
+                                  Text(
+                                    "20/8/1403",
+                                    style: TextStyle(color: kRedColor),
+                                  ),
+                                ],
+                              ),
+                              Row(
                                 children: [
                                   Text("3 آیتم"),
                                   Icon(Icons.arrow_forward_ios),
                                 ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Divider(height: 20,),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("آیدی سفارش : #212546"),
-                                Text(
-                                  "20/8/1403",
-                                  style: TextStyle(color: kRedColor),
-                                ),
-                              ],
-                            ),
-                            InkWell(onTap: (){},
-                              child: Row(
+                        InkWell(onTap: (){},
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("آیدی سفارش : #212546"),
+                                  Text(
+                                    "20/8/1403",
+                                    style: TextStyle(color: kRedColor),
+                                  ),
+                                ],
+                              ),
+                              Row(
                                 children: [
                                   Text("3 آیتم"),
                                   Icon(Icons.arrow_forward_ios),
                                 ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Divider(height: 20,),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("آیدی سفارش : #212546"),
-                                Text(
-                                  "20/8/1403",
-                                  style: TextStyle(color: kRedColor),
-                                ),
-                              ],
-                            ),
-                            InkWell(onTap: (){},
-                              child: Row(
+                        InkWell(onTap: (){},
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("3 آیتم"),
-                                  Icon(Icons.arrow_forward_ios),
+                                  Text("آیدی سفارش : #212546"),
+                                  Text(
+                                    "20/8/1403",
+                                    style: TextStyle(color: kRedColor),
+                                  ),
                                 ],
                               ),
-                            ),
-                          ],
+                              InkWell(onTap: (){},
+                                child: Row(
+                                  children: [
+                                    Text("3 آیتم"),
+                                    Icon(Icons.arrow_forward_ios),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
 
                       ],
