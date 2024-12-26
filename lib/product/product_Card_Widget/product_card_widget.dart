@@ -10,6 +10,7 @@ class ProductCard extends StatefulWidget {
     super.key,
     required this.product,
   });
+
   final Product product;
 
   @override
@@ -40,12 +41,43 @@ class _ProductCardState extends State<ProductCard> {
             );
           },
           child: Card(
-            shadowColor: Colors.red,
             color: Colors.white,
             elevation: 10,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 85),
+                  child: widget.product.discount > 0
+                      ? Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade700,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          widget.product.discount.toString(),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w900),
+                        ),
+                        Image.asset(
+                          "assets/images/01.png",
+                          color: Colors.white,
+                          height: 15,
+                        ),
+                      ],
+                    ),
+                  )
+                      : SizedBox.shrink(), // اگر تخفیف صفر باشد، هیچ چیزی نمایش داده نمی‌شود
+                ),
                 Stack(
                   children: [
                     Padding(
@@ -53,42 +85,10 @@ class _ProductCardState extends State<ProductCard> {
                       child: Image.network(baseUrl + widget.product.image,
                           height: 80, width: 100),
                     ),
-                    Positioned.fill(
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(
-                            color: Colors.deepOrange,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                            ),
-                          ),
-                          child: SizedBox(
-                            width: 35,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  widget.product.discount.toString(),
-                                  style: const TextStyle(
-                                    fontSize: 11,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const Text(
-                                  ("%"),
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 50, top: 80),
+                      child: AddToCartWidget(
+                        product: widget.product,
                       ),
                     ),
                   ],
@@ -113,7 +113,9 @@ class _ProductCardState extends State<ProductCard> {
                           child: Row(
                             children: [
                               Text(
-                                formatter.format(finalPrice),
+                                widget.product.discount > 0
+                                    ? formatter.format(finalPrice)
+                                    : formatter.format(widget.product.price),
                                 style: const TextStyle(
                                   fontSize: 16,
                                   color: Colors.red,
@@ -127,39 +129,23 @@ class _ProductCardState extends State<ProductCard> {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 80),
-                          child: Text(
-                            formatter.format(widget.product.price),
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.lineThrough,
-                              decorationColor: Colors.black54,
-                              decorationThickness: 2,
+                        if (widget.product.discount > 0) ...[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 80),
+                            child: Text(
+                              formatter.format(widget.product.price),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.lineThrough,
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Text(
-                        '${widget.product.stockQuantity} (${widget.product.stockQuantity} عدد)',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 70, top: 8),
-                  child: AddToCartWidget(
-                    product: widget.product,
-                  ),
                 ),
               ],
             ),

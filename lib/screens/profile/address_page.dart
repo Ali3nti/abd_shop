@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:geocoding/geocoding.dart';
 
 class AddressPage extends StatefulWidget {
   @override
@@ -9,19 +6,22 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
-  LatLng? selectedLocation;
-  String locationName = "موقعیت را انتخاب کنید";
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _postalCodeController = TextEditingController();
+  List<String> _addresses = [];
 
-  Future<void> _getLocationName(LatLng point) async {
-    try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(point.latitude, point.longitude);
-      if (placemarks.isNotEmpty) {
-        setState(() {
-          locationName = placemarks[0].name ?? "نامشخص";
-        });
-      }
-    } catch (e) {
-      print("خطا در دریافت نام مکان: $e");
+  void _addAddress() {
+    final String address =
+        'سایر اطلاعات لازم: ${_cityController.text}, خیابان: ${_streetController.text}, کد پستی: ${_postalCodeController.text}';
+
+    if (address.isNotEmpty) {
+      setState(() {
+        _addresses.add(address);
+      });
+      _cityController.clear();
+      _streetController.clear();
+      _postalCodeController.clear();
     }
   }
 
@@ -29,52 +29,71 @@ class _AddressPageState extends State<AddressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("انتخاب لوکیشن"),
+        title: const Text('وارد کردن آدرس',style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.deepOrange,
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 300,
-              child: FlutterMap(
-                options: MapOptions(
-                  initialCenter: LatLng(31.1611, 52.6488),
-                  minZoom: 10.0,
-                  onTap: (tapPosition, point) {
-                    setState(() {
-                      selectedLocation = point;
-                      _getLocationName(point);
-                    });
-                  },
-                ),
-                children: [
-                  TileLayer(
-                    urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                    subdomains: ['a', 'b', 'c'],
-                  ),
-                  MarkerLayer(
-                    markers: [
-                      if (selectedLocation != null)
-                        Marker(
-                          point: selectedLocation!,
-                          child: Icon(Icons.location_on, color: Colors.blue, size: 40),
-                        ),
-                    ],
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            _buildTextField(_streetController, 'خیابان', Icons.streetview),
+            const SizedBox(height: 10),
+            _buildTextField(_postalCodeController, 'کد پستی', Icons.pin_drop, keyboardType: TextInputType.number),
+            const SizedBox(height: 10),
+            _buildTextField(_cityController, 'سایر اطلاعات لازم', Icons.location_city),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: _addAddress,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepOrange,
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              child: const Text('تأیید',style: TextStyle(color: Colors.white),),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _addresses.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    elevation: 3,
+                    child: ListTile(
+                      title: Text(
+                        _addresses[index],
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              locationName,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildTextField(TextEditingController controller, String label, IconData icon, {TextInputType? keyboardType}) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: const TextStyle(color: Colors.deepOrange),
+        prefixIcon: Icon(icon, color: Colors.deepOrange),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.deepOrange),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.deepOrange, width: 2),
+        ),
+      ),
+      keyboardType: keyboardType,
     );
   }
 }

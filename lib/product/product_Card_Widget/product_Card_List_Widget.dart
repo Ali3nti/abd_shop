@@ -23,7 +23,7 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
   initMarkets() async {
     try {
       DataResponse dataResponse =
-          await getProductsOfCategory(widget.categoryId);
+      await getProductsOfCategory(widget.categoryId);
       if (dataResponse.status == 1) {
         setState(() {
           productWidgetList = dataResponse.data.map<ProductCard>((item) {
@@ -55,12 +55,27 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            color: Colors.deepOrange,
             width: double.infinity,
             height: 310,
             padding: EdgeInsets.all(8),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: productWidgetList,
+            child: Row(
+              children: [
+                Expanded(
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: productWidgetList,
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  child: Image.asset(
+                    "assets/images/amazing2.png",color: Colors.white,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

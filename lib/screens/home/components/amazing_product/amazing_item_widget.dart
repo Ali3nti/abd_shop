@@ -13,7 +13,6 @@ class AmazingItemWidget extends StatefulWidget {
   });
 
   Product product;
-  // void Function()? onPressed;
 
   @override
   State<AmazingItemWidget> createState() => _AmazingItemWidgetState();
@@ -54,37 +53,40 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
             padding: const EdgeInsets.only(top: 0),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 130),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 2,
-                      horizontal: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.red.shade700,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: SizedBox(
-                      width: 60,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            widget.product.discount.toString(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          Image.asset("assets/images/01.png",color: Colors.white,height: 20,),
-
-                        ],
+                if (widget.product.discount > 0) // شرط برای نمایش تخفیف
+                  Padding(
+                    padding: const EdgeInsets.only(left: 130),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade700,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: SizedBox(
+                        width: 60,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              widget.product.discount.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                            Image.asset(
+                              "assets/images/01.png",
+                              color: Colors.white,
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
@@ -100,7 +102,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                       width: 50,
                       height: 30,
                       child: AddToCartWidget(
-                        product: Product(),
+                        product: widget.product,
                       ),
                     ),
                   ],
@@ -135,21 +137,20 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                                 width: 20,
                                 'assets/images/toman.png',
                               ),
-                              Image.asset("assets/images/00.png",color: Colors.red,),
-
                             ],
                           ),
                         ],
                       ),
                       const SizedBox(height: 5),
-                      Text(
-                        formatter.format(widget.product.price),
-                        style: const TextStyle(
-                          decoration: TextDecoration.lineThrough,
-                          fontSize: 18,
-                          color: Colors.grey,
+                      if (widget.product.discount > 0) // شرط برای نمایش قیمت اصلی
+                        Text(
+                          formatter.format(widget.product.price),
+                          style: const TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            fontSize: 18,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ),

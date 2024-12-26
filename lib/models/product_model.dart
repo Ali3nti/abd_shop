@@ -17,7 +17,7 @@ class Product {
   double rating = 0;
   String comments = '';
   int reviewCount = 0;
-  double discount = 0; //percentage for selling the product in offers
+  int discount = 0; //percentage for selling the product in offers
   DateTime? offerStart;
   DateTime? offerEnd;
   String warranty = '';
@@ -44,7 +44,7 @@ class Product {
     color = json['color'] ?? '';
     rating = (json['rating'] as num?)?.toDouble() ?? 0;
     reviewCount = json['review_count'] ?? 0;
-    discount = (json['discount'] as num?)?.toDouble() ?? 0;
+    discount = (json['discount'] as num?)?.toInt() ?? 0;
     // offerStart = json['offer_start'] != null
     //     ? DateTime.parse(json['offerStart'])
     //     : DateTime.now();
