@@ -27,8 +27,8 @@ class _ProductCardState extends State<ProductCard> {
 
     return Container(
       width: 150,
-      height: 260,
-      margin: EdgeInsets.fromLTRB(10, 18, 10, 28),
+      height: 240,
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
       child: Material(
         child: InkWell(
           onTap: () {
@@ -40,7 +40,8 @@ class _ProductCardState extends State<ProductCard> {
               ),
             );
           },
-          child: Card(
+          child:
+          Card(
             color: Colors.white,
             elevation: 10,
             child: Column(
