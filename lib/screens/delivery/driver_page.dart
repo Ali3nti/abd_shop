@@ -22,11 +22,21 @@ class _DriverPageState extends State<DriverPage> {
               padding: const EdgeInsets.only(top: 60, right: 30),
               child: Row(
                 children: [
-                  ClipOval(
-                    child: Image.asset(
-                      "assets/images/212.png",
-                      width: 62,
-                      height: 62,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DriverProfilePage(),
+                        ),
+                      );
+                    },
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/212.png",
+                        width: 62,
+                        height: 62,
+                      ),
                     ),
                   ),
                   SizedBox(width: 10),
@@ -46,7 +56,14 @@ class _DriverPageState extends State<DriverPage> {
                   ),
                   SizedBox(width: 100),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationsPage(),
+                        ),
+                      );
+                    },
                     child: Image.asset("assets/images/bing.png"),
                   ),
                 ],
@@ -251,6 +268,117 @@ class _DriverPageState extends State<DriverPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class NotificationsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('اعلان‌های راننده'),
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: Icon(Icons.shopping_cart),
+            title: Text('سفارش جدید'),
+            subtitle: Text('یک سفارش جدید در انتظار تحویل است.'),
+          ),
+          ListTile(
+            leading: Icon(Icons.location_on),
+            title: Text('مسیر جدید'),
+            subtitle: Text('مسیر جدیدی برای تحویل سفارش در نظر گرفته شده است.'),
+          ),
+          ListTile(
+            leading: Icon(Icons.timer),
+            title: Text('تاخیر در تحویل'),
+            subtitle:
+                Text('به دلیل ترافیک، تحویل سفارش با تاخیر همراه خواهد بود.'),
+          ),
+          ListTile(
+            leading: Icon(Icons.check_circle_outline),
+            title: Text('سفارش تحویل داده شد'),
+            subtitle: Text('سفارش با موفقیت به مشتری تحویل داده شد.'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DriverProfilePage extends StatefulWidget {
+  @override
+  _DriverProfilePageState createState() => _DriverProfilePageState();
+}
+
+class _DriverProfilePageState extends State<DriverProfilePage> {
+  final _nameController = TextEditingController(text: 'علی احمدی');
+  final _phoneController = TextEditingController(text: '0912567893');
+  final _emailController =
+      TextEditingController(text: 'ali.ahmadi@example.com');
+  final _licenseController = TextEditingController(text: 'XYZ456');
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('پروفایل راننده'),
+        backgroundColor: Colors.teal,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _buildTextField(_nameController, 'نام', Icons.person),
+              SizedBox(height: 16.0),
+              _buildTextField(_phoneController, 'شماره تلفن', Icons.phone),
+              SizedBox(height: 16.0),
+              _buildTextField(_emailController, 'ایمیل', Icons.email),
+              SizedBox(height: 16.0),
+              _buildTextField(
+                  _licenseController, 'شماره گواهینامه', Icons.card_membership),
+              SizedBox(height: 24.0),
+              ElevatedButton(
+                onPressed: () {
+                  // منطق ذخیره تغییرات
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                  textStyle: TextStyle(fontSize: 18),
+                ),
+                child: Text(
+                  'ذخیره تغییرات',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(
+      TextEditingController controller, String label, IconData icon) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(icon, color: Colors.teal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.teal),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.teal),
         ),
       ),
     );
