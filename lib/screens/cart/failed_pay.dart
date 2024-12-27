@@ -1,14 +1,14 @@
 import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
 
-class failedPaymentPage extends StatefulWidget {
-  const failedPaymentPage({super.key});
+class FailedPaymentPage extends StatefulWidget {
+  const FailedPaymentPage({super.key});
 
   @override
-  State<failedPaymentPage> createState() => _failedPaymentPageState();
+  State<FailedPaymentPage> createState() => _FailedPaymentPageState();
 }
 
-class _failedPaymentPageState extends State<failedPaymentPage> {
+class _FailedPaymentPageState extends State<FailedPaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
