@@ -30,15 +30,22 @@ class _AddProductPageState extends State<NewOrderPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                alignment: Alignment.center,
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  "assets/images/p1.png",
+              InkWell(
+                onTap: () {},
+                child: const Row(
+                  children: [
+                   Icon(
+                    Icons.arrow_back_ios_new,
+                     color:Colors.orangeAccent,
+                    size: 20,
+                  ),
+                    SizedBox(width: 2),
+                    Text("آیتم های سفارش",
+                    style: TextStyle(
+                      color:Colors.orangeAccent,
+                    ),
+                    ),
+                        ],
                 ),
               ),
               Column(

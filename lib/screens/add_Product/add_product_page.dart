@@ -121,13 +121,14 @@ class _AddProductPageState extends State<AddProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       border: Border.all(
-                        color: Colors.deepOrange,
+                        color:Colors.blue,
                         width: 1,
                       ),
                     ),
                     child: const Text(
                       "همه محصولات",
                       style: TextStyle(
+                        color:Colors.blue,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -152,13 +153,14 @@ class _AddProductPageState extends State<AddProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       border: Border.all(
-                        color: Colors.deepOrange,
+                        color:Colors.orangeAccent,
                         width: 1,
                       ),
                     ),
                     child: const Text(
                       "سفارشات جدید",
                       style: TextStyle(
+                        color:Colors.orangeAccent,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -183,13 +185,14 @@ class _AddProductPageState extends State<AddProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       border: Border.all(
-                        color: Colors.deepOrange,
+                        color:Colors.lightGreen,
                         width: 1,
                       ),
                     ),
                     child: const Text(
                       "ارسال شده",
                       style: TextStyle(
+                        color:Colors.lightGreen,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -214,13 +217,14 @@ class _AddProductPageState extends State<AddProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       border: Border.all(
-                        color: Colors.deepOrange,
+                        color:Colors.red,
                         width: 1,
                       ),
                     ),
                     child: const Text(
                       "اتمام موجودی",
                       style: TextStyle(
+                        color:Colors.red,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
