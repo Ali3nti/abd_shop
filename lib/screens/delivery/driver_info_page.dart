@@ -2,14 +2,14 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/delivery/delivery_page.dart';
 import 'package:flutter/material.dart';
 
-class DriverPage extends StatefulWidget {
-  const DriverPage({super.key});
+class DriverInfoPage extends StatefulWidget {
+  const DriverInfoPage({super.key});
 
   @override
-  State<DriverPage> createState() => _DriverPageState();
+  State<DriverInfoPage> createState() => _DriverInfoPageState();
 }
 
-class _DriverPageState extends State<DriverPage> {
+class _DriverInfoPageState extends State<DriverInfoPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

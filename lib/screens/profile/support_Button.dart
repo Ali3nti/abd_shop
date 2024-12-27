@@ -24,8 +24,8 @@ class supportButton extends StatelessWidget {
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.headset_mic_rounded, color: Colors.white),
+        children: [
+         Image.asset("assets/images/call.png",color: Colors.white,),
           SizedBox(width: 10),
           Text("نیاز به پشتیبانی دارم",
               style: TextStyle(color: Colors.white, fontSize: 20)),
