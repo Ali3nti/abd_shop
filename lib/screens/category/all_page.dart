@@ -1,6 +1,7 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
+import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:abd_shop/widget/my_app_bar.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
@@ -204,12 +205,23 @@ class _GridProductWidgetState extends State<GridProductWidget> {
           Stack(
             alignment: Alignment.bottomRight,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 5),
-                child: Image.network(
-                  baseUrl + widget.product.image,
-                  width: 100,
-                  height: 120,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  ProductInformation(product: widget.product),
+                    ),
+                  );
+
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  child: Image.network(
+                    baseUrl + widget.product.image,
+                    width: 100,
+                    height: 120,
+                  ),
                 ),
               ),
               SizedBox(
