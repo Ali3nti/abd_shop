@@ -1,9 +1,10 @@
-import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/widget/camera/images_uploader_container.dart';
-import 'package:flutter/material.dart';
 import 'package:abd_shop/models/product_model.dart';
-import 'package:abd_shop/services/api_helper.dart';
-import 'package:abd_shop/widget/my_snack_bar.dart';
+import 'package:abd_shop/screens/add_Product/components/all_product_page.dart';
+import 'package:abd_shop/screens/add_Product/components/new_order_page.dart';
+import 'package:abd_shop/screens/add_Product/components/out_of_stock_page.dart';
+import 'package:abd_shop/screens/add_Product/components/sent_page.dart';
+import 'package:abd_shop/screens/home/components/app_Bar/app_Bar_Original.dart';
+import 'package:flutter/material.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -13,140 +14,254 @@ class AddProductPage extends StatefulWidget {
 }
 
 class _AddProductPageState extends State<AddProductPage> {
-  final _formKey = GlobalKey<FormState>();
-  Product newProduct = Product();
-  List<dynamic> imagesList = [];
-
-  void _addProduct() async {
-    print("تابع _addProduct فراخوانی شد");
-
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-
-      try {
-        print("در حال ارسال اطلاعات محصول...");
-        DataResponse response = await sendNewProduct(product: newProduct, images: imagesList);
-
-        print("پاسخ سرور: ${response.status}");
-        if (response.status == 1) {
-          print("محصول با موفقیت اضافه شد.");
-        } else {
-          print("خطا در اضافه کردن محصول: ${response.message}");
-        }
-      } catch (e) {
-        print("خطا در ارسال محصول: $e");
-      }
-    } else {
-      print("اعتبارسنجی ناموفق بود.");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: Text('اضافه کردن محصول'),
-        centerTitle: true,
+        backgroundColor: Colors.deepOrange,
+        title: const Text(
+          "اضافه کردن محصول",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            color: Colors.white,
+            height: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'نام محصول'),
-                  initialValue: newProduct.name,
-                  onSaved: (value) => newProduct.name = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا نام محصول را وارد کنید' : null,
+                const Icon(
+                  Icons.notifications_none,
+                  size: 30,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'شناسه دسته بندی(Category ID)'),
-                  onSaved: (value) => newProduct.categoryId = int.tryParse(value ?? '') ?? 0,
-                  validator: (value) => value!.isEmpty ? 'لطفا شناسه دسته بندی را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'قیمت'),
-                  initialValue: newProduct.price.toString(), // تعیین مقدار اولیه
-                  keyboardType: TextInputType.number, // ورودی عددی
-                  onSaved: (value) {
-                    // تبدیل مقدار ورودی به int
-                    newProduct.price = int.tryParse(value ?? '') ?? 0; // مقدار پیش‌فرض 0
-                  },
-                  validator: (value) {
-                    // اعتبارسنجی برای اطمینان از ورود مقدار
-                    if (value!.isEmpty) {
-                      return 'لطفا قیمت را وارد کنید';
-                    } else if (int.tryParse(value) == null) {
-                      return 'لطفا یک عدد صحیح وارد کنید';
-                    }
-                    return null; // اگر اعتبارسنجی موفق بود
-                  },
-                ),
-
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'توضیحات محصول'),
-                  onSaved: (value) => newProduct.description = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا توضیحات محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'مقدار موجودی'),
-                  onSaved: (value) => newProduct.stockQuantity = int.tryParse(value ?? '') ?? 0,
-                  validator: (value) => value!.isEmpty ? 'لطفا مقدار موجودی محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'واحد(unit)'),
-                  onSaved: (value) => newProduct.unit = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا واحد محصول را وارد کنید' : null,
-                ),TextFormField(
-                  decoration: InputDecoration(labelText: 'فعال بودن محصول(بله/خیر)'),
-                  onSaved: (value) =>
-                  newProduct.isActive,
-                  validator: (value) =>
-                  value!.isEmpty ? 'لطفا فعال بودن یا نبودن محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'وزن'),
-                  onSaved: (value) => newProduct.weight = double.tryParse(value ?? '') ?? 0.0,
-                  validator: (value) => value!.isEmpty ? 'لطفا وزن محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'ابعاد'),
-                  onSaved: (value) => newProduct.dimensions = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا ابعاد محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'برند'),
-                  onSaved: (value) => newProduct.brand = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا برند محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'تخفیف'),
-                  onSaved: (value) => newProduct.discount = int.tryParse(value ?? '') ?? 0,
-                  validator: (value) => value!.isEmpty ? 'لطفا تخفیف محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'گارانتی'),
-                  onSaved: (value) => newProduct.warranty = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا گارانتی محصول را وارد کنید' : null,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 300,
-                  child: ImagesUploaderContainer(onChanged: (images) {
-                    print(images.length);
-                    imagesList = images;
-                  }),
-                ),
-                ElevatedButton(
-                  onPressed: _addProduct,
-                  child: Text('اضافه کردن محصول'),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "نام فروشنده",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Image.asset(
+                            "assets/images/p1.png",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
-        ),
+          const SizedBox(height: 5),
+          const AppBarOriginal(),
+          const SizedBox(height: 5),
+          Container(
+            color: Colors.white,
+            height: 50,
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AllProductPage(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(5, 5, 15, 5),
+                    alignment: Alignment.center,
+                    width: 80,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.deepOrange,
+                        width: 1,
+                      ),
+                    ),
+                    child: const Text(
+                      "همه محصولات",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NewOrderPage(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.center,
+                    width: 90,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.deepOrange,
+                        width: 1,
+                      ),
+                    ),
+                    child: const Text(
+                      "سفارشات جدید",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SentPage(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.center,
+                    width: 80,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.deepOrange,
+                        width: 1,
+                      ),
+                    ),
+                    child: const Text(
+                      "ارسال شده",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OutOfStockPage (),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.center,
+                    width: 90,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.deepOrange,
+                        width: 1,
+                      ),
+                    ),
+                    child: const Text(
+                      "اتمام موجودی",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 5),
+          Container(
+            margin: const EdgeInsets.all(2),
+            color: Colors.white,
+            height: 80,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      width: 90,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.green,
+                      ),
+                      child: Text(
+                        "سفارش جدید",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "نام محصول",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "توضیحات محصول",
+                            ),
+                          ],
+                        ),
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.asset(
+                            "assets/images/p1.png",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ]),
+            ),
+          ),
+        ],
       ),
     );
   }
