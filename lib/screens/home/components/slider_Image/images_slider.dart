@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'package:abd_shop/constants.dart';
-import 'package:abd_shop/screens/delivery/delivery_page.dart';
-import 'package:abd_shop/screens/delivery/driver_page.dart';
+import 'package:abd_shop/screens/delivery/driver_info_page.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/image_slider.dart';
 import 'package:abd_shop/screens/orders/order_Tracking_Page.dart';
-import 'package:abd_shop/screens/profile/invite_page.dart';
-import 'package:abd_shop/screens/user/user_registration_page.dart';
+
 import 'package:abd_shop/screens/verify/phone_Verify_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -65,7 +63,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DriverPage(),
+        builder: (context) => DriverInfoPage(),
       ),
     );
   }
