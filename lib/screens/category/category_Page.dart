@@ -1,6 +1,6 @@
 import 'package:abd_shop/constants.dart';
-import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +21,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-      ),
+      appBar: AppBar(),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -39,12 +38,23 @@ class _CategoryPageState extends State<CategoryPage> {
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      child: Image.network(
-                        baseUrl + e.image,
-                        width: 100,
-                        height: 120,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ProductInformation(product: e),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        child: Image.network(
+                          baseUrl + e.image,
+                          width: 100,
+                          height: 120,
+                        ),
                       ),
                     ),
                     SizedBox(
