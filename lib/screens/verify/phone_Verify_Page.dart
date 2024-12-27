@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:lottie/lottie.dart';
+
 class PhoneVerificationPage extends StatefulWidget {
   const PhoneVerificationPage({super.key});
 
@@ -17,16 +19,14 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.white,
       body: Column(
         children: [
           Container(
-            child: Image.asset(
-              "assets/images/login3.png",
-              fit: BoxFit.cover,
-            ),
+            child:
+            Lottie.asset('assets/images/Animation - 1735297671111.json',width: 200,height: 32),
             decoration: BoxDecoration(
-              color: _isCodeSent ?Colors.teal : Colors.deepOrange,
+              color: Colors.white,
               borderRadius: BorderRadiusDirectional.only(
                 bottomEnd: Radius.circular(70),
               ),

@@ -1,5 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccessfulPaymentPage extends StatefulWidget {
   const SuccessfulPaymentPage({super.key});
@@ -20,11 +21,13 @@ class _SuccessfulPaymentPageState extends State<SuccessfulPaymentPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/images/Celebration.png",
-            ),
-            SizedBox(
-              height: 25,
+            Padding(
+              padding: const EdgeInsets.only(),
+              child: Lottie.asset(
+                  repeat: false,
+                  'assets/images/succes.json',
+                  height: 200,
+                  width: 300),
             ),
             Image.asset(
               "assets/images/Succes-pay.png",
