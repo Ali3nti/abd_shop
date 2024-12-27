@@ -1,3 +1,4 @@
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/add_Product/components/all_product_page.dart';
 import 'package:abd_shop/screens/add_Product/components/new_order_page.dart';
 import 'package:abd_shop/screens/add_Product/components/out_of_stock_page.dart';
@@ -112,7 +113,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const NewOrdwePage(),
+                        builder: (context) => const NewOrderPage(),
                       ),
                     );
                   },
@@ -174,7 +175,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OutOfStock(),
+                        builder: (context) => const OutOfStockPage (),
                       ),
                     );
                   },
