@@ -4,6 +4,7 @@ import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/screens/search/search_Page_Home.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class AppBarOriginal extends StatelessWidget {
   const AppBarOriginal({
@@ -26,13 +27,13 @@ class AppBarOriginal extends StatelessWidget {
                   // Handle Product Data
                   ProductsList.add(Product.fromJson(value));
                 });
-      
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => SearchPageHome(
                         products:
-                        ProductsList), // انتقال به صفحه محصولات کتگوری
+                            ProductsList), // انتقال به صفحه محصولات کتگوری
                   ),
                 );
               }
@@ -58,12 +59,10 @@ class AppBarOriginal extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(
-                  Icons.search,
-                  size: 28,
-                  color: Colors.grey.shade600,
+                Lottie.asset(
+                  'assets/images/Animation - 1735296561432.json',height: 35,
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
                 Expanded(
                   child: Row(
                     children: [

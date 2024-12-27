@@ -12,6 +12,7 @@ import 'package:abd_shop/screens/market/markets_list_widget.dart';
 import 'package:abd_shop/screens/search/search_page.dart';
 import 'package:abd_shop/product/product_Card_Widget/product_Card_List_Widget.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -41,7 +42,11 @@ class _HomeBodyState extends State<HomeBody> {
               CurrentUserAddress(),
               HomeImagesSlider(),
               AmazingWidget(),
-              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 240,top: 20),
+                child: Lottie.asset('assets/images/output.json',width: 200,height: 32),
+              ),
+
               ProductCardListWidget(
                 categoryId: 1,
               ),
