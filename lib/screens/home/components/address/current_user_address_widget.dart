@@ -9,7 +9,7 @@ class CurrentUserAddress extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>  AddressPage(),
+        builder: (context) => AddressPage(),
       ),
     );
   }
@@ -21,11 +21,7 @@ class CurrentUserAddress extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(
-            Icons.location_on_outlined,
-            color: kPrimaryColor,
-            size: 35,
-          ),
+          Image.asset("assets/images/location.png"),
           const SizedBox(width: 15),
           // Spacing between icon and text
           const Expanded(

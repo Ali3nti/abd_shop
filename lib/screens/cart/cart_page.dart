@@ -272,6 +272,7 @@ import 'package:abd_shop/global.dart';
 import 'package:abd_shop/screens/cart/continue_cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -295,77 +296,91 @@ class _CartPageState extends State<CartPage> {
         title: const Text('سبد خرید', style: TextStyle(color: Colors.white)),
       ),
       body: cartList.isEmpty
-          ? Center(child: const Text('سبد خرید خالی است!'))
+          ? Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 100),
+                  child: Lottie.asset(repeat: false,
+                      'assets/images/Animation - 1735324794589.json',
+                      height:250,
+                      width: 500),
+                ),
+                Text('سبد خرید خالی است!'),
+              ],
+            )
           : Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: cartList.length,
-              itemBuilder: (context, index) {
-                final cartItem = cartList.values.elementAt(index);
-                double itemTotalPrice =
-                    cartItem.product.price.toDouble() * cartItem.count;
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: cartList.length,
+                    itemBuilder: (context, index) {
+                      final cartItem = cartList.values.elementAt(index);
+                      double itemTotalPrice =
+                          cartItem.product.price.toDouble() * cartItem.count;
 
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(10),
-                    title: Text(
-                      cartItem.product.name,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text('تعداد: ${cartItem.count}'),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          formatter.format(itemTotalPrice),
-                          style: const TextStyle(
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold),
+                      return Card(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.all(10),
+                          title: Text(
+                            cartItem.product.name,
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text('تعداد: ${cartItem.count}'),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                formatter.format(itemTotalPrice),
+                                style: const TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              IconButton(
+                                icon:
+                                    const Icon(Icons.delete, color: Colors.red),
+                                onPressed: () {
+                                  // عمل حذف محصول از سبد خرید
+                                  setState(() {
+                                    cartList.remove(cartItem.product
+                                        .id); // فرض بر این است که id محصول موجود است
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () {
-                            // عمل حذف محصول از سبد خرید
-                            setState(() {
-                              cartList.remove(cartItem.product.id); // فرض بر این است که id محصول موجود است
-                            });
-                          },
-                        ),
-                      ],
+                      );
+                    },
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ContinueCartPage(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.deepOrange,
+                        borderRadius: BorderRadius.circular(12)),
+                    width: double.infinity,
+                    height: 50,
+                    child: const Center(
+                      child: Text(
+                        "پرداخت نهایی",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
                     ),
                   ),
-                );
-              },
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ContinueCartPage(),
                 ),
-              );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.deepOrange,
-                  borderRadius: BorderRadius.circular(12)),
-              width: double.infinity,
-              height: 50,
-              child: const Center(
-                child: Text(
-                  "پرداخت نهایی",
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

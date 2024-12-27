@@ -98,7 +98,7 @@ class _ProductCardState extends State<ProductCard> {
                               height: 80, width: 100),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 50, top: 80),
+                          padding: const EdgeInsets.only(left: 50, top: 50),
                           child: AddToCartWidget(
                             product: widget.product,
                           ),
