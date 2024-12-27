@@ -35,34 +35,43 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProductInformation(
-                product: widget.product,
-              ),
+              builder: (context) =>
+                  ProductInformation(
+                    product: widget.product,
+                  ),
             ),
           );
         },
-        child: Container(
+        child:Container(
           margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
           ),
-          height: 350,
+          height: 320,
           width: 200,
           child: Padding(
             padding: const EdgeInsets.only(top: 0),
             child: Column(
               children: [
-                if (widget.product.discount > 0) // شرط برای نمایش تخفیف
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Image.asset(
+                    "assets/images/amazing5.png",
+                    height: 30,
+                  ),
+                ),
+                if(widget.product.discount == 0)SizedBox(height:28,),
+                if (widget.product.discount > 0)
                   Padding(
-                    padding: const EdgeInsets.only(left: 130),
+                    padding: const EdgeInsets.only(right: 120),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         vertical: 2,
                         horizontal: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.red.shade700,
+                        color: Colors.deepOrange,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: SizedBox(
@@ -70,17 +79,17 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Image.asset(
+                              "assets/images/01.png",
+                              color: Colors.white,
+                              height: 20,
+                            ),
                             Text(
                               widget.product.discount.toString(),
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w900),
-                            ),
-                            Image.asset(
-                              "assets/images/01.png",
-                              color: Colors.white,
-                              height: 20,
                             ),
                           ],
                         ),
@@ -142,7 +151,8 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         ],
                       ),
                       const SizedBox(height: 5),
-                      if (widget.product.discount > 0) // شرط برای نمایش قیمت اصلی
+                      if (widget.product.discount >
+                          0)
                         Text(
                           formatter.format(widget.product.price),
                           style: const TextStyle(

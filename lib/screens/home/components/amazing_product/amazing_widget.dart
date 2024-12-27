@@ -22,7 +22,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
       child: Container(
         margin: const EdgeInsets.only(top: 10),
         width: double.infinity,
-        height: 380,
+        height: 358,
         color: kPrimaryColor,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -71,7 +71,7 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                           });
                         },
                         child: Container(
-                          padding: const EdgeInsets.only(right: 60),
+                          padding: const EdgeInsets.only(right: 72),
                           //height: 30,
                           child: const Row(
                             children: [
