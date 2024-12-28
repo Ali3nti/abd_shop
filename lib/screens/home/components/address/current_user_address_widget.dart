@@ -21,8 +21,11 @@ class CurrentUserAddress extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset("assets/images/location.png"),
-          const SizedBox(width: 15),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Image.asset("assets/images/location.png"),
+          ),
+          const SizedBox(width: 10),
           // Spacing between icon and text
           const Expanded(
             child: Column(
