@@ -17,11 +17,6 @@ class BasePage extends StatefulWidget {
 }
 
 class _BasePageState extends State<BasePage> {
-  PageController controller =
-      PageController(initialPage: 0, viewportFraction: 0.9);
-
-  List<Widget> itemsWrap = [];
-
   int currentIndex = 0;
   final List<Widget> screens = [
     const HomePage(),
@@ -41,9 +36,8 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
+    return WillPopScope(
+      onWillPop: () async {
         if (currentIndex == 0) {
           showDialog(
             context: context,
@@ -65,36 +59,44 @@ class _BasePageState extends State<BasePage> {
               ],
             ),
           );
+          return false;
         } else {
-          currentIndex = 0;
-          setState(() {});
+          setState(() {
+            currentIndex = 0;
+          });
+          return false;
         }
       },
       child: Scaffold(
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          enableFeedback: false,
-          showUnselectedLabels: false,
           selectedItemColor: Colors.deepOrange,
-          // تغییر رنگ به نارنجی
-          unselectedItemColor: Colors.grey,
           type: BottomNavigationBarType.fixed,
-          // نوع fixed
           currentIndex: currentIndex,
           onTap: (index) {
-            setState(
-              () {
-                currentIndex = index; // تغییر ایندکس فعلی
-              },
-            );
+            setState(() {
+              currentIndex = index;
+            });
           },
           items: [
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard_rounded, size: 30), // آیکون جدید
+            BottomNavigationBarItem(
+              icon: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  currentIndex == 0 ? Colors.deepOrange : Colors.grey,
+                  BlendMode.srcIn,
+                ),
+                child: Image.asset("assets/images/home.png", width: 35),
+              ),
               label: "خانه",
             ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.assignment, size: 30), // آیکون جدید
+            BottomNavigationBarItem(
+              icon: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  currentIndex == 1 ? Colors.deepOrange : Colors.grey,
+                  BlendMode.srcIn,
+                ),
+                child: Image.asset("assets/images/order1.png", width: 35),
+              ),
               label: "سفارشات",
             ),
             BottomNavigationBarItem(
@@ -107,9 +109,12 @@ class _BasePageState extends State<BasePage> {
                           ? 10
                           : 0,
                     ),
-                    child: const Icon(
-                      Icons.shopping_bag_outlined,
-                      size: 30,
+                    child: ColorFiltered(
+                      colorFilter: ColorFilter.mode(
+                        currentIndex == 2 ? Colors.deepOrange : Colors.grey,
+                        BlendMode.srcIn,
+                      ),
+                      child: Image.asset("assets/images/cart2.png", width: 35),
                     ),
                   ),
                   if (Provider.of<CartUpdater>(context).counterValue > 0)
@@ -118,7 +123,7 @@ class _BasePageState extends State<BasePage> {
                       margin: const EdgeInsets.only(),
                       decoration: const BoxDecoration(
                         color: kBackgroundColor,
-                       shape: BoxShape.circle,
+                        shape: BoxShape.circle,
                       ),
                       child: Container(
                         width: 25,
@@ -133,8 +138,9 @@ class _BasePageState extends State<BasePage> {
                           Provider.of<CartUpdater>(context)
                               .counterValue
                               .toString(),
-                          style: const TextStyle(fontSize: 12,
-                          color: Colors.white,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -142,14 +148,16 @@ class _BasePageState extends State<BasePage> {
                     ),
                 ],
               ),
-              // آیکون جدید
               label: "سبد خرید",
             ),
-            const BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_circle_sharp,
-                size: 30,
-              ), // آیکون جدید
+            BottomNavigationBarItem(
+              icon: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  currentIndex == 3 ? Colors.deepOrange : Colors.grey,
+                  BlendMode.srcIn,
+                ),
+                child: Image.asset("assets/images/user5.png", width: 35),
+              ),
               label: "پروفایل",
             ),
           ],
