@@ -69,7 +69,7 @@ class _BasePageState extends State<BasePage> {
       },
       child: Scaffold(
         body: screens[currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar: BottomNavigationBar(backgroundColor: Colors.grey.shade50,
           selectedItemColor: Colors.deepOrange,
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
