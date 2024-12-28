@@ -36,8 +36,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     super.dispose();
   }
 
-  LatLng? origin; // مبدا
-  LatLng? destination; // مقصد
+  LatLng? origin;
+  LatLng? destination;
 
   @override
   Widget build(BuildContext context) {
@@ -71,53 +71,66 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 300,
-                child: FlutterMap(
-                  options: MapOptions(
-                    initialCenter: LatLng(31.1611, 52.6488),
-                    //ABADEH LOCATION!!!!!!//
-                    minZoom: 10.0,
-                    onTap: (tapPosition, point) {
-                      setState(() {
-                        if (origin == null) {
-                          origin = point;
-                        } else if (destination == null) {
-                          destination = point;
-                        } else {
-                          origin = point;
-                          destination = null;
-                        }
-                      });
-                    },
-                  ),
-                  children: [
-                    TileLayer(
-                      urlTemplate:
-                          "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                      subdomains: ['a', 'b', 'c'],
-                    ),
-                    MarkerLayer(
-                      markers: [
-                        if (origin != null)
-                          Marker(
-                            point: origin!,
-                            child: Icon(Icons.location_on,
-                                color: Colors.blue, size: 40),
-                          ),
-                        if (destination != null)
-                          Marker(
-                            point: destination!,
-                            child: Icon(Icons.location_on, color: Colors.red),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Container(
+            //     height: 300,
+            //     child: FlutterMap(
+            //       options: MapOptions(
+            //         initialCenter: LatLng(31.1611, 52.6488),
+            //         //ABADEH LOCATION!!!!!!//
+            //         minZoom: 10.0,
+            //         onTap: (tapPosition, point) {
+            //           setState(() {
+            //             if (origin == null) {
+            //               origin = point;
+            //             } else if (destination == null) {
+            //               destination = point;
+            //             } else {
+            //               origin = point;
+            //               destination = null;
+            //             }
+            //           });
+            //         },
+            //       ),
+            //       children: [
+            //         TileLayer(
+            //           urlTemplate:
+            //               "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            //           subdomains: ['a', 'b', 'c'],
+            //         ),
+            //         MarkerLayer(
+            //           markers: [
+            //             if (origin != null)
+            //               Marker(
+            //                 point: origin!,
+            //                 child: Icon(Icons.location_on,
+            //                     color: Colors.blue, size: 40),
+            //               ),
+            //             if (destination != null)
+            //               Marker(
+            //                 point: destination!,
+            //                 child: Icon(Icons.location_on, color: Colors.red),
+            //               ),
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            Center(
+              child: Image.asset("assets/images/order_prepare.png"),
             ),
+            SizedBox(
+              height: 15,
+            ),
+            Center(
+              child: Image.asset("assets/images/16.png"),
+            ),
+            Center(
+              child: Image.asset("assets/images/deliverd.png"),
+            ),
+
             Padding(
               padding: EdgeInsets.only(left: 290),
               child: Padding(
@@ -133,7 +146,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.greenAccent.shade100,
+                  color: Colors.grey.shade200,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -181,60 +194,6 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         ],
                       ),
                       SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "وضعیت:",
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            "آنلاین",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.green),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "سفارش تحویل داده شد",
-                              style: TextStyle(
-                                  color: Colors.green.shade900,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Text("تحویل تا"),
-                                SizedBox(width: 5),
-                                Text(
-                                  timerText,
-                                  style: TextStyle(
-                                      color: Colors.green.shade900,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        width: 380,
-                        child: LinearProgressIndicator(
-                          value: progress < 0 ? 0 : progress,
-                          backgroundColor: Colors.white,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.green),
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -363,7 +322,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               ],
             ),
             SizedBox(height: 10),
-            Divider(thickness: 3,),
+            Divider(
+              thickness: 3,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -485,7 +446,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                 ],
               ),
             ),
-            Divider(thickness: 3,),
+            Divider(
+              thickness: 3,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
