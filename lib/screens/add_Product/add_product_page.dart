@@ -33,7 +33,7 @@ class _AddProductPageState extends State<AddProductPage> {
     order.orderDate = DateTime.now().subtract(Duration(days: index));
     order.products = List.generate(2, (productIndex) {
       Product product = Product();
-      product.id = productIndex + 1; // اضافه کردن شناسه محصول
+      product.id = productIndex + 1;
       product.image = "assets/images/p${productIndex % 3 + 1}.png";
       return product;
     });
@@ -43,8 +43,10 @@ class _AddProductPageState extends State<AddProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    String storeName = orders.isNotEmpty ? orders.first.storeName : "نام فروشگاه";
-    String storeImage = products.isNotEmpty ? products.first.image : "assets/images/p1.png";
+    String storeName =
+        orders.isNotEmpty ? orders.first.storeName : "نام فروشگاه";
+    String storeImage =
+        products.isNotEmpty ? products.first.image : "assets/images/p1.png";
 
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
@@ -52,9 +54,7 @@ class _AddProductPageState extends State<AddProductPage> {
         backgroundColor: Colors.deepOrange,
         title: const Text(
           "اضافه کردن محصول",
-          style: TextStyle(
-            color: Colors.white,
-          ),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(
@@ -66,10 +66,7 @@ class _AddProductPageState extends State<AddProductPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.store,
-                  size: 30,
-                ),
+                const Icon(Icons.store, size: 30),
                 Row(
                   children: [
                     Text(
@@ -103,134 +100,14 @@ class _AddProductPageState extends State<AddProductPage> {
             height: 50,
             child: Row(
               children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AllProductPage(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(5, 5, 15, 5),
-                    alignment: Alignment.center,
-                    width: 80,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      border: Border.all(
-                        color:Colors.blue,
-                        width: 1,
-                      ),
-                    ),
-                    child: const Text(
-                      "همه محصولات",
-                      style: TextStyle(
-                        color:Colors.blue,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NewOrderPage(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.center,
-                    width: 90,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      border: Border.all(
-                        color:Colors.orangeAccent,
-                        width: 1,
-                      ),
-                    ),
-                    child: const Text(
-                      "سفارشات جدید",
-                      style: TextStyle(
-                        color:Colors.orangeAccent,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SentPage(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.center,
-                    width: 80,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      border: Border.all(
-                        color:Colors.lightGreen,
-                        width: 1,
-                      ),
-                    ),
-                    child: const Text(
-                      "ارسال شده",
-                      style: TextStyle(
-                        color:Colors.lightGreen,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const OutOfStockPage(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.center,
-                    width: 90,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      border: Border.all(
-                        color:Colors.red,
-                        width: 1,
-                      ),
-                    ),
-                    child: const Text(
-                      "اتمام موجودی",
-                      style: TextStyle(
-                        color:Colors.red,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
+                _buildNavigationButton(context, "همه محصولات", Colors.blue,
+                    const AllProductPage()),
+                _buildNavigationButton(context, "سفارشات جدید",
+                    Colors.orangeAccent, const NewOrderPage()),
+                _buildNavigationButton(
+                    context, "ارسال شده", Colors.lightGreen, const SentPage()),
+                _buildNavigationButton(context, "اتمام موجودی", Colors.red,
+                    const OutOfStockPage()),
               ],
             ),
           ),
@@ -244,67 +121,9 @@ class _AddProductPageState extends State<AddProductPage> {
                     final product = products[index];
                     final relatedOrders = orders
                         .where((order) =>
-                        order.products!.any((p) => p.id == product.id))
+                            order.products.any((p) => p.id == product.id))
                         .toList();
-                    return Container(
-                      margin: const EdgeInsets.all(2),
-                      color: Colors.white,
-                      height: 80,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              alignment: Alignment.center,
-                              width: 90,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.green,
-                              ),
-                              child: Text(
-                                relatedOrders.isNotEmpty
-                                    ? "سفارش جدید"
-                                    : "بدون سفارش",
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      product.name,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      product.description,
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.asset(
-                                    product.image,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
+                    return _buildProductCard(product, relatedOrders);
                   },
                 ),
                 Positioned(
@@ -315,26 +134,20 @@ class _AddProductPageState extends State<AddProductPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                          const AddProductToListPage(),
+                          builder: (context) => const AddProductToListPage(),
                         ),
                       );
                     },
                     child: Container(
                       width: 50,
                       height: 50,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
+                      decoration: BoxDecoration(
                         color: Colors.white,
+                        borderRadius: BorderRadius.circular(25),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "+",
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 24,
-                          ),
-                        ),
+                      child: const Icon(
+                        Icons.add,
+                        color: kPrimaryColor,
                       ),
                     ),
                   ),
@@ -343,6 +156,100 @@ class _AddProductPageState extends State<AddProductPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildNavigationButton(
+      BuildContext context, String title, Color color, Widget page) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        alignment: Alignment.center,
+        width: 90,
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          border: Border.all(
+            color: color,
+            width: 1,
+          ),
+        ),
+        child: Text(
+          title,
+          style: TextStyle(
+            color: color,
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProductCard(Product product, List<Order> relatedOrders) {
+    return Container(
+      margin: const EdgeInsets.all(2),
+      color: Colors.white,
+      height: 80,
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              width: 90,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.green,
+              ),
+              child: Text(
+                relatedOrders.isNotEmpty ? "سفارش جدید" : "بدون سفارش",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      product.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      product.description,
+                    ),
+                  ],
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.asset(
+                    product.image,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
