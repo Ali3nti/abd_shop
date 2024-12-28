@@ -268,6 +268,7 @@
 //   }
 // }
 
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/screens/cart/continue_cart_page.dart';
 import 'package:flutter/material.dart';
@@ -300,12 +301,26 @@ class _CartPageState extends State<CartPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 100),
-                  child: Lottie.asset(repeat: false,
+                  child: Lottie.asset(
+                      repeat: false,
                       'assets/images/Animation - 1735324794589.json',
-                      height:250,
+                      height: 250,
                       width: 500),
                 ),
                 Text('سبد خرید خالی است!'),
+                SizedBox(height: 70,),
+
+    InkWell(onTap: (){},
+                  child: Stack(
+                    children: [
+                      Image.asset("assets/images/55.png"),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 110,top: 19),
+                        child: Text("می خواهم خرید کنم",style: kHeaderTextStyle,),
+                      )
+                    ],
+                  ),
+                )
               ],
             )
           : Column(
