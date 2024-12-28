@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/add_Product/components/add_product_to_list_page.dart';
@@ -141,12 +142,12 @@ class _AddProductPageState extends State<AddProductPage> {
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: const Icon(
                         Icons.add,
-                        color: Colors.white,
+                        color: kPrimaryColor,
                       ),
                     ),
                   ),
