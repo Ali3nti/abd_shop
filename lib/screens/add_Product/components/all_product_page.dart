@@ -83,6 +83,7 @@ class _AllProductPageState extends State<AllProductPage> {
                         Text(
                           order.products[0].name,
                           style: const TextStyle(
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -100,7 +101,7 @@ class _AllProductPageState extends State<AllProductPage> {
                   Container(
                     alignment: Alignment.center,
                     width: 90,
-                    height: 40,
+                    height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.green,
@@ -109,6 +110,7 @@ class _AllProductPageState extends State<AllProductPage> {
                       getOrderStatus(order),
                       style: const TextStyle(
                         color: Colors.white,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
