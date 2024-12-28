@@ -22,6 +22,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
   );
   int currentPage = 0;
   Timer? timer;
+
   @override
   void initState() {
     super.initState();
@@ -43,6 +44,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       },
     );
   }
+
   sliderPage1(BuildContext context) {
     Navigator.push(
       context,
@@ -51,6 +53,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       ),
     );
   }
+
   sliderPage2(BuildContext context) {
     Navigator.push(
       context,
@@ -59,6 +62,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       ),
     );
   }
+
   sliderPage3(BuildContext context) {
     Navigator.push(
       context,
@@ -74,43 +78,30 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       alignment: Alignment.bottomLeft,
       children: [
         SizedBox(
-          height: 150,
+          height: 145,
           child: PageView(
             controller: pageController,
             children: [
               ImageSlider(
-                onTap: () {
-                  sliderPage3(context);
-                },
-                imageUrl:
-                    "https://dkstatics-public.digikala.com/jet-public/1f05b854f620f190fec7189f31ef89487d5364cf_1730190500.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
-              ),
+                  onTap: () {},
+                  imageUrl:
+                      "https://dkstatics-public.digikala.com/jet-public/1e77e2ed6449ea7e0325fa939227b888b82f9351_1732346071.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
-                onTap: () {sliderPage1(context);},
-                imageUrl:
-                    "https://dkstatics-public.digikala.com/jet-public/ff7c6541fd471b0de113e2bb955e8bfc88d262b6_1719908556.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
-              ),
+                  onTap: () {},
+                  imageUrl:
+                      "https://dkstatics-public.digikala.com/jet-public/9346504408270c417a32b541ff014afa4acabf66_1735336788.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
-                onTap: () {
-                  sliderPage2(context);
-                },
-                imageUrl:
-                    "https://dkstatics-public.digikala.com/jet-public/d73eff9db87cd3fd72be30f49e67a1640dde615e_1717333163.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
-              ),
+                  onTap: () {},
+                  imageUrl:
+                      "https://dkstatics-public.digikala.com/jet-public/8064f8a09e057f7d2390e70d95f03b6306907312_1734947925.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
-                onTap: () {
-                  sliderPage2(context);
-                },
-                imageUrl:
-                    "https://dkstatics-public.digikala.com/jet-public/287f806c0a801981f5e085734e9d4273bd1d3299_1718721407.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
-              ),
+                  onTap: () {},
+                  imageUrl:
+                      "https://dkstatics-public.digikala.com/jet-public/e497e0d8b5782898d978330280548663404d01df_1735336667.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
-                onTap: () {
-                  sliderPage2(context);
-                },
-                imageUrl:
-                    "https://dkstatics-public.digikala.com/jet-public/b1f8c75e632c39a3e095a7fc5687fba76ac5ee8b_1730190734.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp",
-              ),
+                  onTap: () {},
+                  imageUrl:
+                      "https://dkstatics-public.digikala.com/jet-public/c54133989b3188b319123577465bd727e151fe56_1735336587.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
             ],
           ),
         ),
