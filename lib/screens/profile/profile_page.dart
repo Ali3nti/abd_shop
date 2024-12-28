@@ -154,45 +154,45 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
           const SizedBox(height: 20),
-          Card(
-            color: Colors.white,
-            elevation: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: InkWell(
-                onTap: () {
-                  walletPage(context);
-                },
-                child: Row(
-                  children: [
-                    Image.asset("assets/images/wallet.png",
-                        width: 50, height: 50),
-                    const SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "کیف پول",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        Row(
-                          children: [
-                            const Text(
-                              "10000",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            Image.asset("assets/images/toman.png", height: 15),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: InkWell(
+                  onTap: () {
+                    walletPage(context);
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/wallet.png",
+                          width: 50, height: 50),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "کیف پول",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                "10000",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              Image.asset("assets/images/toman.png", height: 15),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
+              const SizedBox(width: 20),
+              ratingInfoPage(context: context),
+            ],
           ),
-          const SizedBox(height: 20),
-          ratingInfoPage(context: context),
           const SizedBox(height: 20),
           supportButton(context: context),
           const SizedBox(height: 20),
