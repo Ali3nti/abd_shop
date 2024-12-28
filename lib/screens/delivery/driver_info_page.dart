@@ -89,7 +89,8 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                     child: Column(
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
