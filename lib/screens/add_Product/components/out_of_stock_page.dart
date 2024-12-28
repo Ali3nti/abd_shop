@@ -1,3 +1,5 @@
+import 'package:abd_shop/models/order_model.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class OutOfStockPage extends StatefulWidget {
@@ -8,6 +10,19 @@ class OutOfStockPage extends StatefulWidget {
 }
 
 class _AddProductPageState extends State<OutOfStockPage> {
+  List<Order> orders = List.generate(10, (index) {
+    Order order = Order();
+    order.id = index + 1;
+    order.userId = 1;
+    order.products = List.generate(3, (productIndex) {
+      Product product = Product();
+      product.id = productIndex + 1;
+      product.name = 'محصول ${index + 1}-${productIndex + 1}';
+      product.image = "assets/images/p${productIndex % 3 + 1}.png";
+      return product;
+    });
+    return order;
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,46 +36,41 @@ class _AddProductPageState extends State<OutOfStockPage> {
           ),
         ),
       ),
-      body:  Container(
-        margin: const EdgeInsets.all(2),
-        color: Colors.white,
-        height: 80,
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  "assets/images/p1.png",
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView.builder(
+        itemCount: orders.length,
+        itemBuilder: (context, index) {
+          Order order = orders[index];
+          return Container(
+            margin: const EdgeInsets.all(5),
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "نام محصول",
-                    style: TextStyle(
+                    order.products[0].name,
+                    style: const TextStyle(
+                      color: Colors.red,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    "شناسه سفارش",
-                  ),
-                  Text(
-                    "تاریخ سفارش",
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.asset(
+                      order.products[0].image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ],
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+          },
       ),
     );
   }
