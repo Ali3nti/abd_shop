@@ -1,7 +1,8 @@
+import 'package:abd_shop/models/order_model.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:latlong2/latlong.dart';
 
 class OrderTrackingPage extends StatefulWidget {
   const OrderTrackingPage({super.key});
@@ -14,18 +15,43 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
   late Timer timer;
   Duration remainingTime = Duration(hours: 0, minutes: 30);
 
+  Order order = Order()
+    ..id = 1
+    ..userId = 1
+    ..orderDate = DateTime.now()
+    ..storeName = "دیلی مارکت آباده"
+    ..deliveryUserName = "علی رضایی"
+    ..deliveryUserPhone = "0912-345-6789"
+    ..products = [
+      Product()
+        ..id = 1
+        ..image = "assets/images/p1.png",
+      Product()
+        ..id = 2
+        ..image = "assets/images/p2.png"
+    ]
+    ..trackingId = "190-118687-386"
+    ..totalPrice = 105000
+    ..discount = 76000
+    ..itemPrice = 169400
+    ..deliveryCost = 6500
+    ..preparationCost = 6500;
+
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
-      setState(() {
-        if (remainingTime.inSeconds > 0) {
-          remainingTime = remainingTime - Duration(seconds: 1);
-        } else {
-          timer.cancel();
-        }
-      });
-    });
+    timer = Timer.periodic(
+      Duration(seconds: 1),
+      (Timer t) {
+        setState(() {
+          if (remainingTime.inSeconds > 0) {
+            remainingTime = remainingTime - Duration(seconds: 1);
+          } else {
+            timer.cancel();
+          }
+        });
+      },
+    );
   }
 
   @override
@@ -34,15 +60,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     super.dispose();
   }
 
-  LatLng? origin;
-  LatLng? destination;
-
   @override
   Widget build(BuildContext context) {
     String timerText =
         "${remainingTime.inMinutes.remainder(60)}:${(remainingTime.inSeconds.remainder(60)).toString().padLeft(2, '0')}";
-
-    double progress = remainingTime.inSeconds / (30 * 60);
 
     return Scaffold(
       backgroundColor: CupertinoColors.white,
@@ -61,16 +82,20 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
           children: [
             SizedBox(height: 5),
             Center(
-              child: Image.asset("assets/images/order_prepare.png"),
+              child: Image.asset(
+                "assets/images/order_prepare.png",
+              ),
             ),
-            SizedBox(
-              height: 15,
+            SizedBox(height: 15),
+            Center(
+              child: Image.asset(
+                "assets/images/16.png",
+              ),
             ),
             Center(
-              child: Image.asset("assets/images/16.png"),
-            ),
-            Center(
-              child: Image.asset("assets/images/deliverd.png"),
+              child: Image.asset(
+                "assets/images/deliverd.png",
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -103,15 +128,18 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("اطلاعات پیک موتوری"),
                               Text(
-                                "علی رضایی",
+                                "اطلاعات پیک موتوری",
+                              ),
+                              Text(
+                                order.deliveryUserName,
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w900, fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 18,
                                 ),
                               ),
                               Text(
-                                "@AliRezaei",
+                                order.deliveryUserPhone,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.grey,
@@ -127,12 +155,16 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "شماره تلفن:",
-                            style: TextStyle(fontWeight: FontWeight.w600),
+                            " شماره تلفن :",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                           Text(
-                            "0912-345-6789",
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                            order.deliveryUserPhone,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ],
                       ),
@@ -146,14 +178,15 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "آدرس",
-                style: TextStyle(fontWeight: FontWeight.bold,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "میدان آزادی،خیابان تلاش،کوچه هفتم",
+                "میدان آزادی، خیابان تلاش، کوچه هفتم",
               ),
             ),
             Padding(
@@ -164,7 +197,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   Text(
                     "فروشگاه",
                     style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.grey,
                     ),
                   ),
                   InkWell(
@@ -172,9 +206,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     child: Row(
                       children: [
                         Text(
-                          "دیلی مارکت /بلوار نصر",
+                          order.storeName,
                           style: TextStyle(
-                            fontWeight: FontWeight.w900, color: Colors.blue,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.blue,
                           ),
                         ),
                         Icon(
@@ -196,11 +231,12 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   Text(
                     "زمان ثبت سفارش",
                     style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.grey,
                     ),
                   ),
                   Text(
-                    "جمعه،18آبان1403 19:42",
+                    "${order.orderDate}",
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -218,15 +254,17 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   Text(
                     "شناسه پیگیری",
                     style: TextStyle(
-                      fontWeight: FontWeight.w900, color: Colors.grey,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.grey,
                     ),
                   ),
                   Text(
-                    "190-118687-386",
+                    order.trackingId,
                     style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
@@ -256,14 +294,16 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          Icon(Icons.sms_outlined,
+                          Icon(
+                            Icons.sms_outlined,
                             color: Colors.deepOrange,
                           ),
                           SizedBox(width: 10),
                           Text(
                             "ثبت امتیاز و بازخورد",
                             style: TextStyle(
-                              color: Colors.deepOrange, fontSize: 20,
+                              color: Colors.deepOrange,
+                              fontSize: 20,
                             ),
                           ),
                         ],
@@ -281,7 +321,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "سبد خرید",
-                style: TextStyle(fontWeight: FontWeight.w900),
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
             Padding(
@@ -291,7 +333,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                 children: [
                   Text(
                     "جزئیات پرداخت",
-                    style: TextStyle(fontWeight: FontWeight.w900),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -299,20 +343,23 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Text(
                         "قیمت کالاها",
                         style: TextStyle(
-                          fontWeight: FontWeight.w900, color: Colors.grey,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.grey,
                         ),
                       ),
                       Row(
                         children: [
                           Text(
-                            "169,400",
+                            "${order.itemPrice}",
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: Colors.black,
                             ),
                           ),
-                          Image.asset("assets/images/toman.png", width: 15,
+                          Image.asset(
+                            "assets/images/toman.png",
+                            width: 15,
                           ),
                         ],
                       ),
@@ -324,19 +371,24 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Text(
                         "هزینه ارسال",
                         style: TextStyle(
-                          fontWeight: FontWeight.w900, color: Colors.grey,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.grey,
                         ),
                       ),
                       Row(
                         children: [
                           Text(
-                            "6,500",
+                            "${order.deliveryCost}",
                             style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
                           ),
-                          Image.asset("assets/images/toman.png", width: 15)
+                          Image.asset(
+                            "assets/images/toman.png",
+                            width: 15,
+                          )
                         ],
                       ),
                     ],
@@ -349,11 +401,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                           Text(
                             "هزینه آماده سازی",
                             style: TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.grey,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.grey,
                             ),
                           ),
                           SizedBox(width: 2),
-                          Icon(Icons.radio_button_on_sharp,
+                          Icon(
+                            Icons.radio_button_on_sharp,
                             color: Colors.deepOrange,
                           )
                         ],
@@ -361,13 +415,16 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Row(
                         children: [
                           Text(
-                            "6,500",
+                            "${order.preparationCost}",
                             style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
                           ),
-                          Image.asset("assets/images/toman.png", width: 15,
+                          Image.asset(
+                            "assets/images/toman.png",
+                            width: 15,
                           )
                         ],
                       ),
@@ -379,21 +436,24 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Text(
                         "تخفیف کالاها",
                         style: TextStyle(
-                          fontWeight: FontWeight.w900, color: Colors.grey,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.grey,
                         ),
                       ),
                       Row(
                         children: [
                           Text(
-                            "76,000",
+                            "${order.discount}",
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: Colors.deepOrange,
                             ),
                           ),
-                          Image.asset("assets/images/toman.png",
-                            width: 15, color: Colors.deepOrange,
+                          Image.asset(
+                            "assets/images/toman.png",
+                            width: 15,
+                            color: Colors.deepOrange,
                           ),
                         ],
                       ),
@@ -408,21 +468,24 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Text(
                         "قیمت قابل پرداخت",
                         style: TextStyle(
-                          fontWeight: FontWeight.w900, color: Colors.grey,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.grey,
                         ),
                       ),
                       Row(
                         children: [
                           Text(
-                            "105,000",
+                            "${order.totalPrice}",
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: Colors.green.shade900,
                             ),
                           ),
-                          Image.asset("assets/images/toman.png",
-                            width: 15, color: Colors.green.shade900,
+                          Image.asset(
+                            "assets/images/toman.png",
+                            width: 15,
+                            color: Colors.green.shade900,
                           ),
                         ],
                       ),
@@ -437,4 +500,3 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     );
   }
 }
-
