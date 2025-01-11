@@ -1,8 +1,6 @@
-import 'package:abd_shop/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class OrderTrackingPage extends StatefulWidget {
@@ -49,11 +47,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     return Scaffold(
       backgroundColor: CupertinoColors.white,
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        title: const Text(
+          "پیگیری سفارش",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -61,63 +59,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 280),
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "پیگیری سفارش",
-                  style: kHeaderTextStyle,
-                ),
-              ),
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Container(
-            //     height: 300,
-            //     child: FlutterMap(
-            //       options: MapOptions(
-            //         initialCenter: LatLng(31.1611, 52.6488),
-            //         //ABADEH LOCATION!!!!!!//
-            //         minZoom: 10.0,
-            //         onTap: (tapPosition, point) {
-            //           setState(() {
-            //             if (origin == null) {
-            //               origin = point;
-            //             } else if (destination == null) {
-            //               destination = point;
-            //             } else {
-            //               origin = point;
-            //               destination = null;
-            //             }
-            //           });
-            //         },
-            //       ),
-            //       children: [
-            //         TileLayer(
-            //           urlTemplate:
-            //               "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-            //           subdomains: ['a', 'b', 'c'],
-            //         ),
-            //         MarkerLayer(
-            //           markers: [
-            //             if (origin != null)
-            //               Marker(
-            //                 point: origin!,
-            //                 child: Icon(Icons.location_on,
-            //                     color: Colors.blue, size: 40),
-            //               ),
-            //             if (destination != null)
-            //               Marker(
-            //                 point: destination!,
-            //                 child: Icon(Icons.location_on, color: Colors.red),
-            //               ),
-            //           ],
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            SizedBox(height: 5),
             Center(
               child: Image.asset("assets/images/order_prepare.png"),
             ),
@@ -130,14 +72,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
             Center(
               child: Image.asset("assets/images/deliverd.png"),
             ),
-
             Padding(
-              padding: EdgeInsets.only(left: 290),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "جزئیات سفارش",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                "جزئیات سفارش",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -166,13 +107,15 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                               Text(
                                 "علی رضایی",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w900, fontSize: 18),
+                                  fontWeight: FontWeight.w900, fontSize: 18,
+                                ),
                               ),
                               Text(
                                 "@AliRezaei",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.grey),
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
@@ -202,15 +145,15 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "ارسال به خانه",
-                style: TextStyle(fontWeight: FontWeight.normal),
+                "آدرس",
+                style: TextStyle(fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "میدان آزادی،خیابان تلاش،کوچه هفتم",
-                style: TextStyle(fontWeight: FontWeight.w900),
               ),
             ),
             Padding(
@@ -221,7 +164,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   Text(
                     "فروشگاه",
                     style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
+                      fontWeight: FontWeight.w900, color: Colors.grey,
+                    ),
                   ),
                   InkWell(
                     onTap: () {},
@@ -230,7 +174,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         Text(
                           "دیلی مارکت /بلوار نصر",
                           style: TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.blue),
+                            fontWeight: FontWeight.w900, color: Colors.blue,
+                          ),
                         ),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -251,14 +196,16 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   Text(
                     "زمان ثبت سفارش",
                     style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
+                      fontWeight: FontWeight.w900, color: Colors.grey,
+                    ),
                   ),
                   Text(
                     "جمعه،18آبان1403 19:42",
                     style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
@@ -271,7 +218,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                   Text(
                     "شناسه پیگیری",
                     style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
+                      fontWeight: FontWeight.w900, color: Colors.grey,
+                    ),
                   ),
                   Text(
                     "190-118687-386",
@@ -302,17 +250,21 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          color: CupertinoColors.white,
-                          borderRadius: BorderRadiusDirectional.circular(10)),
+                        color: CupertinoColors.white,
+                        borderRadius: BorderRadiusDirectional.circular(10),
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          Icon(Icons.sms_outlined, color: Colors.deepOrange),
+                          Icon(Icons.sms_outlined,
+                            color: Colors.deepOrange,
+                          ),
                           SizedBox(width: 10),
                           Text(
                             "ثبت امتیاز و بازخورد",
                             style: TextStyle(
-                                color: Colors.deepOrange, fontSize: 20),
+                              color: Colors.deepOrange, fontSize: 20,
+                            ),
                           ),
                         ],
                       ),
@@ -333,143 +285,147 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 100, right: 8),
-              child: Text(
-                "جزئیات پرداخت",
-                style: TextStyle(fontWeight: FontWeight.w900),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.fromLTRB(8.0, 15, 8.0, 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "قیمت کالاها",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
+                    "جزئیات پرداخت",
+                    style: TextStyle(fontWeight: FontWeight.w900),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "169,400",
+                        "قیمت کالاها",
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
+                          fontWeight: FontWeight.w900, color: Colors.grey,
+                        ),
                       ),
-                      Image.asset("assets/images/toman.png", width: 15)
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "هزینه ارسال",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "6,500",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
+                      Row(
+                        children: [
+                          Text(
+                            "169,400",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Image.asset("assets/images/toman.png", width: 15,
+                          ),
+                        ],
                       ),
-                      Image.asset("assets/images/toman.png", width: 15)
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "هزینه آماده سازی",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w900, color: Colors.grey),
-                      ),
-                      Icon(Icons.radio_button_on_sharp,
-                          color: Colors.deepOrange)
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "6,500",
+                        "هزینه ارسال",
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
+                          fontWeight: FontWeight.w900, color: Colors.grey,
+                        ),
                       ),
-                      Image.asset("assets/images/toman.png", width: 15)
+                      Row(
+                        children: [
+                          Text(
+                            "6,500",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
+                          Image.asset("assets/images/toman.png", width: 15)
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "تخفیف کالاها",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
-                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "76,000",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.deepOrange),
+                      Row(
+                        children: [
+                          Text(
+                            "هزینه آماده سازی",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900, color: Colors.grey,
+                            ),
+                          ),
+                          SizedBox(width: 2),
+                          Icon(Icons.radio_button_on_sharp,
+                            color: Colors.deepOrange,
+                          )
+                        ],
                       ),
-                      Image.asset("assets/images/toman.png",
-                          width: 15, color: Colors.deepOrange)
+                      Row(
+                        children: [
+                          Text(
+                            "6,500",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
+                          Image.asset("assets/images/toman.png", width: 15,
+                          )
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            Divider(
-              thickness: 3,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "قیمت قابل پرداخت",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900, color: Colors.grey),
-                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "105,000",
+                        "تخفیف کالاها",
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.green.shade900),
+                          fontWeight: FontWeight.w900, color: Colors.grey,
+                        ),
                       ),
-                      Image.asset("assets/images/toman.png",
-                          width: 15, color: Colors.green.shade900)
+                      Row(
+                        children: [
+                          Text(
+                            "76,000",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.deepOrange,
+                            ),
+                          ),
+                          Image.asset("assets/images/toman.png",
+                            width: 15, color: Colors.deepOrange,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 3,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "قیمت قابل پرداخت",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900, color: Colors.grey,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "105,000",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green.shade900,
+                            ),
+                          ),
+                          Image.asset("assets/images/toman.png",
+                            width: 15, color: Colors.green.shade900,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ],
@@ -481,3 +437,4 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     );
   }
 }
+
