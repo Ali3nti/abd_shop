@@ -1,3 +1,4 @@
+import 'package:abd_shop/screens/profile/address_page.dart';
 import 'package:flutter/material.dart';
 
 class ContinueCartWidget extends StatefulWidget {
@@ -12,6 +13,7 @@ class _ContinueCartWidgetState extends State<ContinueCartWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 5),
+      padding: EdgeInsets.all(5),
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,7 +22,8 @@ class _ContinueCartWidgetState extends State<ContinueCartWidget> {
             children: [
               Container(
                 margin: const EdgeInsets.only(top: 5),
-                height: 130,
+                padding: EdgeInsets.all(10),
+                height: 150,
                 color: Colors.white,
                 child: Row(
                   children: [
@@ -33,6 +36,7 @@ class _ContinueCartWidgetState extends State<ContinueCartWidget> {
                               Icon(
                                 Icons.location_on_outlined,
                               ),
+                              SizedBox(height: 10),
                               Text(
                                 "ارسال به",
                                 style: TextStyle(
@@ -60,12 +64,22 @@ class _ContinueCartWidgetState extends State<ContinueCartWidget> {
                           const SizedBox(height: 10),
                           InkWell(
                             onTap: () {},
-                            child: const Text(
-                              "تغییر آدرس تحویل",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.lightBlue,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddressPage(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                "تغییر آدرس تحویل",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.lightBlue,
+                                ),
                               ),
                             ),
                           ),

@@ -1,4 +1,6 @@
+import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/screens/cart/internet_payment.dart';
+import 'package:abd_shop/screens/orders/order_Tracking_Page.dart';
 import 'package:abd_shop/widget/continue_cart_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,14 @@ class ContinueCartPage extends StatefulWidget {
 
 class _AllPageState extends State<ContinueCartPage> {
   int _value = 1;
-
+  Order order = Order()
+    ..id = 1
+    ..userId = 1
+    ..totalPrice = 105000
+    ..discount = 76000
+    ..itemPrice = 169400
+    ..deliveryCost = 6500
+    ..preparationCost = 6500;
   @override
   Widget build(BuildContext context) {
     String paymentMethodText = _value == 1 ? "پرداخت اینترنتی" : "کیف پول";
@@ -32,7 +41,7 @@ class _AllPageState extends State<ContinueCartPage> {
           children: [
             const ContinueCartWidget(),
             Container(
-              margin: const EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 8),
               padding: const EdgeInsets.only(top: 20, right: 20),
               color: Colors.white,
               height: 50,
@@ -46,6 +55,7 @@ class _AllPageState extends State<ContinueCartPage> {
               ),
             ),
             Container(
+              height: 150,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -59,8 +69,12 @@ class _AllPageState extends State<ContinueCartPage> {
                       });
                     },
                     activeColor: Colors.blue,
-                    title: const Text("پرداخت اینترنتی"),
-                    subtitle: const Text("پرداخت آنلاین با تمامی کارت های بانکی"),
+                    title: const Text(
+                      "پرداخت اینترنتی",
+                    ),
+                    subtitle: const Text(
+                      "پرداخت آنلاین با تمامی کارت های بانکی",
+                    ),
                   ),
                   const SizedBox(height: 5),
                   RadioListTile(
@@ -79,9 +93,9 @@ class _AllPageState extends State<ContinueCartPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 8),
               padding: const EdgeInsets.only(top: 20, right: 20),
-              height: 50,
+              height: 60,
               width: double.infinity,
               color: Colors.white,
               child: const Text(
@@ -95,7 +109,7 @@ class _AllPageState extends State<ContinueCartPage> {
             Container(
               padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
               color: Colors.white,
-              height: 50,
+              height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -106,12 +120,22 @@ class _AllPageState extends State<ContinueCartPage> {
                       fontSize: 16,
                     ),
                   ),
-                  const Text(
-                    "184,000 تومان",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "${order.itemPrice}",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Image.asset(
+                        "assets/images/toman.png",
+                        width: 15,
+                        color: Colors.green.shade900,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -119,7 +143,7 @@ class _AllPageState extends State<ContinueCartPage> {
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.white,
-              height: 50,
+              height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -130,12 +154,22 @@ class _AllPageState extends State<ContinueCartPage> {
                       fontSize: 16,
                     ),
                   ),
-                  const Text(
-                    "9,000 تومان",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "${order.deliveryCost}",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Image.asset(
+                        "assets/images/toman.png",
+                        width: 15,
+                        color: Colors.green.shade900,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -143,7 +177,7 @@ class _AllPageState extends State<ContinueCartPage> {
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.white,
-              height: 50,
+              height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -154,12 +188,22 @@ class _AllPageState extends State<ContinueCartPage> {
                       fontSize: 16,
                     ),
                   ),
-                  const Text(
-                    "2,500 تومان",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "${order.preparationCost}",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Image.asset(
+                        "assets/images/toman.png",
+                        width: 15,
+                        color: Colors.green.shade900,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -167,7 +211,7 @@ class _AllPageState extends State<ContinueCartPage> {
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.white,
-              height: 50,
+              height: 60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -178,21 +222,30 @@ class _AllPageState extends State<ContinueCartPage> {
                       fontSize: 16,
                     ),
                   ),
-                  const Text(
-                    "43,900 تومان",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "${order.discount}",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Image.asset(
+                        "assets/images/toman.png",
+                        width: 15,
+                        color: Colors.green.shade900,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 2),
-              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.all(20),
               color: Colors.white,
-              height: 100,
+              height: 200,
               child: Column(
                 children: [
                   Container(
@@ -200,41 +253,61 @@ class _AllPageState extends State<ContinueCartPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OrderTrackingPage(),
+                              ),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                "قیمت قابل پرداخت",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              const Text(
+                                "جزییات",
+                                style: TextStyle(
+                                  color: Colors.lightBlue,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Icon(
+                                Icons.navigate_next,
+                                color: Colors.lightBlue,
+                              ),
+                            ],
+                          ),
+                        ),
                         Row(
                           children: [
                             Text(
-                             "قابل پرداخت",
-                              style: const TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            const Text(
-                              "جزییات",
+                              "${order.totalPrice}",
                               style: TextStyle(
-                                color: Colors.lightBlue,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.green.shade900,
                               ),
                             ),
-                            const SizedBox(width: 5),
-                            const Icon(
-                              Icons.navigate_next,
-                              color: Colors.lightBlue,
+                            Image.asset(
+                              "assets/images/toman.png",
+                              width: 15,
+                              color: Colors.green.shade900,
                             ),
                           ],
-                        ),
-                        const Text(
-                          "151,600 تومان",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 50),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -245,7 +318,7 @@ class _AllPageState extends State<ContinueCartPage> {
                       );
                     },
                     child: Container(
-                      height: 40,
+                      height: 60,
                       width: 380,
                       decoration: BoxDecoration(
                         color: Colors.orange.shade900,
@@ -256,7 +329,7 @@ class _AllPageState extends State<ContinueCartPage> {
                           "  $paymentMethodText",
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
