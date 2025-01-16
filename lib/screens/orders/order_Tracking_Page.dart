@@ -1,5 +1,6 @@
 import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/models/address_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -22,20 +23,23 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     ..storeName = "دیلی مارکت آباده"
     ..deliveryUserName = "علی رضایی"
     ..deliveryUserPhone = "0912-345-6789"
-    ..products = [
-      Product()
-        ..id = 1
-        ..image = "assets/images/p1.png",
-      Product()
-        ..id = 2
-        ..image = "assets/images/p2.png"
-    ]
+    // ..products = [
+    //   Product()
+    //     ..id = 1
+    //     ..image = "assets/images/p1.png",
+    //   Product()
+    //     ..id = 2
+    //     ..image = "assets/images/p2.png"
+    // ]
     ..trackingId = "190-118687-386"
     ..totalPrice = 105000
     ..discount = 76000
     ..itemPrice = 169400
     ..deliveryCost = 6500
-    ..preparationCost = 6500;
+    ..preparationCost = 6500
+    ..deliveryAddresses = [
+      Address()..address = "میدان آزادی، خیابان تلاش، کوچه هفتم",
+    ];
 
   @override
   void initState() {
@@ -64,6 +68,9 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
   Widget build(BuildContext context) {
     String timerText =
         "${remainingTime.inMinutes.remainder(60)}:${(remainingTime.inSeconds.remainder(60)).toString().padLeft(2, '0')}";
+    String deliveryAddress = order.deliveryAddresses.isNotEmpty
+        ? order.deliveryAddresses.first.address
+        : 'آدرسی ثبت نشده است';
 
     return Scaffold(
       backgroundColor: CupertinoColors.white,
@@ -186,7 +193,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "میدان آزادی، خیابان تلاش، کوچه هفتم",
+                deliveryAddress,
               ),
             ),
             Padding(
