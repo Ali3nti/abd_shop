@@ -41,10 +41,17 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrange,
+          title: const Text(
+            "اطلاعات رانندگان",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 60, right: 30),
+              padding: const EdgeInsets.only(top: 20, right: 30),
               child: Row(
                 children: [
                   InkWell(
