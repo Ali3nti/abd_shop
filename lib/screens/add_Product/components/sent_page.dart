@@ -43,7 +43,7 @@ class _SentPageState extends State<SentPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.green,
         title: const Text(
           "سفارشات ارسال شده",
           style: TextStyle(
@@ -56,8 +56,11 @@ class _SentPageState extends State<SentPage> {
         itemBuilder: (context, index) {
           Order order = orders[index];
           return Container(
-            margin: const EdgeInsets.all(5),
-            color: Colors.white,
+            margin: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.white,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Row(

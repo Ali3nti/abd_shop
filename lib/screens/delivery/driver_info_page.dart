@@ -1,6 +1,8 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/delivery/delivery_page.dart';
 import 'package:flutter/material.dart';
+import 'package:abd_shop/models/order_model.dart';
 
 class DriverInfoPage extends StatefulWidget {
   const DriverInfoPage({super.key});
@@ -10,16 +12,46 @@ class DriverInfoPage extends StatefulWidget {
 }
 
 class _DriverInfoPageState extends State<DriverInfoPage> {
+  List<Order> orders = [];
+
+  @override
+  void initState() {
+    super.initState();
+    for (int index = 0; index < 5; index++) {
+      Order order = Order();
+      order.id = index + 1;
+      order.userId = 1;
+      order.trackingId = 'ABD-0000$index';
+      order.orderDate = DateTime.now().subtract(Duration(days: index));
+      order.products = List.generate(3, (productIndex) {
+        Product product = Product();
+        product.id = productIndex + 1;
+        product.name = 'محصول ${index + 1}-${productIndex + 1}';
+        product.isInStock = productIndex != 1;
+        product.isShipped = index % 2 == 0;
+        return product;
+      });
+      orders.add(order);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrange,
+          title: const Text(
+            "اطلاعات رانندگان",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 60, right: 30),
+              padding: const EdgeInsets.only(top: 20, right: 30),
               child: Row(
                 children: [
                   InkWell(
@@ -44,13 +76,15 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "سلام امیر!",
+                        " سلام امیر ",
                         style: kHeaderTextStyle,
                       ),
                       Text(
                         "بریم سراغ یه روز کاری جدید",
                         style: TextStyle(
-                            color: kGreenColor, fontWeight: FontWeight.bold),
+                          color: kGreenColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
@@ -64,7 +98,9 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                         ),
                       );
                     },
-                    child: Image.asset("assets/images/bing.png"),
+                    child: Image.asset(
+                      "assets/images/bing.png",
+                    ),
                   ),
                 ],
               ),
@@ -77,8 +113,12 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                 Tab(
                   text: 'تاریخچه سفارشات',
                 ),
-                Tab(text: 'سفارش جدید'),
-                Tab(text: 'کیف پول من'),
+                Tab(
+                  text: 'سفارش جدید',
+                ),
+                Tab(
+                  text: 'کیف پول من',
+                ),
               ],
             ),
             Expanded(
@@ -86,91 +126,49 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(14),
-                    child: Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("آیدی سفارش : #212546"),
-                                  Text(
-                                    "20/8/1403",
-                                    style: TextStyle(color: kRedColor),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text("3 آیتم"),
-                                  Icon(Icons.arrow_forward_ios),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Divider(
-                          height: 20,
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("آیدی سفارش : #212546"),
-                                  Text(
-                                    "20/8/1403",
-                                    style: TextStyle(color: kRedColor),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text("3 آیتم"),
-                                  Icon(Icons.arrow_forward_ios),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Divider(
-                          height: 20,
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("آیدی سفارش : #212546"),
-                                  Text(
-                                    "20/8/1403",
-                                    style: TextStyle(color: kRedColor),
-                                  ),
-                                ],
-                              ),
-                              InkWell(
-                                onTap: () {},
-                                child: Row(
+                    child: ListView.builder(
+                      itemCount: orders.length,
+                      itemBuilder: (context, index) {
+                        Order order = orders[index];
+                        return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: InkWell(
+                            onTap: () {
+                              // Handle order tap
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("3 آیتم"),
-                                    Icon(Icons.arrow_forward_ios),
+                                    Text(
+                                      "آیدی سفارش: ${order.id}",
+                                    ),
+                                    Text(
+                                      "${order.orderDate.toLocal()}"
+                                          .split(' ')[0],
+                                      style: TextStyle(
+                                        color: kRedColor,
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              ),
-                            ],
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${order.products.length} آیتم",
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
                   DeliveryDriverPage(),
@@ -180,7 +178,9 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                       Text(
                         "موجودی کیف پول:",
                         style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -188,7 +188,10 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                         decoration: BoxDecoration(
                           color: Colors.green[100],
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Colors.green, width: 2),
+                          border: Border.all(
+                            color: Colors.green,
+                            width: 2,
+                          ),
                         ),
                         child: Column(
                           children: [
@@ -203,7 +206,9 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                             SizedBox(height: 5),
                             Text(
                               "آخرین بروزرسانی: 25 آذر 1403",
-                              style: TextStyle(color: Colors.grey),
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
                             ),
                           ],
                         ),
@@ -212,7 +217,9 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                       Text(
                         "تاریخچه تراکنش‌ها:",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(height: 10),
                       Expanded(
@@ -221,8 +228,12 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                             Card(
                               margin: EdgeInsets.symmetric(vertical: 5),
                               child: ListTile(
-                                title: Text("واریز به کیف پول"),
-                                subtitle: Text("24 آذر 1403"),
+                                title: Text(
+                                  "واریز به کیف پول",
+                                ),
+                                subtitle: Text(
+                                  "24 آذر 1403",
+                                ),
                                 trailing: Text(
                                   "+50,000 تومان",
                                   style: TextStyle(
@@ -235,8 +246,12 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                             Card(
                               margin: EdgeInsets.symmetric(vertical: 5),
                               child: ListTile(
-                                title: Text("برداشت از کیف پول"),
-                                subtitle: Text("23 آذر 1403"),
+                                title: Text(
+                                  "برداشت از کیف پول",
+                                ),
+                                subtitle: Text(
+                                  "23 آذر 1403",
+                                ),
                                 trailing: Text(
                                   "-30,000 تومان",
                                   style: TextStyle(
@@ -249,8 +264,12 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                             Card(
                               margin: EdgeInsets.symmetric(vertical: 5),
                               child: ListTile(
-                                title: Text("واریز به کیف پول"),
-                                subtitle: Text("22 آذر 1403"),
+                                title: Text(
+                                  "واریز به کیف پول",
+                                ),
+                                subtitle: Text(
+                                  "22 آذر 1403",
+                                ),
                                 trailing: Text(
                                   "+100,000 تومان",
                                   style: TextStyle(
@@ -280,30 +299,53 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('اعلان‌های راننده'),
+        title: Text(
+          'اعلان‌های راننده',
+        ),
       ),
       body: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text('سفارش جدید'),
-            subtitle: Text('یک سفارش جدید در انتظار تحویل است.'),
+            leading: Icon(
+              Icons.shopping_cart,
+            ),
+            title: Text(
+              'سفارش جدید',
+            ),
+            subtitle: Text(
+              'یک سفارش جدید در انتظار تحویل است.',
+            ),
           ),
           ListTile(
-            leading: Icon(Icons.location_on),
-            title: Text('مسیر جدید'),
-            subtitle: Text('مسیر جدیدی برای تحویل سفارش در نظر گرفته شده است.'),
+            leading: Icon(
+              Icons.location_on,
+            ),
+            title: Text(
+              'مسیر جدید',
+            ),
+            subtitle: Text(
+              'مسیر جدیدی برای تحویل سفارش در نظر گرفته شده است.',
+            ),
           ),
           ListTile(
-            leading: Icon(Icons.timer),
-            title: Text('تاخیر در تحویل'),
-            subtitle:
-                Text('به دلیل ترافیک، تحویل سفارش با تاخیر همراه خواهد بود.'),
+            leading: Icon(
+              Icons.timer,
+            ),
+            title: Text(
+              'تاخیر در تحویل',
+            ),
+            subtitle: Text(
+              'به دلیل ترافیک، تحویل سفارش با تاخیر همراه خواهد بود.',
+            ),
           ),
           ListTile(
             leading: Icon(Icons.check_circle_outline),
-            title: Text('سفارش تحویل داده شد'),
-            subtitle: Text('سفارش با موفقیت به مشتری تحویل داده شد.'),
+            title: Text(
+              'سفارش تحویل داده شد',
+            ),
+            subtitle: Text(
+              'سفارش با موفقیت به مشتری تحویل داده شد.',
+            ),
           ),
         ],
       ),
@@ -338,7 +380,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
             children: [
               _buildTextField(_nameController, 'نام', Icons.person),
               SizedBox(height: 16.0),
-              _buildTextField(_phoneController, 'شماره تلفن', Icons.phone),
+              _buildTextField(
+                _phoneController,
+                'شماره تلفن', Icons.phone),
               SizedBox(height: 16.0),
               _buildTextField(_emailController, 'ایمیل', Icons.email),
               SizedBox(height: 16.0),

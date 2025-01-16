@@ -22,8 +22,25 @@ class Product {
   String warranty = '';
   String tags = '';
   String providerVendors = '';
-  bool isInStock = false;
-  bool isShipped = false;
+  bool _isInStock = false; // وضعیت موجودی
+  bool _isShipped = false; // وضعیت ارسال
+
+  // وضعیت‌های جدید
+  bool get isOutOfStock => !_isInStock; // اگر موجودی نداشته باشد
+  bool get isShipping => _isShipped; // اگر در حال ارسال باشد
+
+  // Getter ها برای فیلدهای وضعیت
+  bool get isInStock => _isInStock;
+  bool get isShipped => _isShipped;
+
+  // Setterها
+  set isInStock(bool value) {
+    _isInStock = value;
+  }
+
+  set isShipped(bool value) {
+    _isShipped = value;
+  }
 
   Product();
 
@@ -44,8 +61,8 @@ class Product {
     rating = (json['rating'] as num?)?.toDouble() ?? 0;
     reviewCount = json['review_count'] ?? 0;
     discount = (json['discount'] as num?)?.toInt() ?? 0;
-    isInStock = json['is_in_stock'] ?? false;
-    isShipped = json['is_shipped'] ?? false;
+    _isInStock = json['is_in_stock'] ?? false;
+    _isShipped = json['is_shipped'] ?? false;
     warranty = json['warranty'] ?? '';
     tags = json['tags'] ?? '';
     providerVendors = json['provider_vendors'] ?? '';

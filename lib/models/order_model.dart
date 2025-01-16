@@ -34,7 +34,7 @@ class Order {
     orderDate = DateTime.parse(json['order_date'] ?? DateTime.now().toIso8601String());
     shippingAddresses = (json['shipping_addresses'] as List<dynamic>?)
         ?.map((addressJson) => Address.fromJson(addressJson))
-        .toList() ?? []; // تبدیل به لیست Address
+        .toList() ?? [];
     paymentMethod = json['payment_method'] ?? '';
     trackingNumber = json['tracking_number'] ?? '0000';
     comments = json['comments'] ?? '';
@@ -48,7 +48,7 @@ class Order {
     status = json['status'] ?? '';
     deliveryAddresses = (json['delivery_addresses'] as List<dynamic>?)
         ?.map((addressJson) => Address.fromJson(addressJson))
-        .toList() ?? []; // تبدیل به لیست Address
+        .toList() ?? [];
     storeName = json['store_name'] ?? '';
     trackingId = json['tracking_id'] ?? 'ABD-0000';
     itemPrice = (json['item_price'] as num?)?.toDouble() ?? 0.0;

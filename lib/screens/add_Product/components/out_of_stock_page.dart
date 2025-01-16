@@ -14,6 +14,7 @@ class _AddProductPageState extends State<OutOfStockPage> {
     Order order = Order();
     order.id = index + 1;
     order.userId = 1;
+    order.trackingId = 'ABD-0000$index';
     order.products = List.generate(3, (productIndex) {
       Product product = Product();
       product.id = productIndex + 1;
@@ -28,7 +29,7 @@ class _AddProductPageState extends State<OutOfStockPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.red,
         title: const Text(
           "اتمام موجودی",
           style: TextStyle(
@@ -41,19 +42,29 @@ class _AddProductPageState extends State<OutOfStockPage> {
         itemBuilder: (context, index) {
           Order order = orders[index];
           return Container(
-            margin: const EdgeInsets.all(5),
-            color: Colors.white,
+            margin: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.white,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    order.products[0].name,
-                    style: const TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Column(
+                    children: [
+                      Text(
+                        order.products[0].name,
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        order.trackingId,
+                      ),
+                    ],
                   ),
                   Container(
                     width: 60,
@@ -70,7 +81,7 @@ class _AddProductPageState extends State<OutOfStockPage> {
               ),
             ),
           );
-          },
+        },
       ),
     );
   }
