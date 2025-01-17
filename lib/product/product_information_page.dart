@@ -16,12 +16,12 @@ class ProductInformation extends StatefulWidget {
 class _ProductInformationState extends State<ProductInformation> {
   @override
   Widget build(BuildContext context) {
-    double discountAmount = widget.product.price *
-        (widget.product.discount / 100); //Percentage formula//
+    double discountAmount =
+        widget.product.price * (widget.product.discount / 100); // فرمول درصد
     double finalPrice = widget.product.price -
-        discountAmount; // final price = Subtract the amount of discount from the original price//
-    final formatter =
-        NumberFormat('#,###'); //Create an instance of NumberFormat.//
+        discountAmount; // قیمت نهایی = کسر مبلغ تخفیف از قیمت اصلی
+    final formatter = NumberFormat('#,###'); // ایجاد یک نمونه از NumberFormat
+
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
@@ -63,164 +63,6 @@ class _ProductInformationState extends State<ProductInformation> {
                 ),
               ),
             ),
-            // Container(
-            //   color: Colors.white,
-            //   width: double.infinity,
-            //   height: 50,
-            //   child: SingleChildScrollView(
-            //     scrollDirection: Axis.horizontal,
-            //     child: Row(
-            //       children: [
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(5),
-            //                 color: Colors.grey.shade300),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(5),
-            //               color: Colors.grey.shade300,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(5),
-            //               color: Colors.grey.shade300,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(5),
-            //               color: Colors.grey.shade300,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(5),
-            //               color: Colors.grey.shade300,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(5),
-            //               color: Colors.grey.shade300,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(right: 3),
-            //           child: Container(
-            //             padding: const EdgeInsets.only(top: 5),
-            //             width: 100,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(5),
-            //               color: Colors.grey.shade300,
-            //             ),
-            //             child: Column(
-            //               children: [
-            //                 Text(
-            //                   "مشخصات محصول",
-            //                   style: TextStyle(color: Colors.grey.shade600),
-            //                 ),
-            //                 const Text("مشخصات محصول"),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
             Container(
               padding: const EdgeInsets.only(top: 10, right: 20),
               color: Colors.white,
@@ -239,47 +81,46 @@ class _ProductInformationState extends State<ProductInformation> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.store,
                         color: kPrimaryColor,
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(
-                        "اسم فروشگاه",
+                        widget.product.storeName.isNotEmpty
+                            ? widget.product.storeName
+                            : "نام فروشگاه نامشخص",
                       ),
-                      SizedBox(width: 20),
-                      Text(
-                        "منتخب",
-                      ),
+                      const SizedBox(width: 20),
                     ],
                   ),
                   const SizedBox(height: 10),
                   Container(
                     padding: const EdgeInsets.only(right: 35),
-                    child: const Row(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "عملکرد",
-                        ),
-                        SizedBox(width: 20),
-                        Text(
-                          "عالی",
-                        ),
+                        const Text("عملکرد"),
+                        Text(widget.product.comments ?? "بدون نظر"),
                       ],
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.safety_check_outlined,
                       ),
-                      SizedBox(width: 10),
-                      Text(
-                        "گارانتی اصالت و سلامت فیزیکی",
+                      const SizedBox(width: 10),
+                      const Text(
+                        "گارانتی :  ",
                       ),
+                      const SizedBox(width: 5),
+                      Text(widget.product.warranty.isNotEmpty
+                          ? widget.product.warranty
+                          : " بدون گارانتی "),
                     ],
                   ),
                 ],
@@ -322,24 +163,10 @@ class _ProductInformationState extends State<ProductInformation> {
               ),
             ),
             const SizedBox(height: 5),
-            // Container(
-            //   padding: const EdgeInsets.only(top: 10, right: 10),
-            //   color: Colors.grey.shade50,
-            //   height: 50,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.end,
-            //     children: [
-            //       const Text("گزارش نادرستی مشخصات"),
-            //       const SizedBox(width: 10),
-            //       Icon(Icons.report, color: Colors.red.shade900),
-            //     ],
-            //   ),
-            // ),
-            const SizedBox(height: 5),
             Container(
               padding: const EdgeInsets.all(10),
               color: Colors.grey.shade50,
-              height: 100,
+              height: 150,
               child: Column(
                 children: [
                   const Row(
@@ -350,11 +177,23 @@ class _ProductInformationState extends State<ProductInformation> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        "تعداد باقیمانده در انبار",
+                        "تعداد باقیمانده در انبار: ",
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        widget.product.stockQuantity.toString(),
+                        style: TextStyle(
+                          backgroundColor: kPrimaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -382,3 +221,4 @@ class _ProductInformationState extends State<ProductInformation> {
     );
   }
 }
+
