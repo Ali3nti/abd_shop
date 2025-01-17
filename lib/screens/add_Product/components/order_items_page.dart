@@ -11,6 +11,16 @@ class _OrderItemsPageState extends State<OrderItemsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        title: const Text(
+          "آیتم های سفارش ",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Center(
         child: Text("OrderItemsPage"),
       ),
