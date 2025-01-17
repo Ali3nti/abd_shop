@@ -22,17 +22,15 @@ class Product {
   String warranty = '';
   String tags = '';
   String providerVendors = '';
+  String storeName = '';
+
   bool _isInStock = false; // وضعیت موجودی
   bool _isShipped = false; // وضعیت ارسال
-
-  // وضعیت‌های جدید
   bool get isOutOfStock => !_isInStock; // اگر موجودی نداشته باشد
   bool get isShipping => _isShipped; // اگر در حال ارسال باشد
-
   // Getter ها برای فیلدهای وضعیت
   bool get isInStock => _isInStock;
   bool get isShipped => _isShipped;
-
   // Setterها
   set isInStock(bool value) {
     _isInStock = value;
@@ -66,5 +64,7 @@ class Product {
     warranty = json['warranty'] ?? '';
     tags = json['tags'] ?? '';
     providerVendors = json['provider_vendors'] ?? '';
+    storeName = json['store_name'] ?? '';
   }
 }
+
