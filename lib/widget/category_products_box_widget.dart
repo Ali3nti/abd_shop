@@ -22,34 +22,45 @@ class _CategoryProductsBoxState extends State<CategoryProductsBox> {
         color: kPrimaryColor,
         child: Column(
           children: [
-            Row(
-              children: [
-                const SizedBox(
-                  width: 30,
-                ),
-                const Text(
-                  "حراج روز",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  width: 250,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AllPage(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "همه",
-                    style: TextStyle(fontSize: 18, color: Colors.blue),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "حراج روز",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const Icon(Icons.navigate_next, color: Colors.blue),
-              ],
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "همه",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.navigate_next,
+                        color: Colors.blue,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
