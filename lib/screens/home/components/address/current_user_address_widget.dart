@@ -17,28 +17,27 @@ class CurrentUserAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
+      padding: const EdgeInsets.fromLTRB(8, 30, 8, 8),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: Image.asset("assets/images/location.png"),
           ),
           const SizedBox(width: 10),
-          // Spacing between icon and text
           const Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "آدرس انتخابی",
-                  style: kHeaderTextStyle,
+                  "ارسال به",
+                  style: kHeaderTextStyle2,
                 ),
                 SizedBox(height: 5),
                 Text(
                   "آباده، میدان آزادی، کوچه هفتم",
-                  style: kHeaderTextStyle2,
+                  style: kHeaderTextStyle,
                 ),
               ],
             ),
