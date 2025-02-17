@@ -1,4 +1,4 @@
-package ir.alinematollahi.abd_shop
+package ir.nemaatollahi.abd_shop
 
 import io.flutter.embedding.android.FlutterActivity
 

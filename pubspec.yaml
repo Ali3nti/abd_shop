@@ -27,7 +27,7 @@ dependencies:
   hive_flutter: ^1.1.0
   provider: ^6.1.2
   url_launcher: ^6.0.20
-  share_plus: ^6.0.0
+#  share_plus: ^6.0.0
   image_picker: ^1.0.4
   image_cropper: ^5.0.0
   dotted_border: ^2.1.0
