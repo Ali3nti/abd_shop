@@ -46,7 +46,12 @@ const kBoxSizeHeight = 30.0;
 const kMainTextStyle = TextStyle(
     color: kTextPrimaryColor,
     fontFamily: 'Yekan',
-    fontSize: 14.0,
+    fontSize: 16.0,
+    fontWeight: FontWeight.w700);
+const kMainTextStyleOrange = TextStyle(
+    color: Colors.deepOrange,
+    fontFamily: 'Yekan',
+    fontSize: 15.0,
     fontWeight: FontWeight.w700);
 
 ///////////Text Style/////////

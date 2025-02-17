@@ -294,8 +294,7 @@ class _CartPageState extends State<CartPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
-        title: const Text('سبد خرید', style: TextStyle(color: Colors.white)),
+        title: const Text('سبد خرید', style: TextStyle(color: Colors.black87)),
       ),
       body: cartList.isEmpty
           ? Column(

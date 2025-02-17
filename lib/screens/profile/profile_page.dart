@@ -1,6 +1,5 @@
 import 'package:abd_shop/screens/add_Product/add_product_page.dart';
 import 'package:abd_shop/screens/delivery/driver_info_page.dart';
-import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
@@ -19,14 +18,6 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-void invite(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => InvitePage(),
-    ),
-  );
-}
 
 void address(BuildContext context) {
   Navigator.push(

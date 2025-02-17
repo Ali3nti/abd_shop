@@ -53,32 +53,6 @@ class _HomeBodyState extends State<HomeBody> {
               ProductCardListWidget(
                 categoryId: 2,
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "فروشگاه های محبوب",
-                    style: kHeaderTextStyle,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Image.asset(
-                    "assets/images/shop.png",
-                    width: 20,
-                    color: Colors.deepOrange,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              MarketListWidget(),
-              SizedBox(
-                height: 40,
-              ),
               CategoryListWidget(),
               SizedBox(
                 height: 100,

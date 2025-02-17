@@ -22,7 +22,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
       child: Container(
         margin: const EdgeInsets.only(top: 10),
         width: double.infinity,
-        height: 358,
+        height: 325,
         color: kPrimaryColor,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -33,10 +33,13 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                 height: 400,
                 color: kPrimaryColor,
                 child: Container(
-                  margin: const EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 5),
                   child: Column(
                     children: [
-Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
+                      Image.asset(height: 100,
+                        "assets/images/a1.png",
+                        color: CupertinoColors.white,
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -56,7 +59,8 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                             DataResponse response = value;
                             if (response.status == 1) {
                               response.data.forEach((value) {
-                                categoryProductsList.add(Product.fromJson(value));
+                                categoryProductsList
+                                    .add(Product.fromJson(value));
                               });
 
                               Navigator.push(
@@ -113,7 +117,8 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                               DataResponse response = value;
                               if (response.status == 1) {
                                 response.data.forEach((value) {
-                                  categoryProductsList.add(Product.fromJson(value));
+                                  categoryProductsList
+                                      .add(Product.fromJson(value));
                                 });
 
                                 Navigator.push(

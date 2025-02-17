@@ -23,14 +23,6 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     ..storeName = "دیلی مارکت آباده"
     ..deliveryUserName = "علی رضایی"
     ..deliveryUserPhone = "0912-345-6789"
-    // ..products = [
-    //   Product()
-    //     ..id = 1
-    //     ..image = "assets/images/p1.png",
-    //   Product()
-    //     ..id = 2
-    //     ..image = "assets/images/p2.png"
-    // ]
     ..trackingId = "190-118687-386"
     ..totalPrice = 105000
     ..discount = 76000
@@ -46,7 +38,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     super.initState();
     timer = Timer.periodic(
       Duration(seconds: 1),
-      (Timer t) {
+          (Timer t) {
         setState(() {
           if (remainingTime.inSeconds > 0) {
             remainingTime = remainingTime - Duration(seconds: 1);
@@ -87,23 +79,6 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 5),
-            Center(
-              child: Image.asset(
-                "assets/images/order_prepare.png",
-              ),
-            ),
-            SizedBox(height: 15),
-            Center(
-              child: Image.asset(
-                "assets/images/16.png",
-              ),
-            ),
-            Center(
-              child: Image.asset(
-                "assets/images/deliverd.png",
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Text(
@@ -153,6 +128,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                                 ),
                               ),
                             ],
+
                           ),
                         ],
                       ),
@@ -173,14 +149,23 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
+
                         ],
                       ),
+                      SizedBox(height: 10,),
+                      LinearProgressIndicator(
+                        value: 0.5,
+                        backgroundColor: Colors.grey[300],
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                      ),
+
                       SizedBox(height: 4),
                     ],
                   ),
                 ),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -501,6 +486,8 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                 ],
               ),
             ),
+            // اضافه کردن LinearProgressIndicator
+            SizedBox(height: 10), // فاصله بین آخرین بخش و نوار پیشرفت
           ],
         ),
       ),
