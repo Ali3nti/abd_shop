@@ -1,6 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 
 class InvitePage extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _InvitePageState extends State<InvitePage> {
 
   void _shareInvitation() {
     // استفاده از متن دعوت‌نامه از پیش تعیین شده
-    Share.share(_defaultMessage);
+    // Share.share(_defaultMessage);
   }
   
 
