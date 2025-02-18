@@ -14,22 +14,31 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: GridView(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
+      child: Container(
+        height: 190,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: allCategoriesList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              width: 95,
+              margin: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
+              child: Column(
+                children: [
+                  CategoryItemWidget(
+                    category: allCategoriesList[index],
+                    index: index,
+                  ),
+                  if (index + 1 < allCategoriesList.length)
+                    CategoryItemWidget(
+                      category: allCategoriesList[index + 1],
+                      index: index + 1,
+                    ),
+                ],
+              ),
+            );
+          },
         ),
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        children: allCategoriesList
-            .asMap()
-            .entries
-            .map(
-              (entry) => CategoryItemWidget(
-            category: entry.value,
-            index: entry.key,
-          ),
-        )
-            .toList(),
       ),
     );
   }

@@ -34,54 +34,38 @@ class _HomeBodyState extends State<HomeBody> {
         onRefresh: _refreshData,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 50,
-              ),
-              AppBarOriginal(),
               CurrentUserAddress(),
+              SizedBox(
+                height: 5,
+              ),
+              Center(
+                child: AppBarOriginal(),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               HomeImagesSlider(),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Text(
+                  "قفسه ها",
+                  style: kMainTextStyle,
+                ),
+              ),
+              CategoryListWidget(),
               AmazingWidget(),
               Padding(
-                padding: const EdgeInsets.only(left: 240,top: 20),
-                child: Lottie.asset('assets/images/output.json',width: 200,height: 32),
+                padding: const EdgeInsets.only(left: 240, top: 20),
+                child: Lottie.asset('assets/images/output.json',
+                    width: 200, height: 32),
               ),
-
               ProductCardListWidget(
                 categoryId: 1,
               ),
               ProductCardListWidget(
                 categoryId: 2,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "فروشگاه های محبوب",
-                    style: kHeaderTextStyle,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Image.asset(
-                    "assets/images/shop.png",
-                    width: 20,
-                    color: Colors.deepOrange,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              MarketListWidget(),
-              SizedBox(
-                height: 40,
-              ),
-              CategoryListWidget(),
-              SizedBox(
-                height: 100,
               ),
             ],
           ),

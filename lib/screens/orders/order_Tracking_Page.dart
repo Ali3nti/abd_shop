@@ -14,7 +14,7 @@ class OrderTrackingPage extends StatefulWidget {
 
 class _OrderTrackingPageState extends State<OrderTrackingPage> {
   late Timer timer;
-  Duration remainingTime = Duration(hours: 0, minutes: 30);
+  Duration remainingTime = Duration(minutes: 20);
 
   Order order = Order()
     ..id = 1
@@ -23,14 +23,6 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     ..storeName = "دیلی مارکت آباده"
     ..deliveryUserName = "علی رضایی"
     ..deliveryUserPhone = "0912-345-6789"
-    // ..products = [
-    //   Product()
-    //     ..id = 1
-    //     ..image = "assets/images/p1.png",
-    //   Product()
-    //     ..id = 2
-    //     ..image = "assets/images/p2.png"
-    // ]
     ..trackingId = "190-118687-386"
     ..totalPrice = 105000
     ..discount = 76000
@@ -44,18 +36,15 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(
-      Duration(seconds: 1),
-      (Timer t) {
-        setState(() {
-          if (remainingTime.inSeconds > 0) {
-            remainingTime = remainingTime - Duration(seconds: 1);
-          } else {
-            timer.cancel();
-          }
-        });
-      },
-    );
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (remainingTime.inSeconds > 0) {
+          remainingTime = remainingTime - Duration(seconds: 1);
+        } else {
+          timer.cancel();
+        }
+      });
+    });
   }
 
   @override
@@ -66,6 +55,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
 
   @override
   Widget build(BuildContext context) {
+    double progress = 1 - (remainingTime.inSeconds / 1200);
     String timerText =
         "${remainingTime.inMinutes.remainder(60)}:${(remainingTime.inSeconds.remainder(60)).toString().padLeft(2, '0')}";
     String deliveryAddress = order.deliveryAddresses.isNotEmpty
@@ -87,23 +77,6 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 5),
-            Center(
-              child: Image.asset(
-                "assets/images/order_prepare.png",
-              ),
-            ),
-            SizedBox(height: 15),
-            Center(
-              child: Image.asset(
-                "assets/images/16.png",
-              ),
-            ),
-            Center(
-              child: Image.asset(
-                "assets/images/deliverd.png",
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Text(
@@ -119,7 +92,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey.shade200,
+                  color: Colors.greenAccent.shade100,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -173,6 +146,38 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("مدت زمان تحویل:"),
+                            Text(
+                              timerText,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: LinearProgressIndicator(
+                              value: progress,
+                              backgroundColor: Colors.green,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.grey.shade300),
+                            ),
+                          ),
+                          SizedBox(width: 10),
                         ],
                       ),
                       SizedBox(height: 4),

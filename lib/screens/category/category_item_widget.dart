@@ -18,21 +18,6 @@ class CategoryItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Color> categoryColors = [
-      Colors.red,
-      Colors.blue,
-      Colors.green,
-      Colors.orange,
-      Colors.purple,
-      Colors.teal,
-      Colors.yellow,
-      Colors.pink,
-      Colors.deepOrange,
-      Colors.tealAccent,
-      Colors.green,
-    ];
-    Color categoryColor = categoryColors[index % categoryColors.length];
-
     return Material(
       color: Colors.white,
       child: InkWell(
@@ -65,22 +50,14 @@ class CategoryItemWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: categoryColor.withOpacity(0.5),
-                    blurRadius:10,
-                    spreadRadius: 2,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
               ),
               child: CircleAvatar(
                 radius: 28,
                 backgroundColor: Colors.transparent,
                 child: Image.network(
                   baseUrl + category.image,
-                  width: 40,
-                  height: 40,
+                  width: 60,
+                  height: 60,
                   fit: BoxFit.cover,
                 ),
               ),

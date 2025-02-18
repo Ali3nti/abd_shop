@@ -1,6 +1,5 @@
 import 'package:abd_shop/screens/add_Product/add_product_page.dart';
 import 'package:abd_shop/screens/delivery/driver_info_page.dart';
-import 'package:abd_shop/screens/profile/invite_page.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
 import 'package:abd_shop/screens/profile/rating_Info_page.dart';
 import 'package:abd_shop/screens/profile/sellers_page.dart';
@@ -17,15 +16,6 @@ class ProfilePage extends StatefulWidget {
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
-}
-
-void invite(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => InvitePage(),
-    ),
-  );
 }
 
 void address(BuildContext context) {
@@ -158,30 +148,23 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: InkWell(
-                  onTap: () {
-                    walletPage(context);
-                  },
+                child: GestureDetector(
+                  onTap: () => address(context),
                   child: Row(
                     children: [
-                      Image.asset("assets/images/wallet.png",
+                      Image.asset("assets/images/mapp.png",
                           width: 50, height: 50),
-                      const SizedBox(width: 10),
+                      SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            "کیف پول",
+                          Text(
+                            "آدرس ها",
                             style: TextStyle(fontSize: 18),
                           ),
-                          Row(
-                            children: [
-                              const Text(
-                                "10000",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              Image.asset("assets/images/toman.png", height: 15),
-                            ],
+                          Text(
+                            "2 آدرس",
+                            style: TextStyle(fontSize: 16,color: Colors.grey),
                           ),
                         ],
                       ),
@@ -202,12 +185,6 @@ class _ProfilePageState extends State<ProfilePage> {
           //   leading: Image.asset("assets/images/send-2.png"),
           //   onTap: () => invite(context),
           // ),
-          ListTile(
-            title: const Text("آدرس ها"),
-            leading: Image.asset("assets/images/location.png"),
-            onTap: () => address(context),
-          ),
-          const Divider(),
           ListTile(
             title: const Text("فروشندگان"),
             leading: Image.asset("assets/images/shop.png"),
