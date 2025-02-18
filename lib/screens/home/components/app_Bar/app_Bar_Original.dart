@@ -31,9 +31,8 @@ class AppBarOriginal extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SearchPageHome(
-                        products:
-                            ProductsList), // انتقال به صفحه محصولات کتگوری
+                    builder: (context) =>
+                        SearchPageHome(products: ProductsList),
                   ),
                 );
               }
@@ -41,13 +40,13 @@ class AppBarOriginal extends StatelessWidget {
           },
           child: Container(
             height: 50,
-            width: 340,
+            width: 365,
             padding: const EdgeInsets.symmetric(horizontal: 12),
             // Horizontal padding
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              color: Colors.grey.shade200,
               // Lighter background
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(8),
               // More rounded corners
               boxShadow: const [
                 BoxShadow(
@@ -59,27 +58,12 @@ class AppBarOriginal extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Lottie.asset(
-                  'assets/images/Animation - 1735296561432.json',height: 35,
-                ),
-                const SizedBox(width: 5),
-                Expanded(
-                  child: Row(
-                    children: [
-                      const Text(
-                        "جستجو در",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Image.asset(
-                        'assets/images/logo.png',
-                        color: kPrimaryColor,
-                        width: 90,
-                      ),
-                    ],
+                Image.asset('assets/images/search-normal.png',color: Colors.grey.shade700,),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 5),
+                  child: Image.asset(
+                    'assets/images/main_logo.jpg',
+                    width: 270,
                   ),
                 ),
               ],
