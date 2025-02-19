@@ -17,24 +17,23 @@ class CurrentUserAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 30, 8, 8),
+      padding: const EdgeInsets.fromLTRB(8, 30, 0, 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Image.asset("assets/images/location.png"),
+            padding: const EdgeInsets.only(right: 8),
+            child: Image.asset("assets/images/location.png",width: 16,),
           ),
-          const SizedBox(width: 10),
           const Expanded(
-            child: Row(
+            child: Row(mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   "ارسال به",
                   style: kHeaderTextStyle2,
                 ),
-                SizedBox(height: 5),
+                SizedBox(width: 5),
                 Text(
                   "آباده، میدان آزادی، کوچه هفتم",
                   style: kHeaderTextStyle,
@@ -50,7 +49,7 @@ class CurrentUserAddress extends StatelessWidget {
               "تغییر آدرس",
               style: TextStyle(
                 color: Colors.blue,
-                fontSize: 14,
+                fontSize: 9,
                 fontWeight: FontWeight.bold,
               ),
             ),

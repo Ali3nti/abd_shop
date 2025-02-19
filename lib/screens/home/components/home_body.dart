@@ -57,7 +57,7 @@ class _HomeBodyState extends State<HomeBody> {
               CategoryListWidget(),
               AmazingWidget(),
               Padding(
-                padding: const EdgeInsets.only(left: 240, top: 20),
+                padding: const EdgeInsets.only(left: 220, top: 20),
                 child: Lottie.asset('assets/images/output.json',
                     width: 200, height: 32),
               ),

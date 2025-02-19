@@ -80,7 +80,7 @@ class _ProductCardState extends State<ProductCard> {
                               widget.product.discount.toString(),
                               style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 12,
+                                  fontSize: 10,
                                   fontWeight: FontWeight.w900),
                             ),
                           ],
@@ -94,10 +94,10 @@ class _ProductCardState extends State<ProductCard> {
                         Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Image.network(baseUrl + widget.product.image,
-                              height: 60, width: 70),
+                              height: 50, width: 70),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 50, top: 50),
+                          padding: const EdgeInsets.only(left: 50, top: 35),
                           child: AddToCartWidget(
                             product: widget.product,
                           ),
@@ -129,7 +129,7 @@ class _ProductCardState extends State<ProductCard> {
                                   ),
                                   const SizedBox(width: 4),
                                   Image.asset("assets/images/toman.png",
-                                      height: 15),
+                                      height: 12),
                                 ],
                               ),
                             ),
@@ -140,7 +140,7 @@ class _ProductCardState extends State<ProductCard> {
                                 child: Text(
                                   formatter.format(widget.product.price),
                                   style: const TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.lineThrough,
