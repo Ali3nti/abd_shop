@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/add_Product/add_product_page.dart';
 import 'package:abd_shop/screens/delivery/driver_info_page.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
@@ -144,32 +145,29 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
           const SizedBox(height: 20),
-          Row(
+          Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: GestureDetector(
-                  onTap: () => address(context),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/mapp.png",
-                          width: 50, height: 50),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "آدرس ها",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(
-                            "2 آدرس",
-                            style: TextStyle(fontSize: 16,color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+              GestureDetector(
+                onTap: () => address(context),
+                child: Row(
+                  children: [
+                    Image.asset("assets/images/mapp.png",
+                        width: 50, height: 50),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "آدرس ها",
+                          style: kHeaderTextStyle,
+                        ),
+                        Text(
+                          "2 آدرس",
+                          style: kTextStyle,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(width: 20),

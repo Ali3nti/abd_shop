@@ -21,7 +21,7 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
           itemCount: allCategoriesList.length,
           itemBuilder: (context, index) {
             return Container(
-              width: 95,
+              width: 80,
               margin: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
               child: Column(
                 children: [

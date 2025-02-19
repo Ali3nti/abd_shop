@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/profile/rate_page/rate_page.dart';
 import 'package:flutter/material.dart';
 
@@ -33,10 +34,11 @@ class ratingInfoPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text("امتیاز و دیدگاه",
-                    style:
-                    TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                Text("50 دیدگاه", style: TextStyle(color: Colors.grey)),
+                Text(
+                  "امتیازات",
+                  style: kHeaderTextStyle,
+                ),
+                Text("50 دیدگاه", style:kTextStyle),
               ],
             ),
           ],
