@@ -56,11 +56,10 @@ class _HomeBodyState extends State<HomeBody> {
               ),
               CategoryListWidget(),
               AmazingWidget(),
-              Padding(
-                padding: const EdgeInsets.only(left: 220, top: 20),
-                child: Lottie.asset('assets/images/output.json',
-                    width: 200, height: 32),
+              SizedBox(
+                height: 12,
               ),
+              Lottie.asset('assets/images/output.json', width: 170, height: 30),
               ProductCardListWidget(
                 categoryId: 1,
               ),
