@@ -42,63 +42,68 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 );
               },
-              child:
-              Container(color: Colors.white,
+              child: Container(
+                color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if(widget.product.discount > 0)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: Image.asset(
-                        "assets/images/amazing5.png",
-                        height: 30,
+                    if (widget.product.discount > 0)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Image.asset(
+                          "assets/images/amazing5.png",
+                          height: 30,
+                        ),
                       ),
-                    ),
-                    if (widget.product.discount == 0)
-                      SizedBox(height: 60),
+                    if (widget.product.discount == 0) SizedBox(height: 60),
                     Padding(
-                      padding: const EdgeInsets.only(right: 95,top: 10,left: 5),
+                      padding:
+                          const EdgeInsets.only(right: 95, top: 10, left: 5),
                       child: widget.product.discount > 0
                           ? Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 5,
-                          horizontal: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.deepOrange,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/01.png",
-                              color: Colors.white,
-                              height: 15,
-                            ),
-                            Text(
-                              widget.product.discount.toString(),
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                          ],
-                        ),
-                      )
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                                horizontal: 8,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.deepOrange,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/01.png",
+                                    color: Colors.white,
+                                    height: 15,
+                                  ),
+                                  Text(
+                                    widget.product.discount.toString(),
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ],
+                              ),
+                            )
                           : SizedBox.shrink(),
                     ),
-
                     Stack(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 25),
-                          child: Image.network(baseUrl + widget.product.image,
-                              height: 80, width: 100),
+                          child: Image.network(
+                            baseUrl + widget.product.image,
+                            height: 80,
+                            width: 100,
+                          ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 50, top: 50),
+                          padding: const EdgeInsets.only(
+                            left: 50,
+                            top: 50,
+                          ),
                           child: AddToCartWidget(
                             product: widget.product,
                           ),
@@ -127,7 +132,8 @@ class _ProductCardState extends State<ProductCard> {
                                   Text(
                                     widget.product.discount > 0
                                         ? formatter.format(finalPrice)
-                                        : formatter.format(widget.product.price),
+                                        : formatter
+                                            .format(widget.product.price),
                                     style: const TextStyle(
                                       fontSize: 16,
                                       color: Colors.red,
@@ -166,8 +172,12 @@ class _ProductCardState extends State<ProductCard> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom:40 ),
-          child: Container(color: Colors.grey.shade300,width: 1,height: 245,),
+          padding: const EdgeInsets.only(bottom: 40),
+          child: Container(
+            color: Colors.grey.shade300,
+            width: 1,
+            height: 245,
+          ),
         ),
       ],
     );

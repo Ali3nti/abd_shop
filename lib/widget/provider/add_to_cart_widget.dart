@@ -22,7 +22,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
     return Center(
       child: _isExpanded
           ? Container(
-              width: 60,
+              width: 70,
               height: 30,
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,

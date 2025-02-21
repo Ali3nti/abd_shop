@@ -1,7 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:abd_shop/screens/category/category_Page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/services/api_helper.dart';
@@ -36,7 +35,10 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: Column(
                     children: [
-Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
+                      Image.asset(
+                        "assets/images/a1.png",
+                        color: CupertinoColors.white,
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -56,9 +58,9 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                             DataResponse response = value;
                             if (response.status == 1) {
                               response.data.forEach((value) {
-                                categoryProductsList.add(Product.fromJson(value));
+                                categoryProductsList
+                                    .add(Product.fromJson(value));
                               });
-
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -82,7 +84,10 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                                   color: Colors.white,
                                 ),
                               ),
-                              Icon(Icons.navigate_next, color: Colors.white),
+                              Icon(
+                                Icons.navigate_next,
+                                color: Colors.white,
+                              ),
                             ],
                           ),
                         ),
@@ -113,7 +118,8 @@ Image.asset("assets/images/a1.png",color: CupertinoColors.white,),
                               DataResponse response = value;
                               if (response.status == 1) {
                                 response.data.forEach((value) {
-                                  categoryProductsList.add(Product.fromJson(value));
+                                  categoryProductsList
+                                      .add(Product.fromJson(value));
                                 });
 
                                 Navigator.push(

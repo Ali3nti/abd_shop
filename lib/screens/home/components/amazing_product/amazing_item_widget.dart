@@ -35,14 +35,13 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  ProductInformation(
-                    product: widget.product,
-                  ),
+              builder: (context) => ProductInformation(
+                product: widget.product,
+              ),
             ),
           );
         },
-        child:Container(
+        child: Container(
           margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -61,7 +60,10 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     height: 30,
                   ),
                 ),
-                if(widget.product.discount == 0)SizedBox(height:28,),
+                if (widget.product.discount == 0)
+                  SizedBox(
+                    height: 28,
+                  ),
                 if (widget.product.discount > 0)
                   Padding(
                     padding: const EdgeInsets.only(right: 120),
@@ -97,19 +99,21 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     ),
                   ),
                 Stack(
-                  alignment: Alignment.bottomRight,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 5),
+                      width: 200,
+                     margin: const EdgeInsets.only(top: 5),
                       child: Image.network(
                         baseUrl + widget.product.image,
                         width: 100,
                         height: 120,
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
-                      height: 30,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 60,
+                        top: 90,
+                      ),
                       child: AddToCartWidget(
                         product: widget.product,
                       ),
@@ -151,8 +155,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         ],
                       ),
                       const SizedBox(height: 5),
-                      if (widget.product.discount >
-                          0)
+                      if (widget.product.discount > 0)
                         Text(
                           formatter.format(widget.product.price),
                           style: const TextStyle(

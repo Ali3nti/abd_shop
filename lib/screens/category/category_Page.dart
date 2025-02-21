@@ -44,7 +44,7 @@ class _CategoryPageState extends State<CategoryPage> {
             child: Column(
               children: [
                 Stack(
-                  alignment: Alignment.bottomRight,
+                  //alignment: Alignment.bottomRight,
                   children: [
                     InkWell(
                       onTap: () {
@@ -57,6 +57,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         );
                       },
                       child: Container(
+                        width: 200,
                         margin: const EdgeInsets.only(top: 5),
                         child: Image.network(
                           baseUrl + e.image,
@@ -65,9 +66,11 @@ class _CategoryPageState extends State<CategoryPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
-                      height: 30,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 60,
+                        top: 90,
+                      ),
                       child: AddToCartWidget(
                         product: Product(),
                       ),
