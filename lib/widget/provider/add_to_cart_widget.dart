@@ -22,13 +22,14 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
     return Center(
       child: _isExpanded
           ? Container(
-              width: 50,
+              width: 60,
               height: 30,
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
                     onTap: () {
@@ -44,6 +45,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                       size: 15,
                     ),
                   ),
+                  SizedBox(width: 3),
                   Text(
                     cartList[widget.product.id]!.count.toString(),
                     style: TextStyle(
@@ -51,6 +53,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                       fontSize: 15,
                     ),
                   ),
+                  SizedBox(width: 3),
                   InkWell(
                     onTap: () {
                       // if (context.read<CartUpdater>().counterValue > 0) {
