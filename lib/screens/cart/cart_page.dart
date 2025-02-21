@@ -295,8 +295,8 @@ class _CartPageState extends State<CartPage> {
       appBar: AppBar(
         title: const Text(
           'سبد خرید',
-          style:
-          TextStyle(color: Colors.white,
+          style: TextStyle(
+            color: Colors.white,
           ),
         ),
         backgroundColor: Colors.deepOrange,
@@ -397,14 +397,18 @@ class _CartPageState extends State<CartPage> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.deepOrange,
-                        borderRadius: BorderRadius.circular(12)),
+                      color: Colors.deepOrange,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     width: double.infinity,
                     height: 50,
                     child: const Center(
                       child: Text(
                         "پرداخت نهایی",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),

@@ -37,6 +37,7 @@ class _ProductInformationState extends State<ProductInformation> {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.only(top: 5,left: 5),
               color: Colors.white,
               width: double.infinity,
               height: 200,
@@ -45,10 +46,10 @@ class _ProductInformationState extends State<ProductInformation> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 20),
+              padding: const EdgeInsets.only(top: 15, right: 20),
               color: Colors.white,
               width: double.infinity,
-              height: 50,
+              height: 70,
               child: const Text(
                 "مشخصات",
                 style: kHeaderTextStyle,
@@ -67,10 +68,10 @@ class _ProductInformationState extends State<ProductInformation> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 20),
+              padding: const EdgeInsets.only(top: 15, right: 20),
               color: Colors.white,
               width: double.infinity,
-              height: 50,
+              height: 70,
               child: const Text(
                 "فروشنده",
                 style: kHeaderTextStyle,
@@ -80,7 +81,7 @@ class _ProductInformationState extends State<ProductInformation> {
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
               width: double.infinity,
-              height: 100,
+              height: 110,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -133,7 +134,7 @@ class _ProductInformationState extends State<ProductInformation> {
             Container(
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
-              height: 50,
+              height: 70,
               child: const Row(
                 children: [
                   Icon(
@@ -151,7 +152,7 @@ class _ProductInformationState extends State<ProductInformation> {
             Container(
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
-              height: 50,
+              height: 70,
               child: Row(
                 children: [
                   const Icon(

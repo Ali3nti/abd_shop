@@ -27,7 +27,14 @@ class _InternetPaymentState extends State<InternetPayment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("پرداخت اینترنتی")),
+      appBar: AppBar(
+        title: const Text(
+          'پرداخت اینترنتی',
+          style: TextStyle(color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.deepOrange,
+      ),
       body: Center(
         child: _showSplash
             ? Padding(

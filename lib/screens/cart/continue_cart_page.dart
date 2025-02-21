@@ -29,12 +29,11 @@ class _AllPageState extends State<ContinueCartPage> {
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text(
-          "پرداخت",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+          'پرداخت',
+          style: TextStyle(color: Colors.white,
           ),
         ),
+        backgroundColor: Colors.deepOrange,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -318,12 +317,12 @@ class _AllPageState extends State<ContinueCartPage> {
                       );
                     },
                     child: Container(
-                      height: 60,
-                      width: 380,
                       decoration: BoxDecoration(
-                        color: Colors.orange.shade900,
-                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.deepOrange,
+                        borderRadius: BorderRadius.circular(12),
                       ),
+                      width: double.infinity,
+                      height: 50,
                       child: Center(
                         child: Text(
                           "  $paymentMethodText",
@@ -345,3 +344,6 @@ class _AllPageState extends State<ContinueCartPage> {
     );
   }
 }
+
+
+
