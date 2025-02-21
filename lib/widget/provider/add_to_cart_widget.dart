@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/cart_model.dart';
 import 'package:abd_shop/models/product_model.dart';
@@ -103,7 +104,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                   '+',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.orange.shade900,
+                    color: kPrimaryColor,
                   ),
                 ),
               ),

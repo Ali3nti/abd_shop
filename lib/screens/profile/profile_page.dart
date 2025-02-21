@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/add_Product/add_product_page.dart';
 import 'package:abd_shop/screens/delivery/driver_info_page.dart';
 import 'package:abd_shop/screens/profile/invite_page.dart';
@@ -106,11 +107,11 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:  kPrimaryColor,
         title: const Text(
           "حساب کاربری",
-          style:
-          TextStyle(color: Colors.white,
+          style: TextStyle(
+            color: kWhiteColor,
           ),
         ),
         actions: [
@@ -118,7 +119,8 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               notifiPage(context);
             },
-            child: Image.asset("assets/images/bing.png",
+            child: Image.asset(
+              "assets/images/bing.png",
               color: Colors.white,
             ),
           ),
@@ -129,7 +131,8 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               SystemNavigator.pop();
             },
-            child: Image.asset("assets/images/logout.png",
+            child: Image.asset(
+              "assets/images/logout.png",
               color: Colors.white,
             ),
           ),

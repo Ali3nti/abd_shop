@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/Base/base_page.dart';
@@ -44,10 +45,12 @@ class _OrdersPageState extends State<OrdersPage> {
       appBar: AppBar(
         title: const Text(
           'سفارش های من',
-          style: TextStyle(color: Colors.white,
+          style:
+          TextStyle(
+            color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:  kPrimaryColor,
       ),
       body: Container(
         color: Colors.grey.shade100,

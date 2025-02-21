@@ -296,10 +296,10 @@ class _CartPageState extends State<CartPage> {
         title: const Text(
           'سبد خرید',
           style: TextStyle(
-            color: Colors.white,
+            color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:  kPrimaryColor,
       ),
       body: cartList.isEmpty
           ? Column(

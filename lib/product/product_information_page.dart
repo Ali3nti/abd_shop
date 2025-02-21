@@ -28,10 +28,10 @@ class _ProductInformationState extends State<ProductInformation> {
         title: const Text(
           'اطلاعات محصول',
           style: TextStyle(
-            color: Colors.white,
+            color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         child: Column(

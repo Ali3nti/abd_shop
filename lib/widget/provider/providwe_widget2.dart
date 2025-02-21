@@ -68,7 +68,7 @@ class _ProviderWidgetState extends State<ProviderWidget2> {
                 width: 150,
                 height: 40,
                 decoration: BoxDecoration(
-                    color: kPrimaryColor,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 alignment: Alignment.center,
@@ -81,7 +81,9 @@ class _ProviderWidgetState extends State<ProviderWidget2> {
                   child: const Center(
                     child: Text(
                       'اضافه به سبد محصول',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: kWhiteColor,
+                      ),
                     ),
                   ),
                 ),

@@ -25,10 +25,10 @@ class _CategoryPageState extends State<CategoryPage> {
         title: const Text(
           'همه محصولات',
           style: TextStyle(
-            color: Colors.white,
+            color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -150,7 +150,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                   Text(
                                     e.discount.toString(),
                                     style: const TextStyle(
-                                      color: Colors.white,
+                                      color: kWhiteColor,
                                     ),
                                   ),
                                   const Text(
