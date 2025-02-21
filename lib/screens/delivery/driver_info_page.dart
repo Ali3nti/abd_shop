@@ -300,8 +300,9 @@ class NotificationsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'اعلان‌های راننده',
+          'اعلان های راننده',
         ),
+        backgroundColor: Colors.teal,
       ),
       body: ListView(
         children: [
@@ -369,7 +370,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('پروفایل راننده'),
+        title: Text(
+          'پروفایل راننده',
+        ),
         backgroundColor: Colors.teal,
       ),
       body: Padding(
@@ -380,9 +383,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
             children: [
               _buildTextField(_nameController, 'نام', Icons.person),
               SizedBox(height: 16.0),
-              _buildTextField(
-                _phoneController,
-                'شماره تلفن', Icons.phone),
+              _buildTextField(_phoneController, 'شماره تلفن', Icons.phone),
               SizedBox(height: 16.0),
               _buildTextField(_emailController, 'ایمیل', Icons.email),
               SizedBox(height: 16.0),

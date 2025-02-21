@@ -76,11 +76,11 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
       backgroundColor: CupertinoColors.white,
       appBar: AppBar(
         title: const Text(
-          "پیگیری سفارش",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+          'پیگیری سفارش',
+          style: TextStyle(color: Colors.white,
           ),
         ),
+        backgroundColor: Colors.deepOrange,
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

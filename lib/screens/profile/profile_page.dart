@@ -106,14 +106,21 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text("حساب کاربری"),
+        backgroundColor: Colors.deepOrange,
+        title: const Text(
+          "حساب کاربری",
+          style:
+          TextStyle(color: Colors.white,
+          ),
+        ),
         actions: [
           InkWell(
             onTap: () {
               notifiPage(context);
             },
-            child: Image.asset("assets/images/bing.png"),
+            child: Image.asset("assets/images/bing.png",
+              color: Colors.white,
+            ),
           ),
           SizedBox(
             width: 20,
@@ -122,7 +129,9 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               SystemNavigator.pop();
             },
-            child: Image.asset("assets/images/logout.png"),
+            child: Image.asset("assets/images/logout.png",
+              color: Colors.white,
+            ),
           ),
           SizedBox(
             width: 10,
@@ -180,7 +189,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "10000",
                                 style: TextStyle(fontSize: 16),
                               ),
-                              Image.asset("assets/images/toman.png", height: 15),
+                              Image.asset("assets/images/toman.png",
+                                  height: 15),
                             ],
                           ),
                         ],

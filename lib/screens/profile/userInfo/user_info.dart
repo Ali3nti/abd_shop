@@ -17,9 +17,13 @@ class _UserInfoState extends State<UserInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("حساب کاربری", style: kHeaderTextStyle),
-        centerTitle: true,
-        backgroundColor: Colors.deepOrange, // تغییر رنگ پس‌زمینه
+        title: const Text(
+          'حساب کاربری',
+          style:
+          TextStyle(color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.deepOrange,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

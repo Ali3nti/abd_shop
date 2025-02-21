@@ -7,8 +7,12 @@ class RatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("نظرات من"),
-        centerTitle: true,
+        title: const Text(
+          'نظرات من',
+          style:
+          TextStyle(color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.deepOrange,
       ),
       body: Padding(

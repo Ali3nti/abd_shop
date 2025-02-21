@@ -43,11 +43,11 @@ class _OrdersPageState extends State<OrdersPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "سفارش های من",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+          'سفارش های من',
+          style: TextStyle(color: Colors.white,
           ),
         ),
+        backgroundColor: Colors.deepOrange,
       ),
       body: Container(
         color: Colors.grey.shade100,

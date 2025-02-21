@@ -291,11 +291,15 @@ class _CartPageState extends State<CartPage> {
     double totalPrice = cartList.values.fold(0, (sum, cartItem) {
       return sum + (cartItem.product.price.toDouble() * cartItem.count);
     });
-
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'سبد خرید',
+          style:
+          TextStyle(color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.deepOrange,
-        title: const Text('سبد خرید', style: TextStyle(color: Colors.white)),
       ),
       body: cartList.isEmpty
           ? Column(

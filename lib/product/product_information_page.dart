@@ -26,9 +26,12 @@ class _ProductInformationState extends State<ProductInformation> {
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text(
-          "اطلاعات محصول",
-          style: kHeaderTextStyle,
+          'اطلاعات محصول',
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
+        backgroundColor: Colors.deepOrange,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -221,4 +224,3 @@ class _ProductInformationState extends State<ProductInformation> {
     );
   }
 }
-
