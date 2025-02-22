@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatefulWidget {
@@ -32,10 +33,10 @@ class _AddressPageState extends State<AddressPage> {
         title: const Text(
           'وارد کردن آدرس',
           style: TextStyle(
-            color: Colors.white,
+            color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,14 +54,14 @@ class _AddressPageState extends State<AddressPage> {
             ElevatedButton(
               onPressed: _addAddress,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepOrange,
+                backgroundColor: kPrimaryColor,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 textStyle: const TextStyle(fontSize: 18),
               ),
               child: const Text(
                 'تأیید',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color:kWhiteColor,),
               ),
             ),
             const SizedBox(height: 20),
@@ -94,15 +95,15 @@ class _AddressPageState extends State<AddressPage> {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: const TextStyle(color: Colors.deepOrange),
-        prefixIcon: Icon(icon, color: Colors.deepOrange),
+        labelStyle: const TextStyle(color: kPrimaryColor,),
+        prefixIcon: Icon(icon, color: kPrimaryColor,),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.deepOrange),
+          borderSide: BorderSide(color: kPrimaryColor,),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.deepOrange, width: 2),
+          borderSide: BorderSide(color: kPrimaryColor, width: 2),
         ),
       ),
       keyboardType: keyboardType,

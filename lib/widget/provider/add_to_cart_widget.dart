@@ -42,19 +42,19 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                     },
                     child: Icon(
                       Icons.add,
-                      color: Colors.orange.shade900,
-                      size: 15,
+                      color: kPrimaryColor,
+                      size: 20,
                     ),
                   ),
-                  SizedBox(width: 3),
+                  SizedBox(width: 2),
                   Text(
                     cartList[widget.product.id]!.count.toString(),
                     style: TextStyle(
-                      color: Colors.orange.shade900,
-                      fontSize: 15,
+                      color: kPrimaryColor,
+                      fontSize: 20,
                     ),
                   ),
-                  SizedBox(width: 3),
+                  SizedBox(width: 2),
                   InkWell(
                     onTap: () {
                       // if (context.read<CartUpdater>().counterValue > 0) {
@@ -70,8 +70,8 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                     },
                     child: Icon(
                       Icons.delete,
-                      color: Colors.orange.shade900,
-                      size: 15,
+                      color: kPrimaryColor,
+                      size: 20,
                     ),
                   ),
                 ],

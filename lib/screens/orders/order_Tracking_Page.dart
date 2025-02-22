@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/address_model.dart';
@@ -77,10 +78,10 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
       appBar: AppBar(
         title: const Text(
           'پیگیری سفارش',
-          style: TextStyle(color: Colors.white,
+          style: TextStyle(color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -303,13 +304,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: const [
                           Icon(
                             Icons.sms_outlined,
-                            color: Colors.deepOrange,
+                            color: kPrimaryColor,
                           ),
                           SizedBox(width: 10),
                           Text(
                             "ثبت امتیاز و بازخورد",
                             style: TextStyle(
-                              color: Colors.deepOrange,
+                              color: kPrimaryColor,
                               fontSize: 20,
                             ),
                           ),
@@ -415,7 +416,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                           SizedBox(width: 2),
                           Icon(
                             Icons.radio_button_on_sharp,
-                            color: Colors.deepOrange,
+                            color: kPrimaryColor,
                           )
                         ],
                       ),
@@ -454,13 +455,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: Colors.deepOrange,
+                              color: kPrimaryColor,
                             ),
                           ),
                           Image.asset(
                             "assets/images/toman.png",
                             width: 15,
-                            color: Colors.deepOrange,
+                            color: kPrimaryColor,
                           ),
                         ],
                       ),

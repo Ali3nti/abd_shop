@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/cart/failed_pay.dart';
 import 'package:abd_shop/screens/cart/successful_payment_page.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +31,10 @@ class _InternetPaymentState extends State<InternetPayment> {
       appBar: AppBar(
         title: const Text(
           'پرداخت اینترنتی',
-          style: TextStyle(color: Colors.white,
+          style: TextStyle(color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
       ),
       body: Center(
         child: _showSplash

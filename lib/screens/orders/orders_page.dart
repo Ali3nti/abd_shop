@@ -2,6 +2,7 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/Base/base_page.dart';
+import 'package:abd_shop/screens/cart/cart_page.dart';
 import 'package:abd_shop/screens/orders/order_tracking_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -136,10 +137,11 @@ class _OrdersPageState extends State<OrdersPage> {
                               Row(
                                 children: [
                                   Text(
-                                    order.totalPrice.toString(),
+                                    formatter.format(order.totalPrice),
+                                    style: kHeaderTextStyle,
                                   ),
                                   Image.asset(
-                                    width: 15,
+                                    width: 20,
                                     'assets/images/toman.png',
                                   ),
                                 ],
@@ -172,9 +174,9 @@ class _OrdersPageState extends State<OrdersPage> {
                               height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
+                                color: kWhiteColor,
                                 border: Border.all(
-                                  color: Colors.deepOrange,
+                                  color: kPrimaryColor,
                                   width: 3,
                                 ),
                               ),
@@ -183,14 +185,14 @@ class _OrdersPageState extends State<OrdersPage> {
                                 children: [
                                   Icon(
                                     Icons.sms_outlined,
-                                    color: Colors.deepOrange,
+                                    color: kPrimaryColor,
                                     size: 30,
                                   ),
                                   SizedBox(width: 10),
                                   Text(
                                     "ثبت امتیاز و بازخورد",
                                     style: TextStyle(
-                                      color: Colors.deepOrange,
+                                      color: kPrimaryColor,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),

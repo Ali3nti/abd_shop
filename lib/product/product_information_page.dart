@@ -206,11 +206,12 @@ class _ProductInformationState extends State<ProductInformation> {
                         children: [
                           Text(
                             formatter.format(finalPrice),
+                            style: kHeaderTextStyle,
                           ),
+                          const SizedBox(width: 5),
                           Image.asset(
-                            "assets/images/toman.png",
-                            width: 25,
-                            height: 20,
+                            width: 20,
+                            'assets/images/toman.png',
                           ),
                         ],
                       ),

@@ -1,6 +1,7 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/product/product_information_page.dart';
+import 'package:abd_shop/screens/cart/cart_page.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,7 @@ class _CategoryPageState extends State<CategoryPage> {
         itemCount: widget.products.length,
         itemBuilder: (context, index) {
           final e = widget.products[index];
+          double finalPrice = e.price - (e.price * (e.discount / 100));
           return Container(
             color: Colors.white,
             margin: const EdgeInsets.all(2),
@@ -72,7 +74,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         top: 90,
                       ),
                       child: AddToCartWidget(
-                        product: Product(),
+                        product: e,
                       ),
                     ),
                   ],
@@ -156,7 +158,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                   const Text(
                                     "%",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: kWhiteColor,
                                     ),
                                   ),
                                 ],
@@ -169,25 +171,26 @@ class _CategoryPageState extends State<CategoryPage> {
                                   child: Row(
                                     children: [
                                       Text(
-                                        e.price.toString(),
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        formatter.format(finalPrice),
+                                        style: kHeaderTextStyle,
                                       ),
                                       const SizedBox(width: 5),
                                       Image.asset(
-                                        width: 15,
+                                        width: 20,
                                         'assets/images/toman.png',
                                       ),
                                     ],
                                   ),
                                 ),
-                                Text(
-                                  e.price.toString(),
-                                  style: const TextStyle(
-                                    decoration: TextDecoration.lineThrough,
+                                if (e.price > 0)
+                                  Text(
+                                    formatter.format(e.price),
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      fontSize: 18,
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                ),
                               ],
                             ),
                           ],
@@ -204,3 +207,4 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
+

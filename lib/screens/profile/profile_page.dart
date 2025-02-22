@@ -121,7 +121,7 @@ class _ProfilePageState extends State<ProfilePage> {
             },
             child: Image.asset(
               "assets/images/bing.png",
-              color: Colors.white,
+              color: kWhiteColor,
             ),
           ),
           SizedBox(
@@ -133,7 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
             },
             child: Image.asset(
               "assets/images/logout.png",
-              color: Colors.white,
+              color: kWhiteColor,
             ),
           ),
           SizedBox(

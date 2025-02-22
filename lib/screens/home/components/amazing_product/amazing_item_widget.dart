@@ -44,7 +44,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
         child: Container(
           margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: kWhiteColor,
             borderRadius: BorderRadius.circular(8),
           ),
           height: 320,

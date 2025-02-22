@@ -69,12 +69,12 @@ class _CategoryProductsBoxState extends State<CategoryProductsBox> {
                                 "همه",
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.white,
+                                  color: kWhiteColor,
                                 ),
                               ),
                               Icon(
                                 Icons.navigate_next,
-                                color: Colors.white,
+                                color: kWhiteColor,
                               ),
                             ],
                           ),

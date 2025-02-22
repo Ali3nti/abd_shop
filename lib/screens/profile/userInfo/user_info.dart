@@ -20,10 +20,10 @@ class _UserInfoState extends State<UserInfo> {
         title: const Text(
           'حساب کاربری',
           style:
-          TextStyle(color: Colors.white,
+          TextStyle(color: kWhiteColor,
           ),
         ),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

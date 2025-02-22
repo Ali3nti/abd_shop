@@ -58,7 +58,7 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
                   " تا50% ",
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.white,
+                    color: kWhiteColor,
                   ),
                 ),
               ),

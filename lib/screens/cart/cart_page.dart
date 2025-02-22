@@ -397,7 +397,7 @@ class _CartPageState extends State<CartPage> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.deepOrange,
+                      color: kPrimaryColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     width: double.infinity,
@@ -406,7 +406,7 @@ class _CartPageState extends State<CartPage> {
                       child: Text(
                         "پرداخت نهایی",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           fontSize: 18,
                         ),
                       ),
