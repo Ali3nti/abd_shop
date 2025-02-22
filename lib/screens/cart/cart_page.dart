@@ -299,7 +299,7 @@ class _CartPageState extends State<CartPage> {
             color: kWhiteColor,
           ),
         ),
-        backgroundColor:  kPrimaryColor,
+        backgroundColor: kPrimaryColor,
       ),
       body: cartList.isEmpty
           ? Column(
@@ -367,8 +367,9 @@ class _CartPageState extends State<CartPage> {
                               Text(
                                 formatter.format(itemTotalPrice),
                                 style: const TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               IconButton(
                                 icon:

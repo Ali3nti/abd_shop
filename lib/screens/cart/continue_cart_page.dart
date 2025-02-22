@@ -153,7 +153,7 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        formatter.format(order.itemPrice),
+                        formatter.format(order.deliveryCost),
                         style: kHeaderTextStyle,
                       ),
                       Image.asset(
@@ -182,7 +182,7 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        formatter.format(order.itemPrice),
+                        formatter.format(order.preparationCost),
                         style: kHeaderTextStyle,
                       ),
                       Image.asset(
@@ -211,7 +211,7 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        formatter.format(order.itemPrice),
+                        formatter.format(order.discount),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: kPrimaryColor
@@ -276,7 +276,7 @@ class _AllPageState extends State<ContinueCartPage> {
                         Row(
                           children: [
                             Text(
-                              formatter.format(order.itemPrice),
+                              formatter.format(order.totalPrice),
                               style: kHeaderTextStyle,
                             ),
                             Image.asset(

@@ -11,6 +11,7 @@ import 'package:abd_shop/screens/profile/userInfo/user_info.dart';
 import 'package:abd_shop/screens/profile/wallet/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'address_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -188,12 +189,15 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           Row(
                             children: [
-                              const Text(
-                                "10000",
+                              Text(
+                                NumberFormat("#,##0").format(10000),
                                 style: TextStyle(fontSize: 16),
                               ),
-                              Image.asset("assets/images/toman.png",
-                                  height: 15),
+                              const SizedBox(width: 5),
+                              Image.asset(
+                                width: 20,
+                                'assets/images/toman.png',
+                              ),
                             ],
                           ),
                         ],

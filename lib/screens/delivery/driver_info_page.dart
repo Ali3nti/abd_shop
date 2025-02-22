@@ -3,6 +3,7 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/delivery/delivery_page.dart';
 import 'package:flutter/material.dart';
 import 'package:abd_shop/models/order_model.dart';
+import 'package:intl/intl.dart';
 
 class DriverInfoPage extends StatefulWidget {
   const DriverInfoPage({super.key});
@@ -194,20 +195,33 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                           ),
                         ),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "200,000 تومان",
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                              ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          Text(
+                            NumberFormat("#,##0").format(200000),
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
                             ),
+                          ),
+                          SizedBox(width:2),
+                          Image.asset(
+                            'assets/images/toman.png',
+                            width: 30,
+                            color: Colors.green,
+                          ),
+                        ],
+                        ),
                             SizedBox(height: 5),
                             Text(
                               "آخرین بروزرسانی: 25 آذر 1403",
                               style: TextStyle(
                                 color: Colors.grey,
+                                fontSize: 15,
                               ),
                             ),
                           ],
@@ -215,7 +229,7 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        "تاریخچه تراکنش‌ها:",
+                        "تاریخچه تراکنش‌ها :",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -234,12 +248,22 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                                 subtitle: Text(
                                   "24 آذر 1403",
                                 ),
-                                trailing: Text(
-                                  "+50,000 تومان",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,
-                                  ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      NumberFormat("+ #,##0").format(50000),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Image.asset(
+                                      'assets/images/toman.png',
+                                      width: 20,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -252,12 +276,22 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                                 subtitle: Text(
                                   "23 آذر 1403",
                                 ),
-                                trailing: Text(
-                                  "-30,000 تومان",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red,
-                                  ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      NumberFormat("- #,##0").format(30000),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Image.asset(
+                                      'assets/images/toman.png',
+                                      width: 20,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -270,12 +304,22 @@ class _DriverInfoPageState extends State<DriverInfoPage> {
                                 subtitle: Text(
                                   "22 آذر 1403",
                                 ),
-                                trailing: Text(
-                                  "+100,000 تومان",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,
-                                  ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      NumberFormat("+ #,##0").format(100000),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Image.asset(
+                                      'assets/images/toman.png',
+                                      width: 20,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
