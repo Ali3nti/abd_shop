@@ -1,4 +1,6 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
+import 'package:abd_shop/screens/cart/cart_page.dart';
 import 'package:abd_shop/screens/cart/internet_payment.dart';
 import 'package:abd_shop/screens/orders/order_Tracking_Page.dart';
 import 'package:abd_shop/widget/continue_cart_widget.dart';
@@ -29,12 +31,11 @@ class _AllPageState extends State<ContinueCartPage> {
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text(
-          "پرداخت",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+          'پرداخت',
+          style: TextStyle(color: kWhiteColor,
           ),
         ),
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -123,17 +124,12 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        "${order.itemPrice}",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
+                        formatter.format(order.itemPrice),
+                        style: kHeaderTextStyle,
                       ),
                       Image.asset(
                         "assets/images/toman.png",
-                        width: 15,
-                        color: Colors.green.shade900,
+                        width: 20,
                       ),
                     ],
                   ),
@@ -157,17 +153,12 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        "${order.deliveryCost}",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
+                        formatter.format(order.deliveryCost),
+                        style: kHeaderTextStyle,
                       ),
                       Image.asset(
                         "assets/images/toman.png",
-                        width: 15,
-                        color: Colors.green.shade900,
+                        width: 20,
                       ),
                     ],
                   ),
@@ -191,17 +182,12 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        "${order.preparationCost}",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
+                        formatter.format(order.preparationCost),
+                        style: kHeaderTextStyle,
                       ),
                       Image.asset(
                         "assets/images/toman.png",
-                        width: 15,
-                        color: Colors.green.shade900,
+                        width: 20,
                       ),
                     ],
                   ),
@@ -225,16 +211,16 @@ class _AllPageState extends State<ContinueCartPage> {
                   Row(
                     children: [
                       Text(
-                        "${order.discount}",
+                        formatter.format(order.discount),
                         style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.bold,
+                          color: kPrimaryColor
                         ),
                       ),
                       Image.asset(
                         "assets/images/toman.png",
-                        width: 15,
-                        color: Colors.green.shade900,
+                        width: 20,
+                        color: kPrimaryColor,
                       ),
                     ],
                   ),
@@ -290,17 +276,12 @@ class _AllPageState extends State<ContinueCartPage> {
                         Row(
                           children: [
                             Text(
-                              "${order.totalPrice}",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.green.shade900,
-                              ),
+                              formatter.format(order.totalPrice),
+                              style: kHeaderTextStyle,
                             ),
                             Image.asset(
                               "assets/images/toman.png",
-                              width: 15,
-                              color: Colors.green.shade900,
+                              width: 20,
                             ),
                           ],
                         ),
@@ -318,17 +299,17 @@ class _AllPageState extends State<ContinueCartPage> {
                       );
                     },
                     child: Container(
-                      height: 60,
-                      width: 380,
                       decoration: BoxDecoration(
-                        color: Colors.orange.shade900,
-                        borderRadius: BorderRadius.circular(5),
+                        color: kPrimaryColor,
+                        borderRadius: BorderRadius.circular(12),
                       ),
+                      width: double.infinity,
+                      height: 50,
                       child: Center(
                         child: Text(
                           "  $paymentMethodText",
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: kWhiteColor,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
@@ -345,3 +326,6 @@ class _AllPageState extends State<ContinueCartPage> {
     );
   }
 }
+
+
+

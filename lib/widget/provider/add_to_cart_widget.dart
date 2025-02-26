@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/cart_model.dart';
 import 'package:abd_shop/models/product_model.dart';
@@ -22,13 +23,14 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
     return Center(
       child: _isExpanded
           ? Container(
-              width: 50,
+              width: 70,
               height: 30,
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
                     onTap: () {
@@ -40,17 +42,19 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                     },
                     child: Icon(
                       Icons.add,
-                      color: Colors.orange.shade900,
-                      size: 15,
+                      color: kPrimaryColor,
+                      size: 20,
                     ),
                   ),
+                  SizedBox(width: 2),
                   Text(
                     cartList[widget.product.id]!.count.toString(),
                     style: TextStyle(
-                      color: Colors.orange.shade900,
-                      fontSize: 15,
+                      color: kPrimaryColor,
+                      fontSize: 20,
                     ),
                   ),
+                  SizedBox(width: 2),
                   InkWell(
                     onTap: () {
                       // if (context.read<CartUpdater>().counterValue > 0) {
@@ -66,8 +70,8 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                     },
                     child: Icon(
                       Icons.delete,
-                      color: Colors.orange.shade900,
-                      size: 15,
+                      color: kPrimaryColor,
+                      size: 20,
                     ),
                   ),
                 ],
@@ -100,7 +104,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                   '+',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.orange.shade900,
+                    color: kPrimaryColor,
                   ),
                 ),
               ),

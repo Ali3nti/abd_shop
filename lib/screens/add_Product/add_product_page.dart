@@ -94,113 +94,116 @@ class _AddProductPageState extends State<AddProductPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: kPrimaryColor,
         title: const Text(
           "اضافه کردن محصول",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: kWhiteColor,
+          ),
         ),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            color: Colors.white,
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.store, size: 30),
-                Row(
-                  children: [
-                    Text(
-                      _storeName,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  color: kWhiteColor,
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(Icons.store, size: 30),
+                      Row(
+                        children: [
+                          Text(
+                            _storeName,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Image.asset(
+                              _storeImage,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Image.asset(
-                        _storeImage,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 5),
-          const AppBarOriginal(),
-          const SizedBox(height: 5),
-          Container(
-            color: Colors.white,
-            height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildNavigationButton(context, "سفارشات جدید",
-                    Colors.orangeAccent, const NewOrderPage()),
-                _buildNavigationButton(
-                    context, "ارسال شده", Colors.green, const SentPage()),
-                _buildNavigationButton(context, "اتمام موجودی", Colors.red,
-                    const OutOfStockPage()),
-              ],
-            ),
-          ),
-          const SizedBox(height: 5),
-          Expanded(
-            child: Stack(
-              children: [
-                ListView.builder(
-                  itemCount: _products.length,
-                  itemBuilder: (context, index) {
-                    final product = _products[index];
-                    final relatedOrders = _orders
-                        .where((order) =>
-                        order.products.any((p) => p.id == product.id))
-                        .toList();
-                    return _buildProductCard(product, relatedOrders);
-                  },
+                const SizedBox(height: 5),
+                const AppBarOriginal(),
+                const SizedBox(height: 5),
+                Container(
+                  color: kWhiteColor,
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildNavigationButton(context, "سفارشات جدید",
+                          kPrimaryColor, const NewOrderPage()),
+                      _buildNavigationButton(
+                          context, "ارسال شده", Colors.green, const SentPage()),
+                      _buildNavigationButton(context, "اتمام موجودی",
+                          Colors.red, const OutOfStockPage()),
+                    ],
+                  ),
                 ),
-                Positioned(
-                  bottom: 20,
-                  right: 20,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddProductToListPage(),
+                const SizedBox(height: 5),
+                Expanded(
+                  child: Stack(
+                    children: [
+                      ListView.builder(
+                        itemCount: _products.length,
+                        itemBuilder: (context, index) {
+                          final product = _products[index];
+                          final relatedOrders = _orders
+                              .where((order) =>
+                                  order.products.any((p) => p.id == product.id))
+                              .toList();
+                          return _buildProductCard(product, relatedOrders);
+                        },
+                      ),
+                      Positioned(
+                        bottom: 20,
+                        right: 20,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const AddProductToListPage(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: kWhiteColor,
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            child: const Icon(
+                              Icons.add,
+                              color: kPrimaryColor,
+                            ),
+                          ),
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(25),
                       ),
-                      child: const Icon(
-                        Icons.add,
-                        color: kPrimaryColor,
-                      ),
-                    ),
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -216,7 +219,7 @@ class _AddProductPageState extends State<AddProductPage> {
           );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: kWhiteColor,
           foregroundColor: color,
           side: BorderSide(color: color),
           shape: RoundedRectangleBorder(
@@ -224,13 +227,11 @@ class _AddProductPageState extends State<AddProductPage> {
           ),
           minimumSize: Size(MediaQuery.of(context).size.width * 0.30, 40),
         ),
-        child: Text(
-            title,
+        child: Text(title,
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-            )
-        ),
+            )),
       ),
     );
   }
@@ -257,20 +258,20 @@ class _AddProductPageState extends State<AddProductPage> {
         return "ارسال شده";
       case ProductStatus.noOrder:
         return "بدون سفارش";
-      }
+    }
   }
 
   Color _getStatusColor(ProductStatus status) {
-    switch(status) {
+    switch (status) {
       case ProductStatus.newOrder:
-        return Colors.orange;
+        return kPrimaryColor;
       case ProductStatus.outOfStock:
         return Colors.red;
       case ProductStatus.shipped:
         return Colors.green;
       case ProductStatus.noOrder:
         return Colors.grey;
-      }
+    }
   }
 
   Widget _buildProductCard(Product product, List<Order> relatedOrders) {
@@ -280,7 +281,7 @@ class _AddProductPageState extends State<AddProductPage> {
 
     return Container(
       margin: const EdgeInsets.all(2),
-      color: Colors.white,
+      color: kWhiteColor,
       height: 80,
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -304,7 +305,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 child: Text(
                   statusMessage,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: kWhiteColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

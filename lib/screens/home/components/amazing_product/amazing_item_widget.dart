@@ -44,7 +44,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
         child: Container(
           margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: kWhiteColor,
             borderRadius: BorderRadius.circular(8),
           ),
           height: 290,
@@ -99,19 +99,21 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     ),
                   ),
                 Stack(
-                  alignment: Alignment.bottomRight,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 5),
+                      width: 200,
+                     margin: const EdgeInsets.only(top: 5),
                       child: Image.network(
                         baseUrl + widget.product.image,
                         width: 100,
                         height: 85,
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
-                      height: 30,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 60,
+                        top: 90,
+                      ),
                       child: AddToCartWidget(
                         product: widget.product,
                       ),

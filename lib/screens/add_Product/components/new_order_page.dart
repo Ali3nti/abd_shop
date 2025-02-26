@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/add_Product/components/order_items_page.dart';
@@ -43,11 +44,11 @@ class _AddProductPageState extends State<NewOrderPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: kPrimaryColor,
         title: const Text(
           "سفارشات جدید",
           style: TextStyle(
-            color: Colors.white,
+            color: kWhiteColor,
           ),
         ),
       ),
@@ -73,7 +74,7 @@ class _AddProductPageState extends State<NewOrderPage> {
                         Text(
                           order.products[0].name,
                           style: const TextStyle(
-                            color: Colors.orange,
+                            color: kPrimaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -93,7 +94,7 @@ class _AddProductPageState extends State<NewOrderPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const OrderItemsPage(),
+                          builder: (context) =>  OrderItemsPage(),
                         ),
                       );
                     },
@@ -102,13 +103,13 @@ class _AddProductPageState extends State<NewOrderPage> {
                         Text(
                           "آیتم های سفارش",
                           style: TextStyle(
-                            color: Colors.orangeAccent,
+                            color: kPrimaryColor,
                           ),
                         ),
                         SizedBox(width: 2),
                         Icon(
                           Icons.navigate_next,
-                          color: Colors.orangeAccent,
+                          color: kPrimaryColor,
                           size: 20,
                         ),
                       ],

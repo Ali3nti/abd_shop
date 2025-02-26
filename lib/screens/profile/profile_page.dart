@@ -10,6 +10,7 @@ import 'package:abd_shop/screens/profile/userInfo/user_info.dart';
 import 'package:abd_shop/screens/profile/wallet/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'address_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -97,14 +98,22 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text("حساب کاربری"),
+        backgroundColor:  kPrimaryColor,
+        title: const Text(
+          "حساب کاربری",
+          style: TextStyle(
+            color: kWhiteColor,
+          ),
+        ),
         actions: [
           InkWell(
             onTap: () {
               notifiPage(context);
             },
-            child: Image.asset("assets/images/bing.png"),
+            child: Image.asset(
+              "assets/images/bing.png",
+              color: kWhiteColor,
+            ),
           ),
           SizedBox(
             width: 20,
@@ -113,7 +122,10 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               SystemNavigator.pop();
             },
-            child: Image.asset("assets/images/logout.png"),
+            child: Image.asset(
+              "assets/images/logout.png",
+              color: kWhiteColor,
+            ),
           ),
           SizedBox(
             width: 10,
@@ -147,27 +159,41 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 20),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () => address(context),
-                child: Row(
-                  children: [
-                    Image.asset("assets/images/mapp.png",
-                        width: 50, height: 50),
-                    SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "آدرس ها",
-                          style: kHeaderTextStyle,
-                        ),
-                        Text(
-                          "2 آدرس",
-                          style: kTextStyle,
-                        ),
-                      ],
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: InkWell(
+                  onTap: () {
+                    walletPage(context);
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/wallet.png",
+                          width: 50, height: 50),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "کیف پول",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                NumberFormat("#,##0").format(10000),
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              const SizedBox(width: 5),
+                              Image.asset(
+                                width: 20,
+                                'assets/images/toman.png',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(width: 20),

@@ -1,6 +1,7 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/market_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart'; // وارد کردن کتابخانه intl
 
 class ProductSupermarketWidget extends StatefulWidget {
   const ProductSupermarketWidget({super.key, required this.market});
@@ -14,6 +15,8 @@ class ProductSupermarketWidget extends StatefulWidget {
 class _ProductSupermarketState extends State<ProductSupermarketWidget> {
   @override
   Widget build(BuildContext context) {
+    final formatter = NumberFormat("#,##0"); // تعریف formatter برای فرمت کردن قیمت
+
     return Container(
       padding: const EdgeInsets.only(right: 20),
       color: Colors.white,
@@ -38,7 +41,6 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
           Row(
             children: [
               Text(
-                // " جت مارت | ونک ",
                 widget.market.name,
                 style: const TextStyle(
                   fontSize: 18,
@@ -58,7 +60,7 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
                   " تا50% ",
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.white,
+                    color: kWhiteColor,
                   ),
                 ),
               ),
@@ -72,7 +74,7 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
                 color: Colors.yellow.shade700,
                 size: 18,
               ),
-               Text(
+              Text(
                 widget.market.rate.toString(),
                 style: TextStyle(
                   fontSize: 16,
@@ -100,7 +102,7 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
                 ),
               ),
               const Text(
-                "45  دقیقه  .  ",
+                "45 دقیقه . ",
                 style: TextStyle(
                   color: kPrimaryTextColor,
                   fontSize: 14,
@@ -114,13 +116,22 @@ class _ProductSupermarketState extends State<ProductSupermarketWidget> {
                   fontSize: 14,
                 ),
               ),
-              const Text(
-                "6,000 تومان",
-                style: TextStyle(
-                  color: kPrimaryTextColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: [
+                  Text(
+                    "${formatter.format(6000)} تومان", // استفاده از formatter برای فرمت کردن قیمت
+                    style: TextStyle(
+                      color: kPrimaryTextColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Image.asset(
+                    'assets/images/toman.png',
+                    width: 20,
+                  ),
+                ],
               ),
             ],
           ),

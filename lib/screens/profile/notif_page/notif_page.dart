@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_card.dart';
 import 'package:abd_shop/screens/profile/rate_page/rate_page.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,13 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("اعلان‌ها"),
-        centerTitle: true,
-        backgroundColor: Colors.deepOrange,
+        title: const Text(
+          'اعلان ها',
+          style: TextStyle(
+            color: kWhiteColor,
+          ),
+        ),
+        backgroundColor:  kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

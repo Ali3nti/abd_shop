@@ -1,3 +1,4 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/cart/failed_pay.dart';
 import 'package:abd_shop/screens/cart/successful_payment_page.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,14 @@ class _InternetPaymentState extends State<InternetPayment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("پرداخت اینترنتی")),
+      appBar: AppBar(
+        title: const Text(
+          'پرداخت اینترنتی',
+          style: TextStyle(color: kWhiteColor,
+          ),
+        ),
+        backgroundColor: kPrimaryColor,
+      ),
       body: Center(
         child: _showSplash
             ? Padding(

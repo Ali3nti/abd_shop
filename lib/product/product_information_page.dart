@@ -26,14 +26,18 @@ class _ProductInformationState extends State<ProductInformation> {
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text(
-          "اطلاعات محصول",
-          style: kHeaderTextStyle,
+          'اطلاعات محصول',
+          style: TextStyle(
+            color: kWhiteColor,
+          ),
         ),
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.only(top: 5,left: 5),
               color: Colors.white,
               width: double.infinity,
               height: 200,
@@ -42,10 +46,10 @@ class _ProductInformationState extends State<ProductInformation> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 20),
+              padding: const EdgeInsets.only(top: 15, right: 20),
               color: Colors.white,
               width: double.infinity,
-              height: 50,
+              height: 70,
               child: const Text(
                 "مشخصات",
                 style: kHeaderTextStyle,
@@ -64,10 +68,10 @@ class _ProductInformationState extends State<ProductInformation> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 20),
+              padding: const EdgeInsets.only(top: 15, right: 20),
               color: Colors.white,
               width: double.infinity,
-              height: 50,
+              height: 70,
               child: const Text(
                 "فروشنده",
                 style: kHeaderTextStyle,
@@ -77,7 +81,7 @@ class _ProductInformationState extends State<ProductInformation> {
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
               width: double.infinity,
-              height: 100,
+              height: 110,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -130,7 +134,7 @@ class _ProductInformationState extends State<ProductInformation> {
             Container(
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
-              height: 50,
+              height: 70,
               child: const Row(
                 children: [
                   Icon(
@@ -148,7 +152,7 @@ class _ProductInformationState extends State<ProductInformation> {
             Container(
               padding: const EdgeInsets.only(top: 10, right: 10),
               color: Colors.grey.shade50,
-              height: 50,
+              height: 70,
               child: Row(
                 children: [
                   const Icon(
@@ -202,11 +206,12 @@ class _ProductInformationState extends State<ProductInformation> {
                         children: [
                           Text(
                             formatter.format(finalPrice),
+                            style: kHeaderTextStyle,
                           ),
+                          const SizedBox(width: 5),
                           Image.asset(
-                            "assets/images/toman.png",
-                            width: 25,
-                            height: 20,
+                            width: 20,
+                            'assets/images/toman.png',
                           ),
                         ],
                       ),
@@ -221,4 +226,3 @@ class _ProductInformationState extends State<ProductInformation> {
     );
   }
 }
-

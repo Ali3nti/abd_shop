@@ -1,7 +1,6 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/category/all_page.dart';
 import 'package:abd_shop/screens/category/category_Page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
 import 'package:abd_shop/services/api_helper.dart';
@@ -36,7 +35,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                   margin: const EdgeInsets.only(top: 5),
                   child: Column(
                     children: [
-                      Image.asset(height: 90,
+                      Image.asset(
                         "assets/images/a1.png",
                         color: CupertinoColors.white,
                       ),
@@ -62,7 +61,6 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                                 categoryProductsList
                                     .add(Product.fromJson(value));
                               });
-
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -83,10 +81,13 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                                 "همه",
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.white,
+                                  color: kWhiteColor,
                                 ),
                               ),
-                              Icon(Icons.navigate_next, color: Colors.white),
+                              Icon(
+                                Icons.navigate_next,
+                                color: kWhiteColor,
+                              ),
                             ],
                           ),
                         ),

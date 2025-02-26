@@ -2,6 +2,7 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/address_model.dart';
 import 'package:abd_shop/models/order_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
 class DeliveryDriverPage extends StatefulWidget {
@@ -121,7 +122,13 @@ class _DeliveryDriverPageState extends State<DeliveryDriverPage> {
                 Row(
                   children: [
                     Text(
-                      "هزینه : ${orders[0].deliveryCost}",
+                      "هزینه : ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      NumberFormat("#,##0").format(orders[0].deliveryCost),
                       style: kHeaderTextStyle,
                     ),
                     Image.asset(

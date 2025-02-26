@@ -291,10 +291,15 @@ class _CartPageState extends State<CartPage> {
     double totalPrice = cartList.values.fold(0, (sum, cartItem) {
       return sum + (cartItem.product.price.toDouble() * cartItem.count);
     });
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('سبد خرید', style: TextStyle(color: Colors.black87)),
+        title: const Text(
+          'سبد خرید',
+          style: TextStyle(
+            color: kWhiteColor,
+          ),
+        ),
+        backgroundColor: kPrimaryColor,
       ),
       body: cartList.isEmpty
           ? Column(
@@ -362,8 +367,9 @@ class _CartPageState extends State<CartPage> {
                               Text(
                                 formatter.format(itemTotalPrice),
                                 style: const TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               IconButton(
                                 icon:
@@ -392,14 +398,18 @@ class _CartPageState extends State<CartPage> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.deepOrange,
-                        borderRadius: BorderRadius.circular(12)),
+                      color: kPrimaryColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     width: double.infinity,
                     height: 50,
                     child: const Center(
                       child: Text(
                         "پرداخت نهایی",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: TextStyle(
+                          color: kWhiteColor,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),

@@ -1,9 +1,11 @@
+import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/order_model.dart';
-import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/address_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:intl/intl.dart';
 
 class OrderTrackingPage extends StatefulWidget {
   const OrderTrackingPage({super.key});
@@ -66,11 +68,12 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
       backgroundColor: CupertinoColors.white,
       appBar: AppBar(
         title: const Text(
-          "پیگیری سفارش",
+          'پیگیری سفارش',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            color: kWhiteColor,
           ),
         ),
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -308,13 +311,13 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: const [
                           Icon(
                             Icons.sms_outlined,
-                            color: Colors.deepOrange,
+                            color: kPrimaryColor,
                           ),
                           SizedBox(width: 10),
                           Text(
                             "ثبت امتیاز و بازخورد",
                             style: TextStyle(
-                              color: Colors.deepOrange,
+                              color: kPrimaryColor,
                               fontSize: 20,
                             ),
                           ),
@@ -362,16 +365,12 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Row(
                         children: [
                           Text(
-                            "${order.itemPrice}",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
+                            NumberFormat("#,##0").format(order.itemPrice),
+                            style: kHeaderTextStyle,
                           ),
                           Image.asset(
                             "assets/images/toman.png",
-                            width: 15,
+                            width: 20,
                           ),
                         ],
                       ),
@@ -382,24 +381,17 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                     children: [
                       Text(
                         "هزینه ارسال",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          color: Colors.grey,
-                        ),
+                        style: kHeaderTextStyle,
                       ),
                       Row(
                         children: [
                           Text(
-                            "${order.deliveryCost}",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
+                            NumberFormat("#,##0").format(order.deliveryCost),
+                            style: kHeaderTextStyle,
                           ),
                           Image.asset(
                             "assets/images/toman.png",
-                            width: 15,
+                            width: 20,
                           )
                         ],
                       ),
@@ -412,31 +404,24 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                         children: [
                           Text(
                             "هزینه آماده سازی",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              color: Colors.grey,
-                            ),
+                            style: kHeaderTextStyle,
                           ),
                           SizedBox(width: 2),
                           Icon(
                             Icons.radio_button_on_sharp,
-                            color: Colors.deepOrange,
+                            color: kPrimaryColor,
                           )
                         ],
                       ),
                       Row(
                         children: [
                           Text(
-                            "${order.preparationCost}",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
+                            NumberFormat("#,##0").format(order.preparationCost),
+                            style: kHeaderTextStyle,
                           ),
                           Image.asset(
                             "assets/images/toman.png",
-                            width: 15,
+                            width: 20,
                           )
                         ],
                       ),
@@ -455,17 +440,16 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Row(
                         children: [
                           Text(
-                            "${order.discount}",
+                            NumberFormat("#,##0").format(order.discount),
                             style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.deepOrange,
+                              fontWeight: FontWeight.bold,
+                              color: kPrimaryColor,
                             ),
                           ),
                           Image.asset(
                             "assets/images/toman.png",
-                            width: 15,
-                            color: Colors.deepOrange,
+                            width: 20,
+                            color: kPrimaryColor,
                           ),
                         ],
                       ),
@@ -487,17 +471,12 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
                       Row(
                         children: [
                           Text(
-                            "${order.totalPrice}",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.green.shade900,
-                            ),
+                            NumberFormat("#,##0").format(order.totalPrice),
+                            style: kHeaderTextStyle,
                           ),
                           Image.asset(
                             "assets/images/toman.png",
-                            width: 15,
-                            color: Colors.green.shade900,
+                            width: 20,
                           ),
                         ],
                       ),
