@@ -55,20 +55,13 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-
+analysis_options.yaml
+pubspec.lock
+.metadata
 # Symbolication related
 app.*.symbols
 
 # Obfuscation related
 app.*.map.json
 
-
-
 # I adding below lines to this project
-
-windows/
-test/
-macos/
-linux/
-ios/
-lib/temp/test1.dart
