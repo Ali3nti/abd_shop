@@ -25,3 +25,4 @@ key.properties
 /build.gradle
 /gradle.properties
 /settings.gradle
+/app/build.gradle
