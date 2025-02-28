@@ -7,8 +7,12 @@ class SupportPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("پشتیبانی"),
-        centerTitle: true,
+        title: const Text(
+          'پشتیبانی',
+          style:
+          TextStyle(color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.deepOrange,
       ),
       body: SingleChildScrollView(

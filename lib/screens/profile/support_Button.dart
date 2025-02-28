@@ -24,11 +24,11 @@ class supportButton extends StatelessWidget {
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.headset_mic_rounded, color: Colors.white),
+        children: [
+         Image.asset("assets/images/call.png",color: kWhiteColor,),
           SizedBox(width: 10),
           Text("نیاز به پشتیبانی دارم",
-              style: TextStyle(color: Colors.white, fontSize: 20)),
+              style: TextStyle(color: kWhiteColor, fontSize: 20)),
         ],
       ),
     );

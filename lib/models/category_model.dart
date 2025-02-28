@@ -1,15 +1,13 @@
-
-class CategoryModel{
+class CategoryModel {
   int id = 0;
-  String name = "" ;
-  String img = "" ;
+  String name = "";
+  String image = "";
 
   CategoryModel();
 
   CategoryModel.fromJSON(Map<String, dynamic> json) {
     id = json["id"];
     name = json["name"];
-    img = (json["logo"] != null) ? json["logo"] : "images/market/0.png";
+    image = (json["image"] != null) ? json["image"] : "images/market/0.png";
   }
-
 }

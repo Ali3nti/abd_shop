@@ -1,8 +1,9 @@
 import 'package:abd_shop/models/amazing_model.dart';
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/screens/product_page_detail.dart';
+import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/services/api_helper.dart';
-import 'package:abd_shop/widget/amazing_item_widget.dart';
+import 'package:abd_shop/screens/home/components/amazing_product/amazing_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class AmazingListWidget extends StatefulWidget {
@@ -16,27 +17,28 @@ productPageDetail(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => ProductPageDetail(),
+      builder: (context) => ProductInformation(
+        product: Product(),
+      ),
     ),
   );
 }
-
 
 class _CategoryListWidgetState extends State<AmazingListWidget> {
   List<AmazingItemWidget> amazingWidgetList = [];
 
   // List<Market> marketList = [];
   initMarkets() async {
-    await getDataFromServer(apiName: "getamazing").then((value) {
+    await getProducts().then((value) {
       DataResponse dataResponse = value;
 
       if (dataResponse.status == 1) {
         for (var item in dataResponse.data) {
-          AmazingModel amazingModel = AmazingModel.fromJSON(item);
+          Product amazingModel = Product.fromJson(item);
           // marketList.add(market);
           amazingWidgetList.add(
-            AmazingItemWidget(onPressed: (){productPageDetail(context);},
-              amazingModel: amazingModel,
+            AmazingItemWidget(
+              product: amazingModel,
             ),
           );
         }

@@ -1,6 +1,10 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/screens/category/all_page.dart';
+import 'package:abd_shop/screens/category/category_Page.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_list_widget.dart';
+import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProductsBox extends StatefulWidget {
@@ -21,34 +25,65 @@ class _CategoryProductsBoxState extends State<CategoryProductsBox> {
         color: kPrimaryColor,
         child: Column(
           children: [
-            Row(
-              children: [
-                const SizedBox(
-                  width: 30,
-                ),
-                const Text(
-                  "حراج روز",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  width: 250,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AllPage(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "همه",
-                    style: TextStyle(fontSize: 18, color: Colors.blue),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "حراج روز",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const Icon(Icons.navigate_next, color: Colors.blue),
-              ],
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          List<Product> categoryProductsList = [];
+                          getProducts().then((value) {
+                            DataResponse response = value;
+                            if (response.status == 1) {
+                              response.data.forEach((value) {
+                                categoryProductsList
+                                    .add(Product.fromJson(value));
+                              });
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CategoryPage(
+                                    products: categoryProductsList,
+                                  ),
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.only(right: 72),
+                          //height: 30,
+                          child: const Row(
+                            children: [
+                              Text(
+                                "همه",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: kWhiteColor,
+                                ),
+                              ),
+                              Icon(
+                                Icons.navigate_next,
+                                color: kWhiteColor,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,

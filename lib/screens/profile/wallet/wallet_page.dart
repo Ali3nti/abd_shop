@@ -10,8 +10,12 @@ class WalletPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("کیف پول من"),
-        centerTitle: true,
+        title: const Text(
+          'کیف پول من',
+          style:
+          TextStyle(color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.deepOrange,
       ),
       body: Padding(

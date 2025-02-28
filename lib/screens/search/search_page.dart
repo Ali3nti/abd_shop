@@ -42,7 +42,7 @@ class _SearchProductsPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("جست‌وجو محصولات"),
         centerTitle: true,
@@ -64,7 +64,7 @@ class _SearchProductsPageState extends State<SearchPage> {
               child: ListView.builder(
                 itemCount: filteredProducts.length,
                 itemBuilder: (context, index) {
-                  return Card(
+                  return Card(color: Colors.white,
                     elevation: 5,
                     margin: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Padding(
