@@ -270,7 +270,7 @@
 
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/global.dart';
-import 'package:abd_shop/screens/Base/base_page.dart';
+import 'package:abd_shop/screens/base/base_page.dart';
 import 'package:abd_shop/screens/cart/continue_cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

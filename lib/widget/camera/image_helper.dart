@@ -51,7 +51,7 @@ class ImageHelper {
     CropStyle cropStyle = CropStyle.rectangle,
   }) async =>
       await _imageCropper.cropImage(
-        cropStyle: cropStyle,
+        // cropStyle: cropStyle,
         sourcePath: file.path,
         compressQuality: 100,
         uiSettings: [

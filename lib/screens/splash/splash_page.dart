@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:abd_shop/constants.dart';
-import 'package:abd_shop/screens/Base/base_page.dart';
+import 'package:abd_shop/screens/base/base_page.dart';
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/screens/home/components/home_body.dart';
