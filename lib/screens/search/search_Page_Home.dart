@@ -32,115 +32,134 @@ class _SearchPageHomeState extends State<SearchPageHome> {
 
   void filterProducts() {
     filteredProducts = widget.products.where((product) {
-      final matchesQuery = product.name.toLowerCase().contains(query.toLowerCase());
-      final matchesCategory = selectedCategoryId == null || product.categoryId == selectedCategoryId;
+      final matchesQuery =
+          product.name.toLowerCase().contains(query.toLowerCase());
+      final matchesCategory = selectedCategoryId == null ||
+          product.categoryId == selectedCategoryId;
       return matchesQuery && matchesCategory;
     }).toList();
   }
+
   final formatter = NumberFormat('#,###');
+
   @override
   Widget build(BuildContext context) {
     final categories = [
-      {'id': null, 'name': ' همه محصولات'}, // گزینه برای نمایش همه محصولات
+      {'id': null, 'name': ' همه محصولات'},
       {'id': 1, 'name': 'کالاهای اساسی'},
       {'id': 2, 'name': 'لبنیات'},
       {'id': 3, 'name': 'مواد پروتئینی'},
     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('جستجو محصولات'),
+    return Scaffold(backgroundColor: Colors.white,
+      appBar: AppBar(foregroundColor: Colors.white,
+        title: Text('جستجو محصولات',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.deepOrange,
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only( top: 15,right: 10,left: 10),
             child: TextField(
-              onChanged: updateSearchResults,
               decoration: InputDecoration(
-                hintText: 'نام محصول را جستجو کنید...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(color: Colors.teal),
-                ),
-                prefixIcon: Icon(Icons.search, color: Colors.teal),
                 filled: true,
                 fillColor: Colors.grey.shade200,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide.none,
+                ),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Image.asset(
+                    'assets/images/search-normal.png',
+                    color: Colors.grey.shade700,
+                  ),
+                ),
+                hintText: "جستجو در کالاها و فروشگاه ها",
+                hintStyle: kMainTextStyle,
               ),
-            ),
+              style: kMainTextStyle,
+            )
+            ,
+          ),
+          SizedBox(
+            height: 25,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: DropdownButton<int?>(
-              hint: Text('دسته‌بندی را انتخاب کنید'),
-              value: selectedCategoryId,
-              isExpanded: true,
-              items: categories.map<DropdownMenuItem<int?>>((Map<String, dynamic> category) {
-                return DropdownMenuItem<int?>(
-                  value: category['id'],
-                  child: Text(category['name']),
-                );
-              }).toList(),
-              onChanged: (int? newValue) {
-                setState(() {
-                  selectedCategoryId = newValue;
-                  filterProducts();
-                });
-              },
+            padding: const EdgeInsets.only(right: 2),
+            child: Row(
+              children: [
+                Image.asset("assets/images/fire.jpg",height:50,),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  "جستجوهای محبوب",
+                  style: kMainTextStyle,
+                ),
+              ],
             ),
           ),
-          Expanded(
-            child: filteredProducts.isEmpty
-                ? Center(
-              child: Text(
-                'محصولی یافت نشد',
-                style: TextStyle(fontSize: 18, color: Colors.grey),
+          Row(
+            children: [
+              SizedBox(
+                width: 5,
               ),
-            )
-                : ListView.builder(
-              itemCount: filteredProducts.length,
-              itemBuilder: (context, index) {
-                final product = filteredProducts[index];
-                return InkWell(onTap: (){},
-                  child: Card(
-                    color: Colors.white,
-                    shadowColor: Colors.deepOrange,
-                    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ListTile(
-                      contentPadding: EdgeInsets.all(16),
-                      leading: Image.network(
-                        baseUrl + product.image,
-                        height: 80,
-                        width: 100,
-                      ),
-                      title: Text(
-                        product.name,
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Row(
-                        children: [
-                          Text(
-                            formatter.format(product.price),
-                            style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                          ),
-                          SizedBox(width: 5,),
-                          Image.asset("assets/images/toman.png",width: 18,)
-                        ],
-                      ),
-                      trailing: Icon(Icons.arrow_forward, color: Colors.teal),
-                      onTap: () {
-                        // Navigate to product details
-                      },
-                    ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kWhiteColor,
+                  foregroundColor: Colors.black54,
+                  side: BorderSide(color: Colors.grey),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
                   ),
-                );
-              },
-            ),
+                ),
+                child: Text("شیر",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kWhiteColor,
+                  foregroundColor: Colors.black54,
+                  side: BorderSide(color: Colors.grey),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                ),
+                child: Text("تخم مرغ",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kWhiteColor,
+                  foregroundColor: Colors.black54,
+                  side: BorderSide(color: Colors.grey),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                ),
+                child: Text("روغن",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+            ],
           ),
         ],
       ),
