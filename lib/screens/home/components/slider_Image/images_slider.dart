@@ -83,7 +83,9 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
             controller: pageController,
             children: [
               ImageSlider(
-                  onTap: () {sliderPage1(context);},
+                  onTap: () {
+                    sliderPage1(context);
+                  },
                   imageUrl:
                       "https://dkstatics-public.digikala.com/jet-public/1e77e2ed6449ea7e0325fa939227b888b82f9351_1732346071.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
@@ -110,11 +112,11 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
           child: SmoothPageIndicator(
             controller: pageController,
             count: 5,
-            effect: const WormEffect(
-              activeDotColor: kPrimaryTextColor,
-              dotHeight: 7,
-              dotWidth: 7,
-            ),
+            effect: ColorTransitionEffect(
+                dotColor: Colors.grey,
+                dotWidth: 9,
+                dotHeight: 9,
+                activeDotColor: Colors.black),
           ),
         ),
       ],

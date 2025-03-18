@@ -13,7 +13,7 @@ class NotificationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'اعلان ها',
+          'پیام ها',
           style: TextStyle(
             color: kWhiteColor,
           ),

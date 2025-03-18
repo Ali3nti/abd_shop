@@ -40,7 +40,7 @@ class AppBarOriginal extends StatelessWidget {
           },
           child: Container(
             height: 50,
-            width: 365,
+            width: 330,
             padding: const EdgeInsets.symmetric(horizontal: 12),
             // Horizontal padding
             decoration: BoxDecoration(
