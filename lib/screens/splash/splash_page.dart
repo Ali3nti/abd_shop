@@ -24,11 +24,13 @@ class _SplashPageState extends State<SplashPage> {
   void goNextPage() async {
     try {
       bool isConnect = false;
-      var connectivity = await (Connectivity().checkConnectivity());
-      if (connectivity == ConnectivityResult.mobile ||
-          connectivity == ConnectivityResult.wifi) {
+      var connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult.contains(ConnectivityResult.wifi) ||
+          connectivityResult.contains(ConnectivityResult.mobile)) {
         isConnect = true;
       }
+
 
       if (isConnect) {
         List<String> sitesToCheck = [
@@ -47,12 +49,14 @@ class _SplashPageState extends State<SplashPage> {
               break;
             }
           } catch (e) {
-            continue;
+            throw Exception("Error in goNextPage(): $e");
           }
         }
 
         if (isSiteReachable) {
+
           final value = await getAllCategories();
+
           if (value.status == 1) {
             var data = value.data;
             for (var item in data) {
@@ -71,6 +75,7 @@ class _SplashPageState extends State<SplashPage> {
             });
           }
         } else {
+          print(isSiteReachable.toString());
           setState(() {
             hasError = true;
             isLoading = false;
