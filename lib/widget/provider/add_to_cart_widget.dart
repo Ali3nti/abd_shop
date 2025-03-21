@@ -26,7 +26,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
               width: 70,
               height: 30,
               decoration: BoxDecoration(
-                color: Colors.orange.shade100,
+                color: Colors.red.shade50,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
@@ -96,7 +96,7 @@ class _AddToCartWidgetState extends State<AddToCartWidget> {
                 width: 35,
                 height: 35,
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade100,
+                  color: Colors.red.shade50,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 alignment: Alignment.center,
