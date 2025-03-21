@@ -43,7 +43,7 @@ class _HomeBodyState extends State<HomeBody> {
                 height: 5,
               ),
               Center(
-                child: Row(
+                child: Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppBarOriginal(),
                     SizedBox(
@@ -54,15 +54,12 @@ class _HomeBodyState extends State<HomeBody> {
                         notifiPage(context);
                       },
                       child: Container(
-                        height: 50,
+                        height: 40,
                         width: 40,
                         padding: const EdgeInsets.symmetric(horizontal: 12),
-                        // Horizontal padding
                         decoration: BoxDecoration(
                           color: Colors.grey.shade200,
-                          // Lighter background
                           borderRadius: BorderRadius.circular(8),
-                          // More rounded corners
                           boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
@@ -124,11 +121,10 @@ class _HomeBodyState extends State<HomeBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            SuperMarket(
-              market: Market(),
-              jetMartAmazingModel: JetMartAmazingModel(),
-            ),
+        builder: (context) => SuperMarket(
+          market: Market(),
+          jetMartAmazingModel: JetMartAmazingModel(),
+        ),
       ),
     );
   }

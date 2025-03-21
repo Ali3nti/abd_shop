@@ -12,12 +12,13 @@ class supportButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      ElevatedButton(
+    return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: kPrimaryColor,
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        padding: const EdgeInsets.symmetric(vertical: 12,),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
       ),
       onPressed: () {
         supportPage(context);
@@ -25,10 +26,15 @@ class supportButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-         Image.asset("assets/images/call.png",color: kWhiteColor,),
+          Image.asset(
+            "assets/images/call.png",
+            color: kWhiteColor,
+          ),
           SizedBox(width: 10),
-          Text("نیاز به پشتیبانی دارم",
-              style: TextStyle(color: kWhiteColor, fontSize: 20)),
+          Text(
+            "نیاز به پشتیبانی دارم",
+            style: TextStyle(color: kWhiteColor, fontSize: 18),
+          ),
         ],
       ),
     );

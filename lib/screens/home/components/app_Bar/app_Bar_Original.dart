@@ -39,15 +39,12 @@ class AppBarOriginal extends StatelessWidget {
             });
           },
           child: Container(
-            height: 50,
-            width: 330,
+            height: 40,
+            width: 290,
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            // Horizontal padding
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
-              // Lighter background
               borderRadius: BorderRadius.circular(8),
-              // More rounded corners
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
@@ -58,12 +55,12 @@ class AppBarOriginal extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset('assets/images/search-normal.png',color: Colors.grey.shade700,),
+                Image.asset('assets/images/search-normal.png',color: Colors.grey.shade700,width: 18,),
                 Padding(
                   padding: EdgeInsets.only(bottom: 5),
                   child: Image.asset(
                     'assets/images/main_logo.jpg',
-                    width: 270,
+                    width: 200,
                   ),
                 ),
               ],

@@ -78,7 +78,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       alignment: Alignment.bottomLeft,
       children: [
         SizedBox(
-          height: 145,
+          height: 120,
           child: PageView(
             controller: pageController,
             children: [
@@ -114,8 +114,8 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
             count: 5,
             effect: ColorTransitionEffect(
                 dotColor: Colors.grey,
-                dotWidth: 9,
-                dotHeight: 9,
+                dotWidth: 5,
+                dotHeight: 5,
                 activeDotColor: Colors.black),
           ),
         ),

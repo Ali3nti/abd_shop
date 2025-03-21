@@ -21,14 +21,14 @@ class _AmazingWidgetState extends State<AmazingWidget> {
       child: Container(
         margin: const EdgeInsets.only(top: 10),
         width: double.infinity,
-        height: 310,
+        height: 350,
         color: kPrimaryColor,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
               Container(
-                width: 200,
+                width: 180,
                 height: 400,
                 color: kPrimaryColor,
                 child: Container(
@@ -44,7 +44,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                       ),
                       SizedBox(
                         width: 200,
-                        height: 170,
+                        height: 160,
                         child: Image.asset(
                           "assets/images/amazing.jpg",
                           fit: BoxFit.contain,
@@ -106,7 +106,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                       color: CupertinoColors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    height: 350,
+                    height: 290,
                     width: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

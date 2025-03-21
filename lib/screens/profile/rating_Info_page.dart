@@ -16,11 +16,12 @@ class ratingInfoPage extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){ratePage(context);},
+      onTap: () {
+        ratePage(context);
+      },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -28,7 +29,7 @@ class ratingInfoPage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset("assets/images/comment.png",
-                  width: 50, height: 50),
+                  width: 30, height: 50),
             ),
             const SizedBox(width: 10),
             Column(
@@ -36,9 +37,12 @@ class ratingInfoPage extends StatelessWidget {
               children: const [
                 Text(
                   "امتیازات",
-                  style: kHeaderTextStyle,
+                  style: TextStyle(fontSize: 14),
                 ),
-                Text("50 دیدگاه", style:kTextStyle),
+                Text(
+                  "50 دیدگاه",
+                  style: TextStyle(fontSize: 14),
+                ),
               ],
             ),
           ],
@@ -47,6 +51,3 @@ class ratingInfoPage extends StatelessWidget {
     );
   }
 }
-
-
-
