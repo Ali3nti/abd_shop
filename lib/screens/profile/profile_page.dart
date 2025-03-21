@@ -168,20 +168,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Row(
                     children: [
                       Image.asset("assets/images/wallet.png",
-                          width: 50, height: 50),
+                          width: 30, height: 50),
                       const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
                             "کیف پول",
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 14),
                           ),
                           Row(
                             children: [
                               Text(
                                 NumberFormat("#,##0").format(10000),
-                                style: TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 14),
                               ),
                               const SizedBox(width: 5),
                               Image.asset(

@@ -56,9 +56,8 @@ class CategoryItemWidget extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 child: Image.network(
                   baseUrl + category.image,
-                  width: 60,
-                  height: 60,
-                  fit: BoxFit.cover,
+                  width: 50,
+                  height: 40,
                 ),
               ),
             ),

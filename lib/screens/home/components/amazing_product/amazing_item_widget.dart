@@ -55,14 +55,17 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: Image.asset(
-                    "assets/images/amazing5.png",
-                    height: 30,
+                  child: Visibility(
+                    visible: widget.product.discount > 0,
+                    child: Image.asset(
+                      "assets/images/amazing5.png",
+                      height: 30,
+                    ),
                   ),
                 ),
                 if (widget.product.discount == 0)
                   SizedBox(
-                    height: 28,
+                    height: 60,
                   ),
                 if (widget.product.discount > 0)
                   Padding(
@@ -102,7 +105,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   children: [
                     Container(
                       width: 200,
-                     margin: const EdgeInsets.only(top: 5),
+                      margin: const EdgeInsets.only(top: 5),
                       child: Image.network(
                         baseUrl + widget.product.image,
                         width: 100,
@@ -112,7 +115,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 60,
-                        top: 90,
+                        top: 50,
                       ),
                       child: AddToCartWidget(
                         product: widget.product,

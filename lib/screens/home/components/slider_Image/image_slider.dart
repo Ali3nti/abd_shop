@@ -19,7 +19,7 @@ class ImageSlider extends StatelessWidget {
         child: Material(
           color: CupertinoColors.white,
           child: Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(10),
             child: ClipRRect(
               borderRadius: BorderRadiusDirectional.circular(20),
               child: Image.network(

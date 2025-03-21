@@ -52,20 +52,22 @@ class _DynamicContainersPageState extends State<NotificationPage> {
                 return GestureDetector(
                   onTap: () => _changeContent(title, index),
                   child: Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                      color:
-                          _selectedIndex == index ? Colors.black : Colors.white,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: _selectedIndex == index ? Colors.black : Colors.white,
+                      border: Border.all(
+                        color: _selectedIndex == index ? Colors.black : Colors.grey,
+                        width: 2,
+                      ),
                     ),
-                    width: 80,
-                    height: 80,
-                    margin: EdgeInsets.all(10),
+                    width: 65,
+                    height: 65,
+                    margin: EdgeInsets.only(left: 20,top: 10),
                     child: Center(
                       child: Text(
                         title,
-                        style: TextStyle(
-                          color: _selectedIndex == index
-                              ? Colors.white
-                              : Colors.black,
+                        style: TextStyle(fontSize: 10,
+                          color: _selectedIndex == index ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -77,7 +79,7 @@ class _DynamicContainersPageState extends State<NotificationPage> {
           SizedBox(height: 20),
           Text(
             _content,
-            style: TextStyle(fontSize: 24),
+            style: TextStyle(fontSize: 20),
           ),
         ],
       ),
