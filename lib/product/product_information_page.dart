@@ -58,10 +58,10 @@ class _ProductInformationState extends State<ProductInformation>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // تصویر محصول
+
             SlideTransition(
               position: Tween<Offset>(
-                begin: const Offset(-1, 0), // از سمت چپ
+                begin: const Offset(-1, 0),
                 end: Offset.zero,
               ).animate(_controller),
               child: Padding(
@@ -94,7 +94,7 @@ class _ProductInformationState extends State<ProductInformation>
               thickness: 3,
               color: Colors.grey.shade200,
             ),
-            // نام و برند
+
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -105,7 +105,7 @@ class _ProductInformationState extends State<ProductInformation>
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "بلوبری",
+                      widget.product.name,
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
@@ -113,14 +113,13 @@ class _ProductInformationState extends State<ProductInformation>
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "برند ادج",
+                      "برند ",
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
                 ],
               ),
             ),
-            // نام و توضیحات محصول
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -146,7 +145,6 @@ class _ProductInformationState extends State<ProductInformation>
                 ),
               ),
             ),
-            // امتیاز محصول
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -208,7 +206,6 @@ class _ProductInformationState extends State<ProductInformation>
                 ),
               ),
             ),
-            // پیشنهاد خریداران
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -222,7 +219,8 @@ class _ProductInformationState extends State<ProductInformation>
                       "assets/images/like.png",
                       color: Colors.green,
                     ),
-                    Text("70%(100 نفر) از خریداران،این کالا را پیشنهاد داده اند")
+                    Text(
+                        "70%(100 نفر) از خریداران،این کالا را پیشنهاد داده اند")
                   ],
                 ),
               ),
@@ -231,7 +229,6 @@ class _ProductInformationState extends State<ProductInformation>
               thickness: 8,
               color: Colors.grey.shade200,
             ),
-            // فروشنده
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -259,7 +256,6 @@ class _ProductInformationState extends State<ProductInformation>
             SizedBox(
               height: 10,
             ),
-            // نام فروشنده و عملکرد
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -270,7 +266,7 @@ class _ProductInformationState extends State<ProductInformation>
                 child: Row(
                   children: [
                     Text(
-                      "سوپرکارکت سورنا",
+                      "سوپرمارکت سورنا",
                       style: kHeaderTextStyle,
                     ),
                     SizedBox(
@@ -294,7 +290,7 @@ class _ProductInformationState extends State<ProductInformation>
                     Text(
                       "عالی",
                       style:
-                      TextStyle(fontSize: 17, color: Colors.green.shade900),
+                          TextStyle(fontSize: 17, color: Colors.green.shade900),
                     ),
                   ],
                 ),
@@ -309,7 +305,6 @@ class _ProductInformationState extends State<ProductInformation>
               indent: 50,
               endIndent: 50,
             ),
-            // گارانتی
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -344,7 +339,6 @@ class _ProductInformationState extends State<ProductInformation>
               indent: 50,
               endIndent: 50,
             ),
-            // موجودی در انبار
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
@@ -374,7 +368,6 @@ class _ProductInformationState extends State<ProductInformation>
               thickness: 8,
               color: Colors.grey.shade200,
             ),
-            // قیمت نهایی و دکمه خرید
             SlideTransition(
               position: Tween<Offset>(
                 begin: const Offset(-1, 0),
