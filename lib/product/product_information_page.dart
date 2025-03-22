@@ -13,17 +13,38 @@ class ProductInformation extends StatefulWidget {
   State<ProductInformation> createState() => _ProductInformationState();
 }
 
-class _ProductInformationState extends State<ProductInformation> {
+class _ProductInformationState extends State<ProductInformation>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double discountAmount =
-        widget.product.price * (widget.product.discount / 100); // فرمول درصد
-    double finalPrice = widget.product.price -
-        discountAmount; // قیمت نهایی = کسر مبلغ تخفیف از قیمت اصلی
-    final formatter = NumberFormat('#,###'); // ایجاد یک نمونه از NumberFormat
+        widget.product.price * (widget.product.discount / 100);
+    double finalPrice = widget.product.price - discountAmount;
+    final formatter = NumberFormat('#,###');
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'اطلاعات محصول',
@@ -35,189 +56,351 @@ class _ProductInformationState extends State<ProductInformation> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.only(top: 5,left: 5),
-              color: Colors.white,
-              width: double.infinity,
-              height: 200,
-              child: Image.network(
-                baseUrl + widget.product.image,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 15, right: 20),
-              color: Colors.white,
-              width: double.infinity,
-              height: 70,
-              child: const Text(
-                "مشخصات",
-                style: kHeaderTextStyle,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 20, right: 20),
-              color: Colors.grey.shade50,
-              width: double.infinity,
-              height: 100,
-              child: Text(
-                widget.product.description,
-                style: const TextStyle(
-                  color: Colors.blue,
+            // تصویر محصول
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0), // از سمت چپ
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.only(top: 5, left: 5),
+                    width: 360,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 0.5,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        baseUrl + widget.product.image,
+                        height: 50,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(top: 15, right: 20),
-              color: Colors.white,
-              width: double.infinity,
-              height: 70,
-              child: const Text(
-                "فروشنده",
-                style: kHeaderTextStyle,
-              ),
+            Divider(
+              thickness: 3,
+              color: Colors.grey.shade200,
             ),
-            Container(
-              padding: const EdgeInsets.only(top: 10, right: 10),
-              color: Colors.grey.shade50,
-              width: double.infinity,
-              height: 110,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.store,
-                        color: kPrimaryColor,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        widget.product.storeName.isNotEmpty
-                            ? widget.product.storeName
-                            : "نام فروشگاه نامشخص",
-                      ),
-                      const SizedBox(width: 20),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    padding: const EdgeInsets.only(right: 35),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("عملکرد"),
-                        Text(widget.product.comments ?? "بدون نظر"),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.safety_check_outlined,
-                      ),
-                      const SizedBox(width: 10),
-                      const Text(
-                        "گارانتی :  ",
-                      ),
-                      const SizedBox(width: 5),
-                      Text(widget.product.warranty.isNotEmpty
-                          ? widget.product.warranty
-                          : " بدون گارانتی "),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 5),
-            Container(
-              padding: const EdgeInsets.only(top: 10, right: 10),
-              color: Colors.grey.shade50,
-              height: 70,
-              child: const Row(
-                children: [
-                  Icon(
-                    Icons.fire_truck,
-                    color: kPrimaryColor,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "ارسال آباده شاپ",
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 5),
-            Container(
-              padding: const EdgeInsets.only(top: 10, right: 10),
-              color: Colors.grey.shade50,
-              height: 70,
+            // نام و برند
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.stars,
-                    color: kPrimaryColor,
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "بلوبری",
+                      style: TextStyle(color: Colors.blue),
+                    ),
                   ),
-                  const SizedBox(width: 10),
-                  Text(
-                    widget.product.rating.toString(),
+                  Text("/"),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "برند ادج",
+                      style: TextStyle(color: Colors.blue),
+                    ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 5),
-            Container(
-              padding: const EdgeInsets.all(10),
-              color: Colors.grey.shade50,
-              height: 150,
-              child: Column(
-                children: [
-                  const Row(
-                    children: [
-                      Icon(
-                        Icons.check_box,
-                        color: kPrimaryColor,
+            // نام و توضیحات محصول
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 10),
+                child: Row(
+                  children: [
+                    Text(
+                      widget.product.name,
+                      style: kHeaderTextStyle,
+                    ),
+                    Text(
+                      " - ",
+                      style: kHeaderTextStyle,
+                    ),
+                    Text(
+                      widget.product.description,
+                      style: kHeaderTextStyle,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // امتیاز محصول
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/star.png",
+                      color: Colors.orange,
+                    ),
+                    Text(
+                      widget.product.rating.toString(),
+                      style: kHeaderTextStyle,
+                    ),
+                    Text(
+                      "(123)",
+                      style: kHeaderTextStyle2,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Container(
+                      width: 6,
+                      height: 6,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade400,
+                        shape: BoxShape.circle,
                       ),
-                      SizedBox(width: 10),
-                      Text(
-                        "تعداد باقیمانده در انبار: ",
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "150 دیدگاه کاربران",
+                        style: TextStyle(color: Colors.blue),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(
-                        widget.product.stockQuantity.toString(),
-                        style: TextStyle(
-                          backgroundColor: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
+                    ),
+                    Container(
+                      width: 6,
+                      height: 6,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade400,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "5 پرسش و پاسخ",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // پیشنهاد خریداران
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/like.png",
+                      color: Colors.green,
+                    ),
+                    Text("70%(100 نفر) از خریداران،این کالا را پیشنهاد داده اند")
+                  ],
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 8,
+              color: Colors.grey.shade200,
+            ),
+            // فروشنده
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/shop.png",
+                      color: Colors.red.shade700,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "فروشنده",
+                      style: kHeaderTextStyle,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            // نام فروشنده و عملکرد
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 60),
+                child: Row(
+                  children: [
+                    Text(
+                      "سوپرکارکت سورنا",
+                      style: kHeaderTextStyle,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      height: 30,
+                      width: 2,
+                      color: Colors.grey.shade300,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "عملکرد:",
+                      style: kHeaderTextStyle,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "عالی",
+                      style:
+                      TextStyle(fontSize: 17, color: Colors.green.shade900),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.grey.shade200,
+              indent: 50,
+              endIndent: 50,
+            ),
+            // گارانتی
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/tick.png",
+                      color: Colors.purple,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "گارانتی :",
+                      style: kHeaderTextStyle,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(widget.product.warranty)
+                  ],
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.grey.shade200,
+              indent: 50,
+              endIndent: 50,
+            ),
+            // موجودی در انبار
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/bar.jpg",
+                      height: 50,
+                    ),
+                    Text(
+                      "موجودی در انبار:",
+                      style: kHeaderTextStyle,
+                    ),
+                    Text(
+                      widget.product.stockQuantity.toString(),
+                      style: kHeaderTextStyle,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 8,
+              color: Colors.grey.shade200,
+            ),
+            // قیمت نهایی و دکمه خرید
+            SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(_controller),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 70, right: 10, left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const ProviderWidget2(),
+                    Row(
+                      children: [
+                        Text(
+                          formatter.format(finalPrice),
+                          style: kHeaderTextStyle.copyWith(fontSize: 20),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const ProviderWidget2(),
-                      Row(
-                        children: [
-                          Text(
-                            formatter.format(finalPrice),
-                            style: kHeaderTextStyle,
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            width: 20,
-                            'assets/images/toman.png',
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                        const SizedBox(width: 5),
+                        Image.asset(
+                          width: 20,
+                          'assets/images/toman.png',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
