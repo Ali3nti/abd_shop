@@ -54,7 +54,7 @@ class _ProductCardState extends State<ProductCard> {
                           height: 25,
                         ),
                       ),
-                    if (widget.product.discount == 0) SizedBox(height: 60),
+                    if (widget.product.discount == 0) SizedBox(height: 54),
                     Padding(
                       padding:
                           const EdgeInsets.only(right: 70, top: 5, left: 5),

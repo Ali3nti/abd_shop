@@ -80,7 +80,7 @@ class _ProviderWidgetState extends State<ProviderWidget2> {
                   },
                   child: const Center(
                     child: Text(
-                      'اضافه به سبد محصول',
+                      'افزودن به سبد خرید',
                       style: TextStyle(
                         color: kWhiteColor,
                       ),
