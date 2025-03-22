@@ -1,13 +1,15 @@
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/jetmart_amazing_model.dart';
 import 'package:abd_shop/models/market_model.dart';
+import 'package:abd_shop/models/product_model.dart';
+import 'package:abd_shop/product/best_product_list_widget.dart';
 
 import 'package:abd_shop/screens/category/super_market.dart';
 import 'package:abd_shop/screens/category/category_list_widget.dart';
 import 'package:abd_shop/screens/home/components/amazing_product/amazing_widget.dart';
 import 'package:abd_shop/screens/home/components/app_Bar/app_Bar_Original.dart';
 import 'package:abd_shop/screens/home/components/address/current_user_address_widget.dart';
-import 'package:abd_shop/screens/home/components/best_product_widget.dart';
+import 'package:abd_shop/product/best_product_widget.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/images_slider.dart';
 import 'package:abd_shop/screens/market/markets_list_widget.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
@@ -100,7 +102,11 @@ class _HomeBodyState extends State<HomeBody> {
               ProductCardListWidget(
                 categoryId: 2,
               ),
-              BestProducts(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("پروفروش ترین کالاها",style: kHeaderTextStyle,),
+              ),
+              BestProductListWidget(),
             ],
           ),
         ),
