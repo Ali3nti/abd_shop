@@ -14,7 +14,7 @@ class BestProductListWidget extends StatefulWidget {
 class _BestProductListWidgetState extends State<BestProductListWidget> {
   List<BestProducts> bestProductsWidgetList = [];
 
-  initMarkets() async {
+  Future<void> initMarkets() async {
     try {
       DataResponse dataResponse = await getProducts();
       if (dataResponse.status == 1) {
@@ -49,14 +49,12 @@ class _BestProductListWidgetState extends State<BestProductListWidget> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           childAspectRatio: 0.5,
-          crossAxisSpacing: 1,
-          mainAxisSpacing: 1,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
         ),
         itemCount: bestProductsWidgetList.length,
         itemBuilder: (context, index) {
-          return Container(
-            child: bestProductsWidgetList[index],
-          );
+          return bestProductsWidgetList[index];
         },
       ),
     );

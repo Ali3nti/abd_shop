@@ -10,6 +10,7 @@ import 'package:abd_shop/screens/home/components/amazing_product/amazing_widget.
 import 'package:abd_shop/screens/home/components/app_Bar/app_Bar_Original.dart';
 import 'package:abd_shop/screens/home/components/address/current_user_address_widget.dart';
 import 'package:abd_shop/product/best_product_widget.dart';
+import 'package:abd_shop/screens/home/components/slider_Image/image_slider.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/images_slider.dart';
 import 'package:abd_shop/screens/market/markets_list_widget.dart';
 import 'package:abd_shop/screens/profile/notif_page/notif_page.dart';
@@ -45,7 +46,8 @@ class _HomeBodyState extends State<HomeBody> {
                 height: 5,
               ),
               Center(
-                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppBarOriginal(),
                     SizedBox(
@@ -102,9 +104,17 @@ class _HomeBodyState extends State<HomeBody> {
               ProductCardListWidget(
                 categoryId: 2,
               ),
+              ImageSlider(
+                imageUrl:
+                    'https://dkstatics-public.digikala.com/digikala-adservice-banners/bf6d41c39da335ea5e560b4512f5a9c5bdbf4423_1742028056.jpg?x-oss-process=image/quality,q_95/format,webp',
+                onTap: () {},
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("پروفروش ترین کالاها",style: kHeaderTextStyle,),
+                child: Text(
+                  "پروفروش ترین کالاها",
+                  style: kHeaderTextStyle,
+                ),
               ),
               BestProductListWidget(),
             ],

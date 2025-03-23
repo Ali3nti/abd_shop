@@ -22,7 +22,7 @@ class _BestProductsState extends State<BestProducts> {
     return Column(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width * 0.9, // عرض 90% از صفحه
+          width: MediaQuery.of(context).size.width * 0.9,
           child: Column(
             children: [
               Card(
