@@ -105,7 +105,7 @@ class _ProductInformationState extends State<ProductInformation>
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      widget.product.name,
+                      widget.product.tags,
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
@@ -113,7 +113,7 @@ class _ProductInformationState extends State<ProductInformation>
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "برند ",
+                      widget.product.brand,
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
@@ -266,7 +266,7 @@ class _ProductInformationState extends State<ProductInformation>
                 child: Row(
                   children: [
                     Text(
-                      "سوپرمارکت سورنا",
+                      widget.product.providerVendors,
                       style: kHeaderTextStyle,
                     ),
                     SizedBox(
