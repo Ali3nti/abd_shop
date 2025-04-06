@@ -65,3 +65,11 @@ app.*.symbols
 app.*.map.json
 
 # I adding below lines to this project
+
+android/app/build.gradle.kts
+
+android/build.gradle.kts
+
+android/settings.gradle.kts
+
+devtools_options.yaml
