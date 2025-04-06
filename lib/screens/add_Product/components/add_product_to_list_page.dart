@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
 
-
 class AddProductToListPage extends StatefulWidget {
   const AddProductToListPage({super.key});
 
@@ -25,7 +24,8 @@ class _AddProductPageState extends State<AddProductToListPage> {
 
       try {
         print("در حال ارسال اطلاعات محصول...");
-        DataResponse response = await sendNewProduct(product: newProduct, images: imagesList);
+        DataResponse response =
+            await sendNewProduct(product: newProduct, images: imagesList);
 
         print("پاسخ سرور: ${response.status}");
         if (response.status == 1) {
@@ -55,82 +55,57 @@ class _AddProductPageState extends State<AddProductToListPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'نام محصول'),
-                  initialValue: newProduct.name,
-                  onSaved: (value) => newProduct.name = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا نام محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'شناسه دسته بندی(Category ID)'),
-                  onSaved: (value) => newProduct.categoryId = int.tryParse(value ?? '') ?? 0,
-                  validator: (value) => value!.isEmpty ? 'لطفا شناسه دسته بندی را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'قیمت'),
-                  initialValue: newProduct.price.toString(), // تعیین مقدار اولیه
-                  keyboardType: TextInputType.number, // ورودی عددی
-                  onSaved: (value) {
-                    // تبدیل مقدار ورودی به int
-                    newProduct.price = int.tryParse(value ?? '') ?? 0; // مقدار پیش‌فرض 0
-                  },
-                  validator: (value) {
-                    // اعتبارسنجی برای اطمینان از ورود مقدار
-                    if (value!.isEmpty) {
-                      return 'لطفا قیمت را وارد کنید';
-                    } else if (int.tryParse(value) == null) {
-                      return 'لطفا یک عدد صحیح وارد کنید';
-                    }
-                    return null; // اگر اعتبارسنجی موفق بود
-                  },
-                ),
-
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'توضیحات محصول'),
-                  onSaved: (value) => newProduct.description = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا توضیحات محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'مقدار موجودی'),
-                  onSaved: (value) => newProduct.stockQuantity = int.tryParse(value ?? '') ?? 0,
-                  validator: (value) => value!.isEmpty ? 'لطفا مقدار موجودی محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'واحد(unit)'),
-                  onSaved: (value) => newProduct.unit = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا واحد محصول را وارد کنید' : null,
-                ),TextFormField(
-                  decoration: InputDecoration(labelText: 'فعال بودن محصول(بله/خیر)'),
-                  onSaved: (value) =>
-                  newProduct.isActive,
-                  validator: (value) =>
-                  value!.isEmpty ? 'لطفا فعال بودن یا نبودن محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'وزن'),
-                  onSaved: (value) => newProduct.weight = double.tryParse(value ?? '') ?? 0.0,
-                  validator: (value) => value!.isEmpty ? 'لطفا وزن محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'ابعاد'),
-                  onSaved: (value) => newProduct.dimensions = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا ابعاد محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'برند'),
-                  onSaved: (value) => newProduct.brand = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا برند محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'تخفیف'),
-                  onSaved: (value) => newProduct.discount = int.tryParse(value ?? '') ?? 0,
-                  validator: (value) => value!.isEmpty ? 'لطفا تخفیف محصول را وارد کنید' : null,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'گارانتی'),
-                  onSaved: (value) => newProduct.warranty = value ?? '',
-                  validator: (value) => value!.isEmpty ? 'لطفا گارانتی محصول را وارد کنید' : null,
-                ),
+                _textField(
+                    'نام محصول',
+                    (value) => newProduct.name = value ?? '',
+                    'لطفا نام محصول را وارد کنید'),
+                _textField(
+                    'شناسه دسته بندی(Category ID)',
+                    (value) =>
+                        newProduct.categoryId = int.tryParse(value ?? '') ?? 0,
+                    'لطفا شناسه دسته بندی را وارد کنید'),
+                _textField(
+                    'قیمت',
+                    (value) =>
+                        newProduct.price = int.tryParse(value ?? '') ?? 0,
+                    'لطفا قیمت را وارد کنید',
+                    keyboardType: TextInputType.number),
+                _textField(
+                    'توضیحات محصول',
+                    (value) => newProduct.description = value ?? '',
+                    'لطفا توضیحات محصول را وارد کنید'),
+                _textField(
+                    'مقدار موجودی',
+                    (value) => newProduct.stockQuantity =
+                        int.tryParse(value ?? '') ?? 0,
+                    'لطفا مقدار موجودی محصول را وارد کنید'),
+                _textField(
+                    'واحد(unit)',
+                    (value) => newProduct.unit = value ?? '',
+                    'لطفا واحد محصول را وارد کنید'),
+                _textField('فعال بودن محصول(بله/خیر)', (value) {
+                  newProduct.isActive = value?.toLowerCase() == 'بله' ? 1 : 0;
+                }, 'لطفا فعال بودن یا نبودن محصول را وارد کنید'),
+                _textField(
+                    'وزن',
+                    (value) =>
+                        newProduct.weight = double.tryParse(value ?? '') ?? 0.0,
+                    'لطفا وزن محصول را وارد کنید'),
+                _textField(
+                    'ابعاد',
+                    (value) => newProduct.dimensions = value ?? '',
+                    'لطفا ابعاد محصول را وارد کنید'),
+                _textField('برند', (value) => newProduct.brand = value ?? '',
+                    'لطفا برند محصول را وارد کنید'),
+                _textField(
+                    'تخفیف',
+                    (value) =>
+                        newProduct.discount = int.tryParse(value ?? '') ?? 0,
+                    'لطفا تخفیف محصول را وارد کنید'),
+                _textField(
+                    'گارانتی',
+                    (value) => newProduct.warranty = value ?? '',
+                    'لطفا گارانتی محصول را وارد کنید'),
                 SizedBox(
                   width: double.infinity,
                   height: 300,
@@ -150,5 +125,26 @@ class _AddProductPageState extends State<AddProductToListPage> {
       ),
     );
   }
-}
 
+  Widget _textField(
+      String label, Function(String?) onSaved, String validatorMessage,
+      {TextInputType keyboardType = TextInputType.text}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey, width: 1),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: label,
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.all(12.0),
+        ),
+        onSaved: onSaved,
+        validator: (value) => value!.isEmpty ? validatorMessage : null,
+        keyboardType: keyboardType,
+      ),
+    );
+  }
+}

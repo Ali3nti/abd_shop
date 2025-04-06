@@ -51,18 +51,18 @@ class _ProductCardState extends State<ProductCard> {
                         padding: const EdgeInsets.only(right: 20),
                         child: Image.asset(
                           "assets/images/amazing5.png",
-                          height: 30,
+                          height: 25,
                         ),
                       ),
-                    if (widget.product.discount == 0) SizedBox(height: 60),
+                    if (widget.product.discount == 0) SizedBox(height: 54),
                     Padding(
                       padding:
-                          const EdgeInsets.only(right: 95, top: 10, left: 5),
+                          const EdgeInsets.only(right: 70, top: 5, left: 5),
                       child: widget.product.discount > 0
                           ? Container(
                               padding: const EdgeInsets.symmetric(
                                 vertical: 5,
-                                horizontal: 8,
+                                horizontal: 5,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.deepOrange,
@@ -94,8 +94,8 @@ class _ProductCardState extends State<ProductCard> {
                           padding: const EdgeInsets.only(right: 25),
                           child: Image.network(
                             baseUrl + widget.product.image,
-                            height: 80,
-                            width: 100,
+                            height: 70,
+                            width: 80,
                           ),
                         ),
                         Padding(
@@ -117,7 +117,7 @@ class _ProductCardState extends State<ProductCard> {
                           padding: const EdgeInsets.only(right: 8),
                           child: Text(
                               widget.product.name,
-                              style:kMainTextStyle
+                              style:kTextStyle
                           ),
                         ),
                         Column(
@@ -132,7 +132,7 @@ class _ProductCardState extends State<ProductCard> {
                                         : formatter
                                             .format(widget.product.price),
                                     style: const TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 13,
                                       color: Colors.red,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -150,7 +150,7 @@ class _ProductCardState extends State<ProductCard> {
                                 child: Text(
                                   formatter.format(widget.product.price),
                                   style: const TextStyle(
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.lineThrough,

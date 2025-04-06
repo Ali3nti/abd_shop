@@ -78,18 +78,20 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
       alignment: Alignment.bottomLeft,
       children: [
         SizedBox(
-          height: 145,
+          height: 120,
           child: PageView(
             controller: pageController,
             children: [
               ImageSlider(
-                  onTap: () {sliderPage1(context);},
+                  onTap: () {
+                    sliderPage1(context);
+                  },
                   imageUrl:
-                      "https://dkstatics-public.digikala.com/jet-public/1e77e2ed6449ea7e0325fa939227b888b82f9351_1732346071.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                      "https://dkstatics-public.digikala.com/jet-public/3f8ae58735e3ffb7a07d537e1b15d5a1ef5a4916_1742130024.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
                   onTap: () {},
                   imageUrl:
-                      "https://dkstatics-public.digikala.com/jet-public/9346504408270c417a32b541ff014afa4acabf66_1735336788.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
+                      "https://dkstatics-public.digikala.com/jet-public/a7b5ab7ede24cfcbe035148ef146f7fe15083fef_1738670768.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90/format,webp"),
               ImageSlider(
                   onTap: () {},
                   imageUrl:
@@ -110,11 +112,11 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
           child: SmoothPageIndicator(
             controller: pageController,
             count: 5,
-            effect: const WormEffect(
-              activeDotColor: kPrimaryTextColor,
-              dotHeight: 7,
-              dotWidth: 7,
-            ),
+            effect: ColorTransitionEffect(
+                dotColor: Colors.grey,
+                dotWidth: 5,
+                dotHeight: 5,
+                activeDotColor: Colors.black),
           ),
         ),
       ],

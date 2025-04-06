@@ -26,7 +26,7 @@ class CurrentUserAddress extends StatelessWidget {
             child: Image.asset("assets/images/location.png",width: 16,),
           ),
           const Expanded(
-            child: Row(mainAxisAlignment: MainAxisAlignment.end,
+            child: Row(mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
@@ -36,7 +36,7 @@ class CurrentUserAddress extends StatelessWidget {
                 SizedBox(width: 5),
                 Text(
                   "آباده، میدان آزادی، کوچه هفتم",
-                  style: kHeaderTextStyle,
+                  style: kTextStyle,
                 ),
               ],
             ),

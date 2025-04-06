@@ -15,7 +15,7 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 190,
+        height: 180,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: allCategoriesList.length,
