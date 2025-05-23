@@ -106,7 +106,7 @@ class _HomeBodyState extends State<HomeBody> {
               ),
               ImageSlider(
                 imageUrl:
-                    'https://dkstatics-public.digikala.com/digikala-adservice-banners/bf6d41c39da335ea5e560b4512f5a9c5bdbf4423_1742028056.jpg?x-oss-process=image/quality,q_95/format,webp',
+                    'https://static.snapp.express/sliders/5/21/e38a1776-6a2c-4aae-b135-668abb6e09ef.webp',
                 onTap: () {},
               ),
               Padding(

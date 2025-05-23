@@ -34,7 +34,6 @@ class _SplashPageState extends State<SplashPage> {
 
       if (isConnect) {
         List<String> sitesToCheck = [
-          'www.varzesh3.ir',
           'www.digikala.com',
           'www.torob.com'
         ];
