@@ -25,160 +25,166 @@ class _ProductCardState extends State<ProductCard> {
     double finalPrice = widget.product.price - discountAmount;
     final formatter = NumberFormat('#,###');
 
-    return Row(
-      children: [
-        Container(
-          width: 130,
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-          child: Material(
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        ProductInformation(product: widget.product),
-                  ),
-                );
-              },
-              child: Container(
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (widget.product.discount > 0)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: Image.asset(
-                          "assets/images/amazing5.png",
-                          height: 25,
-                        ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 30, bottom: 20, right: 20),
+      child: InkWell(
+        onTap: () {},
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          height: 260,
+          width: 180,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    width: 180,
+                    height: 115,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
                       ),
-                    if (widget.product.discount == 0) SizedBox(height: 54),
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10, left: 10),
+                      child: Image.network(baseUrl + widget.product.image,
+                          width:90),
+                    ),
+                  ),
+                  // نمایش کانتینر تخفیف فقط اگر درصد تخفیف بیشتر از صفر باشد
+                  if (widget.product.discount > 0)
                     Padding(
-                      padding:
-                          const EdgeInsets.only(right: 70, top: 5, left: 5),
-                      child: widget.product.discount > 0
-                          ? Container(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 5,
-                                horizontal: 5,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.deepOrange,
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/01.png",
-                                    color: Colors.white,
-                                    height: 15,
-                                  ),
-                                  Text(
-                                    widget.product.discount.toString(),
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w900),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : SizedBox.shrink(),
-                    ),
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Image.network(
-                            baseUrl + widget.product.image,
-                            height: 70,
-                            width: 80,
+                      padding: const EdgeInsets.only(right: 140, top: 1),
+                      child: Container(
+                        width: 40,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(5),
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(5),
+                            bottomRight: Radius.circular(5),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 50,
-                            top: 50,
-                          ),
-                          child: AddToCartWidget(
-                            product: widget.product,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Text(
-                              widget.product.name,
-                              style:kTextStyle
-                          ),
-                        ),
-                        Column(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    widget.product.discount > 0
-                                        ? formatter.format(finalPrice)
-                                        : formatter
-                                            .format(widget.product.price),
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Image.asset("assets/images/toman.png",
-                                      height: 12),
-                                ],
-                              ),
+                            Image.asset(
+                              "assets/images/01.png",
+                              color: Colors.white,
+                              height: 15,
                             ),
-                            const SizedBox(width: 6),
-                            if (widget.product.discount > 0) ...[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 70),
-                                child: Text(
-                                  formatter.format(widget.product.price),
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.lineThrough,
-                                  ),
-                                ),
-                              ),
-                            ],
+                            Text(
+                              widget.product.discount.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w900),
+                            ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ],
+                  // نمایش کانتینر تصویر "amazing" فقط اگر درصد تخفیف بیشتر از صفر باشد
+                  if (widget.product.discount > 0)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 100),
+                      child: Container(
+                        child: Center(
+                          child: Image.asset(
+                            "assets/images/amazing5.png",
+                            width: 200,
+                          ),
+                        ),
+                        width: 180,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.deepOrange.withOpacity(0.2),
+                              spreadRadius: 1,
+                              blurRadius: 3,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                          color: Colors.white,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(15),
+                            bottomRight: Radius.circular(15),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              if(widget.product.discount == 0) SizedBox(height: 20,),
+              SizedBox(height: 5,),
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Text(
+                  widget.product.name,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
               ),
-            ),
+              if(widget.product.discount == 0) SizedBox(height: 25,),
+
+              // نمایش قیمت اصلی فقط اگر درصد تخفیف بیشتر از صفر باشد
+              if (widget.product.discount > 0)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8, top: 3),
+                  child: Text(
+                    formatter.format(widget.product.price), // قیمت اصلی
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade600,
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: Colors.black,
+                    ),
+                  ),
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8, top: 3),
+                        child: Text(
+                          formatter.format(finalPrice), // قیمت نهایی
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/toman2.png',
+                        height: 20,
+                      )
+                    ],
+                  ),
+                  AddToCartWidget(product: widget.product),
+                ],
+              ),
+            ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 40),
-          child: Container(
-            color: Colors.grey.shade300,
-            width: 1,
-            height: 245,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
-
-

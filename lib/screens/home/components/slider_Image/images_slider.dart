@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/user_model.dart';
 import 'package:abd_shop/screens/delivery/driver_info_page.dart';
 import 'package:abd_shop/screens/home/components/slider_Image/image_slider.dart';
 import 'package:abd_shop/screens/login/log_In_Page.dart';
@@ -50,7 +51,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => LoginPage(),
+        builder: (context) => LoginPage(user: User(),),
       ),
     );
   }

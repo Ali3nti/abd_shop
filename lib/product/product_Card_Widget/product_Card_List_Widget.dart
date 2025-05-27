@@ -54,7 +54,7 @@ class _ProductCardListWidgetState extends State<ProductCardListWidget> {
       children: [
         Container(
           width: double.infinity,
-          height:280,
+          height:290,
           padding: EdgeInsets.all(8),
           child: Row(
             children: [
