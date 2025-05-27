@@ -28,7 +28,14 @@ class _ProductCardState extends State<ProductCard> {
     return Padding(
       padding: const EdgeInsets.only(top: 30, bottom: 20, right: 20),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductInformation(product: widget.product),
+            ),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -46,7 +53,7 @@ class _ProductCardState extends State<ProductCard> {
                     width: 180,
                     height: 115,
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade50,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15),
@@ -57,7 +64,7 @@ class _ProductCardState extends State<ProductCard> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10, left: 10),
                       child: Image.network(baseUrl + widget.product.image,
-                          width:90),
+                          width: 90),
                     ),
                   ),
                   // نمایش کانتینر تخفیف فقط اگر درصد تخفیف بیشتر از صفر باشد
@@ -127,8 +134,13 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                 ],
               ),
-              if(widget.product.discount == 0) SizedBox(height: 20,),
-              SizedBox(height: 5,),
+              if (widget.product.discount == 0)
+                SizedBox(
+                  height: 10,
+                ),
+              SizedBox(
+                height: 5,
+              ),
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Text(
@@ -139,7 +151,10 @@ class _ProductCardState extends State<ProductCard> {
                       color: Colors.black),
                 ),
               ),
-              if(widget.product.discount == 0) SizedBox(height: 25,),
+              if (widget.product.discount == 0)
+                SizedBox(
+                  height: 25
+                ),
 
               // نمایش قیمت اصلی فقط اگر درصد تخفیف بیشتر از صفر باشد
               if (widget.product.discount > 0)
