@@ -21,7 +21,7 @@ class _AmazingWidgetState extends State<AmazingWidget> {
       child: Container(
         margin: const EdgeInsets.only(top: 10),
         width: double.infinity,
-        height: 350,
+        height: 310,
         color: kPrimaryColor,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -38,15 +38,16 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                       Image.asset(
                         "assets/images/a1.png",
                         color: CupertinoColors.white,
+                        width: 100,
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       SizedBox(
-                        width: 200,
-                        height: 160,
+                        height: 150,
                         child: Image.asset(
                           "assets/images/amazing.jpg",
+                          height: 10,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -97,61 +98,6 @@ class _AmazingWidgetState extends State<AmazingWidget> {
                 ),
               ),
               AmazingListWidget(),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: CupertinoColors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    height: 290,
-                    width: 200,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            List<Product> categoryProductsList = [];
-                            getProducts().then((value) {
-                              DataResponse response = value;
-                              if (response.status == 1) {
-                                response.data.forEach((value) {
-                                  categoryProductsList
-                                      .add(Product.fromJson(value));
-                                });
-
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CategoryPage(
-                                      products: categoryProductsList,
-                                    ),
-                                  ),
-                                );
-                              }
-                            });
-                          },
-                          child: const Icon(
-                            size: 60,
-                            CupertinoIcons.arrow_left_circle_fill,
-                            color: Color.fromARGB(500, 255, 98, 0),
-                          ),
-                        ),
-                        const Text(
-                          "مشاهده همه",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromARGB(500, 255, 98, 0),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
             ],
           ),
         ),
