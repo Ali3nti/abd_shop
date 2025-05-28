@@ -4,6 +4,7 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 
 class AmazingItemWidget extends StatefulWidget {
@@ -29,147 +30,147 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
     final formatter = NumberFormat('#,###');
 
     return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 20),
+      padding: const EdgeInsets.only(top: 30, bottom: 20, right: 10,left:10),
       child: InkWell(
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProductInformation(
-                product: widget.product,
-              ),
+              builder: (context) => ProductInformation(product: widget.product),
             ),
           );
         },
         child: Container(
-          margin: const EdgeInsets.only(left: 15),
           decoration: BoxDecoration(
-            color: kWhiteColor,
-            borderRadius: BorderRadius.circular(8),
+            color: kPrimaryColor,
+            borderRadius: BorderRadius.circular(30),
           ),
-          height: 290,
-          width: 190,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Visibility(
-                    visible: widget.product.discount > 0,
-                    child: Image.asset(
-                      "assets/images/amazing5.png",
-                      height: 30,
+          height: 270,
+          width: 180,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    width: 200,
+                    height: 130,
+                    decoration: BoxDecoration(
+                      color: Colors.white38,
+                      borderRadius: BorderRadiusDirectional.circular(15),
                     ),
                   ),
-                ),
-                if (widget.product.discount == 0)
-                  SizedBox(
-                    height: 60,
+                    Center(
+                    child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Image.network(baseUrl + widget.product.image,
+                            width: 110)),
                   ),
-                if (widget.product.discount > 0)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 110),
+                  if(widget.product.discount > 0)
+                    Padding(
+                    padding: const EdgeInsets.only(right: 139, top: 1),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 2,
-                        horizontal: 5,
-                      ),
+                      width: 40,
+                      height: 30,
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: SizedBox(
-                        width: 60,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/01.png",
-                              color: Colors.white,
-                              height: 20,
-                            ),
-                            Text(
-                              widget.product.discount.toString(),
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                          ],
+                        color: Colors.deepOrange.shade500,
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(5),
+                          bottomRight: Radius.circular(5),
                         ),
                       ),
-                    ),
-                  ),
-                Stack(
-                  children: [
-                    Container(
-                      width: 200,
-                      margin: const EdgeInsets.only(top: 5),
-                      child: Image.network(
-                        baseUrl + widget.product.image,
-                        width: 100,
-                        height: 85,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 60,
-                        top: 50,
-                      ),
-                      child: AddToCartWidget(
-                        product: widget.product,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.product.name,
-                        style: kHeaderTextStyle,
-                      ),
-                      Text(
-                        widget.product.description,
-                        style: kMainTextStyle,
-                      ),
-                      const SizedBox(height: 10),
-                      Wrap(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                formatter.format(finalPrice),
-                                style: kMainTextStyleOrange,
-                              ),
-                              const SizedBox(width: 6),
-                              Image.asset(
-                                width: 20,
-                                'assets/images/toman.png',
-                              ),
-                            ],
+                          Image.asset(
+                            "assets/images/01.png",
+                            color: Colors.white,
+                            height: 15,
+                          ),
+                          Text(
+                            widget.product.discount.toString(),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w900),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 5),
-                      if (widget.product.discount > 0)
-                        Text(
-                          formatter.format(widget.product.price),
-                          style: const TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 110),
+                    child: Container(
+                      child: Center(
+                        child: Image.asset("assets/images/amazing5.png"),
+                      ),
+                      width: 200,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15),
                         ),
-                    ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Gap(5),
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Text(
+                  widget.product.name,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8, top: 3),
+                child: Text(
+                  formatter.format(widget.product.price),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white70,
+                    decoration: TextDecoration.lineThrough,
+                    decorationColor: Colors.white60,
                   ),
                 ),
-              ],
-            ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8, top: 3),
+                        child: Text(
+                          formatter.format(finalPrice), // قیمت نهایی
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/toman2.png',
+                        height: 20,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                  AddToCartWidget(product: widget.product),
+                ],
+              ),
+            ],
           ),
         ),
       ),
