@@ -27,26 +27,21 @@ class _LoginPageState extends State<LoginPage> {
       body: json.encode({'phone': phoneNumber}),
     );
 
-    if (response.statusCode == 200) {
+    if (_phoneController == widget.user.phoneNumber) {
       setState(() {
         _isCodeInputVisible = true;
       });
-      // در اینجا می‌توانید کد تایید را از پاسخ سرور بگیرید
     } else {
-      // مدیریت خطا
       print('Error: ${response.body}');
     }
   }
 
   void _verifyCode() {
-    // مقایسه کد وارد شده با کد OTP
     if (_codeController.text ==widget.user.otp) {
-      // کد تایید صحیح است
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('کد تایید صحیح است!')),
       );
     } else {
-      // کد تایید نادرست است
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('کد تایید نادرست است!')),
       );
