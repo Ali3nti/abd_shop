@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
+import 'package:abd_shop/models/user_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -174,3 +175,16 @@ Future<DataResponse> postRequest({
 //     throw Exception('Failed to load products');
 //   }
 // }
+
+
+//////////////////////////////////////////////
+
+Future<DataResponse> signIn({
+  required String phone,
+}) async {
+  Map<String, dynamic> dataBody = {
+"phone" : phone
+  };
+  print(dataBody);
+  return await postRequest(apiName: "sign_in", dataBody: dataBody);
+}
