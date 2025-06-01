@@ -4,7 +4,6 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 
 class AmazingItemWidget extends StatefulWidget {
@@ -120,7 +119,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   ),
                 ],
               ),
-              Gap(5),
+              SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Text(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ////////////// URL //////////////////
 // const baseUrl = "http://192.168.1.100/abd_shop/";
-const baseUrl = "https://mehdidehghani.ir/";
+const baseUrl = "https://www.abd.alinematollahi.ir/";
 // const baseUrl = "https://alinematollahi.ir/";
 /////////////// COLORS //////////////////////
 const Color kPrimaryColor = Color(0xFFff6200);

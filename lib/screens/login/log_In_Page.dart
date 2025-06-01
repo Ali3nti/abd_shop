@@ -1,5 +1,7 @@
 import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/models/user_model.dart';
+import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -21,18 +23,21 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _sendPhoneNumber() async {
     final String phoneNumber = _phoneController.text;
 
-    final response = await http.post(
-      Uri.parse("${baseUrl}api/sign_in"),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'phone': phoneNumber}),
-    );
+    DataResponse response = await login(phoneNumber: phoneNumber);
+    print(response.status);
+
+    // final response = await http.post(
+    //   Uri.parse("${baseUrl}api/sign_in"),
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: json.encode({'phone': phoneNumber}),
+    // );
 
     if (_phoneController == widget.user.phoneNumber) {
       setState(() {
         _isCodeInputVisible = true;
       });
     } else {
-      print('Error: ${response.body}');
+      print('Error: ${response.data}');
     }
   }
 

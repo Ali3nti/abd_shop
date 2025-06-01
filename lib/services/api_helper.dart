@@ -50,6 +50,16 @@ Future<DataResponse> sendNewProduct({
   print(dataBody);
   return await postRequest(apiName: "add_products", dataBody: dataBody);
 }
+
+Future<DataResponse> login({
+  required String phoneNumber,
+}) async {
+  Map<String, dynamic> dataBody = {
+    'phone': phoneNumber,
+  };
+  print(dataBody);
+  return await postRequest(apiName: "sign_in", dataBody: dataBody);
+}
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////Base API////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -65,6 +75,7 @@ Future<DataResponse> getRequest({
   String query = '',
 }) async {
   Uri url = Uri.parse("${baseUrl}api/$apiName$query");
+  print(url);
 
   Map<String, String> headers = {
     'Content-Type': 'application/json',
@@ -102,7 +113,7 @@ Future<DataResponse> postRequest({
 
   final response = await http.post(
     url,
-    body: dataBody,
+    body: jsonEncode(dataBody),
     headers: headers,
   );
 

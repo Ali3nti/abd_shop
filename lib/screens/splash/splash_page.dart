@@ -6,6 +6,7 @@ import 'package:abd_shop/models/category_model.dart';
 import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -34,24 +35,30 @@ class _SplashPageState extends State<SplashPage> {
 
       if (isConnect) {
         List<String> sitesToCheck = [
-          'www.digikala.com',
-          'www.torob.com'
+          'google.com',  // changed
+          'mehdidehghani.ir',
+          'torob.com',
+          '8.8.8.8',
         ];
 
         bool isSiteReachable = false;
 
-        for (String site in sitesToCheck) {
-          try {
-            final result = await InternetAddress.lookup(site);
-            if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-              isSiteReachable = true;
-              break;
+        if(!kIsWeb) {
+          for (String site in sitesToCheck) {
+            try {
+              final result = await InternetAddress.lookup(site);
+              if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                isSiteReachable = true;
+                print("lookup seccessfully");
+                break;
+              }
+            } catch (e) {
+              print("Error in goNextPage(): Failed to reach $site: $e");
             }
-          } catch (e) {
-            throw Exception("Error in goNextPage(): $e");
           }
+        }else{
+          isSiteReachable = true;
         }
-
         if (isSiteReachable) {
 
           final value = await getAllCategories();
