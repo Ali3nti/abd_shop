@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:http/http.dart' as http;
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -31,7 +32,6 @@ class _SplashPageState extends State<SplashPage> {
           connectivityResult.contains(ConnectivityResult.mobile)) {
         isConnect = true;
       }
-
 
       if (isConnect) {
         List<String> sitesToCheck = [

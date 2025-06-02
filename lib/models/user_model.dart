@@ -8,21 +8,21 @@ class User {
   String firstName = ''; // User's first name
   String lastName = ''; // User's last name
   String phoneNumber = ''; // User's phone number
-  String nationalId = ''; // User's phone number
-  List<Address> addressList = []; // Primary address line
+  int nationalId = 0; // User's phone number //TODO: int
+  int addressList = 0; // Primary address line //TODO: int
   int otp = 0; // Random number generated for authentication user
-  City city = City(); // City of residence
-  String state = ''; // State of residence
+  int city = 0; // City of residence //TODO: int
+  int state = 0; // State of residence //TODO: int
   String email = ''; // User's email address (unique)
-  Gender gender = Gender(); // User's gender (e.g., Male, Female, Other)
+  int gender = 0; // User's gender (e.g., Male, Female, Other) //TODO: int
   String avatar = ''; // URL to the user's profile picture
   int rate = 0; // User's rate (e.g.,)'
   int isActive = 0; // Status of the user account (active/inactive)
   int isVerified = 0; // Status of phone number verification
-  DateTime birthDate = DateTime.now(); // User's date of birth
-  DateTime lastLogin = DateTime.now(); // Timestamp of the last login
-  DateTime createdAt = DateTime.now(); // Timestamp of when the user was created
-  DateTime updatedAt = DateTime.now(); // Timestamp of the last update
+  String birthDate = 'DateTime.now()'; // User's date of birth //TODO: String
+  String lastLogin = 'DateTime.now()'; // Timestamp of the last login //TODO: String
+  String createdAt = 'DateTime.now()'; // Timestamp of when the user was created//TODO: String
+  String updatedAt = 'DateTime.now()'; // Timestamp of the last update //TODO: String
   int loginAttempts = 0;
 
   User(); // Number of failed login attempts// Preferred method of contact (e.g., Email, SMS)
@@ -33,23 +33,23 @@ class User {
     lastName = json['last_name'] ?? '';
     phoneNumber = json['phone'] ?? '';
     nationalId = json['national_id'] ?? '';
-    addressList = json['address']
-            ?.map((addressMap) => Address.fromJson(addressMap))
-            ?.toList() ??
-        [];
+    addressList = json['address_id'];
+            // ?.map((addressMap) => Address.fromJson(addressMap))
+            // ?.toList() ??
+        // [];
     otp = json['otp'] ?? '';
-    city = City.fromJson(json['city']);
-    state = json['state'] ?? '';
+    city = json['city_id'];
+    state = json['state_id'] ?? '';
     email = json['email'] ?? '';
-    gender = Gender.fromJson(json['gender']);
+    gender = json['gender'];
     avatar = json['avatar'] ?? '';
     rate = json['rate'] ?? 0;
-    isActive = json['is_active'] ?? true;
-    isVerified = json['is_verified'] ?? false;
-    birthDate = DateTime.parse(json['birth_date'] ?? DateTime.now().toString());
-    createdAt = DateTime.parse(json['created_at'] ?? DateTime.now().toString());
-    updatedAt = DateTime.parse(json['updated_at'] ?? DateTime.now().toString());
-    lastLogin = DateTime.parse(json['last_login'] ?? DateTime.now().toString());
-    loginAttempts = json['login_attempts'] ?? 0;
+    isActive = json['is_active'] ;
+    isVerified = json['is_verified'] ;
+    birthDate = json['birth_date'] ;
+    createdAt = json['created_at'] ;
+    updatedAt = json['updated_at'] ;
+    lastLogin = json['login_at'] ;
+    // loginAttempts = json['login_attempts'] ?? 0;
   }
 }

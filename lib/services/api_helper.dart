@@ -55,7 +55,7 @@ Future<DataResponse> login({
   required String phoneNumber,
 }) async {
   Map<String, dynamic> dataBody = {
-    'phone': phoneNumber,
+    'phone_number': phoneNumber,
   };
   print(dataBody);
   return await postRequest(apiName: "sign_in", dataBody: dataBody);
@@ -96,6 +96,40 @@ Future<DataResponse> getRequest({
   }
 }
 
+///////////////////////////////////////////////
+/////////////////////////////////////////////////
+// Future<DataResponse> login2(
+//     {required String phoneNumber}) async {
+//   Uri uri = Uri.https('abd.alinematollahi.ir', "api/sign_in");
+//   Map<String, String> headers = {
+//     'Content-Type': 'application/json',
+//   };
+//   final msg = jsonEncode({
+//     "phone_number": phoneNumber
+//   });
+//
+//   final response = await http.post(
+//     uri,
+//     headers: headers,
+//     encoding: Encoding.getByName('utf-8'),
+//     body: msg,
+//   );
+//   if (response.statusCode == 200) {
+//     print("**!!!** login response: ---->  ${response.body}");
+//     if (kDebugMode) {
+//       print("*** login received");
+//     }
+//     return DataResponse.fromJson(jsonDecode(response.body));
+//   } else {
+//     String errorCode = response.statusCode.toString();
+//     throw Exception(
+//         'Failed to connect -login-: $errorCode -> ${response.body}');
+//   }
+// }
+// /////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
 /*
 **post request for get data from http service
 **for use this:
@@ -114,6 +148,7 @@ Future<DataResponse> postRequest({
   final response = await http.post(
     url,
     body: jsonEncode(dataBody),
+    encoding: Encoding.getByName('utf-8'),
     headers: headers,
   );
 
@@ -122,8 +157,9 @@ Future<DataResponse> postRequest({
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
+    String errorCode = response.statusCode.toString();
     throw Exception(
-        'Exception error: api_helper.dart - $apiName: Failed to load post request from $apiName');
+        'Exception error: api_helper.dart - $apiName: Failed to load post request from : $errorCode -> ${response.body}');
   }
 }
 

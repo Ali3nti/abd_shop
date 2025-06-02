@@ -51,7 +51,7 @@ class _HomeImagesSliderState extends State<HomeImagesSlider> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => LoginPage(user: User(),),
+        builder: (context) => LoginPage(),
       ),
     );
   }

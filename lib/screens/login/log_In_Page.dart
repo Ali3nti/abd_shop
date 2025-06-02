@@ -1,17 +1,17 @@
-import 'package:abd_shop/constants.dart';
+
 import 'package:abd_shop/models/response_model.dart';
 import 'package:abd_shop/models/user_model.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+
+import '/global.dart';
+
 
 class LoginPage extends StatefulWidget {
-  final User user;
+  const LoginPage({super.key});
 
-  LoginPage({required this.user});
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -21,28 +21,34 @@ class _LoginPageState extends State<LoginPage> {
   bool _isCodeInputVisible = false;
 
   Future<void> _sendPhoneNumber() async {
+
     final String phoneNumber = _phoneController.text;
 
     DataResponse response = await login(phoneNumber: phoneNumber);
-    print(response.status);
+    print("response status code is: ${response.status}");
 
-    // final response = await http.post(
-    //   Uri.parse("${baseUrl}api/sign_in"),
-    //   headers: {'Content-Type': 'application/json'},
-    //   body: json.encode({'phone': phoneNumber}),
-    // );
-
-    if (_phoneController == widget.user.phoneNumber) {
+    if(response.status == 1){
+      //user exist
+      print("response message is: ${response.message}");
       setState(() {
         _isCodeInputVisible = true;
       });
-    } else {
-      print('Error: ${response.data}');
+      print("response data is: ${response.data}");
+      user = User.fromJson(response.data);
+
+    }else if(response.status == 2){
+      //create new user
+      print("response message is: ${response.message}");
+    }else{
+      //error
+      print("response message is: ${response.message}");
     }
   }
 
   void _verifyCode() {
-    if (_codeController.text ==widget.user.otp) {
+    print(_codeController.text);
+    print(user.otp);
+    if (_codeController.text == user.otp.toString()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('کد تایید صحیح است!')),
       );
@@ -69,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: _sendPhoneNumber,
+              onPressed:_sendPhoneNumber,
               child: Text('تایید شماره تلفن'),
             ),
             if (_isCodeInputVisible) ...[

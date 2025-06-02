@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:abd_shop/models/user_model.dart';
 
+import '../../global.dart';
+
 class UserRegistrationPage extends StatefulWidget {
 
   UserRegistrationPage({super.key});
@@ -164,13 +166,13 @@ class _UserRegistrationPageState extends State<UserRegistrationPage> {
                 child: InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      User user = User()
-                        ..firstName = firstNameController.text
-                        ..lastName = lastNameController.text
-                        ..phoneNumber = phoneController.text
-                        ..addressList
-                            .add(Address()..address = addressController.text)
-                        ..gender = Gender();
+                      // User user = User()
+                      //   ..firstName = firstNameController.text
+                      //   ..lastName = lastNameController.text
+                      //   ..phoneNumber = phoneController.text
+                      //   ..addressList
+                      //       .add(Address()..address = addressController.text)
+                      //   ..gender = Gender();
 
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
