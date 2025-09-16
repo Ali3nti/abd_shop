@@ -1,4 +1,3 @@
-import 'package:abd_shop/models/amazing_model.dart';
 import 'package:flutter/material.dart';
 
 class CartUpdater extends ChangeNotifier {
@@ -6,36 +5,23 @@ class CartUpdater extends ChangeNotifier {
   CartUpdater({
     this.counterValue = 0,
   });
+
   void incrementNumber() {
     counterValue++;
     notifyListeners();
   }
 
   void decrementNumber() {
-    counterValue--;
+    if (counterValue > 0) {
+      counterValue--;
+      notifyListeners();
+    }
+  }
+
+  void setCounter(int value) {
+    counterValue = value;
     notifyListeners();
   }
 
-  void removeNumber(String value) {
-    counterValue = value as int;
-    notifyListeners();
-  }
-}
 
-class CartUpdaterrrrrrr extends ChangeNotifier {
-  final List<AmazingModel> items = [];
-
-  void addProduct(AmazingModel amazingModel) {
-    items.add(amazingModel);
-  }
-
-  void removeItem(AmazingModel amazingModel) {
-    items.remove(amazingModel);
-    notifyListeners();
-  }
-
-  void clearCart() {
-    items.clear();
-    notifyListeners();
-  }
 }

@@ -67,7 +67,7 @@ class _UserRegistrationPageState extends State<UserRegistrationPage> {
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -85,7 +85,7 @@ class _UserRegistrationPageState extends State<UserRegistrationPage> {
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -103,7 +103,7 @@ class _UserRegistrationPageState extends State<UserRegistrationPage> {
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -121,7 +121,7 @@ class _UserRegistrationPageState extends State<UserRegistrationPage> {
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -169,8 +169,8 @@ class _UserRegistrationPageState extends State<UserRegistrationPage> {
                         ..lastName = lastNameController.text
                         ..phoneNumber = phoneController.text
                         ..addressList
-                            .add(Address()..address = addressController.text)
-                        ..gender = Gender();
+                      // .add(Address()..address = addressController.text)
+                        ..gender = Gender() as int;
 
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

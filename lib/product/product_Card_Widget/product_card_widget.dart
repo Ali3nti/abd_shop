@@ -41,8 +41,7 @@ class _ProductCardState extends State<ProductCard> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(30),
           ),
-          height: 260,
-          width: 180,
+          width: 160,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -50,7 +49,7 @@ class _ProductCardState extends State<ProductCard> {
               Stack(
                 children: [
                   Container(
-                    width: 180,
+                    width: 160,
                     height: 115,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade50,
@@ -62,15 +61,14 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10, left: 10),
+                      padding: const EdgeInsets.only(top: 20, left: 10),
                       child: Image.network(baseUrl + widget.product.image,
-                          width: 90),
+                          width: 80),
                     ),
                   ),
-                  // نمایش کانتینر تخفیف فقط اگر درصد تخفیف بیشتر از صفر باشد
                   if (widget.product.discount > 0)
                     Padding(
-                      padding: const EdgeInsets.only(right: 140, top: 1),
+                      padding: const EdgeInsets.only(right: 110, top: 1),
                       child: Container(
                         width: 40,
                         height: 30,
@@ -95,7 +93,7 @@ class _ProductCardState extends State<ProductCard> {
                               widget.product.discount.toString(),
                               style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 10,
                                   fontWeight: FontWeight.w900),
                             ),
                           ],
@@ -110,10 +108,10 @@ class _ProductCardState extends State<ProductCard> {
                         child: Center(
                           child: Image.asset(
                             "assets/images/amazing5.png",
-                            width: 200,
+                            width: 150,
                           ),
                         ),
-                        width: 180,
+                        width: 160,
                         height: 25,
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -145,25 +143,20 @@ class _ProductCardState extends State<ProductCard> {
                 padding: const EdgeInsets.only(right: 8),
                 child: Text(
                   widget.product.name,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                  style: kMainTextStyle
                 ),
               ),
               if (widget.product.discount == 0)
                 SizedBox(
                   height: 25
                 ),
-
-              // نمایش قیمت اصلی فقط اگر درصد تخفیف بیشتر از صفر باشد
               if (widget.product.discount > 0)
                 Padding(
                   padding: const EdgeInsets.only(right: 8, top: 3),
                   child: Text(
-                    formatter.format(widget.product.price), // قیمت اصلی
+                    formatter.format(widget.product.price),
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey.shade600,
                       decoration: TextDecoration.lineThrough,
@@ -179,12 +172,8 @@ class _ProductCardState extends State<ProductCard> {
                       Padding(
                         padding: const EdgeInsets.only(right: 8, top: 3),
                         child: Text(
-                          formatter.format(finalPrice), // قیمت نهایی
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                          formatter.format(finalPrice),
+                          style: inputFieldHintTextStyleDispenser
                         ),
                       ),
                       Image.asset(

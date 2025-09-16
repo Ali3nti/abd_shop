@@ -4,7 +4,6 @@ import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/product/product_information_page.dart';
 import 'package:abd_shop/widget/provider/add_to_cart_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 
 class AmazingItemWidget extends StatefulWidget {
@@ -30,7 +29,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
     final formatter = NumberFormat('#,###');
 
     return Padding(
-      padding: const EdgeInsets.only(top: 30, bottom: 20, right: 10,left:10),
+      padding: const EdgeInsets.only(top: 30, bottom: 20, right: 10, left: 10),
       child: InkWell(
         onTap: () {
           Navigator.push(
@@ -46,7 +45,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
             borderRadius: BorderRadius.circular(30),
           ),
           height: 270,
-          width: 180,
+          width: 160,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -54,60 +53,61 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
               Stack(
                 children: [
                   Container(
-                    width: 200,
+                    width: 150,
                     height: 130,
                     decoration: BoxDecoration(
                       color: Colors.white38,
                       borderRadius: BorderRadiusDirectional.circular(15),
                     ),
                   ),
-                    Center(
+                  Center(
                     child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Image.network(baseUrl + widget.product.image,
-                            width: 110)),
-                  ),
-                  if(widget.product.discount > 0)
-                    Padding(
-                    padding: const EdgeInsets.only(right: 139, top: 1),
-                    child: Container(
-                      width: 40,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Colors.deepOrange.shade500,
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(5),
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(5),
-                          bottomRight: Radius.circular(5),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/01.png",
-                            color: Colors.white,
-                            height: 15,
-                          ),
-                          Text(
-                            widget.product.discount.toString(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w900),
-                          ),
-                        ],
-                      ),
+                      padding: const EdgeInsets.only(top: 15,),
+                      child: Image.network(baseUrl + widget.product.image,
+                          width: 100),
                     ),
                   ),
+                  if (widget.product.discount > 0)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 110, ),
+                      child: Container(
+                        width: 40,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.deepOrange.shade500,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(5),
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(5),
+                            bottomRight: Radius.circular(5),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/images/01.png",
+                              color: Colors.white,
+                              height: 14,
+                            ),
+                            Text(
+                              widget.product.discount.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   Padding(
                     padding: const EdgeInsets.only(top: 110),
                     child: Container(
                       child: Center(
                         child: Image.asset("assets/images/amazing5.png"),
                       ),
-                      width: 200,
+                      width: 150,
                       height: 20,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -120,15 +120,12 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                   ),
                 ],
               ),
-              Gap(5),
+              SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Text(
                   widget.product.name,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                  style: kHeaderTextStyle3
                 ),
               ),
               Padding(
@@ -136,7 +133,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                 child: Text(
                   formatter.format(widget.product.price),
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: Colors.white70,
                     decoration: TextDecoration.lineThrough,
@@ -153,11 +150,7 @@ class _AmazingItemWidgetState extends State<AmazingItemWidget> {
                         padding: const EdgeInsets.only(right: 8, top: 3),
                         child: Text(
                           formatter.format(finalPrice), // قیمت نهایی
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                          style: kHeaderTextStyle3
                         ),
                       ),
                       Image.asset(

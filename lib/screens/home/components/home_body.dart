@@ -20,7 +20,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
+  HomeBody({super.key,required this.product});
+  Product product;
 
   @override
   State<HomeBody> createState() => _HomeBodyState();

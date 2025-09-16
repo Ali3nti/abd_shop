@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/models/response_model.dart';
-import 'package:abd_shop/models/user_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -51,6 +50,44 @@ Future<DataResponse> sendNewProduct({
   print(dataBody);
   return await postRequest(apiName: "add_products", dataBody: dataBody);
 }
+
+Future<DataResponse> login({
+  required String phoneNumber,
+}) async {
+  Map<String, dynamic> dataBody = {
+    'phone_number': phoneNumber,
+  };
+  print(dataBody);
+  return await postRequest(apiName: "sign_in", dataBody: dataBody);
+}
+
+
+
+Future<DataResponse> postinfo({
+  required String firstname,
+  required String lastname,
+}) async {
+  Map<String, dynamic> dataBody = {
+    'first_name': firstname,
+    'last_name': lastname,
+  };
+  print(dataBody);
+  return await postRequest(apiName: "sign_in", dataBody: dataBody);
+}
+
+
+
+Future<DataResponse> userprofile({
+  required String phoneNumber,
+  required String firstname,
+}) async {
+  Map<String, dynamic> dataBody = {
+    'phone_number': phoneNumber,
+    'first_name': firstname,
+  };
+  print(dataBody);
+  return await postRequest(apiName: "sign_in", dataBody: dataBody);
+}
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////Base API////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -66,6 +103,7 @@ Future<DataResponse> getRequest({
   String query = '',
 }) async {
   Uri url = Uri.parse("${baseUrl}api/$apiName$query");
+  print(url);
 
   Map<String, String> headers = {
     'Content-Type': 'application/json',
@@ -86,6 +124,40 @@ Future<DataResponse> getRequest({
   }
 }
 
+///////////////////////////////////////////////
+/////////////////////////////////////////////////
+// Future<DataResponse> login2(
+//     {required String phoneNumber}) async {
+//   Uri uri = Uri.https('abd.alinematollahi.ir', "api/sign_in");
+//   Map<String, String> headers = {
+//     'Content-Type': 'application/json',
+//   };
+//   final msg = jsonEncode({
+//     "phone_number": phoneNumber
+//   });
+//
+//   final response = await http.post(
+//     uri,
+//     headers: headers,
+//     encoding: Encoding.getByName('utf-8'),
+//     body: msg,
+//   );
+//   if (response.statusCode == 200) {
+//     print("**!!!** login response: ---->  ${response.body}");
+//     if (kDebugMode) {
+//       print("*** login received");
+//     }
+//     return DataResponse.fromJson(jsonDecode(response.body));
+//   } else {
+//     String errorCode = response.statusCode.toString();
+//     throw Exception(
+//         'Failed to connect -login-: $errorCode -> ${response.body}');
+//   }
+// }
+// /////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
 /*
 **post request for get data from http service
 **for use this:
@@ -103,7 +175,8 @@ Future<DataResponse> postRequest({
 
   final response = await http.post(
     url,
-    body: dataBody,
+    body: jsonEncode(dataBody),
+    encoding: Encoding.getByName('utf-8'),
     headers: headers,
   );
 
@@ -112,8 +185,9 @@ Future<DataResponse> postRequest({
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
+    String errorCode = response.statusCode.toString();
     throw Exception(
-        'Exception error: api_helper.dart - $apiName: Failed to load post request from $apiName');
+        'Exception error: api_helper.dart - $apiName: Failed to load post request from : $errorCode -> ${response.body}');
   }
 }
 
@@ -175,16 +249,3 @@ Future<DataResponse> postRequest({
 //     throw Exception('Failed to load products');
 //   }
 // }
-
-
-//////////////////////////////////////////////
-
-Future<DataResponse> signIn({
-  required String phone,
-}) async {
-  Map<String, dynamic> dataBody = {
-"phone" : phone
-  };
-  print(dataBody);
-  return await postRequest(apiName: "sign_in", dataBody: dataBody);
-}

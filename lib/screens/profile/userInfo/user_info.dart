@@ -1,252 +1,135 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
+import 'package:abd_shop/constants.dart';
+import 'package:abd_shop/global.dart';
+import 'package:abd_shop/models/response_model.dart';
+import 'package:abd_shop/services/api_helper.dart';
+import 'package:abd_shop/models/user_model.dart';
 
 class UserInfo extends StatefulWidget {
-  UserInfo({super.key});
+  const UserInfo({super.key});
 
   @override
   State<UserInfo> createState() => _UserInfoState();
 }
 
 class _UserInfoState extends State<UserInfo> {
-  String? gender;
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  bool _isLoading = false;
+
+  Future<void> _sendInfo() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() => _isLoading = true);
+
+    try {
+      DataResponse response = await postinfo(
+        firstname: _firstNameController.text,
+        lastname: _lastNameController.text,
+      );
+
+      if (response.status == 1) {
+        user = User.fromJson(response.data);
+      }
+    } catch (e) {
+      print("Exception: $e");
+    }
+
+    setState(() => _isLoading = false);
+  }
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text(
-          'حساب کاربری',
-          style:
-          TextStyle(color: kWhiteColor,
-          ),
-        ),
-        backgroundColor: kPrimaryColor,
+        title: const Text("حساب کاربری", style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              _buildTextField("نام*", "نام خود را وارد کنید"),
-              _buildTextField("نام خانوادگی*", "نام خانوادگی خود را وارد کنید"),
-              _buildTextField("کد ملی*", "کد ملی خود را وارد کنید"),
-              const SizedBox(height: 30),
-              Text("جنسیت*", style: kHeaderTextStyle),
-              _buildGenderRadio("مرد"),
-              _buildGenderRadio("زن"),
-              _buildGenderRadio("اعلام نمی‌کنم"),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Handle form submission
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.teal, // رنگ متن دکمه
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30), // گوشه‌های گرد
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(16, 100, 16, 16),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                _buildTextField("نام*", "نام خود را وارد کنید", _firstNameController, Icons.person),
+                _buildTextField("نام خانوادگی*", "نام خانوادگی خود را وارد کنید", _lastNameController, Icons.family_restroom),
+                const SizedBox(height: 30),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        offset: const Offset(0, 6),
+                        blurRadius: 12,
+                      )
+                    ],
+                  ),
+                  child: ElevatedButton(
+                    onPressed: _isLoading ? null : _sendInfo,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.deepOrange,
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 50),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    ),
+                    child: _isLoading
+                        ? const CircularProgressIndicator(color: Colors.deepOrange)
+                        : const Text("ارسال", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                 ),
-                child: const Text("ارسال", style: TextStyle(fontSize: 18)),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildTextField(String label, String hint) {
-    return Card(
-      elevation: 5,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      color: Colors.lightBlue[50], // رنگ پس‌زمینه کارت
+  Widget _buildTextField(String label, String hint, TextEditingController controller, IconData icon) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.95),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          )
+        ],
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         child: TextFormField(
+          controller: controller,
+          style: const TextStyle(fontSize: 16),
           decoration: InputDecoration(
+            icon: Icon(icon, color: Colors.deepOrange),
             labelText: label,
             hintText: hint,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.teal), // رنگ حاشیه
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.tealAccent), // رنگ حاشیه هنگام تمرکز
-            ),
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
           ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'لطفاً این فیلد را پر کنید';
-            }
-            return null;
-          },
+          validator: (value) =>
+          value == null || value.trim().isEmpty ? 'لطفاً این فیلد را پر کنید' : null,
         ),
       ),
-    );
-  }
-
-  Widget _buildGenderRadio(String value) {
-    return Row(
-      children: [
-        Radio<String>(
-          value: value,
-          groupValue: gender,
-          onChanged: (val) {
-            setState(() {
-              gender = val;
-            });
-          },
-          activeColor: Colors.teal, // رنگ رادیو
-        ),
-        Text(value, style: TextStyle(fontSize: 16)),
-      ],
     );
   }
 }
-
-
-
-
-
-
-//notice: the old code//
-//
-//   @override
-//   State<UserInfo> createState() => _UserInfoState();
-// }
-//
-// class _UserInfoState extends State<UserInfo> {
-//   bool value = false;
-//   bool value1 = false;
-//   bool value2 = false;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             Padding(
-//               padding: EdgeInsets.only(top: 70, left: 290),
-//               child: Text("حساب کاربری", style: kHeaderTextStyle),
-//             ),
-//             SizedBox(
-//               height: 20,
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(left: 369),
-//               child: Text(
-//                 "نام*",
-//                 style: kHintTextStyle,
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(10),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(left: 340),
-//               child: Text(
-//                 "نام خانوادگی*",
-//                 style: kHintTextStyle,
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(10),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(left: 369),
-//               child: Text(
-//                 "کدملی*",
-//                 style: kHintTextStyle,
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(10),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(top: 30, left: 290),
-//               child: Text("جنسیت*", style: kHeaderTextStyle),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.only(right: 8),
-//               child: Row(
-//                 children: [
-//                   Checkbox(
-//                     value: value,
-//                     onChanged: (val) {
-//                       setState(
-//                         () {value=val!;},
-//                       );
-//                     },
-//                   ),
-//                   Text("مرد"),
-//                 ],
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.only(right: 8),
-//               child: Row(
-//                 children: [
-//                   Checkbox(
-//                     value: value1,
-//                     onChanged: (val) {
-//                       setState(
-//                         () {value1=val!;},
-//                       );
-//                     },
-//                   ),
-//                   Text("زن"),
-//                 ],
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.only(right: 8),
-//               child: Row(
-//                 children: [
-//                   Checkbox(
-//                     value: value2,
-//                     onChanged: (val) {
-//                       setState(
-//                         () {value2=val!;},
-//                       );
-//                     },
-//                   ),
-//                   Text("اعلام نمی کنم"),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
