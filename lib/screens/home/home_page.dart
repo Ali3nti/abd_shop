@@ -1,3 +1,4 @@
+import 'package:abd_shop/models/product_model.dart';
 import 'package:abd_shop/screens/home/components/home_body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: CupertinoColors.white,
       // appBar: const MyAppBar(),
-      body: HomeBody(),
+      body: HomeBody(product: Product(),),
     );
   }
 }

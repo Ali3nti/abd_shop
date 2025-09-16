@@ -12,7 +12,8 @@ void main() async {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MyApp(), // Wrap your app
+      builder: (context) =>
+          MyApp(), // Wrap your app
     ),
   );
 }
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CartUpdater(),
         ),
-        ChangeNotifierProvider(create: (context) => CartUpdaterrrrrrr()),
+        ChangeNotifierProvider(create: (context) => CartUpdater()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

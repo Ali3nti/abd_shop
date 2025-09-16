@@ -15,14 +15,14 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 100,
+        height: 110,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: allCategoriesList.length,
           itemBuilder: (context, index) {
             return Container(
               width: 80,
-              margin: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 4,vertical: 4),
               child: Column(
                 children: [
                   CategoryItemWidget(

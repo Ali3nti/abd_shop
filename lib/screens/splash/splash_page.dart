@@ -3,12 +3,14 @@ import 'package:abd_shop/constants.dart';
 import 'package:abd_shop/screens/base/base_page.dart';
 import 'package:abd_shop/global.dart';
 import 'package:abd_shop/models/category_model.dart';
-import 'package:abd_shop/screens/home/components/home_body.dart';
+import 'package:abd_shop/screens/login/log_In_Page.dart';
 import 'package:abd_shop/services/api_helper.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -21,25 +23,24 @@ class _SplashPageState extends State<SplashPage> {
   bool isLoading = true;
   bool hasError = false;
 
-  void goNextPage() async {
+  Future<void> goNextPage() async {
     try {
-      bool isConnect = false;
+      // بررسی اتصال اینترنت
       var connectivityResult = await Connectivity().checkConnectivity();
+      bool isConnect = connectivityResult.contains(ConnectivityResult.wifi) ||
+          connectivityResult.contains(ConnectivityResult.mobile);
 
-      if (connectivityResult.contains(ConnectivityResult.wifi) ||
-          connectivityResult.contains(ConnectivityResult.mobile)) {
-        isConnect = true;
-      }
+      if (!isConnect) throw Exception("No internet");
 
+      // بررسی دسترسی به سایت‌ها
+      List<String> sitesToCheck = [
+        'google.com',
+        'torob.com',
+        '8.8.8.8',
+      ];
 
-      if (isConnect) {
-        List<String> sitesToCheck = [
-          'www.digikala.com',
-          'www.torob.com'
-        ];
-
-        bool isSiteReachable = false;
-
+      bool isSiteReachable = false;
+      if (!kIsWeb) {
         for (String site in sitesToCheck) {
           try {
             final result = await InternetAddress.lookup(site);
@@ -47,47 +48,33 @@ class _SplashPageState extends State<SplashPage> {
               isSiteReachable = true;
               break;
             }
-          } catch (e) {
-            throw Exception("Error in goNextPage(): $e");
-          }
-        }
-
-        if (isSiteReachable) {
-
-          final value = await getAllCategories();
-
-          if (value.status == 1) {
-            var data = value.data;
-            for (var item in data) {
-              allCategoriesList.add(CategoryModel.fromJSON(item));
-            }
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const BasePage(),
-              ),
-            );
-          } else {
-            setState(() {
-              hasError = true;
-              isLoading = false;
-            });
-          }
-        } else {
-          print(isSiteReachable.toString());
-          setState(() {
-            hasError = true;
-            isLoading = false;
-          });
+          } catch (_) {}
         }
       } else {
-        setState(() {
-          hasError = true;
-          isLoading = false;
-        });
+        isSiteReachable = true;
       }
+
+      if (!isSiteReachable) throw Exception("Site unreachable");
+
+      // دریافت دسته‌بندی‌ها
+      final value = await getAllCategories();
+      if (value.status != 1) throw Exception("Failed to get categories");
+
+      for (var item in value.data) {
+        allCategoriesList.add(CategoryModel.fromJSON(item));
+      }
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool isLoggedIn = prefs.getBool('is_logged_in') ?? false;
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => isLoggedIn ? const BasePage() : const LoginPage(),
+        ),
+      );
     } catch (e) {
-      print("Error: $e");
+      print("Error in goNextPage(): $e");
       setState(() {
         hasError = true;
         isLoading = false;
@@ -98,9 +85,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1), () {
-      goNextPage();
-    });
+    Future.delayed(const Duration(seconds: 1), goNextPage);
   }
 
   @override
@@ -141,12 +126,9 @@ class _SplashPageState extends State<SplashPage> {
               ),
             ),
             const SizedBox(height: 200),
-            if (isLoading) // اگر در حال بارگذاری است
-              const SpinKitFadingCircle(
-                color: Colors.white,
-                size: 50.0,
-              )
-            else if (hasError) // اگر خطا وجود دارد
+            if (isLoading)
+              const SpinKitFadingCircle(color: Colors.white, size: 50.0)
+            else if (hasError)
               InkWell(
                 onTap: () {
                   setState(() {
@@ -156,7 +138,7 @@ class _SplashPageState extends State<SplashPage> {
                   goNextPage();
                 },
                 child: Container(
-                  padding: EdgeInsets.only(top: 7),
+                  padding: const EdgeInsets.only(top: 7),
                   width: 70,
                   height: 60,
                   decoration: const BoxDecoration(
@@ -167,16 +149,13 @@ class _SplashPageState extends State<SplashPage> {
                       Text(
                         "تلاش مجدد",
                         style: TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
+                          color: kPrimaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(height: 5),
-                      Icon(
-                        Icons.refresh,
-                        color: kPrimaryColor,
-                        size: 18,
-                      ),
+                      Icon(Icons.refresh, color: kPrimaryColor, size: 18),
                     ],
                   ),
                 ),

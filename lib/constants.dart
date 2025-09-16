@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 ////////////// URL //////////////////
 // const baseUrl = "http://192.168.1.100/abd_shop/";
+// const baseUrl = "https://www.abd.alinematollahi.ir/";
 const baseUrl = "https://mehdidehghani.ir/";
 // const baseUrl = "https://alinematollahi.ir/";
 /////////////// COLORS //////////////////////
@@ -47,7 +48,7 @@ const kBoxSizeHeight = 30.0;
 const kMainTextStyle = TextStyle(
     color: kTextPrimaryColor,
     fontFamily: 'Yekan',
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.w700);
 const kMainTextStyleOrange = TextStyle(
     color: Colors.deepOrange,
@@ -145,7 +146,7 @@ const TextStyle kHeaderTextStyle2 = TextStyle(
   fontWeight: FontWeight.normal,
 );
 const TextStyle kHeaderTextStyle3 = TextStyle(
-  fontSize: 18,
+  fontSize: 14,
   color: Colors.white,
   fontWeight: FontWeight.bold,
 );
